@@ -1,0 +1,6 @@
+[
+    { "product_id": "P001", "category": "Electronics", "brand": "Acme" },
+    { "product_id": "P002", "category": "Electronics", "brand": "Acme" },
+    { "product_id": "P003", "category": "Furniture", "brand": "HomeCo" },
+    { "product_id": "P004", "category": "Accessories", "brand": "Acme" }
+]

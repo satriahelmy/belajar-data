@@ -1,0 +1,6 @@
+[
+    { "product_id": "P-1001", "category": "Electronics", "brand": "NusaSound" },
+    { "product_id": "P-1002", "category": "Electronics", "brand": "NusaHome" },
+    { "product_id": "P-2001", "category": "Home", "brand": "NusaHome" },
+    { "product_id": "P-3001", "category": "Grocery", "brand": "NusaFresh" }
+]

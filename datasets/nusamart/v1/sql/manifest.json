@@ -1,0 +1,63 @@
+{
+    "schema_version": 1,
+    "dataset_key": "nusamart",
+    "version": "v1",
+    "profile": "gate-a-sql-spike",
+    "grain": "orders: one row per order; order_items: one row per product line in an order",
+    "files": {
+        "orders": "orders.json",
+        "order_items": "order_items.json",
+        "products": "products.json",
+        "customers": "customers.json"
+    },
+    "tables": {
+        "orders": {
+            "file": "orders.json",
+            "format": "json",
+            "primary_key": ["order_id"],
+            "columns": {
+                "order_id": "string",
+                "customer_id": "string",
+                "order_date": "date",
+                "channel": "category",
+                "shipping_cost": "number"
+            }
+        },
+        "order_items": {
+            "file": "order_items.json",
+            "format": "json",
+            "primary_key": ["order_id", "product_id"],
+            "columns": {
+                "order_id": "string",
+                "product_id": "string",
+                "quantity": "integer",
+                "unit_price": "number"
+            }
+        },
+        "products": {
+            "file": "products.json",
+            "format": "json",
+            "primary_key": ["product_id"],
+            "columns": {
+                "product_id": "string",
+                "category": "category",
+                "brand": "string"
+            }
+        },
+        "customers": {
+            "file": "customers.json",
+            "format": "json",
+            "primary_key": ["customer_id"],
+            "columns": {
+                "customer_id": "string",
+                "city": "string",
+                "segment": "category"
+            }
+        }
+    },
+    "relationships": [
+        { "from": "orders.customer_id", "to": "customers.customer_id", "type": "many-to-one" },
+        { "from": "order_items.order_id", "to": "orders.order_id", "type": "many-to-one" },
+        { "from": "order_items.product_id", "to": "products.product_id", "type": "many-to-one" }
+    ]
+}

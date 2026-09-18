@@ -14,15 +14,17 @@ class MarkdownLessonRenderer
     public function __construct(
         private readonly ContentRepository $repository,
         private readonly DirectiveParser $directives,
+        private readonly ComponentRegistry $components,
     ) {
     }
 
-    public function render(string $key): RenderedLesson
+    public function render(string $key, string $pathKey = 'data-analyst'): RenderedLesson
     {
-        $source = $this->repository->lesson($key);
-        $cacheKey = "content-spike:{$source->key}:{$source->sourceHash}";
+        $source = $this->repository->lesson($key, $pathKey);
+        $cacheKey = "content:lesson:{$pathKey}:{$source->key}:{$source->sourceHash}";
 
-        $payload = Cache::remember($cacheKey, now()->addDay(), function () use ($source): array {
+        $ttlDays = max(1, (int) config('belajardata.content_cache_ttl_days', 1));
+        $payload = Cache::remember($cacheKey, now()->addDays($ttlDays), function () use ($source): array {
             return $this->renderSource($source);
         });
 
@@ -56,9 +58,24 @@ class MarkdownLessonRenderer
         }
 
         return [
-            'html' => $html,
+            'html' => $this->addHeadingIds($html),
             'headings' => $this->extractHeadings($html),
         ];
+    }
+
+    private function addHeadingIds(string $html): string
+    {
+        $slugCounts = [];
+
+        return preg_replace_callback('/<h([1-6])>(.*?)<\/h\\1>/is', function (array $matches) use (&$slugCounts): string {
+            $text = trim(strip_tags($matches[2]));
+            $baseSlug = trim((string) preg_replace('/[^a-z0-9]+/i', '-', strtolower($text)), '-');
+            $baseSlug = $baseSlug !== '' ? $baseSlug : 'section';
+            $slugCounts[$baseSlug] = ($slugCounts[$baseSlug] ?? 0) + 1;
+            $slug = $slugCounts[$baseSlug] === 1 ? $baseSlug : $baseSlug.'-'.$slugCounts[$baseSlug];
+
+            return '<h'.$matches[1].' id="'.e($slug).'">'.$matches[2].'</h'.$matches[1].'>';
+        }, $html) ?? $html;
     }
 
     private function renderDirective(string $name, array $attributes, string $body, LessonSource $source): string
@@ -91,6 +108,7 @@ class MarkdownLessonRenderer
 
     private function renderPractice(array $attributes, string $body, LessonSource $source): string
     {
+        $this->components->assertRegistered('practice');
         $this->assertOnlyAttributes($attributes, ['type', 'id'], 'practice');
 
         if ($body !== '') {

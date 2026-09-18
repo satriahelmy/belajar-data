@@ -1,0 +1,42 @@
+{
+    "schema_version": 1,
+    "dataset_key": "nusamart",
+    "version": "v1",
+    "status": "representative-foundation",
+    "grain": "one row per order-item transaction",
+    "files": {
+        "transactions": "transactions.json",
+        "products": "products.json",
+        "python_transactions": "python/transactions.csv",
+        "python_products": "python/products.csv",
+        "data_dictionary": "data_dictionary.json"
+    },
+    "tables": {
+        "transactions": {
+            "file": "transactions.json",
+            "format": "json",
+            "columns": {
+                "order_id": "string",
+                "order_date": "date",
+                "region": "category",
+                "channel": "category",
+                "product_id": "string",
+                "quantity": "integer",
+                "unit_price": "number",
+                "revenue": "number"
+            }
+        },
+        "products": {
+            "file": "products.json",
+            "format": "json",
+            "columns": {
+                "product_id": "string",
+                "category": "category",
+                "brand": "string"
+            }
+        }
+    },
+    "relationships": [
+        { "from": "transactions.product_id", "to": "products.product_id", "type": "many-to-one" }
+    ]
+}

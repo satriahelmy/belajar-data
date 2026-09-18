@@ -4,46 +4,127 @@
 @source '../../storage/framework/views/*.php';
 @source "../**/*.blade.php";
 @source "../**/*.js";
-@source "../**/*.vue";
 
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
-.learning-spike {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 3rem 1.5rem;
+:root {
+    --background: #f8fafc;
+    --surface: #ffffff;
+    --foreground: #172033;
+    --muted: #64748b;
+    --border: #d7dee8;
+    --accent: #0f766e;
+    --accent-soft: #ecfdf5;
+    --warning-soft: #fffbeb;
+    --content-width: 50rem;
 }
 
-.learning-spike__eyebrow {
-    color: #6b7280;
-    font-size: 0.875rem;
-    letter-spacing: 0.08em;
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: var(--foreground);
+    background: var(--background);
+    font-family: var(--font-sans);
+    line-height: 1.65;
+}
+
+a {
+    color: var(--accent);
+}
+
+:focus-visible {
+    outline: 3px solid #f59e0b;
+    outline-offset: 3px;
+}
+
+.learning-lesson {
+    width: min(100% - 2rem, var(--content-width));
+    margin: 0 auto;
+    padding: 3rem 0 5rem;
+}
+
+.learning-lesson__eyebrow {
+    color: var(--muted);
+    font-size: .875rem;
+    letter-spacing: .08em;
     text-transform: uppercase;
 }
 
-.learning-spike__outline,
+.learning-lesson__outline,
 .learning-callout,
 .learning-block--practice {
-    border: 1px solid #d1d5db;
     margin: 1.5rem 0;
-    padding: 1rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--border);
+    background: var(--surface);
+}
+
+.learning-lesson__outline ol {
+    padding-left: 1.25rem;
 }
 
 .learning-callout {
-    border-left-width: 4px;
+    border-left: 4px solid var(--accent);
+    background: var(--accent-soft);
 }
 
-.learning-spike__content table {
-    border-collapse: collapse;
+.learning-callout[data-callout-type="warning"],
+.learning-callout[data-callout-type="common-mistake"] {
+    border-left-color: #b45309;
+    background: var(--warning-soft);
+}
+
+.learning-lesson__content :where(h1, h2, h3, h4, h5, h6) {
+    line-height: 1.2;
+    scroll-margin-top: 1rem;
+}
+
+.learning-lesson__content :where(pre, code) {
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.learning-lesson__content pre {
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    background: #f1f5f9;
+}
+
+.learning-lesson__content table {
     width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
 }
 
-.learning-spike__content th,
-.learning-spike__content td {
-    border: 1px solid #d1d5db;
-    padding: 0.5rem;
+.learning-lesson__content th,
+.learning-lesson__content td {
+    padding: .55rem .7rem;
+    border: 1px solid var(--border);
     text-align: left;
+}
+
+.learning-lesson__content th {
+    background: #f1f5f9;
+}
+
+.learning-block--practice {
+    border-left: 4px solid var(--accent);
+}
+
+@media (max-width: 48rem) {
+    .learning-lesson {
+        width: min(100% - 1.25rem, var(--content-width));
+        padding-top: 1.5rem;
+    }
+
+    .learning-lesson__content {
+        overflow-wrap: anywhere;
+    }
 }

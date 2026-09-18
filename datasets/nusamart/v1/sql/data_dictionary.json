@@ -1,0 +1,52 @@
+{
+    "schema_version": 1,
+    "dataset_key": "nusamart",
+    "version": "v1",
+    "profile": "gate-a-sql-spike",
+    "tables": {
+        "orders": {
+            "grain": "one row per order",
+            "primary_key": ["order_id"],
+            "columns": {
+                "order_id": { "type": "string", "description": "Stable order identifier" },
+                "customer_id": { "type": "string", "description": "Customer foreign key" },
+                "order_date": { "type": "date", "description": "Order date in ISO-8601 format" },
+                "channel": { "type": "category", "description": "Online or Store" },
+                "shipping_cost": { "type": "number", "description": "Order-level shipping cost used to teach join multiplication" }
+            }
+        },
+        "order_items": {
+            "grain": "one row per product line in an order",
+            "primary_key": ["order_id", "product_id"],
+            "columns": {
+                "order_id": { "type": "string", "description": "Order foreign key" },
+                "product_id": { "type": "string", "description": "Product foreign key" },
+                "quantity": { "type": "integer", "description": "Units in the order line" },
+                "unit_price": { "type": "number", "description": "Price per unit" }
+            }
+        },
+        "products": {
+            "grain": "one row per product",
+            "primary_key": ["product_id"],
+            "columns": {
+                "product_id": { "type": "string", "description": "Stable product identifier" },
+                "category": { "type": "category", "description": "Product category" },
+                "brand": { "type": "string", "description": "Product brand" }
+            }
+        },
+        "customers": {
+            "grain": "one row per customer",
+            "primary_key": ["customer_id"],
+            "columns": {
+                "customer_id": { "type": "string", "description": "Stable customer identifier" },
+                "city": { "type": "string", "description": "Customer city" },
+                "segment": { "type": "category", "description": "Customer segment" }
+            }
+        }
+    },
+    "relationships": [
+        { "from": "orders.customer_id", "to": "customers.customer_id", "type": "many-to-one" },
+        { "from": "order_items.order_id", "to": "orders.order_id", "type": "many-to-one" },
+        { "from": "order_items.product_id", "to": "products.product_id", "type": "many-to-one" }
+    ]
+}

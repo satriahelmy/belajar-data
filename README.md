@@ -21,7 +21,7 @@ npm run build
 php artisan test
 ```
 
-The foundation smoke route is `/__foundation`. The root route currently redirects there until the product homepage is implemented in a later milestone.
+The foundation smoke route is `/__foundation`. The representative production content route is `/learn/data-analyst/01-thinking-with-data/01-analyst-role`. The root route currently redirects to the foundation route until the product homepage is implemented in a later milestone.
 
 ## Repository conventions
 
@@ -35,7 +35,7 @@ resources/css/                                     compiled application styles
 tests/                                             feature and unit tests
 ```
 
-M0A establishes the locations and boot pipeline. Curriculum rendering, content validation, authentication, learner state, playgrounds, and the full design system belong to later milestones.
+M0C establishes the canonical content/dataset contracts, safe lesson rendering, component registry, and pre-deployment validation. Authentication, learner state, playgrounds, and the full design system belong to later milestones.
 
 ---
 

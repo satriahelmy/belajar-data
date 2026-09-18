@@ -1,6 +1,6 @@
 # BelajarData V1 — Implementation Plan
 
-Status: planning only. No application implementation has been performed.
+Status: M0A, technical spikes A–E, and M0C are implemented. M1 has not started.
 
 This plan is derived from the current source documents in `docs/`, using the requested hierarchy:
 
@@ -23,15 +23,15 @@ The plan is intentionally implementation-ready without turning content authoring
 
 Current state:
 
-- The repository contains no Laravel application scaffold.
-- There is no `composer.json`, `package.json`, `artisan`, `app/`, `routes/`, `resources/`, `database/`, `public/`, test suite, content directory, or dataset directory yet.
+- The repository now contains the Laravel 12 application scaffold and the M0A/M0C foundation described below.
+- The application includes `composer.json`, `package.json`, `artisan`, `app/`, `routes/`, `resources/`, `database/`, `public/`, tests, repository content, and versioned dataset fixtures.
 - The current source documents are in `docs/` and are untracked in the current working tree.
 - The previous root-level `PRD.md`, `architecture.md`, `curriculum.md`, and `design.md` are tracked as deleted. Their contents differ from the current `docs/` copies.
 - The root-document deletions and the untracked `docs/` directory are existing user/worktree changes. They must not be reset or restored implicitly.
 
 ### Baseline conclusion
 
-This is a genuine greenfield rebuild. There is no existing application pattern to preserve and no existing dependency set to inherit. The current `docs/` files are the planning baseline for this task, subject to the open clarification about canonical document location below.
+This remains a greenfield rebuild. The current application foundation is intentionally small; the current `docs/` files are the planning baseline for the remaining milestones, subject to the resolved canonical document location below.
 
 ### Local development environment snapshot
 
@@ -46,10 +46,10 @@ Checked on 2026-09-18:
 - MySQL server version reported through PDO: 8.0.45.
 - Local development database `belajar_data_v2` exists and is accessible with the supplied `root` credentials.
 - `belajar_data_v2` currently contains 0 tables.
-- No Laravel application exists yet: `artisan` and `composer.json` are absent from the workspace.
+- The Laravel application is present; M0C verification uses its repository/content and local database boundaries.
 - The MySQL CLI is not on PATH, but PHP PDO connectivity works. Database checks and migrations can use Laravel/PDO or the explicit XAMPP client path if it is added later.
 
-Local development configuration to use once M0 begins:
+Local development configuration used for M0:
 
 ```text
 DB_CONNECTION=mysql
@@ -131,14 +131,14 @@ Candidate approaches to evaluate:
 
 Prototype tasks:
 
-- [ ] Load a small representative relational fixture from a versioned dataset manifest.
-- [ ] Execute the actual Module 03 patterns: `SELECT`, `WHERE`, aggregation, `COUNT DISTINCT`, `GROUP BY`, joins, `CASE`, CTEs, dates, and the required time-comparison/window-function examples.
-- [ ] Run in a Web Worker where feasible and measure initial load, query latency, memory, and reset behavior.
-- [ ] Render bounded result rows and useful syntax/runtime errors.
-- [ ] Prove normalized unordered row-set comparison, ordered result comparison, column checks, and numeric tolerance.
-- [ ] Prove that remote database connectivity is unavailable and that no query is sent to Laravel/MySQL.
-- [ ] Test a runaway/large-result case, worker termination/reset, and re-run after an error.
-- [ ] Record browser support and the practical desktop/mobile recommendation.
+- [x] Load a small representative relational fixture from a versioned dataset manifest.
+- [x] Execute the actual Module 03 patterns: `SELECT`, column selection, `WHERE`, `ORDER BY`, `LIMIT`, aggregation, `COUNT`, `COUNT DISTINCT`, `SUM`, `AVG`, `GROUP BY`, joins, `CASE`, CTEs, dates, window functions, and `LAG`.
+- [x] Run in a Web Worker and measure initial load, query latency, available memory telemetry, and reset behavior.
+- [x] Render bounded result rows and useful syntax/runtime errors.
+- [x] Prove normalized unordered row-set comparison, ordered result comparison, column checks, NULL handling, and numeric tolerance.
+- [x] Prove that remote database connectivity is unavailable and that no query is sent to Laravel/MySQL.
+- [x] Test a runaway/large-result case, worker termination/reset, and re-run after an error.
+- [x] Record browser support and the practical desktop/mobile recommendation.
 
 Acceptance criteria:
 
@@ -151,10 +151,14 @@ Acceptance criteria:
 
 Decision output:
 
-- [ ] Record selected engine and version/asset strategy.
-- [ ] Record unsupported SQL features and curriculum wording implications.
-- [ ] Record the result-validator contract.
-- [ ] Record the fallback if the candidate fails.
+- [x] Record selected engine and version/asset strategy.
+- [x] Record unsupported SQL features and curriculum wording implications.
+- [x] Record the result-validator contract.
+- [x] Record the fallback if the candidate fails.
+
+Gate A status: PASSED for the representative technical spike only.
+
+Selected approach: `sql.js` 1.14.2 (SQLite compiled to WebAssembly), executed in a dedicated Web Worker against a predefined NusaMart fixture. Evidence, limitations, and the DuckDB-Wasm comparison are recorded in `docs/decisions/gate-a-sql.md`.
 
 ### Gate B — Bounded spreadsheet execution
 
@@ -168,28 +172,32 @@ Candidate approaches to evaluate:
 
 Prototype tasks:
 
-- [ ] Load a predefined NusaMart worksheet and a lookup/master worksheet.
-- [ ] Prove the required formula subset: references/ranges, arithmetic, `SUM`, `COUNT`, `AVERAGE`, `IF`, `COUNTIF(S)`, `SUMIF(S)`, and the selected lookup behavior (`XLOOKUP` and/or `VLOOKUP`) needed by the curriculum.
-- [ ] Prove sorting/filtering where the lesson requires it.
-- [ ] Define how a bounded Pivot Table-like summary is represented, or decide that the summary is a preconfigured result interaction rather than a general pivot engine.
-- [ ] Validate target cells/results independent of formula spelling.
-- [ ] Test malformed formulas, missing lookup keys, blanks, duplicate keys, numeric formats, reset, and deterministic recalculation.
-- [ ] Check keyboard access, readable grid behavior, desktop recommendation, and small-screen fallback.
+- [x] Load a predefined NusaMart worksheet and a lookup/master worksheet.
+- [x] Prove the required formula subset: references/ranges, arithmetic, `SUM`, `COUNT`, `AVERAGE`, `IF`, `COUNTIF(S)`, `SUMIF(S)`, and the selected lookup behavior (`VLOOKUP`) needed by the curriculum.
+- [x] Prove sorting/filtering where the lesson requires it.
+- [x] Define how a bounded Pivot Table-like summary is represented, or decide that the summary is a preconfigured result interaction rather than a general pivot engine.
+- [x] Validate target cells/results independent of formula spelling.
+- [x] Test malformed formulas, missing lookup keys, blanks, duplicate keys, numeric formats, reset, and deterministic recalculation.
+- [x] Check keyboard access, readable grid behavior, desktop recommendation, and small-screen fallback.
 
 Acceptance criteria:
 
-- The selected approach supports every feature required by the initial Module 02 exercise slice.
-- Calculations are deterministic and expected outputs can be validated without requiring one exact formula.
-- The feature allowlist is explicit and excludes arbitrary workbook authoring, macros, external links, full ribbon behavior, and arbitrary upload.
-- License, maintenance, bundle size, accessibility, and backend independence are acceptable.
-- The chosen approach and the non-goals are recorded before M4.
+- [x] The selected approach supports every feature required by the initial Module 02 exercise slice.
+- [x] Calculations are deterministic and expected outputs can be validated without requiring one exact formula.
+- [x] The feature allowlist is explicit and excludes arbitrary workbook authoring, macros, external links, full ribbon behavior, and arbitrary upload.
+- [x] License, maintenance, bundle size, accessibility, and backend independence are acceptable.
+- [x] The chosen approach and the non-goals are recorded before M4.
 
 Decision output:
 
-- [ ] Record formula/grid approach and license decision.
-- [ ] Record the supported function/interaction allowlist.
-- [ ] Record how pivot-style tasks are bounded.
-- [ ] Record the fallback interaction if a full grid is not justified.
+- [x] Record formula/grid approach and license decision.
+- [x] Record the supported function/interaction allowlist.
+- [x] Record how pivot-style tasks are bounded.
+- [x] Record the fallback interaction if a full grid is not justified.
+
+Gate B status: PASSED for the representative technical spike only.
+
+Selected approach: native HTML tables plus a bounded custom browser evaluator with exact `VLOOKUP(..., FALSE)`, configured category summary, output validation, and no new spreadsheet dependency. Evidence and limitations are recorded in `docs/decisions/gate-b-spreadsheet.md`.
 
 ### Gate C — Python/Pandas browser feasibility
 
@@ -202,14 +210,14 @@ Candidate approaches to evaluate:
 
 Prototype tasks:
 
-- [ ] Measure first-load and warm-load time for the actual deployment asset path.
-- [ ] Import Python and Pandas.
-- [ ] Load a predefined CSV.
-- [ ] Prove `head`, `shape`, column selection, filtering, sorting, calculated columns, `groupby`, `merge`, date parsing/extraction, and dataframe output.
-- [ ] Test error capture, reset, output truncation, and interruption/worker recovery.
+- [x] Measure first-load and warm-load time for the actual CDN deployment asset path.
+- [x] Import Python and Pandas.
+- [x] Load a predefined CSV.
+- [x] Prove `head`, `shape`, column selection, filtering, sorting, calculated columns, `groupby`, `merge`, date parsing/extraction, and dataframe output.
+- [x] Test error capture, reset, output truncation, and interruption/worker recovery.
 - [ ] Test memory and responsiveness on the agreed desktop and representative low-memory/mobile devices.
-- [ ] Test the smallest plotting requirement only if the curriculum truly needs it; do not make plotting a reason to add a heavier runtime.
-- [ ] Verify that arbitrary learner Python never reaches Laravel and that datasets remain predefined.
+- [x] Test the smallest plotting requirement only if the curriculum truly needs it; do not make plotting a reason to add a heavier runtime.
+- [x] Verify that arbitrary learner Python never reaches Laravel and that datasets remain predefined.
 
 Acceptance criteria:
 
@@ -221,10 +229,12 @@ Acceptance criteria:
 
 Decision output:
 
-- [ ] Record Pyodide approval or fallback approval.
-- [ ] Record supported Python/Pandas subset and resource limits.
-- [ ] Record device/performance guidance and asset-loading strategy.
-- [ ] Record which later exercises are interactive, bounded, or downloadable.
+- [x] Record fallback approval and the status of Pyodide as an optional desktop-only experiment.
+- [x] Record supported Python/Pandas subset and resource limits.
+- [x] Record device/performance guidance and asset-loading strategy.
+- [x] Record which later exercises are interactive, bounded, or downloadable.
+
+Gate C status: PASSED for the bounded fallback and representative browser feasibility spike only. Pyodide 314.0.7 successfully ran the Module 04 workflow in a Web Worker, but its initialization, memory, and asset cost are not approved as a V1 curriculum dependency. Evidence and curriculum implications are recorded in `docs/decisions/gate-c-python-pandas.md`.
 
 ### Gate D — Markdown plus structured interactive blocks
 
@@ -279,11 +289,11 @@ Candidate approaches to evaluate:
 
 Prototype tasks:
 
-- [ ] Render config-driven bar, line, scatter, histogram, and any required boxplot/distribution representation.
-- [ ] Prove responsive sizing, resize cleanup, reset, deterministic data, and accessible labels/adjacent tabular explanation.
-- [ ] Prove finite controls for metric, dimension, chart, sort, and highlight rather than arbitrary field/calculation authoring.
-- [ ] Measure lazy-load cost and behavior on normal lessons versus visualization lessons.
-- [ ] Check license, maintenance, SSR-safe integration, and shared-hosting asset delivery.
+- [x] Render config-driven bar, line, scatter, histogram, and a bounded IQR/median distribution representation.
+- [x] Prove responsive sizing, resize cleanup, reset, deterministic data, and accessible labels/adjacent tabular explanation.
+- [x] Prove finite controls for metric, dimension, chart, sort, and highlight rather than arbitrary field/calculation authoring.
+- [x] Measure lazy-load cost and behavior on normal lessons versus visualization lessons.
+- [x] Check license, maintenance, SSR-safe integration, and shared-hosting asset delivery.
 
 Acceptance criteria:
 
@@ -294,13 +304,15 @@ Acceptance criteria:
 
 Decision output:
 
-- [ ] Record selected chart library and version/asset strategy.
-- [ ] Record supported chart types and accessibility fallback.
-- [ ] Record the config schema and lazy-load boundary.
+- [x] Record selected chart library and version/asset strategy.
+- [x] Record supported chart types and accessibility fallback.
+- [x] Record the config schema and lazy-load boundary.
+
+Gate E status: PASSED for the representative bounded visualization spike only. Chart.js 4.5.1 is selected for the demonstrated V1 adapter; histogram and distribution use bounded derived representations, while the final Visualization Playground remains future M6 work. Evidence and limitations are recorded in `docs/decisions/gate-e-visualization.md`.
 
 ### Spike completion rule
 
-- [ ] Store a short decision record for Gates A–E, including evidence, chosen approach, rejected candidates, performance observations, licensing notes, and curriculum impact.
+- [x] Store a short decision record for Gates A–E, including evidence, chosen approach, rejected candidates, performance observations, licensing notes, and curriculum impact.
 - [ ] For each gate, choose the simplest candidate that satisfies the documented acceptance criteria, architecture constraints, curriculum requirements, browser performance requirements, licensing requirements, and shared-hosting deployment model.
 - [ ] Record the selected candidate and rationale in that gate's decision record after the spike.
 - [ ] Treat every named library in the candidate lists as an evaluation candidate only; do not pre-approve it by name.
@@ -474,20 +486,20 @@ Establish the greenfield Laravel shell, shared-hosting-compatible development/de
 
 #### Concrete tasks
 
-- [ ] Confirm the canonical source-document location and preserve existing worktree changes without restoring old root documents implicitly.
-- [ ] Confirm the supported PHP, Laravel, MySQL, database driver, PHP extensions, Node build version, and shared-hosting deployment constraints.
-- [ ] Create the Laravel application shell with server-rendered routes and compiled static assets; do not require a production Node process.
-- [ ] Establish logical modular boundaries for Learning, Learner, Projects, and Datasets inside the monolith.
-- [ ] Establish environment/configuration conventions and ensure secrets remain in `.env` and are never committed or overwritten by deployment.
+- [x] Confirm the canonical source-document location and preserve existing worktree changes without restoring old root documents implicitly.
+- [x] Confirm the supported PHP, Laravel, MySQL, database driver, PHP extensions, Node build version, and shared-hosting deployment constraints for local development.
+- [x] Create the Laravel application shell with server-rendered routes and compiled static assets; do not require a production Node process.
+- [x] Establish logical modular boundaries for Learning, Learner, Projects, and Datasets inside the monolith.
+- [x] Establish environment/configuration conventions and ensure secrets remain in `.env` and are never committed or overwritten by deployment.
 - [ ] Run and record Gates A–E, including rejected candidates and fallbacks.
-- [ ] Define stable key, slug, publication, and route conventions.
-- [ ] Implement the repository content loader and metadata/config reader without copying the full curriculum into MySQL.
-- [ ] Implement the Markdown parser, sanitizer/whitelist, structured-block resolver, and cache boundary selected by Gate D.
-- [ ] Define the dataset manifest/data dictionary loader and versioned asset URL convention.
-- [ ] Establish the initial design tokens: neutral surfaces, text, border, single accent, semantic colors, spacing, restrained radius, type scale, reading/content widths, and code typography.
+- [x] Define stable key, slug, and route conventions for the representative repository content slice.
+- [x] Implement the repository content loader and metadata/config reader without copying the full curriculum into MySQL.
+- [x] Implement the Markdown parser, sanitizer/whitelist, structured-block resolver, and cache boundary selected by Gate D.
+- [x] Define the dataset manifest/data dictionary loader and versioned asset contract.
+- [x] Establish the initial design tokens: neutral surfaces, text, border, single accent, semantic colors, spacing, restrained radius, type scale, reading/content widths, and code typography.
 - [ ] Build the shared server-rendered components needed by P0 screens: global header, phase/module rows, progress bar, lesson header/sidebar, content sections, callouts, code blocks, tables, practice shell, feedback, hint, Further Reading item, bookmark control, project stage navigation, and reference approach.
 - [ ] Keep the UI copy Bahasa Indonesia-first while preserving established technical terms such as JOIN, DataFrame, dashboard, and confidence interval.
-- [ ] Add baseline logging for missing content, malformed config, dataset failures, and state-persistence failures without logging secrets or unnecessary learner answers.
+- [x] Add baseline logging for missing content, malformed config, and dataset/component failures without logging secrets or unnecessary learner answers.
 - [ ] Define the small analytics event vocabulary and the no-op/local development behavior.
 
 #### Acceptance criteria
@@ -501,12 +513,12 @@ Establish the greenfield Laravel shell, shared-hosting-compatible development/de
 
 #### Relevant tests
 
-- [ ] Application boot/configuration and route smoke tests.
-- [ ] Content loader, key/slug, publication, and cache tests.
-- [ ] Markdown allowlist/sanitization and structured-block resolution tests.
-- [ ] Dataset manifest schema tests.
+- [x] Application boot/configuration, database, and route smoke tests.
+- [x] Content loader, stable-key, and cache-boundary tests.
+- [x] Markdown allowlist/sanitization and structured-block resolution tests.
+- [x] Dataset manifest schema tests.
 - [ ] Design-system/component rendering smoke tests.
-- [ ] Deployment/build smoke test on the agreed PHP/shared-hosting matrix.
+- [x] Local deployment/build smoke test on the recorded PHP/MySQL/static-asset baseline.
 
 #### Risks/notes
 
@@ -540,20 +552,55 @@ Create only the greenfield Laravel/application foundation needed before the tech
 - `npm run build` — passed; Vite 6.4.3 generated `public/build`.
 - `php artisan test` — passed; 2 tests and 5 assertions.
 - Local database connectivity — passed; `belajar_data_v2` is reachable and the smoke test performs only `SELECT 1`.
-- At M0A completion, no Gates A–E had been run; Gate D was subsequently completed as the next scoped spike.
+- At M0A completion, no Gates A–E had been run; Gates B, C, D, and E were subsequently completed as separately scoped spikes.
 
 #### Explicitly not started
 
-- [ ] M0B technical spikes.
-- [ ] Final Markdown renderer/content system or full `content:validate`; Gate D's spike-level implementation is tracked below.
+- [x] M0B technical spikes A, B, C, D, and E completed; Gate A decision is now recorded.
+- [x] M0C representative content loader, safe renderer, dataset manifest validation, and progressive component registry completed; this is not the final content system.
 - [ ] Authentication, learner progress, bookmarks, or attempts.
-- [ ] SQL, spreadsheet, Python/Pandas, visualization, or interactive components.
+- [ ] Final SQL, Spreadsheet Playground, Python/Pandas, visualization, or interactive components; only bounded future adapters are defined.
 - [ ] Homepage, Learn/module/lesson UI, full design system, or curriculum lesson authoring.
 
 #### M0A risks/notes
 
 - The scaffold's generated SQLite file is ignored by Git, but the application configuration and smoke test use MySQL exclusively.
 - Laravel's framework configuration files remain available as framework defaults; no queue worker, Redis service, Docker/Sail workflow, or other operational infrastructure is enabled.
+
+### M0C — Product Foundation — COMPLETED
+
+#### Objective
+
+Promote the reusable M0A/Gate D foundation into a clean repository-first product boundary, validate the representative content and dataset slice, and remove disposable spike product surfaces. M0C does not start M1.
+
+#### Completed work
+
+- [x] Established canonical `content/{path-key}/{module-key}/{topic-key}/` metadata and lesson structure with stable machine keys.
+- [x] Added production `ContentRepository` loading and validation for path/module/topic metadata, exercise config, lesson references, and source hashes.
+- [x] Refactored Gate D's safe CommonMark renderer into the production lesson route `/learn/{pathKey}/{moduleKey}/{topicKey}` with server-rendered heading metadata, callouts, tables, code, links, images, and registered practice placeholders.
+- [x] Established the registered learning-component contract: server-side `ComponentRegistry` and browser-side lazy `components/registry.js`; only `practice` is active in M0C.
+- [x] Added production `content:validate` coverage for metadata, rendered lessons, structured references, versioned dataset manifests, and data dictionaries.
+- [x] Added the versioned NusaMart manifest/data-dictionary contract and kept local fixture files repository-owned.
+- [x] Added minimal editorial design tokens/primitives for reading content, tables, code, callouts, focus, and progressive blocks.
+- [x] Added boundary logging for content, dataset, and component failures without logging secrets or unnecessary learner answers.
+- [x] Removed disposable Gate B/C/E spike routes, controllers, views, fixtures, spike JavaScript, and spike-only tests; retained decision records and the documented static notebook fallback.
+- [x] Kept future SQL, bounded spreadsheet, bounded Python/Pandas, and visualization adapters lazy and unregistered; no runtime library was selected or loaded by M0C.
+- [x] Added focused feature and frontend tests for boot, MySQL connectivity, stable keys, content safety, directive resolution, malformed references, dataset contracts, component registration, rendering, and lazy boundaries.
+
+#### M0C verification results
+
+- `composer validate --strict` — passed.
+- `php artisan content:validate` — passed for the representative lesson and `nusamart/v1` manifest.
+- `php artisan test` — passed after the final test-file cleanup.
+- `npm run build` — passed; Vite generated the production CSS, application entry, and lazy practice chunk.
+- `node --test tests/Frontend/*.test.js` — passed.
+- `git diff --check` — passed.
+
+#### M0C remaining issues
+
+- Gate A is now resolved by the representative spike decision record; the final SQL Playground remains future M3 work.
+- The content validator is a foundation, not the complete curriculum graph/publication validator required before launch.
+- M1 and all learner-facing product features remain unstarted.
 
 ### M1 — Learning Core
 
@@ -753,10 +800,10 @@ Provide the approved Module 04 Python/Pandas experience, or the documented bound
 
 #### Concrete tasks
 
-- [ ] If approved, lazy-load the Python runtime only for Python exercises and isolate execution in a Web Worker where practical.
-- [ ] If approved, implement predefined dataset loading, code editor, Run, output/dataframe rendering, reset, bounded output, and error feedback.
+- [ ] If the optional browser experiment is retained, lazy-load the Python runtime only for Python exercises and isolate execution in a Web Worker where practical.
+- [ ] If the optional browser experiment is retained, implement predefined dataset loading, code editor, Run, output/dataframe rendering, reset, bounded output, and error feedback.
 - [ ] Support only the tested Python/Pandas subset: import, load, inspect, select, filter, sort, calculated columns, groupby, merge, dates, and dataframe output.
-- [ ] If fallback is selected, implement bounded code/output exercises, expected-output checks, explanations, and downloadable notebooks without pretending to provide an open notebook runtime.
+- [ ] Implement the selected bounded code/output exercises, expected-output checks, explanations, and downloadable notebooks without pretending to provide an open notebook runtime.
 - [ ] Author and validate Module 04 tasks from load/inspect through filter/transform/aggregate/compare/interpret.
 - [ ] Connect later Cleaning/EDA/Statistics tasks to the approved Python or fallback capability.
 - [ ] Provide reset/recovery behavior and preserve work on runtime errors.
@@ -864,7 +911,7 @@ Deliver the external-tool learning experience for Tableau through safe downloada
 
 #### Risks/notes
 
-- V1 is Tableau-only. Power BI remains deferred/optional and must not be implemented as a V1 core track.
+- D-02 is resolved: V1 is Tableau-only. Power BI remains deferred/optional and must not be implemented as a V1 core track.
 
 ### M8 — Projects
 

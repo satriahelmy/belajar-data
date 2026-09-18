@@ -1,0 +1,8 @@
+[
+    { "order_id": "ORD001", "customer_id": "C001", "order_date": "2025-08-05", "channel": "Online", "shipping_cost": 10 },
+    { "order_id": "ORD002", "customer_id": "C002", "order_date": "2025-08-10", "channel": "Store", "shipping_cost": 15 },
+    { "order_id": "ORD003", "customer_id": "C001", "order_date": "2025-08-20", "channel": "Online", "shipping_cost": 12 },
+    { "order_id": "ORD004", "customer_id": "C003", "order_date": "2025-09-03", "channel": "Online", "shipping_cost": 20 },
+    { "order_id": "ORD005", "customer_id": "C004", "order_date": "2025-09-12", "channel": "Store", "shipping_cost": 8 },
+    { "order_id": "ORD006", "customer_id": "C002", "order_date": "2025-09-20", "channel": "Online", "shipping_cost": 14 }
+]

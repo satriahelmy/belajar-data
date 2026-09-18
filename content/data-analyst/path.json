@@ -1,0 +1,10 @@
+{
+    "schema_version": 1,
+    "key": "data-analyst",
+    "type": "path",
+    "title": "Data Analyst Path",
+    "status": "representative",
+    "module_keys": [
+        "01-thinking-with-data"
+    ]
+}

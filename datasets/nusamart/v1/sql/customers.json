@@ -1,0 +1,6 @@
+[
+    { "customer_id": "C001", "city": "Jakarta", "segment": "Consumer" },
+    { "customer_id": "C002", "city": "Bandung", "segment": "Business" },
+    { "customer_id": "C003", "city": "Jakarta", "segment": "Consumer" },
+    { "customer_id": "C004", "city": "Surabaya", "segment": "Business" }
+]

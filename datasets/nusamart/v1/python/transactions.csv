@@ -1,0 +1,9 @@
+order_id,order_date,region,channel,product_id,quantity,unit_price
+O-1001,2025-08-03,West,Online,P-1001,2,120
+O-1002,2025-08-08,East,Store,P-2001,1,120
+O-1003,2025-08-17,West,Online,P-3001,3,30
+O-1004,2025-09-02,West,Store,P-1002,1,80
+O-1005,2025-09-06,East,Online,P-1001,1,120
+O-1006,2025-09-11,West,Online,P-2001,2,90
+O-1007,2025-09-15,South,Store,P-3001,4,25
+O-1008,2025-09-21,West,Store,P-1001,1,120

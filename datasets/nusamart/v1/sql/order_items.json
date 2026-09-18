@@ -1,0 +1,11 @@
+[
+    { "order_id": "ORD001", "product_id": "P001", "quantity": 1, "unit_price": 100 },
+    { "order_id": "ORD001", "product_id": "P002", "quantity": 2, "unit_price": 50 },
+    { "order_id": "ORD002", "product_id": "P003", "quantity": 1, "unit_price": 300 },
+    { "order_id": "ORD003", "product_id": "P001", "quantity": 1, "unit_price": 100 },
+    { "order_id": "ORD003", "product_id": "P004", "quantity": 3, "unit_price": 25 },
+    { "order_id": "ORD004", "product_id": "P002", "quantity": 1, "unit_price": 50 },
+    { "order_id": "ORD004", "product_id": "P003", "quantity": 1, "unit_price": 300 },
+    { "order_id": "ORD005", "product_id": "P004", "quantity": 4, "unit_price": 25 },
+    { "order_id": "ORD006", "product_id": "P001", "quantity": 2, "unit_price": 100 }
+]

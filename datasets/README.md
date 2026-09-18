@@ -1,5 +1,11 @@
 # Datasets
 
-Versioned learning datasets belong under `datasets/`, with NusaMart planned at `datasets/nusamart/v1/`.
+Versioned learning datasets belong under `datasets/{dataset-key}/{version}/`.
 
-M0A establishes this location only. Dataset manifests and learning data are added after the foundation; no dataset runtime or upload feature is implemented here.
+Each version contains:
+
+- `manifest.json`: machine key, version, grain, files, table schemas, and relationships;
+- `data_dictionary.json`: learner-facing field definitions and curriculum usage;
+- versioned data files and optional downloadable learning assets.
+
+Dataset keys use lowercase kebab-case and versions use `v1`, `v2`, and so on. Dataset files are trusted repository assets; M0C adds no upload or remote datasource feature.

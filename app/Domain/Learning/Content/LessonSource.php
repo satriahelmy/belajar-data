@@ -9,6 +9,7 @@ final class LessonSource
         public readonly string $markdown,
         public readonly array $exercises,
         public readonly string $sourceHash,
+        public readonly array $metadata = [],
     ) {
     }
 }

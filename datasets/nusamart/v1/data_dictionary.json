@@ -1,0 +1,34 @@
+{
+    "schema_version": 1,
+    "dataset_key": "nusamart",
+    "version": "v1",
+    "tables": {
+        "transactions": {
+            "grain": "one row per order-item transaction",
+            "primary_key": ["order_id", "product_id"],
+            "columns": {
+                "order_id": { "type": "string", "description": "Stable order identifier" },
+                "order_date": { "type": "date", "description": "Order date in ISO-8601 format" },
+                "region": { "type": "category", "description": "Sales region" },
+                "channel": { "type": "category", "description": "Sales channel" },
+                "product_id": { "type": "string", "description": "Product master key" },
+                "quantity": { "type": "integer", "description": "Units in the order item" },
+                "unit_price": { "type": "number", "description": "Price per unit in fixture currency" },
+                "revenue": { "type": "number", "description": "Quantity multiplied by unit price" }
+            }
+        },
+        "products": {
+            "grain": "one row per product",
+            "primary_key": ["product_id"],
+            "columns": {
+                "product_id": { "type": "string", "description": "Product master key" },
+                "category": { "type": "category", "description": "Product category" },
+                "brand": { "type": "string", "description": "Product brand" }
+            }
+        }
+    },
+    "relationships": [
+        { "from": "transactions.product_id", "to": "products.product_id", "type": "many-to-one" }
+    ],
+    "curriculum_usage": ["module-02", "module-03", "module-04", "module-06", "module-08"]
+}

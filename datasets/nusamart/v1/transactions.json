@@ -1,0 +1,10 @@
+[
+    { "order_id": "O-1001", "order_date": "2025-08-03", "region": "West", "channel": "Online", "product_id": "P-1001", "quantity": 2, "unit_price": 120, "revenue": 240 },
+    { "order_id": "O-1002", "order_date": "2025-08-08", "region": "East", "channel": "Store", "product_id": "P-2001", "quantity": 1, "unit_price": 120, "revenue": 120 },
+    { "order_id": "O-1003", "order_date": "2025-08-17", "region": "West", "channel": "Online", "product_id": "P-3001", "quantity": 3, "unit_price": 30, "revenue": 90 },
+    { "order_id": "O-1004", "order_date": "2025-09-02", "region": "West", "channel": "Store", "product_id": "P-1002", "quantity": 1, "unit_price": 80, "revenue": 80 },
+    { "order_id": "O-1005", "order_date": "2025-09-06", "region": "East", "channel": "Online", "product_id": "P-1001", "quantity": 1, "unit_price": 120, "revenue": 120 },
+    { "order_id": "O-1006", "order_date": "2025-09-11", "region": "West", "channel": "Online", "product_id": "P-2001", "quantity": 2, "unit_price": 90, "revenue": 180 },
+    { "order_id": "O-1007", "order_date": "2025-09-15", "region": "South", "channel": "Store", "product_id": "P-3001", "quantity": 4, "unit_price": 25, "revenue": 100 },
+    { "order_id": "O-1008", "order_date": "2025-09-21", "region": "West", "channel": "Store", "product_id": "P-1001", "quantity": 1, "unit_price": 120, "revenue": 120 }
+]

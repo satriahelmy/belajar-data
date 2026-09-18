@@ -1,0 +1,138 @@
+.sql-spike {
+    width: min(100% - 2rem, 70rem);
+    margin: 0 auto;
+    padding: 2rem 0 4rem;
+}
+
+.sql-spike__eyebrow {
+    color: var(--muted);
+    font-size: .875rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.sql-spike__intro,
+.sql-spike__boundary,
+.sql-spike__workspace,
+.sql-spike__result,
+.sql-spike__fixture {
+    max-width: 64rem;
+}
+
+.sql-spike__boundary,
+.sql-spike__workspace,
+.sql-spike__result,
+.sql-spike__fixture {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    background: var(--surface);
+}
+
+.sql-spike__workspace label {
+    display: block;
+    margin-top: .75rem;
+    font-weight: 600;
+}
+
+.sql-spike__workspace select,
+.sql-spike__workspace textarea,
+.sql-spike__workspace button {
+    width: 100%;
+    margin-top: .35rem;
+    padding: .6rem .75rem;
+    border: 1px solid #94a3b8;
+    border-radius: .25rem;
+    background: #fff;
+    font: inherit;
+}
+
+.sql-spike__workspace textarea,
+.sql-spike__error,
+.sql-spike__fixture {
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.sql-spike__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+    margin-top: 1rem;
+}
+
+.sql-spike__actions button {
+    width: auto;
+    cursor: pointer;
+    background: #e2e8f0;
+}
+
+.sql-spike__actions button:disabled {
+    cursor: wait;
+    opacity: .6;
+}
+
+.sql-spike__status {
+    min-height: 1.5rem;
+}
+
+.sql-spike__error {
+    overflow-x: auto;
+    color: #991b1b;
+    background: #fef2f2;
+    white-space: pre-wrap;
+}
+
+.sql-spike__metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: .75rem;
+}
+
+.sql-spike__metrics div {
+    padding: .75rem;
+    border: 1px solid var(--border);
+    background: var(--surface);
+}
+
+.sql-spike__metrics dt {
+    color: var(--muted);
+    font-size: .85rem;
+}
+
+.sql-spike__metrics dd {
+    margin: .25rem 0 0;
+    font-weight: 700;
+}
+
+.sql-spike__result {
+    overflow-x: auto;
+}
+
+.sql-spike__result table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.sql-spike__result th,
+.sql-spike__result td {
+    padding: .5rem .65rem;
+    border: 1px solid var(--border);
+    text-align: left;
+    white-space: nowrap;
+}
+
+.sql-spike__result th {
+    background: #f1f5f9;
+}
+
+.sql-spike__fixture {
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+@media (max-width: 48rem) {
+    .sql-spike {
+        width: min(100% - 1.25rem, 70rem);
+        padding-top: 1.5rem;
+    }
+}
