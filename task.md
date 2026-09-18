@@ -117,7 +117,7 @@ Guiding constraints:
 
 ## 4. Technical spikes and decision gates
 
-These are gates, not optional technology experiments. A curriculum feature must not become dependent on a runtime before its gate is recorded. A failed spike must simplify the product or use the documented fallback; it must not silently create server-side infrastructure.
+These are gates, not optional technology experiments. No SQL, spreadsheet, Python, charting, or Markdown library is pre-approved. A curriculum feature must not become dependent on a runtime before its gate is recorded. A failed spike must simplify the product or use the documented fallback; it must not silently create server-side infrastructure.
 
 ### Gate A — Browser-side SQL execution
 
@@ -294,7 +294,9 @@ Decision output:
 ### Spike completion rule
 
 - [ ] Store a short decision record for Gates A–E, including evidence, chosen approach, rejected candidates, performance observations, licensing notes, and curriculum impact.
-- [ ] Do not proceed with an unapproved candidate merely because it is mentioned in a source document.
+- [ ] For each gate, choose the simplest candidate that satisfies the documented acceptance criteria, architecture constraints, curriculum requirements, browser performance requirements, licensing requirements, and shared-hosting deployment model.
+- [ ] Record the selected candidate and rationale in that gate's decision record after the spike.
+- [ ] Treat every named library in the candidate lists as an evaluation candidate only; do not pre-approve it by name.
 - [ ] If a spike fails, update the relevant open decision and use the simplest documented fallback.
 
 ## 5. Content architecture and authoring plan
@@ -427,6 +429,13 @@ The validator must catch at least:
 - [ ] malformed Markdown blocks and unsafe/unsupported constructs;
 - [ ] broken Further Reading metadata where required.
 
+### AI scope rule
+
+- [ ] Do not create a standalone AI module, AI learning path, AI product feature, or mandatory “AI at Work” section in V1.
+- [ ] Include AI only as optional/contextual learning material when it genuinely improves the specific analytical workflow being taught.
+- [ ] Keep every core concept, exercise, and project understandable and complete without AI.
+- [ ] Do not add an AI tutor, chatbot, AI grading, or runtime AI lesson generation.
+
 ### Representative content slice before bulk authoring
 
 Before writing the full lesson library:
@@ -496,6 +505,48 @@ Establish the greenfield Laravel shell, shared-hosting-compatible development/de
 
 - M0 is a foundation milestone, not permission to expand infrastructure. Any failed runtime spike must simplify the feature.
 - Avoid implementing full curriculum pages before the representative content slice proves the contracts.
+
+### M0A — Technical Foundation — COMPLETED
+
+#### Objective
+
+Create only the greenfield Laravel/application foundation needed before the technical spikes. No runtime candidate was selected and no curriculum/product feature was implemented.
+
+#### Completed work
+
+- [x] Created a Laravel 12 application scaffold using PHP 8.2 compatibility.
+- [x] Selected Laravel application skeleton 12.0.0; installed Laravel framework 12.69.2.
+- [x] Configured local development for MySQL database `belajar_data_v2` on `127.0.0.1:3306` using the supplied local credentials in `.env` only.
+- [x] Set local session/cache to file-backed storage and queue connection to `sync`; no Redis or queue worker is required.
+- [x] Removed the default Laravel Sail dependency and queue worker from the local development workflow; removed the unused jobs-table migration.
+- [x] Added `config/belajardata.php` for repository content and dataset path conventions.
+- [x] Established `app/Domain/Learning`, `Learner`, `Projects`, and `Datasets` boundaries inside the monolith.
+- [x] Established `content/`, `datasets/`, `resources/views/`, `resources/js/`, `resources/css/`, and `tests/` conventions with focused README notes.
+- [x] Added a minimal server-rendered foundation route/view at `/__foundation`; `/` redirects to it until the product homepage milestone.
+- [x] Kept Vite as the frontend build pipeline for progressive enhancement; installed the scaffold's frontend dependencies and generated `public/build` successfully.
+- [x] Added two foundation smoke tests: server-rendered view response and read-only MySQL connectivity/database selection.
+- [x] Verified `composer validate --strict`, `php artisan about`, and `php artisan test` locally.
+
+#### M0A verification results
+
+- `composer validate --strict` — passed.
+- `npm run build` — passed; Vite 6.4.3 generated `public/build`.
+- `php artisan test` — passed; 2 tests and 5 assertions.
+- Local database connectivity — passed; `belajar_data_v2` is reachable and the smoke test performs only `SELECT 1`.
+- No Gates A–E were run.
+
+#### Explicitly not started
+
+- [ ] M0B technical spikes.
+- [ ] Markdown renderer or `content:validate`.
+- [ ] Authentication, learner progress, bookmarks, or attempts.
+- [ ] SQL, spreadsheet, Python/Pandas, visualization, or interactive components.
+- [ ] Homepage, Learn/module/lesson UI, full design system, or curriculum lesson authoring.
+
+#### M0A risks/notes
+
+- The scaffold's generated SQLite file is ignored by Git, but the application configuration and smoke test use MySQL exclusively.
+- Laravel's framework configuration files remain available as framework defaults; no queue worker, Redis service, Docker/Sail workflow, or other operational infrastructure is enabled.
 
 ### M1 — Learning Core
 
@@ -775,7 +826,7 @@ Deliver the external-tool learning experience for Tableau through safe downloada
 
 #### Dependencies
 
-- Product decision on Tableau/Power BI scope.
+- Resolved V1 scope: Tableau-only; Power BI is deferred/optional.
 - M1/M2 content and checkpoint contracts.
 - Canonical safe NusaMart datasets and tested task instructions.
 
@@ -806,7 +857,7 @@ Deliver the external-tool learning experience for Tableau through safe downloada
 
 #### Risks/notes
 
-- This milestone depends on resolving the current curriculum/PRD conflict. Do not silently implement both tracks or silently remove Power BI content.
+- V1 is Tableau-only. Power BI remains deferred/optional and must not be implemented as a V1 core track.
 
 ### M8 — Projects
 
@@ -959,21 +1010,23 @@ Recommendation: use the recorded local database for development and obtain the p
 
 The local development database is authorized for use. Production hosting constraints remain an M0 input; do not assume that the local Node/MySQL tooling is available in production.
 
-### D-06 — Runtime decision ownership
+### D-06 — Runtime decision ownership — RESOLVED
 
-The SQL, spreadsheet, chart, Python, and Markdown candidates are technical gates. The implementation can resolve them from spike evidence, but the decision records must be reviewed before curriculum-dependent build work proceeds.
+Decision: technical libraries are selected from evidence produced by the technical spikes. No specific SQL, spreadsheet, Python, charting, or Markdown library is pre-approved.
 
-Recommendation: treat the spike acceptance criteria in Section 4 as the approval contract and preserve a documented fallback for every failed candidate.
+For each gate, choose the simplest candidate that satisfies the documented acceptance criteria, architecture constraints, curriculum requirements, browser performance requirements, licensing requirements, and shared-hosting deployment model. Record the selected candidate and rationale in the relevant decision record after the spike. Preserve a documented fallback for every failed candidate.
 
-Decision needed before M0/M3–M6: confirm that evidence-based spike decisions are acceptable without pre-approving a named library.
+The user confirmed this evidence-based selection process.
 
-### D-07 — “AI-Augmented Workflow” in the dependency diagram
+### D-07 — “AI-Augmented Workflow” in the dependency diagram — RESOLVED
 
 Evidence: the curriculum dependency diagram includes AI-Augmented Workflow, while the module list does not define a standalone AI module; the PRD excludes AI tutor, runtime AI lesson generation, AI grading, and chatbot features.
 
-Recommendation: treat AI as optional “AI at Work” context inside relevant lessons and projects only. Do not create a separate AI curriculum track or product feature in V1.
+Decision: there is no standalone AI module, AI track, or mandatory AI section in BelajarData V1. AI may appear only as optional/contextual learning material when it genuinely improves the specific analytical workflow being taught.
 
-Decision needed before content sequencing: confirm this interpretation if the dependency diagram is intended to represent a required module.
+Do not create an AI module, AI learning path, AI product feature, mandatory “AI at Work” section, AI tutor/chatbot, or AI grading. Core fundamentals must remain understandable and complete without AI.
+
+The user confirmed this V1 boundary.
 
 ## 8. Explicit non-goals for implementation
 
