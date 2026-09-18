@@ -1,0 +1,15 @@
+{
+    "exercises": [
+        {
+            "id": "thinking-analyst-01",
+            "type": "multiple_choice",
+            "prompt": "What should an analyst clarify before choosing a tool?",
+            "options": [
+                "The business question and the comparison needed",
+                "The most colorful chart type",
+                "The programming language with the largest ecosystem"
+            ],
+            "correct_option": 0
+        }
+    ]
+}

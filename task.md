@@ -238,13 +238,13 @@ Candidate approaches to evaluate:
 
 Prototype tasks:
 
-- [ ] Parse headings, prose, lists, tables, code blocks, links, images, callouts, and practice directives.
-- [ ] Resolve a stable practice key to a registered interactive component/configuration.
-- [ ] Reject or sanitize raw HTML, scripts, unregistered blocks, missing practice keys, unsafe links, and invalid attributes.
-- [ ] Render a representative lesson on the server and mount one JavaScript practice component progressively.
-- [ ] Cache parsed/rendered content and invalidate it predictably when source content changes.
-- [ ] Expose heading structure for the lesson outline and accessible navigation.
-- [ ] Run the same content through the future validator so broken references fail before deployment.
+- [x] Parse headings, prose, lists, tables, code blocks, links, images, callouts, and practice directives.
+- [x] Resolve a stable practice key to a registered interactive component/configuration.
+- [x] Reject or sanitize raw HTML, scripts, unregistered blocks, missing practice keys, unsafe links, and invalid attributes.
+- [x] Render a representative lesson on the server and mount one JavaScript practice component progressively.
+- [x] Cache parsed/rendered content with a source-hash key so source/config changes invalidate the previous entry.
+- [x] Extract heading structure for the lesson outline and future accessible navigation.
+- [x] Run the representative content through the spike-level `content:validate` command so broken references fail before deployment.
 
 Acceptance criteria:
 
@@ -255,10 +255,17 @@ Acceptance criteria:
 
 Decision output:
 
-- [ ] Record parser/sanitizer choice and allowed Markdown subset.
-- [ ] Record directive grammar and registered component lookup contract.
-- [ ] Record cache/invalidation strategy.
-- [ ] Record authoring examples and validation failure format.
+- [x] Record parser/sanitizer choice and allowed Markdown subset.
+- [x] Record directive grammar and registered component lookup contract.
+- [x] Record cache/invalidation strategy.
+- [x] Record authoring examples and validation failure format.
+- [x] Add `docs/decisions/gate-d-markdown-blocks.md` with the spike evidence and decision.
+
+Gate D status: PASSED for the representative spike.
+
+Selected approach: `league/commonmark` 2.10.1 using the GitHub-Flavored Markdown converter with `html_input=strip` and `allow_unsafe_links=false`, plus a small allowlisted PHP directive parser/resolver and trusted server-rendered block templates. No arbitrary authored HTML or JavaScript is allowed.
+
+The selected approach is approved only for the demonstrated Gate D prototype. The final content system still requires later hardening and broader content fixtures.
 
 ### Gate E — Visualization library and bounded charting
 
@@ -533,12 +540,12 @@ Create only the greenfield Laravel/application foundation needed before the tech
 - `npm run build` — passed; Vite 6.4.3 generated `public/build`.
 - `php artisan test` — passed; 2 tests and 5 assertions.
 - Local database connectivity — passed; `belajar_data_v2` is reachable and the smoke test performs only `SELECT 1`.
-- No Gates A–E were run.
+- At M0A completion, no Gates A–E had been run; Gate D was subsequently completed as the next scoped spike.
 
 #### Explicitly not started
 
 - [ ] M0B technical spikes.
-- [ ] Markdown renderer or `content:validate`.
+- [ ] Final Markdown renderer/content system or full `content:validate`; Gate D's spike-level implementation is tracked below.
 - [ ] Authentication, learner progress, bookmarks, or attempts.
 - [ ] SQL, spreadsheet, Python/Pandas, visualization, or interactive components.
 - [ ] Homepage, Learn/module/lesson UI, full design system, or curriculum lesson authoring.

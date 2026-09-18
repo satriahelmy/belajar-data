@@ -10,3 +10,40 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+.learning-spike {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+}
+
+.learning-spike__eyebrow {
+    color: #6b7280;
+    font-size: 0.875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.learning-spike__outline,
+.learning-callout,
+.learning-block--practice {
+    border: 1px solid #d1d5db;
+    margin: 1.5rem 0;
+    padding: 1rem;
+}
+
+.learning-callout {
+    border-left-width: 4px;
+}
+
+.learning-spike__content table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.learning-spike__content th,
+.learning-spike__content td {
+    border: 1px solid #d1d5db;
+    padding: 0.5rem;
+    text-align: left;
+}
