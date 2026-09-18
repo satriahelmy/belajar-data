@@ -613,17 +613,18 @@ homepage → Learn → module → topic/lesson → previous/next.
 
 - [x] Replaced the temporary root foundation page with the public editorial homepage and positioning statement.
 - [x] Added the canonical five-phase path metadata and ordered Module 01–13 metadata; Module 01 is the representative published slice and later modules are honest roadmap entries.
-- [x] Added `/learn`, published module detail routing, stable topic/lesson routing, previous/next lesson navigation, module topic navigation, and a public `/projects` future destination.
+- [x] Added `/learn`, published module detail routing, stable topic/lesson routing, previous/next lesson navigation, lesson section navigation, and a public `/projects` future destination.
 - [x] Added `/skills` as an index into canonical module/topic references rather than duplicate skill content.
 - [x] Refined the existing server-rendered lesson experience around module context, outline, Further Reading, safe Markdown blocks, and a single dominant next action.
-- [x] Completed the M1A visual refinement pass: the curriculum path now has a numbered editorial progression, module challenges sit inside the topic journey, analytical artifacts use a restrained functional treatment, and representative lesson content has one clear page title without the broken foundation image.
+- [x] Completed the M1A Visual Direction V2 refinement: shared typography now uses Plus Jakarta Sans, Inter, and JetBrains Mono; the homepage leads with a repository-backed NusaMart analytical artifact; curriculum and module sequences use editorial numbering/status rails; and lesson navigation uses a minimal topic/section rail.
+- [x] Completed the focused M1A visual QA/refinement pass: normalized the spacing scale, reduced homepage path detail so `/learn` remains the detailed curriculum map, tightened the homepage phase rhythm, aligned phase descriptions with their phase identities across home and `/learn`, removed the redundant trailing homepage CTA, tightened and aligned the Module opener hierarchy, organized its metadata/CTA group, balanced the module outcome block, aligned the topic count with its heading, and moved lesson orientation to a minimal right-side sticky section navigator with a mobile disclosure fallback.
 - [x] Added shared public layout/header/footer, curriculum rows, metadata, topic navigation, callout/content primitives, empty states, and reduced-motion-safe responsive styles.
 - [x] Added keyboard-visible focus, semantic navigation/current-page labels, responsive mobile navigation, controlled table/code overflow, and no fabricated learner state.
 - [x] Kept authentication, localStorage/server progress, bookmarks, attempts, and all playground runtimes out of M1A.
 
 #### M1A verification results
 
-- `php artisan test` — passed with the public route, publication, ordering, canonical-link, lesson-navigation, foundation, and refined lesson hierarchy coverage.
+- `php artisan test` — passed with the public route, publication, ordering, canonical-link, lesson-navigation, foundation, refined lesson hierarchy, and Visual Direction V2 structure coverage.
 - `php artisan content:validate` — passed for all canonical module metadata, the representative lesson, and `nusamart/v1`.
 - `node --test tests/Frontend/*.test.js` — passed.
 - `npm run build` — passed with the server-rendered app entry and lazy practice component.
@@ -651,14 +652,14 @@ Deliver the core reading/navigation experience: homepage, five-phase Learn map, 
 - [x] M1A implemented `/learn` with five phases, ordered module metadata, goals, estimates, recommended sequence, and freedom to jump ahead; progress remains future learner state.
 - [x] M1A implemented published module detail pages with topics, challenge, outcome, estimated effort, and recommended knowledge; current/continue state remains future learner state.
 - [x] M1A implemented topic/lesson routes using stable slugs and server-rendered content.
-- [x] M1A implemented lesson navigation with module sidebar/mobile disclosure, current position, optional on-page outline, previous/next, and one dominant action; completion state remains future learner state.
+- [x] M1A implemented lesson navigation with current position, actual on-page headings in a minimal right-side section navigator, mobile disclosure, previous/next, and one dominant action; completion state remains future learner state.
 - [x] M1A implemented Explore Skills as an index into canonical topics/tags, not a duplicated curriculum.
 - [ ] Implement the `ProgressStore` abstraction with guest localStorage and authenticated server-backed implementations.
 - [ ] Implement idempotent topic start/completion and recent/resume state.
 - [ ] Implement guest-to-account merge: stable-key matching, completion wins, no downgrade, and guest deletion only after successful merge.
 - [ ] Implement authenticated bookmarks for topics/lessons and optionally Further Reading resources with constrained content types.
 - [x] Implemented representative empty states and recovery-oriented roadmap messaging.
-- [x] Implemented responsive reading layout: desktop lesson workspace, tablet/mobile navigation disclosure, and controlled table/code overflow. Complex tool recommendations remain future runtime work.
+- [x] Implemented responsive reading layout: left-aligned desktop lesson workspace with a 720–780px reading column and minimal right-side section navigator; tablet/mobile disclosure collapses the rail and keeps the reading column aligned to the container; controlled table/code overflow remains in place. Complex tool recommendations remain future runtime work.
 - [x] Applied public accessibility foundations: labels, focus states, keyboard navigation, semantic headings, current-page semantics, readable tables/code, and reduced-motion handling.
 
 #### Acceptance criteria

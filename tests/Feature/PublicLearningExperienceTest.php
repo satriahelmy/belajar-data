@@ -14,7 +14,10 @@ class PublicLearningExperienceTest extends TestCase
             ->assertSee('Learn')
             ->assertSee('Explore Skills')
             ->assertSee('Projects')
-            ->assertSee('Mulai dari Module 01')
+            ->assertSee('Mulai belajar')
+            ->assertSee('Pertanyaan')
+            ->assertSee('transactions')
+            ->assertSee('JOIN products')
             ->assertSee('data-nav-toggle', false)
             ->assertSee('aria-label="Navigasi utama"', false)
             ->assertDontSee('fake learner counts');
@@ -34,6 +37,8 @@ class PublicLearningExperienceTest extends TestCase
             ->assertSee('01')
             ->assertSee('13')
             ->assertSee('Urutan ini adalah rekomendasi, bukan kunci.')
+            ->assertSee('path-rail', false)
+            ->assertSee('status-dot', false)
             ->assertSee('Roadmap');
 
         $this->assertLessThan(
@@ -49,7 +54,9 @@ class PublicLearningExperienceTest extends TestCase
             ->assertSee('Thinking with Data')
             ->assertSee('What Does a Data Analyst Actually Do?')
             ->assertSee('Understanding Data &amp; Tables', false)
-            ->assertSee('Mulai module')
+            ->assertSee('Mulai belajar')
+            ->assertSee('Module berikutnya')
+            ->assertSee('Spreadsheet for Analysis')
             ->assertSee('Urutan path adalah rekomendasi, bukan prerequisite lock');
     }
 
@@ -65,7 +72,7 @@ class PublicLearningExperienceTest extends TestCase
             ->assertOk()
             ->assertSee('Module 01')
             ->assertSee('Topic 1 dari 2')
-            ->assertSee('Module topic navigation')
+            ->assertSee('Lesson section navigation')
             ->assertSee('lesson-mobile-nav', false)
             ->assertSee('aria-current="page"', false)
             ->assertSee('Further Reading')
@@ -76,6 +83,7 @@ class PublicLearningExperienceTest extends TestCase
             ->assertOk()
             ->assertSee('Topic 2 dari 2')
             ->assertSee('What Does a Data Analyst Actually Do?')
+            ->assertSee('Di halaman ini')
             ->assertSee('Kembali ke module');
     }
 

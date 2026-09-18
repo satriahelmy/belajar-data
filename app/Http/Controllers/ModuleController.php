@@ -17,10 +17,27 @@ final class ModuleController extends Controller
         }
 
         $module = $curriculum->module($moduleKey);
+        $phases = $curriculum->phases();
+        $flattenedModules = [];
+        $currentPhase = null;
+
+        foreach ($phases as $phase) {
+            foreach ($phase['modules'] as $phaseModule) {
+                $flattenedModules[] = $phaseModule;
+
+                if ($phaseModule['key'] === $moduleKey) {
+                    $currentPhase = $phase;
+                }
+            }
+        }
+
+        $currentIndex = array_search($moduleKey, array_column($flattenedModules, 'key'), true);
 
         return view('learning.module', [
             'module' => $module,
             'path' => $curriculum->path(),
+            'phase' => $currentPhase,
+            'nextModule' => $currentIndex === false ? null : ($flattenedModules[$currentIndex + 1] ?? null),
         ]);
     }
 }
