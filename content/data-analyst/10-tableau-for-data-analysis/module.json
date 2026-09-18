@@ -1,0 +1,17 @@
+{
+    "schema_version": 1,
+    "key": "10-tableau-for-data-analysis",
+    "type": "module",
+    "title": "Tableau for Data Analysis",
+    "number": 10,
+    "order": 10,
+    "status": "roadmap",
+    "purpose": "Menerapkan workflow analisis menggunakan Tableau sebagai tool eksternal.",
+    "outcome": "Mampu menghubungkan dataset aman, membangun view, dan memvalidasi hasil analisis.",
+    "estimated_minutes": 180,
+    "recommended_knowledge": ["Data Visualization", "Metrics & Dashboards"],
+    "skill_tags": ["tableau"],
+    "challenge": {"key": "module-10-nusamart-executive-dashboard", "title": "NusaMart Executive Dashboard", "description": "Bangun dashboard dengan workflow Tableau yang dipandu dan dapat divalidasi.", "status": "roadmap"},
+    "topic_keys": [],
+    "topics": {}
+}

@@ -1,0 +1,17 @@
+{
+    "schema_version": 1,
+    "key": "05-data-cleaning",
+    "type": "module",
+    "title": "Data Cleaning",
+    "number": 5,
+    "order": 5,
+    "status": "roadmap",
+    "purpose": "Mengenali dan menangani masalah kualitas data sebelum menarik kesimpulan.",
+    "outcome": "Mampu menjelaskan keputusan cleaning, risikonya, dan dampaknya pada analisis.",
+    "estimated_minutes": 150,
+    "recommended_knowledge": ["SQL for Data Analysis", "Python & Pandas for Analysis"],
+    "skill_tags": ["data-cleaning"],
+    "challenge": {"key": "module-05-data-quality-review", "title": "Data Quality Review", "description": "Identifikasi masalah data dan pilih tindakan yang dapat dipertanggungjawabkan.", "status": "roadmap"},
+    "topic_keys": [],
+    "topics": {}
+}

@@ -1,0 +1,17 @@
+{
+    "schema_version": 1,
+    "key": "12-communicating-insights",
+    "type": "module",
+    "title": "Communicating Insights",
+    "number": 12,
+    "order": 12,
+    "status": "roadmap",
+    "purpose": "Menyampaikan hasil analisis secara jelas, akurat, dan relevan untuk pengambil keputusan.",
+    "outcome": "Mampu memimpin dengan takeaway, memilih evidence, dan mengomunikasikan ketidakpastian.",
+    "estimated_minutes": 150,
+    "recommended_knowledge": ["Business Analysis", "Data Visualization"],
+    "skill_tags": ["communication"],
+    "challenge": {"key": "module-12-nusamart-growth-story", "title": "Present the NusaMart Growth Story", "description": "Ubah temuan menjadi pesan yang dapat dipahami dan ditindaklanjuti.", "status": "roadmap"},
+    "topic_keys": [],
+    "topics": {}
+}

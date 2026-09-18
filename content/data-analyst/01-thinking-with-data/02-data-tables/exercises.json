@@ -1,0 +1,16 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "thinking-tables-01",
+            "type": "multiple_choice",
+            "prompt": "Apa yang perlu dipahami sebelum menghitung metric dari sebuah tabel?",
+            "options": [
+                "Apa yang direpresentasikan oleh satu row",
+                "Warna header tabel",
+                "Nama aplikasi yang digunakan"
+            ],
+            "correct_option": 0
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+{
+    "schema_version": 1,
+    "key": "08-data-visualization",
+    "type": "module",
+    "title": "Data Visualization",
+    "number": 8,
+    "order": 8,
+    "status": "roadmap",
+    "purpose": "Memilih dan menyusun visual yang membantu orang memahami evidence.",
+    "outcome": "Mampu memetakan pertanyaan ke visual yang sesuai dan mengenali visual yang menyesatkan.",
+    "estimated_minutes": 150,
+    "recommended_knowledge": ["Exploratory Data Analysis", "Statistics for Analysts"],
+    "skill_tags": ["visualization"],
+    "challenge": {"key": "module-08-visual-explanation", "title": "Visual Explanation", "description": "Buat visual yang menjawab pertanyaan analitis, bukan sekadar terlihat menarik.", "status": "roadmap"},
+    "topic_keys": [],
+    "topics": {}
+}

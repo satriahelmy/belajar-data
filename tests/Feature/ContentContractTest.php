@@ -15,7 +15,7 @@ class ContentContractTest extends TestCase
         $this->assertSame('data-analyst', $repository->path()['key']);
         $this->assertSame('01-thinking-with-data', $repository->module('01-thinking-with-data')['key']);
         $this->assertSame(
-            ['01-thinking-with-data/01-analyst-role'],
+            ['01-thinking-with-data/01-analyst-role', '01-thinking-with-data/02-data-tables'],
             $repository->validate(),
         );
     }

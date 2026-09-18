@@ -3,8 +3,89 @@
     "key": "data-analyst",
     "type": "path",
     "title": "Data Analyst Path",
-    "status": "representative",
+    "status": "published",
     "module_keys": [
-        "01-thinking-with-data"
+        "01-thinking-with-data",
+        "02-spreadsheet-for-analysis",
+        "03-sql-for-data-analysis",
+        "04-python-pandas-for-analysis",
+        "05-data-cleaning",
+        "06-exploratory-data-analysis",
+        "07-statistics-for-analysts",
+        "08-data-visualization",
+        "09-metrics-dashboards",
+        "10-tableau-for-data-analysis",
+        "11-business-analysis",
+        "12-communicating-insights",
+        "13-projects"
+    ],
+    "phases": [
+        {
+            "key": "foundations",
+            "title": "Foundations",
+            "order": 1,
+            "description": "Bangun cara berpikir analitis dan kenali alat utama.",
+            "module_keys": [
+                "01-thinking-with-data",
+                "02-spreadsheet-for-analysis",
+                "03-sql-for-data-analysis",
+                "04-python-pandas-for-analysis"
+            ]
+        },
+        {
+            "key": "working-with-data",
+            "title": "Working with Data",
+            "order": 2,
+            "description": "Bersihkan, jelajahi, dan pahami kualitas data.",
+            "module_keys": [
+                "05-data-cleaning",
+                "06-exploratory-data-analysis",
+                "07-statistics-for-analysts"
+            ]
+        },
+        {
+            "key": "from-analysis-to-decision",
+            "title": "From Analysis to Decision",
+            "order": 3,
+            "description": "Ubah hasil analisis menjadi visual dan sistem metrik.",
+            "module_keys": [
+                "08-data-visualization",
+                "09-metrics-dashboards",
+                "10-tableau-for-data-analysis"
+            ]
+        },
+        {
+            "key": "business-impact",
+            "title": "Business Impact",
+            "order": 4,
+            "description": "Hubungkan evidence dengan keputusan dan komunikasi.",
+            "module_keys": [
+                "11-business-analysis",
+                "12-communicating-insights"
+            ]
+        },
+        {
+            "key": "apply-your-skills",
+            "title": "Apply Your Skills",
+            "order": 5,
+            "description": "Gabungkan kompetensi melalui project analisis yang lebih utuh.",
+            "module_keys": [
+                "13-projects"
+            ]
+        }
+    ],
+    "skills": [
+        {"key": "analytical-thinking", "title": "Analytical Thinking", "module_key": "01-thinking-with-data", "topic_key": "01-analyst-role"},
+        {"key": "spreadsheet", "title": "Spreadsheet", "module_key": "02-spreadsheet-for-analysis"},
+        {"key": "sql", "title": "SQL", "module_key": "03-sql-for-data-analysis"},
+        {"key": "python-pandas", "title": "Python & Pandas", "module_key": "04-python-pandas-for-analysis"},
+        {"key": "data-cleaning", "title": "Data Cleaning", "module_key": "05-data-cleaning"},
+        {"key": "eda", "title": "Exploratory Data Analysis", "module_key": "06-exploratory-data-analysis"},
+        {"key": "statistics", "title": "Statistics", "module_key": "07-statistics-for-analysts"},
+        {"key": "visualization", "title": "Visualization", "module_key": "08-data-visualization"},
+        {"key": "metrics-dashboards", "title": "Metrics & Dashboards", "module_key": "09-metrics-dashboards"},
+        {"key": "tableau", "title": "Tableau", "module_key": "10-tableau-for-data-analysis"},
+        {"key": "business-analysis", "title": "Business Analysis", "module_key": "11-business-analysis"},
+        {"key": "communication", "title": "Communication", "module_key": "12-communicating-insights"}
     ]
 }

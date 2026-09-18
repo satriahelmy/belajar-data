@@ -1,0 +1,17 @@
+{
+    "schema_version": 1,
+    "key": "11-business-analysis",
+    "type": "module",
+    "title": "Business Analysis",
+    "number": 11,
+    "order": 11,
+    "status": "roadmap",
+    "purpose": "Mengubah masalah bisnis yang ambigu menjadi rencana investigasi dan rekomendasi yang proporsional.",
+    "outcome": "Mampu menemukan driver, memisahkan evidence dari hipotesis, dan menyatakan unknowns.",
+    "estimated_minutes": 180,
+    "recommended_knowledge": ["Metrics & Dashboards", "Tableau for Data Analysis"],
+    "skill_tags": ["business-analysis"],
+    "challenge": {"key": "module-11-nusamart-growth-investigation", "title": "NusaMart Growth Investigation", "description": "Susun investigasi yang menghubungkan evidence dengan keputusan bisnis.", "status": "roadmap"},
+    "topic_keys": [],
+    "topics": {}
+}

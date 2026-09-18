@@ -1,5 +1,3 @@
-# What Does a Data Analyst Actually Do?
-
 BelajarData starts with the question, not the tool. A Data Analyst turns an ambiguous business concern into a question that data can help answer.
 
 ## A simple workflow
@@ -24,9 +22,7 @@ FROM orders
 GROUP BY category;
 ```
 
-Read the [BelajarData curriculum](https://example.com/curriculum) for the wider learning path.
-
-![BelajarData foundation mark](/favicon.ico)
+Read the [BelajarData learning path](/learn) for the wider learning path.
 
 :::callout type="common-mistake"
 Do not jump from a pattern in transaction data to a causal explanation without supporting evidence.

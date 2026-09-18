@@ -1,0 +1,17 @@
+{
+    "schema_version": 1,
+    "key": "06-exploratory-data-analysis",
+    "type": "module",
+    "title": "Exploratory Data Analysis",
+    "number": 6,
+    "order": 6,
+    "status": "roadmap",
+    "purpose": "Mengeksplorasi pola, perubahan, dan anomali untuk mempersempit investigasi.",
+    "outcome": "Mampu membuat pertanyaan lanjutan tanpa mengubah eksplorasi menjadi tebakan sebab-akibat.",
+    "estimated_minutes": 180,
+    "recommended_knowledge": ["Data Cleaning", "Python & Pandas for Analysis"],
+    "skill_tags": ["eda"],
+    "challenge": {"key": "module-06-nusamart-eda", "title": "NusaMart EDA", "description": "Gunakan eksplorasi terarah untuk menemukan area yang perlu diselidiki.", "status": "roadmap"},
+    "topic_keys": [],
+    "topics": {}
+}

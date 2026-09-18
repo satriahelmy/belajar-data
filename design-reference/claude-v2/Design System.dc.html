@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;}
+    body{margin:0;}
+  </style>
+</helmet>
+<div style="--bg:oklch(98% 0.004 95); --surface:oklch(100% 0 0); --ink:oklch(19% 0.01 260); --ink-soft:oklch(46% 0.01 260); --ink-faint:oklch(65% 0.008 260); --line:oklch(89% 0.006 95); --accent:oklch(47% 0.1 165); --accent-dark:oklch(33% 0.08 165); --accent-soft:oklch(95% 0.03 165); --code-bg:oklch(22% 0.02 250); --code-text:oklch(90% 0.02 165); width:1440px; margin:0 auto; background:var(--bg); font-family:'Inter',sans-serif; color:var(--ink);">
+
+  <!-- NAV -->
+  <div style="display:flex; align-items:center; justify-content:space-between; padding:22px 64px; border-bottom:1px solid var(--line);">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <div style="width:12px; height:12px; background:var(--accent); border-radius:2px;"></div>
+      <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:19px; letter-spacing:-0.01em;">BelajarData</div>
+    </div>
+    <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-faint); letter-spacing:0.08em;">DESIGN SYSTEM</div>
+  </div>
+
+  <!-- HEADER -->
+  <div style="padding:64px 64px 48px; border-bottom:1px solid var(--line);">
+    <div style="display:flex; align-items:center; gap:8px; margin-bottom:18px;">
+      <div style="width:6px; height:6px; background:var(--accent); border-radius:1px;"></div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; letter-spacing:0.14em; color:var(--accent-dark); text-transform:uppercase;">Visual System</div>
+    </div>
+    <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:44px; letter-spacing:-0.02em; margin-bottom:16px;">BelajarData Design System</div>
+    <div style="font-size:16px; line-height:1.65; color:var(--ink-soft); max-width:680px;">Fondasi visual yang dipakai di Homepage, Learning Path, dan Module Detail — analitis, editorial, dan konsisten menggunakan sequence, numbering, dan tipografi alih-alih kartu dan ilustrasi dekoratif.</div>
+  </div>
+
+  <!-- COLOR -->
+  <div style="padding:56px 64px; border-bottom:1px solid var(--line);">
+    <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:28px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; letter-spacing:0.12em; color:var(--accent-dark);">01</div>
+      <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:22px; font-weight:700;">Warna</div>
+      <div style="flex:1; height:1px; background:var(--line);"></div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
+      <div>
+        <div style="height:88px; border-radius:8px; background:var(--bg); border:1px solid var(--line); margin-bottom:12px;"></div>
+        <div style="font-size:13px; font-weight:600;">Background</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-faint); margin-top:2px;">oklch(98% 0.004 95)</div>
+      </div>
+      <div>
+        <div style="height:88px; border-radius:8px; background:var(--surface); border:1px solid var(--line); margin-bottom:12px;"></div>
+        <div style="font-size:13px; font-weight:600;">Surface</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-faint); margin-top:2px;">oklch(100% 0 0)</div>
+      </div>
+      <div>
+        <div style="height:88px; border-radius:8px; background:var(--ink); margin-bottom:12px;"></div>
+        <div style="font-size:13px; font-weight:600;">Ink</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-faint); margin-top:2px;">oklch(19% 0.01 260)</div>
+      </div>
+      <div>
+        <div style="height:88px; border-radius:8px; background:var(--ink-soft); margin-bottom:12px;"></div>
+        <div style="font-size:13px; font-weight:600;">Ink Soft</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-faint); margin-top:2px;">oklch(46% 0.01 260)</div>
+      </div>
+      <div>
+        <div style="height:88px; border-radius:8px; background:var(--ink-faint); margin-bottom:12px;"></div>
+        <div style="font-size:13px; font-weight:600;">Ink Faint</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-faint); margin-top:2px;">oklch(65% 0.008 260)</div>
+      </div>
+      <div>
+        <div style="height:88px; border-radius:8px; background:var(--line); margin-bottom:12px;"></div>
+        <div style="font-size:13px; font-weight:600;">Line</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-faint); margin-top:2px;">oklch(89% 0.006 95)</div>
+      </div>
+      <div>
+        <div style="height:88px; border-radius:8px; background:var(--accent); margin-bottom:12px;"></div>
+        <div style="font-size:13px; font-weight:600;">Accent</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-faint); margin-top:2px;">oklch(47% 0.1 165)</div>
+      </div>
+      <div>
+        <div style="height:88px; border-radius:8px; background:var(--accent-soft); border:1px solid var(--line); margin-bottom:12px;"></div>
+        <div style="font-size:13px; font-weight:600;">Accent Soft</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-faint); margin-top:2px;">oklch(95% 0.03 165)</div>
+      </div>
+    </div>
+    <div style="font-size:13px; color:var(--ink-faint); margin-top:20px;">Maksimal satu warna aksen. Tidak ada gradasi — kontras dibangun lewat tone, bukan warna baru.</div>
+  </div>
+
+  <!-- TYPE -->
+  <div style="padding:56px 64px; border-bottom:1px solid var(--line);">
+    <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:28px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; letter-spacing:0.12em; color:var(--accent-dark);">02</div>
+      <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:22px; font-weight:700;">Tipografi</div>
+      <div style="flex:1; height:1px; background:var(--line);"></div>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:40px;">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:0.1em; color:var(--accent-dark); margin-bottom:16px;">DISPLAY — PLUS JAKARTA SANS</div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:40px; letter-spacing:-0.02em; margin-bottom:8px;">Aa</div>
+        <div style="font-size:13px; color:var(--ink-soft); line-height:1.5;">Extrabold 800, judul halaman &amp; hero. Semibold 700 untuk sub-heading dan judul modul.</div>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:0.1em; color:var(--accent-dark); margin-bottom:16px;">BODY — INTER</div>
+        <div style="font-family:'Inter',sans-serif; font-weight:400; font-size:17px; line-height:1.6; color:var(--ink);">Aa Bb Cc</div>
+        <div style="font-size:13px; color:var(--ink-soft); line-height:1.5; margin-top:8px;">Regular 400 untuk paragraf, Medium/Semibold untuk label interface dan nav.</div>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:0.1em; color:var(--accent-dark); margin-bottom:16px;">TECHNICAL — JETBRAINS MONO</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:15px; color:var(--ink);">SELECT * FROM orders;</div>
+        <div style="font-size:13px; color:var(--ink-soft); line-height:1.5; margin-top:8px;">Kode, angka data, label status, dan eyebrow uppercase berspasi lebar.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NUMBERING / SEQUENCE -->
+  <div style="padding:56px 64px; border-bottom:1px solid var(--line);">
+    <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:28px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; letter-spacing:0.12em; color:var(--accent-dark);">03</div>
+      <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:22px; font-weight:700;">Sequence &amp; Numbering</div>
+      <div style="flex:1; height:1px; background:var(--line);"></div>
+    </div>
+    <div style="font-size:14px; color:var(--ink-soft); margin-bottom:24px; max-width:640px;">Nomor besar dengan bobot tipis (weight 300) menggantikan ikon dan ilustrasi — identitas utama BelajarData untuk menunjukkan progres dan urutan.</div>
+    <div style="display:flex; gap:0;">
+      <div style="padding:0 32px 0 0; margin-right:32px; border-right:1px solid var(--line);">
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:300; font-size:40px; color:var(--ink-faint); line-height:1;">01</div>
+        <div style="font-size:13px; color:var(--ink-soft); margin-top:8px;">Belum dimulai</div>
+      </div>
+      <div style="padding:0 32px 0 0; margin-right:32px; border-right:1px solid var(--line);">
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:300; font-size:40px; color:var(--ink); line-height:1;">02</div>
+        <div style="font-size:13px; color:var(--ink-soft); margin-top:8px;">Selesai</div>
+      </div>
+      <div style="padding:0 32px 0 0; margin-right:32px; border-right:1px solid var(--line);">
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:40px; color:var(--accent); line-height:1;">03</div>
+        <div style="font-size:13px; color:var(--accent-dark); margin-top:8px; font-weight:600;">Sedang berjalan</div>
+      </div>
+      <div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:300; font-size:52px; color:var(--accent); line-height:1;">13</div>
+        <div style="font-size:13px; color:var(--accent-dark); margin-top:8px; font-weight:600;">Capstone</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATUS DOTS -->
+  <div style="padding:56px 64px; border-bottom:1px solid var(--line);">
+    <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:28px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; letter-spacing:0.12em; color:var(--accent-dark);">04</div>
+      <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:22px; font-weight:700;">Status Indicator</div>
+      <div style="flex:1; height:1px; background:var(--line);"></div>
+    </div>
+    <div style="display:flex; gap:56px;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:16px; height:16px; border-radius:50%; background:var(--accent);"></div>
+        <div>
+          <div style="font-size:14px; font-weight:600;">Selesai</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-faint);">Dot terisi penuh, accent</div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:16px; height:16px; border-radius:50%; background:white; border:2.5px solid var(--accent);"></div>
+        <div>
+          <div style="font-size:14px; font-weight:600;">Sedang berjalan</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-faint);">Ring accent, isi putih</div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:16px; height:16px; border-radius:50%; background:white; border:1.5px solid var(--line);"></div>
+        <div>
+          <div style="font-size:14px; font-weight:600;">Belum dimulai</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-faint);">Ring tipis, warna line</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUTTONS & TAGS -->
+  <div style="padding:56px 64px; border-bottom:1px solid var(--line);">
+    <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:28px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; letter-spacing:0.12em; color:var(--accent-dark);">05</div>
+      <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:22px; font-weight:700;">Tombol &amp; Label</div>
+      <div style="flex:1; height:1px; background:var(--line);"></div>
+    </div>
+    <div style="display:flex; align-items:center; gap:20px; margin-bottom:24px;">
+      <div style="background:var(--accent); color:white; padding:14px 28px; border-radius:8px; font-size:14px; font-weight:600;">Primary</div>
+      <div style="border:1.5px solid var(--ink); color:var(--ink); padding:14px 28px; border-radius:8px; font-size:14px; font-weight:600;">Secondary</div>
+      <div style="background:var(--ink); color:white; padding:14px 28px; border-radius:8px; font-size:14px; font-weight:600;">Dark</div>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; letter-spacing:0.06em; color:white; background:var(--accent); padding:6px 12px; border-radius:5px;">LANJUTKAN</span>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:0.06em; color:var(--accent-dark);">SELESAI</span>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:0.06em; color:var(--ink-faint);">BELUM DIMULAI</span>
+    </div>
+    <div style="font-size:13px; color:var(--ink-faint);">Sudut membulat kecil (8px), bukan pill. Border tipis 1–1.5px, radius maksimum 14px untuk kontainer besar.</div>
+  </div>
+
+  <!-- ARTIFACTS -->
+  <div style="padding:56px 64px;">
+    <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:28px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; letter-spacing:0.12em; color:var(--accent-dark);">06</div>
+      <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:22px; font-weight:700;">Analytical Artifacts</div>
+      <div style="flex:1; height:1px; background:var(--line);"></div>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px;">
+      <div style="border:1px solid var(--line); border-radius:10px; padding:20px; background:var(--surface);">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; color:var(--accent-dark); margin-bottom:10px;">STAT BLOCK</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--ink-faint); letter-spacing:0.08em; margin-bottom:4px;">REVENUE</div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:22px; font-weight:700;">↓ 12%</div>
+      </div>
+      <div style="border-radius:10px; padding:20px; background:var(--code-bg);">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; color:var(--code-text); margin-bottom:10px;">CODE BLOCK</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--code-text); line-height:1.6;">SELECT region<br>FROM orders;</div>
+      </div>
+      <div style="background:var(--accent-soft); border-left:3px solid var(--accent); border-radius:10px; padding:20px;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; color:var(--accent-dark); margin-bottom:10px;">INSIGHT CALLOUT</div>
+        <div style="font-size:13.5px; line-height:1.6; color:var(--ink);">Teks temuan analisis ditampilkan di atas latar accent-soft.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</x-dc>
+</body>
+</html>

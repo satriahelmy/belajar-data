@@ -29,6 +29,18 @@ class ContentRepository
             MachineKey::assert((string) $moduleKey, 'module key');
         }
 
+        if (count($path['module_keys']) !== count(array_unique($path['module_keys']))) {
+            throw new ContentValidationException("Duplicate module keys in path [{$pathKey}].");
+        }
+
+        if (isset($path['phases'])) {
+            $this->validatePhases($path['phases'], $path['module_keys'], $pathKey);
+        }
+
+        if (isset($path['skills'])) {
+            $this->validateSkills($path['skills'], $path['module_keys'], $pathKey);
+        }
+
         return $path;
     }
 
@@ -54,11 +66,19 @@ class ContentRepository
             || ($module['type'] ?? null) !== 'module'
             || ! is_string($module['title'] ?? null)
             || ! is_int($module['order'] ?? null)
+            || ! in_array($module['status'] ?? null, ['published', 'roadmap'], true)
+            || ! is_string($module['purpose'] ?? null)
+            || ! is_string($module['outcome'] ?? null)
+            || ! is_int($module['estimated_minutes'] ?? null)
+            || ! is_array($module['recommended_knowledge'] ?? null)
+            || ! is_array($module['skill_tags'] ?? null)
             || ! is_array($module['topic_keys'] ?? null)
             || ! is_array($module['topics'] ?? null)
         ) {
             throw new ContentValidationException("Invalid module metadata [{$moduleKey}].");
         }
+
+        $lastTopicOrder = 0;
 
         foreach ($module['topic_keys'] as $topicKey) {
             MachineKey::assert((string) $topicKey, 'topic key');
@@ -68,6 +88,12 @@ class ContentRepository
             }
 
             $topic = $module['topics'][$topicKey];
+
+            if ($topic['order'] <= $lastTopicOrder) {
+                throw new ContentValidationException("Topic order is not ascending in module [{$moduleKey}].");
+            }
+
+            $lastTopicOrder = $topic['order'];
 
             if (($topic['title'] ?? null) === null
                 || ! is_string($topic['title'])
@@ -80,6 +106,14 @@ class ContentRepository
                 || str_starts_with($topic['exercise_file'], '/')
             ) {
                 throw new ContentValidationException("Invalid topic metadata [{$topicKey}] in module [{$moduleKey}].");
+            }
+
+            if (isset($topic['skill_tags']) && ! is_array($topic['skill_tags'])) {
+                throw new ContentValidationException("Invalid skill tags for topic [{$topicKey}] in module [{$moduleKey}].");
+            }
+
+            if (isset($topic['further_reading']) && ! is_array($topic['further_reading'])) {
+                throw new ContentValidationException("Invalid Further Reading for topic [{$topicKey}] in module [{$moduleKey}].");
             }
 
             $moduleRoot = $this->contentRoot($pathKey).'/'.$moduleKey;
@@ -154,13 +188,48 @@ class ContentRepository
     }
 
     /**
+     * @return list<array<string, mixed>>
+     */
+    public function modules(string $pathKey = 'data-analyst'): array
+    {
+        $path = $this->path($pathKey);
+        $modules = [];
+
+        foreach ($path['module_keys'] as $moduleKey) {
+            $modules[] = $this->module($moduleKey, $pathKey);
+        }
+
+        return $modules;
+    }
+
+    /**
      * Validate all canonical metadata, lesson sources, and exercise references.
      *
      * @return list<string>
      */
     public function validate(string $pathKey = 'data-analyst'): array
     {
-        $this->path($pathKey);
+        $path = $this->path($pathKey);
+        $modules = $this->modules($pathKey);
+        $moduleOrders = array_column($modules, 'order');
+        $sortedModuleOrders = $moduleOrders;
+        sort($sortedModuleOrders);
+
+        if ($moduleOrders !== $sortedModuleOrders) {
+            throw new ContentValidationException("Module order is invalid in path [{$pathKey}].");
+        }
+
+        $moduleByKey = [];
+        foreach ($modules as $module) {
+            $moduleByKey[$module['key']] = $module;
+        }
+
+        foreach ($path['skills'] ?? [] as $skill) {
+            if (isset($skill['topic_key']) && ! in_array($skill['topic_key'], $moduleByKey[$skill['module_key']]['topic_keys'], true)) {
+                throw new ContentValidationException("Skill [{$skill['key']}] points to an unknown topic.");
+            }
+        }
+
         $keys = $this->lessonKeys($pathKey);
 
         if ($keys === []) {
@@ -269,5 +338,82 @@ class ContentRepository
         }
 
         return $decoded;
+    }
+
+    /**
+     * @param mixed $phases
+     * @param list<mixed> $moduleKeys
+     */
+    private function validatePhases(mixed $phases, array $moduleKeys, string $pathKey): void
+    {
+        if (! is_array($phases) || $phases === []) {
+            throw new ContentValidationException("Path [{$pathKey}] must define at least one phase.");
+        }
+
+        $seenModules = [];
+        $lastPhaseOrder = 0;
+
+        foreach ($phases as $phase) {
+            if (! is_array($phase)
+                || ! is_string($phase['key'] ?? null)
+                || ! is_string($phase['title'] ?? null)
+                || ! is_int($phase['order'] ?? null)
+                || ! is_array($phase['module_keys'] ?? null)
+                || $phase['module_keys'] === []
+            ) {
+                throw new ContentValidationException("Invalid phase metadata in path [{$pathKey}].");
+            }
+
+            MachineKey::assert($phase['key'], 'phase key');
+
+            if ($phase['order'] <= $lastPhaseOrder) {
+                throw new ContentValidationException("Phase order is not ascending in path [{$pathKey}].");
+            }
+
+            $lastPhaseOrder = $phase['order'];
+
+            foreach ($phase['module_keys'] as $moduleKey) {
+                MachineKey::assert((string) $moduleKey, 'phase module key');
+
+                if (! in_array($moduleKey, $moduleKeys, true) || isset($seenModules[$moduleKey])) {
+                    throw new ContentValidationException("Phase module [{$moduleKey}] is not unique and canonical in path [{$pathKey}].");
+                }
+
+                $seenModules[$moduleKey] = true;
+            }
+        }
+
+        if ($seenModules !== array_fill_keys($moduleKeys, true)) {
+            throw new ContentValidationException("Phase modules do not match path order in [{$pathKey}].");
+        }
+    }
+
+    /**
+     * @param mixed $skills
+     * @param list<mixed> $moduleKeys
+     */
+    private function validateSkills(mixed $skills, array $moduleKeys, string $pathKey): void
+    {
+        if (! is_array($skills)) {
+            throw new ContentValidationException("Skills in path [{$pathKey}] must be an array.");
+        }
+
+        foreach ($skills as $skill) {
+            if (! is_array($skill)
+                || ! is_string($skill['key'] ?? null)
+                || ! is_string($skill['title'] ?? null)
+                || ! is_string($skill['module_key'] ?? null)
+                || ! in_array($skill['module_key'], $moduleKeys, true)
+            ) {
+                throw new ContentValidationException("Invalid skill reference in path [{$pathKey}].");
+            }
+
+            MachineKey::assert($skill['key'], 'skill key');
+            MachineKey::assert($skill['module_key'], 'skill module key');
+
+            if (isset($skill['topic_key']) && ! is_string($skill['topic_key'])) {
+                throw new ContentValidationException("Invalid skill topic reference in path [{$pathKey}].");
+            }
+        }
     }
 }

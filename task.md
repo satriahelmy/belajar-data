@@ -1,6 +1,6 @@
 # BelajarData V1 — Implementation Plan
 
-Status: M0A, technical spikes A–E, and M0C are implemented. M1 has not started.
+Status: M0A, technical spikes A–E, M0C, and M1A are implemented. M1B/M1C and learner state have not started.
 
 This plan is derived from the current source documents in `docs/`, using the requested hierarchy:
 
@@ -541,7 +541,7 @@ Create only the greenfield Laravel/application foundation needed before the tech
 - [x] Added `config/belajardata.php` for repository content and dataset path conventions.
 - [x] Established `app/Domain/Learning`, `Learner`, `Projects`, and `Datasets` boundaries inside the monolith.
 - [x] Established `content/`, `datasets/`, `resources/views/`, `resources/js/`, `resources/css/`, and `tests/` conventions with focused README notes.
-- [x] Added a minimal server-rendered foundation route/view at `/__foundation`; `/` redirects to it until the product homepage milestone.
+- [x] Added a minimal server-rendered foundation route/view at `/__foundation`; the public `/` route is now the M1A homepage.
 - [x] Kept Vite as the frontend build pipeline for progressive enhancement; installed the scaffold's frontend dependencies and generated `public/build` successfully.
 - [x] Added two foundation smoke tests: server-rendered view response and read-only MySQL connectivity/database selection.
 - [x] Verified `composer validate --strict`, `php artisan about`, and `php artisan test` locally.
@@ -560,7 +560,7 @@ Create only the greenfield Laravel/application foundation needed before the tech
 - [x] M0C representative content loader, safe renderer, dataset manifest validation, and progressive component registry completed; this is not the final content system.
 - [ ] Authentication, learner progress, bookmarks, or attempts.
 - [ ] Final SQL, Spreadsheet Playground, Python/Pandas, visualization, or interactive components; only bounded future adapters are defined.
-- [ ] Homepage, Learn/module/lesson UI, full design system, or curriculum lesson authoring.
+- [x] Homepage and Learn/module/lesson public UI were deferred from M0A and delivered in M1A; full design system and curriculum lesson authoring remain later work.
 
 #### M0A risks/notes
 
@@ -600,9 +600,41 @@ Promote the reusable M0A/Gate D foundation into a clean repository-first product
 
 - Gate A is now resolved by the representative spike decision record; the final SQL Playground remains future M3 work.
 - The content validator is a foundation, not the complete curriculum graph/publication validator required before launch.
-- M1 and all learner-facing product features remain unstarted.
+- M1B/M1C and all learner state features remain unstarted.
 
-### M1 — Learning Core
+### M1A — Public Learning Experience — COMPLETED
+
+#### Objective
+
+Deliver the first coherent public journey without authentication, progress persistence, or runtime-heavy playgrounds:
+homepage → Learn → module → topic/lesson → previous/next.
+
+#### Completed work
+
+- [x] Replaced the temporary root foundation page with the public editorial homepage and positioning statement.
+- [x] Added the canonical five-phase path metadata and ordered Module 01–13 metadata; Module 01 is the representative published slice and later modules are honest roadmap entries.
+- [x] Added `/learn`, published module detail routing, stable topic/lesson routing, previous/next lesson navigation, module topic navigation, and a public `/projects` future destination.
+- [x] Added `/skills` as an index into canonical module/topic references rather than duplicate skill content.
+- [x] Refined the existing server-rendered lesson experience around module context, outline, Further Reading, safe Markdown blocks, and a single dominant next action.
+- [x] Completed the M1A visual refinement pass: the curriculum path now has a numbered editorial progression, module challenges sit inside the topic journey, analytical artifacts use a restrained functional treatment, and representative lesson content has one clear page title without the broken foundation image.
+- [x] Added shared public layout/header/footer, curriculum rows, metadata, topic navigation, callout/content primitives, empty states, and reduced-motion-safe responsive styles.
+- [x] Added keyboard-visible focus, semantic navigation/current-page labels, responsive mobile navigation, controlled table/code overflow, and no fabricated learner state.
+- [x] Kept authentication, localStorage/server progress, bookmarks, attempts, and all playground runtimes out of M1A.
+
+#### M1A verification results
+
+- `php artisan test` — passed with the public route, publication, ordering, canonical-link, lesson-navigation, foundation, and refined lesson hierarchy coverage.
+- `php artisan content:validate` — passed for all canonical module metadata, the representative lesson, and `nusamart/v1`.
+- `node --test tests/Frontend/*.test.js` — passed.
+- `npm run build` — passed with the server-rendered app entry and lazy practice component.
+- `git diff --check` — passed.
+
+#### M1A known limitations
+
+- Only Module 01 has published lesson content; the remaining modules are intentionally metadata-only roadmap entries.
+- Learner state, authentication, completion/resume, bookmarks, challenges, projects workspace, and search remain future M1B/M1C/M2+ work.
+
+### M1 — Learning Core (remaining M1B/M1C scope)
 
 #### Objective
 
@@ -615,19 +647,19 @@ Deliver the core reading/navigation experience: homepage, five-phase Learn map, 
 
 #### Concrete tasks
 
-- [ ] Implement public homepage with the positioning statement, real curriculum preview, Learn → Practice → Challenge → Project sequence, and a credible practice preview without fake metrics or social proof.
-- [ ] Implement `/learn` with five phases, ordered modules, goals, estimates, progress, recommended sequence, and freedom to jump ahead.
-- [ ] Implement module detail pages with topics, challenge, outcome, estimated effort, recommended knowledge, and current/continue state.
-- [ ] Implement topic/lesson routes using stable slugs and server-rendered content.
-- [ ] Implement lesson navigation with module sidebar/drawer, current position, completion state, optional on-page outline, previous/next, and one dominant action.
-- [ ] Implement Explore Skills as an index into canonical topics/tags, not a duplicated curriculum.
+- [x] M1A implemented the public homepage with the positioning statement, real curriculum preview, Learn → Practice → Challenge → Project sequence, and a credible practice preview without fake metrics or social proof.
+- [x] M1A implemented `/learn` with five phases, ordered module metadata, goals, estimates, recommended sequence, and freedom to jump ahead; progress remains future learner state.
+- [x] M1A implemented published module detail pages with topics, challenge, outcome, estimated effort, and recommended knowledge; current/continue state remains future learner state.
+- [x] M1A implemented topic/lesson routes using stable slugs and server-rendered content.
+- [x] M1A implemented lesson navigation with module sidebar/mobile disclosure, current position, optional on-page outline, previous/next, and one dominant action; completion state remains future learner state.
+- [x] M1A implemented Explore Skills as an index into canonical topics/tags, not a duplicated curriculum.
 - [ ] Implement the `ProgressStore` abstraction with guest localStorage and authenticated server-backed implementations.
 - [ ] Implement idempotent topic start/completion and recent/resume state.
 - [ ] Implement guest-to-account merge: stable-key matching, completion wins, no downgrade, and guest deletion only after successful merge.
 - [ ] Implement authenticated bookmarks for topics/lessons and optionally Further Reading resources with constrained content types.
-- [ ] Implement empty/error states and recovery-oriented messages.
-- [ ] Implement responsive reading layout: desktop lesson workspace, tablet collapsible navigation, mobile selector/drawer, and desktop recommendation for complex tools.
-- [ ] Apply accessibility foundations: labels, focus states, keyboard navigation, semantic headings, non-color completion states, readable tables/code, and reduced-motion handling.
+- [x] Implemented representative empty states and recovery-oriented roadmap messaging.
+- [x] Implemented responsive reading layout: desktop lesson workspace, tablet/mobile navigation disclosure, and controlled table/code overflow. Complex tool recommendations remain future runtime work.
+- [x] Applied public accessibility foundations: labels, focus states, keyboard navigation, semantic headings, current-page semantics, readable tables/code, and reduced-motion handling.
 
 #### Acceptance criteria
 
@@ -640,13 +672,13 @@ Deliver the core reading/navigation experience: homepage, five-phase Learn map, 
 
 #### Relevant tests
 
-- [ ] Public route/publication and stable-slug tests.
-- [ ] Phase/module/topic ordering and soft-prerequisite tests.
+- [x] M1A public route/publication and stable-slug tests.
+- [x] M1A phase/module/topic ordering and soft-prerequisite tests.
 - [ ] Guest localStorage persistence and recent-state tests.
 - [ ] Authenticated progress idempotency and authorization tests.
 - [ ] Guest-to-account merge tests for new, completed, in-progress, and conflicting states.
 - [ ] Bookmark uniqueness, authorization, and removal tests.
-- [ ] Responsive/accessibility smoke tests for P0 pages.
+- [x] M1A responsive/accessibility smoke tests for the public P0 pages.
 
 #### Risks/notes
 
@@ -1100,4 +1132,4 @@ The user confirmed this V1 boundary.
 - [x] Technical spikes defined as early decision gates.
 - [x] Content structure, metadata/config, exercises, datasets, validation, and rendering pipeline planned.
 - [x] Milestones M0–M9 include objectives, dependencies, concrete checkbox tasks, acceptance criteria, tests, and risks/notes.
-- [x] No application code, migrations, package installation, UI scaffold, or bulk lesson authoring performed.
+- [x] No application code, migrations, package installation, UI scaffold, or bulk lesson authoring were performed as part of the original planning task; later implementation is tracked in M0/M1A sections above.

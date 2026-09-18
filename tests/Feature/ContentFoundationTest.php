@@ -18,13 +18,15 @@ class ContentFoundationTest extends TestCase
             ->assertSee('What Does a Data Analyst Actually Do?')
             ->assertSee('<table', false)
             ->assertSee('<pre', false)
-            ->assertSee('<a href="https://example.com/curriculum">', false)
-            ->assertSee('<img src="/favicon.ico"', false)
-            ->assertSee('id="what-does-a-data-analyst-actually-do"', false)
+            ->assertSee('<a href="/learn">', false)
+            ->assertSee('id="a-simple-workflow"', false)
             ->assertSee('learning-block--practice')
             ->assertSee('thinking-analyst-01')
-            ->assertSee('On this page')
             ->assertSee('common-mistake');
+
+        $html = $response->getContent();
+        $this->assertSame(1, preg_match_all('/<h1\b/i', $html));
+        $this->assertStringNotContainsString('/favicon.ico', $html);
     }
 
     public function test_content_validation_command_passes_for_the_representative_slice(): void

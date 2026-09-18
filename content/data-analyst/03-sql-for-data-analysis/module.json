@@ -1,0 +1,17 @@
+{
+    "schema_version": 1,
+    "key": "03-sql-for-data-analysis",
+    "type": "module",
+    "title": "SQL for Data Analysis",
+    "number": 3,
+    "order": 3,
+    "status": "roadmap",
+    "purpose": "Jawab pertanyaan analitis pada data relasional dengan query yang dapat divalidasi.",
+    "outcome": "Mampu memilih tabel, grain, filter, agregasi, grouping, dan join yang tepat.",
+    "estimated_minutes": 180,
+    "recommended_knowledge": ["Thinking with Data", "Spreadsheet for Analysis"],
+    "skill_tags": ["sql"],
+    "challenge": {"key": "module-03-nusamart-analysis", "title": "NusaMart Sales Investigation", "description": "Susun analisis SQL untuk menjelaskan perubahan performa.", "status": "roadmap"},
+    "topic_keys": [],
+    "topics": {}
+}

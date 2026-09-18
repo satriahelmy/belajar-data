@@ -3,17 +3,45 @@
     "key": "01-thinking-with-data",
     "type": "module",
     "title": "Thinking with Data",
+    "number": 1,
     "order": 1,
-    "status": "representative",
+    "status": "published",
+    "purpose": "Memahami bagaimana seorang Data Analyst mengubah masalah bisnis menjadi pertanyaan yang dapat dijawab dengan data.",
+    "outcome": "Kamu dapat menjelaskan grain, metric, dimension, aggregation, comparison, dan batas evidence sebelum memilih tool.",
+    "estimated_minutes": 60,
+    "recommended_knowledge": [],
+    "skill_tags": ["analytical-thinking", "data-literacy"],
+    "challenge": {
+        "key": "module-01-nusamart-sales-drop",
+        "title": "NusaMart Sales Drop",
+        "description": "Latih framing pertanyaan bisnis dan interpretasi evidence sebelum melakukan analisis.",
+        "status": "planned"
+    },
     "topic_keys": [
-        "01-analyst-role"
+        "01-analyst-role",
+        "02-data-tables"
     ],
     "topics": {
         "01-analyst-role": {
             "title": "What Does a Data Analyst Actually Do?",
             "order": 1,
+            "skill_tags": ["analytical-thinking", "data-literacy"],
             "lesson_file": "01-analyst-role/lesson.md",
-            "exercise_file": "01-analyst-role/exercises.json"
+            "exercise_file": "01-analyst-role/exercises.json",
+            "further_reading": [
+                {
+                    "title": "Lihat seluruh Data Analyst Path",
+                    "url": "/learn",
+                    "reason": "Memahami posisi topik ini dalam urutan belajar yang direkomendasikan."
+                }
+            ]
+        },
+        "02-data-tables": {
+            "title": "Understanding Data & Tables",
+            "order": 2,
+            "skill_tags": ["data-literacy"],
+            "lesson_file": "02-data-tables/lesson.md",
+            "exercise_file": "02-data-tables/exercises.json"
         }
     }
 }

@@ -1,0 +1,17 @@
+{
+    "schema_version": 1,
+    "key": "13-projects",
+    "type": "module",
+    "title": "Projects",
+    "number": 13,
+    "order": 13,
+    "status": "roadmap",
+    "purpose": "Menggabungkan kompetensi menjadi investigasi data end-to-end yang lebih terbuka.",
+    "outcome": "Mampu memilih workflow, memvalidasi evidence, dan mengomunikasikan kesimpulan.",
+    "estimated_minutes": 360,
+    "recommended_knowledge": ["Communicating Insights"],
+    "skill_tags": [],
+    "challenge": {"key": "project-library", "title": "Project library", "description": "Pilih kasus analisis dan kerjakan melalui brief hingga komunikasi.", "status": "roadmap"},
+    "topic_keys": [],
+    "topics": {}
+}

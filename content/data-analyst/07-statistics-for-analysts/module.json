@@ -1,0 +1,17 @@
+{
+    "schema_version": 1,
+    "key": "07-statistics-for-analysts",
+    "type": "module",
+    "title": "Statistics for Analysts",
+    "number": 7,
+    "order": 7,
+    "status": "roadmap",
+    "purpose": "Menggunakan statistik dasar untuk membandingkan, mengukur ketidakpastian, dan membatasi klaim.",
+    "outcome": "Mampu memilih ringkasan statistik dan menjelaskan apa yang belum dapat diketahui dari data.",
+    "estimated_minutes": 180,
+    "recommended_knowledge": ["Exploratory Data Analysis"],
+    "skill_tags": ["statistics"],
+    "challenge": {"key": "module-07-evidence-and-uncertainty", "title": "Evidence & Uncertainty", "description": "Nilai kekuatan evidence dan batas interpretasi secara proporsional.", "status": "roadmap"},
+    "topic_keys": [],
+    "topics": {}
+}

@@ -1,0 +1,101 @@
+<?php
+
+namespace Tests\Feature;
+
+use Tests\TestCase;
+
+class PublicLearningExperienceTest extends TestCase
+{
+    public function test_homepage_is_the_public_learning_entry_point(): void
+    {
+        $this->get('/')
+            ->assertOk()
+            ->assertSee('Belajar data, tanpa bingung mulai dari mana.')
+            ->assertSee('Learn')
+            ->assertSee('Explore Skills')
+            ->assertSee('Projects')
+            ->assertSee('Mulai dari Module 01')
+            ->assertSee('data-nav-toggle', false)
+            ->assertSee('aria-label="Navigasi utama"', false)
+            ->assertDontSee('fake learner counts');
+    }
+
+    public function test_learn_page_preserves_the_five_phase_and_module_order(): void
+    {
+        $response = $this->get('/learn');
+
+        $response
+            ->assertOk()
+            ->assertSee('Foundations')
+            ->assertSee('Working with Data')
+            ->assertSee('From Analysis to Decision')
+            ->assertSee('Business Impact')
+            ->assertSee('Apply Your Skills')
+            ->assertSee('01')
+            ->assertSee('13')
+            ->assertSee('Urutan ini adalah rekomendasi, bukan kunci.')
+            ->assertSee('Roadmap');
+
+        $this->assertLessThan(
+            strpos($response->getContent(), 'Spreadsheet for Analysis'),
+            strpos($response->getContent(), 'Thinking with Data'),
+        );
+    }
+
+    public function test_published_module_is_open_without_prerequisite_lock(): void
+    {
+        $this->get('/learn/01-thinking-with-data')
+            ->assertOk()
+            ->assertSee('Thinking with Data')
+            ->assertSee('What Does a Data Analyst Actually Do?')
+            ->assertSee('Understanding Data &amp; Tables', false)
+            ->assertSee('Mulai module')
+            ->assertSee('Urutan path adalah rekomendasi, bukan prerequisite lock');
+    }
+
+    public function test_unpublished_module_and_unknown_topic_are_not_publicly_available(): void
+    {
+        $this->get('/learn/02-spreadsheet-for-analysis')->assertNotFound();
+        $this->get('/learn/data-analyst/01-thinking-with-data/not-a-topic')->assertNotFound();
+    }
+
+    public function test_lesson_has_canonical_context_navigation_and_further_reading(): void
+    {
+        $this->get('/learn/data-analyst/01-thinking-with-data/01-analyst-role')
+            ->assertOk()
+            ->assertSee('Module 01')
+            ->assertSee('Topic 1 dari 2')
+            ->assertSee('Module topic navigation')
+            ->assertSee('lesson-mobile-nav', false)
+            ->assertSee('aria-current="page"', false)
+            ->assertSee('Further Reading')
+            ->assertSee('/learn/data-analyst/01-thinking-with-data/02-data-tables', false)
+            ->assertSee('Lanjut ke topic berikutnya');
+
+        $this->get('/learn/data-analyst/01-thinking-with-data/02-data-tables')
+            ->assertOk()
+            ->assertSee('Topic 2 dari 2')
+            ->assertSee('What Does a Data Analyst Actually Do?')
+            ->assertSee('Kembali ke module');
+    }
+
+    public function test_explore_skills_points_back_to_canonical_path_content(): void
+    {
+        $this->get('/skills')
+            ->assertOk()
+            ->assertSee('Explore Skills')
+            ->assertSee('Analytical Thinking')
+            ->assertSee('/learn/data-analyst/01-thinking-with-data/01-analyst-role', false)
+            ->assertSee('#module-02-spreadsheet-for-analysis', false)
+            ->assertSee('bukan curriculum kedua');
+    }
+
+    public function test_projects_is_a_public_future_destination_without_a_workspace(): void
+    {
+        $this->get('/projects')
+            ->assertOk()
+            ->assertSee('Projects')
+            ->assertSee('NusaMart Revenue Slowdown')
+            ->assertSee('workspace belum dibuka');
+    }
+}

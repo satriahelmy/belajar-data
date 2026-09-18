@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;}
+    body{margin:0;}
+  </style>
+</helmet>
+<div style="--bg:oklch(98% 0.004 95); --surface:oklch(100% 0 0); --ink:oklch(19% 0.01 260); --ink-soft:oklch(46% 0.01 260); --ink-faint:oklch(65% 0.008 260); --line:oklch(89% 0.006 95); --accent:oklch(47% 0.1 165); --accent-dark:oklch(33% 0.08 165); --accent-soft:oklch(95% 0.03 165); width:1440px; margin:0 auto; background:var(--bg); font-family:'Inter',sans-serif; color:var(--ink);">
+
+  <!-- NAV -->
+  <div style="display:flex; align-items:center; justify-content:space-between; padding:22px 64px; border-bottom:1px solid var(--line);">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <div style="width:12px; height:12px; background:var(--accent); border-radius:2px;"></div>
+      <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:19px; letter-spacing:-0.01em;">BelajarData</div>
+    </div>
+    <div style="display:flex; align-items:center; gap:40px;">
+      <div style="display:flex; gap:32px; font-size:14px; color:var(--ink-soft); font-weight:500;">
+        <span style="color:var(--accent-dark); font-weight:700; border-bottom:2px solid var(--accent); padding-bottom:2px;">Learning Path</span>
+        <span>Kurikulum</span>
+        <span>Tentang</span>
+      </div>
+      <div style="background:var(--accent); color:white; padding:10px 22px; border-radius:7px; font-size:14px; font-weight:600;">Mulai belajar</div>
+    </div>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div style="padding:64px 64px 40px; border-bottom:1px solid var(--line);">
+    <div style="display:flex; align-items:center; gap:8px; margin-bottom:18px;">
+      <div style="width:6px; height:6px; background:var(--accent); border-radius:1px;"></div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; letter-spacing:0.14em; color:var(--accent-dark); text-transform:uppercase;">Data Analyst Path</div>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:48px; margin-bottom:36px;">
+      <div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:44px; letter-spacing:-0.02em; margin-bottom:14px;">Learning Path</div>
+        <div style="font-size:16px; line-height:1.6; color:var(--ink-soft); max-width:600px;">Urutan yang kami rekomendasikan supaya belajarmu runtut — tapi bukan kunci. Kamu bebas membuka modul mana pun secara langsung.</div>
+      </div>
+      <div style="text-align:right; white-space:nowrap; padding-bottom:4px;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-faint); letter-spacing:0.06em; margin-bottom:6px;">PROGRES KAMU</div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:20px; color:var(--ink);">3 / 13 modul selesai</div>
+      </div>
+    </div>
+
+    <!-- PROGRESS RAIL -->
+    <div style="display:flex; align-items:center;">
+      <div style="display:flex; align-items:center; width:100%;">
+        <div style="width:11px; height:11px; border-radius:50%; background:var(--accent); flex:none;"></div>
+        <div style="flex:1; height:2px; background:var(--accent);"></div>
+        <div style="width:11px; height:11px; border-radius:50%; background:var(--accent); flex:none;"></div>
+        <div style="flex:1; height:2px; background:var(--accent);"></div>
+        <div style="width:11px; height:11px; border-radius:50%; background:var(--accent); flex:none;"></div>
+        <div style="flex:1; height:2px; background:var(--accent);"></div>
+        <div style="width:13px; height:13px; border-radius:50%; background:white; border:2.5px solid var(--accent); flex:none;"></div>
+        <div style="flex:1; height:2px; background:var(--line);"></div>
+        <div style="width:11px; height:11px; border-radius:50%; background:white; border:1.5px solid var(--line); flex:none;"></div>
+        <div style="flex:1; height:2px; background:var(--line);"></div>
+        <div style="width:11px; height:11px; border-radius:50%; background:white; border:1.5px solid var(--line); flex:none;"></div>
+        <div style="flex:1; height:2px; background:var(--line);"></div>
+        <div style="width:11px; height:11px; border-radius:50%; background:white; border:1.5px solid var(--line); flex:none;"></div>
+        <div style="flex:1; height:2px; background:var(--line);"></div>
+        <div style="width:11px; height:11px; border-radius:50%; background:white; border:1.5px solid var(--line); flex:none;"></div>
+        <div style="flex:1; height:2px; background:var(--line);"></div>
+        <div style="width:11px; height:11px; border-radius:50%; background:white; border:1.5px solid var(--line); flex:none;"></div>
+        <div style="flex:1; height:2px; background:var(--line);"></div>
+        <div style="width:11px; height:11px; border-radius:50%; background:white; border:1.5px solid var(--line); flex:none;"></div>
+        <div style="flex:1; height:2px; background:var(--line);"></div>
+        <div style="width:11px; height:11px; border-radius:50%; background:white; border:1.5px solid var(--line); flex:none;"></div>
+        <div style="flex:1; height:2px; background:var(--line);"></div>
+        <div style="width:11px; height:11px; border-radius:50%; background:white; border:1.5px solid var(--line); flex:none;"></div>
+        <div style="flex:1; height:2px; background:var(--line);"></div>
+        <div style="width:11px; height:11px; border-radius:50%; background:white; border:1.5px solid var(--line); flex:none;"></div>
+      </div>
+      <div style="margin-left:20px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-faint); white-space:nowrap;">01 → 13</div>
+    </div>
+  </div>
+
+  <!-- MODULES -->
+  <div style="padding:56px 64px 96px; display:flex; flex-direction:column; gap:60px;">
+
+    <!-- PHASE 1 -->
+    <div>
+      <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; letter-spacing:0.12em; color:var(--accent-dark);">PHASE 1</div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:20px; font-weight:700; color:var(--ink);">Foundations</div>
+        <div style="flex:1; height:1px; background:var(--line);"></div>
+      </div>
+
+      <div style="display:flex; align-items:flex-start; gap:20px; padding:20px 0; border-bottom:1px solid var(--line);">
+        <div style="width:16px; height:16px; border-radius:50%; background:var(--accent); flex:none; margin-top:6px; position:relative;"></div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:300; font-size:34px; color:var(--ink-faint); width:60px; flex:none;">01</div>
+        <div style="flex:1;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:18px; color:var(--ink); margin-bottom:6px;">Thinking with Data</div>
+          <div style="font-size:14.5px; color:var(--ink-soft); line-height:1.5; max-width:560px;">Membiasakan diri berpikir terstruktur sebelum menyentuh tools apa pun.</div>
+        </div>
+        <div style="width:110px; flex:none; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-faint); text-align:right;">~2 jam</div>
+        <div style="width:130px; flex:none; text-align:right; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:0.06em; color:var(--accent-dark);">SELESAI</div>
+      </div>
+
+      <div style="display:flex; align-items:flex-start; gap:20px; padding:20px 0; border-bottom:1px solid var(--line);">
+        <div style="width:16px; height:16px; border-radius:50%; background:var(--accent); flex:none; margin-top:6px;"></div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:300; font-size:34px; color:var(--ink-faint); width:60px; flex:none;">02</div>
+        <div style="flex:1;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:18px; color:var(--ink); margin-bottom:6px;">Spreadsheet for Analysis</div>
+          <div style="font-size:14.5px; color:var(--ink-soft); line-height:1.5; max-width:560px;">Mengolah, meringkas, dan membaca data dengan spreadsheet.</div>
+        </div>
+        <div style="width:110px; flex:none; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-faint); text-align:right;">~3 jam</div>
+        <div style="width:130px; flex:none; text-align:right; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:0.06em; color:var(--accent-dark);">SELESAI</div>
+      </div>
+
+      <div style="display:flex; align-items:flex-start; gap:20px; padding:20px 0; border-bottom:1px solid var(--line);">
+        <div style="width:16px; height:16px; border-radius:50%; background:var(--accent); flex:none; margin-top:6px;"></div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:300; font-size:34px; color:var(--ink-faint); width:60px; flex:none;">03</div>
+        <div style="flex:1;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:18px; color:var(--ink); margin-bottom:6px;">SQL for Data Analysis</div>
+          <div style="font-size:14.5px; color:var(--ink-soft); line-height:1.5; max-width:560px;">Mengambil dan menggabungkan data langsung dari database.</div>
+        </div>
+        <div style="width:110px; flex:none; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-faint); text-align:right;">~5 jam</div>
+        <div style="width:130px; flex:none; text-align:right; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:0.06em; color:var(--accent-dark);">SELESAI</div>
+      </div>
+
+      <div style="display:flex; align-items:flex-start; gap:20px; padding:20px 0; background:var(--accent-soft); margin:0 -24px; padding-left:24px; padding-right:24px; border-radius:8px;">
+        <div style="width:16px; height:16px; border-radius:50%; background:white; border:2.5px solid var(--accent); flex:none; margin-top:6px;"></div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:34px; color:var(--accent); width:60px; flex:none;">04</div>
+        <div style="flex:1;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:18px; color:var(--ink); margin-bottom:6px;">Python &amp; Pandas for Analysis</div>
+          <div style="font-size:14.5px; color:var(--ink-soft); line-height:1.5; max-width:560px;">Mengolah data dalam skala lebih besar menggunakan Python.</div>
+        </div>
+        <div style="width:110px; flex:none; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-faint); text-align:right;">~6 jam</div>
+        <div style="width:130px; flex:none; text-align:right;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; letter-spacing:0.06em; color:white; background:var(--accent); padding:4px 10px; border-radius:5px;">LANJUTKAN</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE 2 -->
+    <div>
+      <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; letter-spacing:0.12em; color:var(--accent-dark);">PHASE 2</div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:20px; font-weight:700; color:var(--ink);">Working with Data</div>
+        <div style="flex:1; height:1px; background:var(--line);"></div>
+      </div>
+
+      <div style="display:flex; align-items:flex-start; gap:20px; padding:20px 0; border-bottom:1px solid var(--line);">
+        <div style="width:16px; height:16px; border-radius:50%; background:white; border:1.5px solid var(--line); flex:none; margin-top:6px;"></div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:300; font-size:34px; color:var(--ink-faint); width:60px; flex:none;">05</div>
+        <div style="flex:1;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:18px; color:var(--ink); margin-bottom:6px;">Data Cleaning</div>
+          <div style="font-size:14.5px; color:var(--ink-soft); line-height:1.5; max-width:560px;">Membersihkan data yang kotor, hilang, atau tidak konsisten sebelum dianalisis.</div>
+        </div>
+        <div style="width:110px; flex:none; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-faint); text-align:right;">~4 jam</div>
+        <div style="width:130px; flex:none; text-align:right; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:0.06em; color:var(--ink-faint);">BELUM DIMULAI</div>
+      </div>
+
+      <div style="display:flex; align-items:flex-start; gap:20px; padding:20px 0; border-bottom:1px solid var(--line);">
+        <div style="width:16px; height:16px; border-radius:50%; background:white; border:1.5px solid var(--line); flex:none; margin-top:6px;"></div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:300; font-size:34px; color:var(--ink-faint); width:60px; flex:none;">06</div>
+        <div style="flex:1;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:18px; color:var(--ink); margin-bottom:6px;">Exploratory Data Analysis</div>
+          <div style="font-size:14.5px; color:var(--ink-soft); line-height:1.5; max-width:560px;">Menjelajahi data untuk menemukan pola dan anomali sejak awal.</div>
+        </div>
+        <div style="width:110px; flex:none; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-faint); text-align:right;">~4 jam</div>
+        <div style="width:130px; flex:none; text-align:right; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:0.06em; color:var(--ink-faint);">BELUM DIMULAI</div>
+      </div>
+
+      <div style="display:flex; align-items:flex-start; gap:20px; padding:20px 0;">
+        <div style="width:16px; height:16px; border-radius:50%; background:white; border:1.5px solid var(--line); flex:none; margin-top:6px;"></div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:300; font-size:34px; color:var(--ink-faint); width:60px; flex:none;">07</div>
+        <div style="flex:1;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:18px; color:var(--ink); margin-bottom:6px;">Statistics for Analysts</div>
+          <div style="font-size:14.5px; color:var(--ink-soft); line-height:1.5; max-width:560px;">Menggunakan statistik dasar untuk menguji dan memperkuat temuan.</div>
+        </div>
+        <div style="width:110px; flex:none; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-faint); text-align:right;">~5 jam</div>
+        <div style="width:130px; flex:none; text-align:right; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:0.06em; color:var(--ink-faint);">BELUM DIMULAI</div>
+      </div>
+    </div>
+
+    <!-- PHASE 3 -->
+    <div>
+      <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; letter-spacing:0.12em; color:var(--accent-dark);">PHASE 3</div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:20px; font-weight:700; color:var(--ink);">From Analysis to Decision</div>
+        <div style="flex:1; height:1px; background:var(--line);"></div>
+      </div>
+
+      <div style="display:flex; align-items:flex-start; gap:20px; padding:20px 0; border-bottom:1px solid var(--line);">
+        <div style="width:16px; height:16px; border-radius:50%; background:white; border:1.5px solid var(--line); flex:none; margin-top:6px;"></div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:300; font-size:34px; color:var(--ink-faint); width:60px; flex:none;">08</div>
+        <div style="flex:1;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:18px; color:var(--ink); margin-bottom:6px;">Data Visualization</div>
+          <div style="font-size:14.5px; color:var(--ink-soft); line-height:1.5; max-width:560px;">Menyajikan data dalam bentuk yang mudah dibaca dan tidak menyesatkan.</div>
+        </div>
+        <div style="width:110px; flex:none; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-faint); text-align:right;">~3 jam</div>
+        <div style="width:130px; flex:none; text-align:right; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:0.06em; color:var(--ink-faint);">BELUM DIMULAI</div>
+      </div>
+
+      <div style="display:flex; align-items:flex-start; gap:20px; padding:20px 0; border-bottom:1px solid var(--line);">
+        <div style="width:16px; height:16px; border-radius:50%; background:white; border:1.5px solid var(--line); flex:none; margin-top:6px;"></div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:300; font-size:34px; color:var(--ink-faint); width:60px; flex:none;">09</div>
+        <div style="flex:1;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:18px; color:var(--ink); margin-bottom:6px;">Metrics &amp; Dashboards</div>
+          <div style="font-size:14.5px; color:var(--ink-soft); line-height:1.5; max-width:560px;">Merancang metrik yang relevan dan dashboard yang mudah dipantau.</div>
+        </div>
+        <div style="width:110px; flex:none; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-faint); text-align:right;">~4 jam</div>
+        <div style="width:130px; flex:none; text-align:right; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:0.06em; color:var(--ink-faint);">BELUM DIMULAI</div>
+      </div>
+
+      <div style="display:flex; align-items:flex-start; gap:20px; padding:20px 0;">
+        <div style="width:16px; height:16px; border-radius:50%; background:white; border:1.5px solid var(--line); flex:none; margin-top:6px;"></div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:300; font-size:34px; color:var(--ink-faint); width:60px; flex:none;">10</div>
+        <div style="flex:1;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:18px; color:var(--ink); margin-bottom:6px;">Tableau for Data Analysis</div>
+          <div style="font-size:14.5px; color:var(--ink-soft); line-height:1.5; max-width:560px;">Membangun dashboard interaktif dengan Tableau.</div>
+        </div>
+        <div style="width:110px; flex:none; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-faint); text-align:right;">~5 jam</div>
+        <div style="width:130px; flex:none; text-align:right; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:0.06em; color:var(--ink-faint);">BELUM DIMULAI</div>
+      </div>
+    </div>
+
+    <!-- PHASE 4 -->
+    <div>
+      <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; letter-spacing:0.12em; color:var(--accent-dark);">PHASE 4</div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:20px; font-weight:700; color:var(--ink);">Business Impact</div>
+        <div style="flex:1; height:1px; background:var(--line);"></div>
+      </div>
+
+      <div style="display:flex; align-items:flex-start; gap:20px; padding:20px 0; border-bottom:1px solid var(--line);">
+        <div style="width:16px; height:16px; border-radius:50%; background:white; border:1.5px solid var(--line); flex:none; margin-top:6px;"></div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:300; font-size:34px; color:var(--ink-faint); width:60px; flex:none;">11</div>
+        <div style="flex:1;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:18px; color:var(--ink); margin-bottom:6px;">Business Analysis</div>
+          <div style="font-size:14.5px; color:var(--ink-soft); line-height:1.5; max-width:560px;">Menghubungkan angka dengan konteks dan tujuan bisnis.</div>
+        </div>
+        <div style="width:110px; flex:none; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-faint); text-align:right;">~4 jam</div>
+        <div style="width:130px; flex:none; text-align:right; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:0.06em; color:var(--ink-faint);">BELUM DIMULAI</div>
+      </div>
+
+      <div style="display:flex; align-items:flex-start; gap:20px; padding:20px 0;">
+        <div style="width:16px; height:16px; border-radius:50%; background:white; border:1.5px solid var(--line); flex:none; margin-top:6px;"></div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:300; font-size:34px; color:var(--ink-faint); width:60px; flex:none;">12</div>
+        <div style="flex:1;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:18px; color:var(--ink); margin-bottom:6px;">Communicating Insights</div>
+          <div style="font-size:14.5px; color:var(--ink-soft); line-height:1.5; max-width:560px;">Menyampaikan temuan secara jelas ke pengambil keputusan.</div>
+        </div>
+        <div style="width:110px; flex:none; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-faint); text-align:right;">~3 jam</div>
+        <div style="width:130px; flex:none; text-align:right; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:0.06em; color:var(--ink-faint);">BELUM DIMULAI</div>
+      </div>
+    </div>
+
+    <!-- PHASE 5 -->
+    <div>
+      <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; letter-spacing:0.12em; color:var(--accent-dark);">PHASE 5</div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:20px; font-weight:700; color:var(--ink);">Apply Your Skills</div>
+        <div style="flex:1; height:1px; background:var(--line);"></div>
+      </div>
+
+      <div style="display:flex; align-items:flex-start; gap:20px; padding:24px 0; border-left:3px solid var(--accent); padding-left:24px;">
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:300; font-size:44px; color:var(--accent); width:70px; flex:none;">13</div>
+        <div style="flex:1;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:20px; color:var(--ink); margin-bottom:6px;">Projects</div>
+          <div style="font-size:14.5px; color:var(--ink-soft); line-height:1.5; max-width:560px; margin-bottom:6px;">Menerapkan seluruh skill dalam studi kasus nyata, dari pertanyaan sampai insight.</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; color:var(--accent-dark);">CAPSTONE — PORTFOLIO-READY</div>
+        </div>
+        <div style="width:110px; flex:none; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-faint); text-align:right;">~10 jam</div>
+        <div style="width:130px; flex:none; text-align:right; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:0.06em; color:var(--ink-faint);">BELUM DIMULAI</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</x-dc>
+</body>
+</html>

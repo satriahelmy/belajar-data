@@ -1,0 +1,17 @@
+{
+    "schema_version": 1,
+    "key": "02-spreadsheet-for-analysis",
+    "type": "module",
+    "title": "Spreadsheet for Analysis",
+    "number": 2,
+    "order": 2,
+    "status": "roadmap",
+    "purpose": "Gunakan spreadsheet untuk memahami, menghitung, dan meringkas data bisnis.",
+    "outcome": "Mampu membangun analisis spreadsheet sederhana yang dapat dijelaskan.",
+    "estimated_minutes": 120,
+    "recommended_knowledge": ["Thinking with Data"],
+    "skill_tags": ["spreadsheet"],
+    "challenge": {"key": "module-02-monthly-sales-performance", "title": "NusaMart Monthly Sales Performance", "description": "Bandingkan performa penjualan dan cari area yang berkontribusi terhadap perubahan.", "status": "roadmap"},
+    "topic_keys": [],
+    "topics": {}
+}
