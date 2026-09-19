@@ -1,0 +1,29 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "thinking-aggregation-01",
+            "type": "multiple_choice",
+            "prompt": "NusaMart ingin membandingkan total revenue September dengan Agustus. Pilihan yang tepat adalah…",
+            "options": [
+                "SUM(revenue) per month dengan comparison month-over-month",
+                "COUNT(*) per month tanpa memeriksa grain",
+                "Membandingkan September dengan satu transaksi terbesar",
+                "Menggunakan revenue September saja tanpa baseline"
+            ],
+            "correct_option": 0
+        },
+        {
+            "id": "thinking-aggregation-02",
+            "type": "text_self_assessment",
+            "prompt": "Agustus punya revenue 450 dari 3 order; September 600 dari 5 order. Tulis finding 1–2 kalimat tentang revenue dan average order value. Jangan menebak penyebab.",
+            "reference_answer": "Revenue naik dari 450 menjadi 600, atau sekitar 33,3% month-over-month. Namun average order value turun dari 150 menjadi 120 karena jumlah order naik lebih cepat daripada revenue. Data ini belum menjelaskan penyebabnya.",
+            "checklist": [
+                "Menyebutkan revenue naik dari 450 ke 600.",
+                "Menyebutkan perbandingan month-over-month atau persentasenya.",
+                "Menghitung average order value 150 lalu 120.",
+                "Tidak menebak penyebab."
+            ]
+        }
+    ]
+}

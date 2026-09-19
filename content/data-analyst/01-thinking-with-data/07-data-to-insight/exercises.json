@@ -1,0 +1,29 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "thinking-insight-01",
+            "type": "multiple_choice",
+            "prompt": "Dari evidence transaksi NusaMart, mana yang boleh dikatakan?",
+            "options": [
+                "Revenue naik dari Agustus ke September; data ini belum membuktikan penyebab kenaikan",
+                "Revenue naik karena semua pelanggan membeli lebih banyak",
+                "Region West menyebabkan kenaikan revenue",
+                "Pelanggan South pindah dari region lain"
+            ],
+            "correct_option": 0
+        },
+        {
+            "id": "thinking-insight-02",
+            "type": "text_self_assessment",
+            "prompt": "Tulis finding 1–2 kalimat. Sebutkan metric, comparison, satu konteks region, dan batas evidence.",
+            "reference_answer": "Revenue NusaMart naik dari 450 pada Agustus menjadi 600 pada September. Kenaikan terlihat pada West dan munculnya revenue South, sementara East tetap 120; data transaksi ini menunjukkan perubahan tetapi belum menjelaskan penyebabnya.",
+            "checklist": [
+                "Menyebutkan revenue dan dua periode yang dibandingkan.",
+                "Menyebutkan minimal satu region.",
+                "Tidak mengubah dugaan penyebab menjadi fakta.",
+                "Menyebutkan evidence yang masih diperlukan bila relevan."
+            ]
+        }
+    ]
+}

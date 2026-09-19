@@ -98,6 +98,8 @@ class ContentRepository
             if (($topic['title'] ?? null) === null
                 || ! is_string($topic['title'])
                 || ! is_int($topic['order'] ?? null)
+                || ! is_int($topic['estimated_minutes'] ?? null)
+                || $topic['estimated_minutes'] <= 0
                 || ! is_string($topic['lesson_file'] ?? null)
                 || ! is_string($topic['exercise_file'] ?? null)
                 || str_contains($topic['lesson_file'], '..')
@@ -121,6 +123,41 @@ class ContentRepository
             foreach ([$topic['lesson_file'], $topic['exercise_file']] as $relativeFile) {
                 if (! File::exists($moduleRoot.'/'.$relativeFile)) {
                     throw new ContentValidationException("Missing content file [{$relativeFile}] for [{$moduleKey}/{$topicKey}].");
+                }
+            }
+        }
+
+        if (isset($module['challenge'])) {
+            $challenge = $module['challenge'];
+
+            if (! is_array($challenge)
+                || ! is_string($challenge['key'] ?? null)
+                || ! is_string($challenge['title'] ?? null)
+                || ! is_string($challenge['description'] ?? null)
+                || ! in_array($challenge['status'] ?? null, ['published', 'planned', 'roadmap'], true)
+            ) {
+                throw new ContentValidationException("Invalid challenge metadata in module [{$moduleKey}].");
+            }
+
+            MachineKey::assert($challenge['key'], 'challenge key');
+
+            if ($challenge['status'] === 'published') {
+                if (! is_int($challenge['estimated_minutes'] ?? null)
+                    || ! is_string($challenge['content_file'] ?? null)
+                    || ! is_string($challenge['exercise_file'] ?? null)
+                    || ! is_array($challenge['completion_criteria'] ?? null)
+                    || $challenge['completion_criteria'] === []
+                    || str_contains($challenge['content_file'], '..')
+                    || str_contains($challenge['exercise_file'], '..')
+                    || str_starts_with($challenge['content_file'], '/')
+                    || str_starts_with($challenge['exercise_file'], '/')) {
+                    throw new ContentValidationException("Invalid published challenge metadata in module [{$moduleKey}].");
+                }
+
+                foreach ([$challenge['content_file'], $challenge['exercise_file']] as $relativeFile) {
+                    if (! File::exists($this->contentRoot($pathKey).'/'.$moduleKey.'/'.$relativeFile)) {
+                        throw new ContentValidationException("Missing challenge file [{$relativeFile}] for [{$moduleKey}].");
+                    }
                 }
             }
         }
@@ -165,6 +202,43 @@ class ContentRepository
             'topic_key' => $topicKey,
             'title' => $topic['title'],
             'order' => $topic['order'],
+        ]);
+    }
+
+    public function challenge(string $moduleKey, string $pathKey = 'data-analyst'): LessonSource
+    {
+        $module = $this->module($moduleKey, $pathKey);
+        $challenge = $module['challenge'] ?? null;
+
+        if (! is_array($challenge) || ($challenge['status'] ?? null) !== 'published') {
+            throw new ContentValidationException("Challenge for module [{$moduleKey}] is not published.");
+        }
+
+        $root = $this->contentRoot($pathKey).'/'.$moduleKey;
+        $contentPath = $root.'/'.$challenge['content_file'];
+        $exercisePath = $root.'/'.$challenge['exercise_file'];
+
+        if (! File::exists($contentPath) || ! File::exists($exercisePath)) {
+            throw new ContentValidationException("Missing published challenge files for [{$moduleKey}].");
+        }
+
+        $markdown = File::get($contentPath);
+
+        try {
+            $decoded = json_decode(File::get($exercisePath), true, 512, JSON_THROW_ON_ERROR);
+        } catch (JsonException $exception) {
+            throw new ContentValidationException("Invalid challenge exercise JSON for [{$moduleKey}]: {$exception->getMessage()}", previous: $exception);
+        }
+
+        $exercises = $this->normalizeExercises($decoded, $moduleKey.'/challenge');
+        $sourceHash = hash('sha256', $markdown.'\n'.json_encode($exercises, JSON_THROW_ON_ERROR).'\n'.json_encode($challenge, JSON_THROW_ON_ERROR));
+
+        return new LessonSource($moduleKey.'/challenge', $markdown, $exercises, $sourceHash, [
+            'path_key' => $pathKey,
+            'module_key' => $moduleKey,
+            'topic_key' => 'challenge',
+            'title' => $challenge['title'],
+            'order' => 0,
         ]);
     }
 
@@ -232,6 +306,12 @@ class ContentRepository
 
         $keys = $this->lessonKeys($pathKey);
 
+        foreach ($modules as $module) {
+            if (($module['challenge']['status'] ?? null) === 'published') {
+                $this->challenge($module['key'], $pathKey);
+            }
+        }
+
         if ($keys === []) {
             throw new ContentValidationException("No lessons were registered in path [{$pathKey}].");
         }
@@ -259,20 +339,34 @@ class ContentRepository
                 || ! is_string($exercise['id'] ?? null)
                 || ! is_string($exercise['type'] ?? null)
                 || ! is_string($exercise['prompt'] ?? null)
-                || ! is_array($exercise['options'] ?? null)
-                || $exercise['options'] === []
             ) {
                 throw new ContentValidationException("Every exercise in [{$lessonKey}] needs a string id and type.");
             }
 
-            if (! in_array($exercise['type'], ['multiple_choice'], true)
-                || trim($exercise['prompt']) === ''
-                || count(array_filter($exercise['options'], 'is_string')) !== count($exercise['options'])
-                || (isset($exercise['correct_option']) && ! is_int($exercise['correct_option']))
-                || (isset($exercise['correct_option'])
-                    && ($exercise['correct_option'] < 0 || $exercise['correct_option'] >= count($exercise['options'])))
-            ) {
+            if (trim($exercise['prompt']) === '') {
                 throw new ContentValidationException("Invalid exercise configuration for [{$lessonKey}].");
+            }
+
+            if ($exercise['type'] === 'multiple_choice') {
+                if (! is_array($exercise['options'] ?? null)
+                    || $exercise['options'] === []
+                    || count(array_filter($exercise['options'], 'is_string')) !== count($exercise['options'])
+                    || ! isset($exercise['correct_option'])
+                    || ! is_int($exercise['correct_option'])
+                    || $exercise['correct_option'] < 0
+                    || $exercise['correct_option'] >= count($exercise['options'])) {
+                    throw new ContentValidationException("Invalid multiple-choice exercise configuration for [{$lessonKey}].");
+                }
+            } elseif ($exercise['type'] === 'text_self_assessment') {
+                if (! is_string($exercise['reference_answer'] ?? null)
+                    || trim($exercise['reference_answer']) === ''
+                    || ! is_array($exercise['checklist'] ?? null)
+                    || $exercise['checklist'] === []
+                    || count(array_filter($exercise['checklist'], 'is_string')) !== count($exercise['checklist'])) {
+                    throw new ContentValidationException("Invalid self-assessment exercise configuration for [{$lessonKey}].");
+                }
+            } else {
+                throw new ContentValidationException("Unsupported exercise type [{$exercise['type']}] for [{$lessonKey}].");
             }
 
             $id = $exercise['id'];

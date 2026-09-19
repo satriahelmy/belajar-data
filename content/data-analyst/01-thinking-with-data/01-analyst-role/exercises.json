@@ -4,13 +4,26 @@
         {
             "id": "thinking-analyst-01",
             "type": "multiple_choice",
-            "prompt": "What should an analyst clarify before choosing a tool?",
+            "prompt": "NusaMart berkata, “Penjualan bulan ini kelihatannya turun.” Sebelum memilih tool, apa yang kamu pastikan dulu?",
             "options": [
-                "The business question and the comparison needed",
-                "The most colorful chart type",
-                "The programming language with the largest ecosystem"
+                "Memperjelas apa yang diukur dan dibandingkan, misalnya revenue bulan ini versus bulan lalu",
+                "Memilih warna chart agar penurunan terlihat jelas",
+                "Menulis program sebelum mengetahui field yang tersedia",
+                "Mengumpulkan semua data tanpa menentukan pertanyaan"
             ],
             "correct_option": 0
+        },
+        {
+            "id": "thinking-analyst-02",
+            "type": "text_self_assessment",
+            "prompt": "Tulis satu data question awal untuk keluhan NusaMart. Sebutkan metric, periode, dan comparison yang kamu pilih.",
+            "reference_answer": "Apakah revenue NusaMart pada September 2025 lebih rendah atau lebih tinggi dibandingkan Agustus 2025?",
+            "checklist": [
+                "Menyebutkan metric yang jelas, misalnya revenue atau jumlah order.",
+                "Menyebutkan periode yang spesifik.",
+                "Menyebutkan pembanding yang spesifik.",
+                "Tidak mengklaim penyebab sebelum memeriksa evidence tambahan."
+            ]
         }
     ]
 }

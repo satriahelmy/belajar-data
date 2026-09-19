@@ -1,0 +1,29 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "thinking-question-01",
+            "type": "multiple_choice",
+            "prompt": "Dari keluhan “penjualan terasa turun”, mana yang sudah cukup jelas untuk mulai dihitung?",
+            "options": [
+                "Apakah revenue September 2025 turun dibandingkan revenue Agustus 2025?",
+                "Mengapa semua orang mulai tidak suka produk kita?",
+                "Region mana yang performanya paling baik?",
+                "Apakah bisnis kita sedang baik-baik saja?"
+            ],
+            "correct_option": 0
+        },
+        {
+            "id": "thinking-question-02",
+            "type": "text_self_assessment",
+            "prompt": "Ubah “Region mana yang performanya paling baik?” menjadi data question yang lebih siap diuji. Pilih metric, periode, dan comparison bila perlu.",
+            "reference_answer": "Pada September 2025, region mana yang memiliki revenue tertinggi, dan bagaimana revenue tersebut berubah dibandingkan Agustus 2025?",
+            "checklist": [
+                "Metric disebutkan secara spesifik.",
+                "Periode pengukuran disebutkan.",
+                "Comparison dipakai bila ingin membahas perubahan.",
+                "Kata “terbaik” diterjemahkan menjadi kriteria yang bisa dihitung."
+            ]
+        }
+    ]
+}

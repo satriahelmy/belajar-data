@@ -7,41 +7,130 @@
     "order": 1,
     "status": "published",
     "purpose": "Memahami bagaimana seorang Data Analyst mengubah masalah bisnis menjadi pertanyaan yang dapat dijawab dengan data.",
-    "outcome": "Kamu dapat menjelaskan grain, metric, dimension, aggregation, comparison, dan batas evidence sebelum memilih tool.",
-    "estimated_minutes": 60,
+    "outcome": "Kamu dapat membingkai pertanyaan bisnis, membaca grain, memilih metric dan dimension, membandingkan hasil, lalu menulis finding yang sesuai evidence.",
+    "estimated_minutes": 104,
     "recommended_knowledge": [],
     "skill_tags": ["analytical-thinking", "data-literacy"],
     "challenge": {
         "key": "module-01-nusamart-sales-drop",
-        "title": "NusaMart Sales Drop",
-        "description": "Latih framing pertanyaan bisnis dan interpretasi evidence sebelum melakukan analisis.",
-        "status": "planned"
+        "title": "NusaMart Sales Drop Investigation",
+        "description": "Uji klaim penjualan turun dengan grain, metric, comparison, dimensi, dan batas evidence sebelum mengambil kesimpulan.",
+        "status": "published",
+        "estimated_minutes": 20,
+        "content_file": "challenge/challenge.md",
+        "exercise_file": "challenge/exercises.json",
+        "dataset_refs": ["nusamart/v1"],
+        "completion_criteria": [
+            "Menentukan grain dan metric yang digunakan.",
+            "Memilih comparison dan dimensi yang relevan.",
+            "Menulis finding 1–2 kalimat yang menyebut evidence dan batasnya."
+        ]
     },
     "topic_keys": [
         "01-analyst-role",
-        "02-data-tables"
+        "02-business-to-data-question",
+        "03-data-tables",
+        "04-metrics-dimensions",
+        "05-granularity",
+        "06-aggregation-comparison",
+        "07-data-to-insight"
     ],
     "topics": {
         "01-analyst-role": {
             "title": "What Does a Data Analyst Actually Do?",
             "order": 1,
+            "estimated_minutes": 10,
             "skill_tags": ["analytical-thinking", "data-literacy"],
             "lesson_file": "01-analyst-role/lesson.md",
             "exercise_file": "01-analyst-role/exercises.json",
             "further_reading": [
                 {
-                    "title": "Lihat seluruh Data Analyst Path",
-                    "url": "/learn",
-                    "reason": "Memahami posisi topik ini dalam urutan belajar yang direkomendasikan."
+                    "title": "Tableau — Structure Data for Analysis",
+                    "url": "https://help.tableau.com/current/pro/desktop/en-gb/data_structure_for_analysis.htm",
+                    "reason": "Contoh bagaimana pertanyaan analitis bergantung pada struktur data dan arti satu row."
                 }
             ]
         },
-        "02-data-tables": {
-            "title": "Understanding Data & Tables",
+        "02-business-to-data-question": {
+            "title": "From Business Question to Data Question",
             "order": 2,
+            "estimated_minutes": 13,
+            "skill_tags": ["analytical-thinking", "question-framing"],
+            "lesson_file": "02-business-to-data-question/lesson.md",
+            "exercise_file": "02-business-to-data-question/exercises.json"
+        },
+        "03-data-tables": {
+            "title": "Understanding Data & Tables",
+            "order": 3,
+            "estimated_minutes": 12,
             "skill_tags": ["data-literacy"],
-            "lesson_file": "02-data-tables/lesson.md",
-            "exercise_file": "02-data-tables/exercises.json"
+            "lesson_file": "03-data-tables/lesson.md",
+            "exercise_file": "03-data-tables/exercises.json",
+            "further_reading": [
+                {
+                    "title": "IBM — What Is Exploratory Data Analysis?",
+                    "url": "https://www.ibm.com/think/topics/exploratory-data-analysis",
+                    "reason": "Pengantar bagaimana inspeksi awal membantu memahami isi dan pola dataset sebelum analisis lanjutan."
+                }
+            ]
+        },
+        "04-metrics-dimensions": {
+            "title": "Metrics & Dimensions",
+            "order": 4,
+            "estimated_minutes": 10,
+            "skill_tags": ["analytical-thinking", "data-literacy"],
+            "lesson_file": "04-metrics-dimensions/lesson.md",
+            "exercise_file": "04-metrics-dimensions/exercises.json",
+            "further_reading": [
+                {
+                    "title": "Tableau — Structure Data for Analysis",
+                    "url": "https://help.tableau.com/current/pro/desktop/en-gb/data_structure_for_analysis.htm",
+                    "reason": "Menjelaskan hubungan antara metric, dimension, grain, dan aggregation dalam analisis."
+                }
+            ]
+        },
+        "05-granularity": {
+            "title": "Granularity: What Does One Row Represent?",
+            "order": 5,
+            "estimated_minutes": 12,
+            "skill_tags": ["data-literacy", "analytical-thinking"],
+            "lesson_file": "05-granularity/lesson.md",
+            "exercise_file": "05-granularity/exercises.json",
+            "further_reading": [
+                {
+                    "title": "Tableau — Relationships: Asking Questions Across Multiple Related Tables",
+                    "url": "https://www.tableau.com/blog/relationships-asking-questions-across-multiple-related-tables",
+                    "reason": "Menunjukkan mengapa level detail dan relationship memengaruhi pertanyaan yang bisa dijawab."
+                }
+            ]
+        },
+        "06-aggregation-comparison": {
+            "title": "Aggregation & Comparison",
+            "order": 6,
+            "estimated_minutes": 14,
+            "skill_tags": ["analytical-thinking", "metrics"],
+            "lesson_file": "06-aggregation-comparison/lesson.md",
+            "exercise_file": "06-aggregation-comparison/exercises.json"
+        },
+        "07-data-to-insight": {
+            "title": "From Data to Insight",
+            "order": 7,
+            "estimated_minutes": 13,
+            "skill_tags": ["analytical-thinking", "communication"],
+            "lesson_file": "07-data-to-insight/lesson.md",
+            "exercise_file": "07-data-to-insight/exercises.json",
+            "further_reading": [
+                {
+                    "title": "IBM — What Is Exploratory Data Analysis?",
+                    "url": "https://www.ibm.com/think/topics/exploratory-data-analysis",
+                    "reason": "Mengingat kembali peran eksplorasi untuk menemukan pola, memeriksa asumsi, dan membatasi kesimpulan."
+                },
+                {
+                    "title": "Tableau — What Is Data Analytics?",
+                    "url": "https://www.tableau.com/analytics/what-is-data-analytics",
+                    "reason": "Membedakan pertanyaan deskriptif tentang apa yang terjadi dari interpretasi dan tindakan berikutnya."
+                }
+            ]
         }
     }
 }

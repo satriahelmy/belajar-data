@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FoundationController;
+use App\Http\Controllers\ChallengeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LearnController;
 use App\Http\Controllers\LessonController;
@@ -15,6 +16,12 @@ Route::get('/learn', LearnController::class)->name('learning.index');
 Route::get('/learn/{moduleKey}', ModuleController::class)
     ->where('moduleKey', '[a-z0-9][a-z0-9-]*')
     ->name('learning.module');
+Route::get('/learn/{pathKey}/{moduleKey}/challenge', ChallengeController::class)
+    ->where([
+        'pathKey' => '[a-z0-9][a-z0-9-]*',
+        'moduleKey' => '[a-z0-9][a-z0-9-]*',
+    ])
+    ->name('learning.challenge');
 Route::get('/__foundation', FoundationController::class)->name('foundation');
 Route::get('/__spike/sql', SqlSpikeController::class)->name('spike.sql');
 Route::get('/learn/{pathKey}/{moduleKey}/{topicKey}', LessonController::class)

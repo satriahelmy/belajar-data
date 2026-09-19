@@ -1,0 +1,29 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "thinking-metrics-01",
+            "type": "multiple_choice",
+            "prompt": "NusaMart ingin tahu region dengan revenue tertinggi pada September. Pasangan metric-dimension yang tepat adalah…",
+            "options": [
+                "SUM(revenue) sebagai metric dan region sebagai dimension",
+                "SUM(region) sebagai metric dan revenue sebagai dimension",
+                "COUNT(order_id) sebagai metric tanpa memastikan distinct atau grain",
+                "product_id sebagai metric karena setiap produk memiliki identifier"
+            ],
+            "correct_option": 0
+        },
+        {
+            "id": "thinking-metrics-02",
+            "type": "multiple_choice",
+            "prompt": "Stakeholder ingin tahu apakah jangkauan transaksi meningkat, bukan nilai penjualannya. Metric yang paling sesuai adalah…",
+            "options": [
+                "Jumlah order unik pada periode yang dibandingkan",
+                "Total revenue saja tanpa menghitung order",
+                "Nilai terbesar dari order_id",
+                "Jumlah region yang muncul di tabel"
+            ],
+            "correct_option": 0
+        }
+    ]
+}

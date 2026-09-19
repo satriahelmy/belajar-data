@@ -18,10 +18,12 @@ class ContentFoundationTest extends TestCase
             ->assertSee('What Does a Data Analyst Actually Do?')
             ->assertSee('<table', false)
             ->assertSee('<pre', false)
-            ->assertSee('<a href="/learn">', false)
-            ->assertSee('id="a-simple-workflow"', false)
+            ->assertSee('id="pertanyaan-dulu-tool-belakangan"', false)
             ->assertSee('learning-block--practice')
             ->assertSee('thinking-analyst-01')
+            ->assertSee('thinking-analyst-02')
+            ->assertDontSee('progressive enhancement')
+            ->assertDontSee('tidak disimpan ke server')
             ->assertSee('common-mistake');
 
         $html = $response->getContent();

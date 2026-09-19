@@ -71,20 +71,34 @@ class PublicLearningExperienceTest extends TestCase
         $this->get('/learn/data-analyst/01-thinking-with-data/01-analyst-role')
             ->assertOk()
             ->assertSee('Module 01')
-            ->assertSee('Topic 1 dari 2')
+            ->assertSee('Topic 1 dari 7')
             ->assertSee('Lesson section navigation')
             ->assertSee('lesson-mobile-nav', false)
             ->assertSee('aria-current="page"', false)
             ->assertSee('Further Reading')
-            ->assertSee('/learn/data-analyst/01-thinking-with-data/02-data-tables', false)
+            ->assertSee('/learn/data-analyst/01-thinking-with-data/02-business-to-data-question', false)
             ->assertSee('Lanjut ke topic berikutnya');
 
-        $this->get('/learn/data-analyst/01-thinking-with-data/02-data-tables')
+        $this->get('/learn/data-analyst/01-thinking-with-data/02-business-to-data-question')
             ->assertOk()
-            ->assertSee('Topic 2 dari 2')
+            ->assertSee('Topic 2 dari 7')
             ->assertSee('What Does a Data Analyst Actually Do?')
             ->assertSee('Di halaman ini')
-            ->assertSee('Kembali ke module');
+            ->assertSee('Lanjut ke topic berikutnya');
+    }
+
+    public function test_module_one_challenge_is_available_after_topic_sequence(): void
+    {
+        $this->get('/learn/01-thinking-with-data')
+            ->assertOk()
+            ->assertSee('NusaMart Sales Drop Investigation')
+            ->assertSee('Buka challenge');
+
+        $this->get('/learn/data-analyst/01-thinking-with-data/challenge')
+            ->assertOk()
+            ->assertSee('NusaMart Sales Drop Investigation')
+            ->assertSee('September lebih tinggi daripada Agustus')
+            ->assertSee('Kriteria selesai');
     }
 
     public function test_explore_skills_points_back_to_canonical_path_content(): void

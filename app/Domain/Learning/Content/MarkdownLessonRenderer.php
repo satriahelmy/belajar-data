@@ -21,6 +21,16 @@ class MarkdownLessonRenderer
     public function render(string $key, string $pathKey = 'data-analyst'): RenderedLesson
     {
         $source = $this->repository->lesson($key, $pathKey);
+        return $this->renderCached($source, $pathKey);
+    }
+
+    public function renderChallenge(string $moduleKey, string $pathKey = 'data-analyst'): RenderedLesson
+    {
+        return $this->renderCached($this->repository->challenge($moduleKey, $pathKey), $pathKey);
+    }
+
+    private function renderCached(LessonSource $source, string $pathKey): RenderedLesson
+    {
         $cacheKey = "content:lesson:{$pathKey}:{$source->key}:{$source->sourceHash}";
 
         $ttlDays = max(1, (int) config('belajardata.content_cache_ttl_days', 1));
@@ -137,6 +147,9 @@ class MarkdownLessonRenderer
             'type' => $type,
             'prompt' => $exercise['prompt'] ?? '',
             'options' => $exercise['options'] ?? [],
+            'correct_option' => $exercise['correct_option'] ?? null,
+            'reference_answer' => $exercise['reference_answer'] ?? null,
+            'checklist' => $exercise['checklist'] ?? [],
         ];
 
         $config = htmlspecialchars(
@@ -150,7 +163,7 @@ class MarkdownLessonRenderer
             .'data-practice-id="'.e($id).'" '
             .'data-config="'.$config.'">'
             .'<p><strong>Practice</strong> — '.e($publicConfig['prompt']).'</p>'
-            .'<p data-role="enhancement-status">Practice component is available as a progressive enhancement.</p>'
+            .'<div data-role="practice-mount"></div>'
             .'</section>';
     }
 

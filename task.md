@@ -1,6 +1,6 @@
 # BelajarData V1 — Implementation Plan
 
-Status: M0A, technical spikes A–E, M0C, and M1A are implemented. M1B/M1C and learner state have not started.
+Status: M0A, technical spikes A–E, M0C, M1A, and Module 01 content production are implemented. M1B/M1C and learner state have not started.
 
 This plan is derived from the current source documents in `docs/`, using the requested hierarchy:
 
@@ -633,7 +633,51 @@ homepage → Learn → module → topic/lesson → previous/next.
 #### M1A known limitations
 
 - Only Module 01 has published lesson content; the remaining modules are intentionally metadata-only roadmap entries.
-- Learner state, authentication, completion/resume, bookmarks, challenges, projects workspace, and search remain future M1B/M1C/M2+ work.
+- Learner state, authentication, completion/resume, bookmarks, challenge attempts/completion persistence, projects workspace, and search remain future M1B/M1C/M2+ work; Module 01 challenge content is now published separately below.
+
+### Module 01 Content Production — COMPLETED
+
+#### Objective
+
+Produce Module 01 — *Thinking with Data* as the first production-quality content benchmark without starting M1B/M1C or the shared M2 assessment infrastructure.
+
+#### Completed work
+
+- [x] Re-read the canonical curriculum, PRD, design, architecture, and implementation plan before authoring.
+- [x] Expanded Module 01 to the seven-topic sequence defined in `docs/curriculum.md`.
+- [x] Replaced the two representative lessons with Indonesian-first production narrative covering question framing, data/tables, metrics/dimensions, grain, aggregation/comparison, and evidence-limited insight.
+- [x] Added registered practice references to every Module 01 topic.
+- [x] Completed the Module 01 content-depth pass: each topic now has a deliberate concept progression, progressive examples/counterexamples, a reasoning checkpoint, and a useful takeaway or transition without changing the frozen visual direction.
+- [x] Completed the Module 01 editorial voice pass: removed repetitive template framing and redundant recaps, varied section rhythm, led with concrete data/questions where useful, and kept practice copy learner-facing and concise.
+- [x] Completed final Module 01 content/editorial QA: removed learner-facing implementation copy, reconciled factual examples and terminology, verified Further Reading, and checked the complete seven-topic journey plus challenge.
+- [x] Added realistic per-topic learning estimates (10–14 minutes; 84 minutes across lessons) and aligned the module estimate to 104 minutes including the 20-minute challenge.
+- [x] Published the `NusaMart Sales Drop Investigation` challenge as repository content with six deterministic checkpoints and one structured text self-assessment reference/checklist.
+- [x] Extended the challenge with a secondary-metric checkpoint so learners compare revenue with average order value before writing the final finding.
+- [x] Kept the challenge grounded in the existing `datasets/nusamart/v1` fixture; the content explicitly distinguishes the stakeholder claim from what the sample evidence supports.
+- [x] Added a server-rendered challenge route and linked it from the Module 01 detail page.
+- [x] Added the lightweight browser practice enhancement for multiple choice and self-assessment review; it intentionally does not persist learner state.
+- [x] Added verified Further Reading metadata to the relevant topics without introducing an AI section or AI-dependent learning outcome.
+- [x] Added `docs/decisions/module-01-content.md` with the canonical structure, dataset boundary, assessment boundary, editorial rules, and reusable patterns for later modules.
+- [x] Added `docs/content-guide.md` as the reusable editorial/content quality reference for future M3–M7 production; it is guidance, not a rigid lesson template.
+- [x] Added focused feature tests for the seven-topic sequence, repository challenge loading, lesson rendering, and challenge availability.
+
+#### Verification results
+
+- [x] `php artisan content:validate` passes for all seven Module 01 lessons, the published challenge, and `nusamart/v1`.
+- [x] Full backend/frontend/build verification is recorded after the final production pass.
+- [x] Desktop/mobile manual walkthrough is recorded after the final production pass.
+- [x] Content-depth and editorial pass verification: `php artisan test` (32 tests, 180 assertions), `node --test tests/Frontend/*.test.js` (6 passed), `npm run build`, `composer validate --strict`, and `git diff --check` all pass.
+
+#### Explicitly not started
+
+- [x] M1B/M1C learner state, authentication, bookmarks, recent learning, and account merge remain untouched.
+- [x] M2 shared assessment persistence, attempt storage, server-side completion, and challenge aggregation remain untouched.
+- [x] Module 02 and later curriculum authoring remain untouched.
+
+#### Known limitations
+
+- Practice answers and challenge completion are session-only browser behavior until the approved learner-state/assessment milestones are implemented.
+- The NusaMart v1 fixture remains a small representative fixture; it is used to teach evidence boundaries, not to claim production-scale coverage.
 
 ### M1 — Learning Core (remaining M1B/M1C scope)
 

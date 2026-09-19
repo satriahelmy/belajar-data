@@ -1,0 +1,29 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "thinking-grain-01",
+            "type": "multiple_choice",
+            "prompt": "Pada tabel order-item, satu order dapat memiliki beberapa row. Satu row mewakili apa?",
+            "options": [
+                "Satu row mewakili satu item produk dalam satu order",
+                "Satu row selalu mewakili satu order unik",
+                "Satu row mewakili satu customer sepanjang hidupnya",
+                "Satu row mewakili satu bulan penjualan"
+            ],
+            "correct_option": 0
+        },
+        {
+            "id": "thinking-grain-02",
+            "type": "text_self_assessment",
+            "prompt": "Dari tiga row contoh tadi, kenapa COUNT(*) bukan pilihan aman untuk menghitung order? Operasi apa yang kamu pilih?",
+            "reference_answer": "COUNT(*) menghasilkan 3 karena ada tiga order-item, padahal hanya ada dua order unik. Untuk menghitung order, gunakan COUNT DISTINCT(order_id).",
+            "checklist": [
+                "Menyebutkan tiga row order-item.",
+                "Menyebutkan dua order unik.",
+                "Menjelaskan bahwa satu order dapat muncul beberapa kali.",
+                "Memilih COUNT DISTINCT(order_id) untuk jumlah order."
+            ]
+        }
+    ]
+}

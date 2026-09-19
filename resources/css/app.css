@@ -275,7 +275,22 @@ code, pre { font-family: var(--font-mono); }
 .learning-block--practice { border-top: 2px solid var(--accent); border-bottom: 1px solid var(--border-strong); }
 .learning-block--practice p:first-child { font-size: 1.02rem; }
 .learning-block--practice p:first-child strong { color: var(--accent-dark); letter-spacing: .03em; }
-.learning-block--practice [data-role="enhancement-status"] { margin-top: .7rem; color: var(--muted); font-size: .88rem; }
+.practice-options { display: grid; gap: .55rem; margin: 1rem 0; padding: 0; border: 0; }
+.practice-options legend, .practice-writing-label { margin-bottom: .5rem; color: var(--muted); font-size: .88rem; font-weight: 700; }
+.practice-option { display: flex; align-items: flex-start; gap: .6rem; padding: .6rem .7rem; border: 1px solid var(--border); background: var(--surface); cursor: pointer; font-size: .92rem; }
+.practice-option:hover { border-color: var(--accent); }
+.practice-option input { flex: 0 0 auto; margin-top: .3rem; accent-color: var(--accent); }
+.practice-action { margin-top: .2rem; cursor: pointer; }
+.practice-feedback { margin-top: .75rem; font-size: .9rem; font-weight: 600; }
+.practice-feedback[data-state="correct"] { color: var(--accent-dark); }
+.practice-feedback[data-state="incorrect"], .practice-feedback[data-state="incomplete"] { color: var(--warning); }
+.practice-writing-label { display: grid; }
+.practice-writing { width: 100%; min-height: 7rem; margin-top: .4rem; padding: .7rem; border: 1px solid var(--border-strong); color: var(--foreground); background: var(--surface); font: inherit; line-height: 1.5; resize: vertical; }
+.practice-review { margin-top: 1rem; padding: .9rem 1rem; border-left: 3px solid var(--accent); background: var(--accent-soft); }
+.practice-review p { margin: .35rem 0 .8rem; }
+.practice-review ul { margin: .4rem 0 0; padding-left: 1.25rem; }
+.practice-review li { margin: .25rem 0; }
+.practice-review input { margin-right: .35rem; accent-color: var(--accent); }
 .further-reading { margin-top: var(--space-8); padding-top: var(--space-6); border-top: 2px solid var(--foreground); }
 .further-reading h2 { font-size: 1.3rem; }
 .further-reading__item { padding: .8rem 0; border-bottom: 1px solid var(--border); }
@@ -283,6 +298,15 @@ code, pre { font-family: var(--font-mono); }
 .further-reading__item p { margin: .25rem 0 0; color: var(--muted); font-size: .92rem; }
 .lesson-next-nav { display: flex; justify-content: space-between; align-items: center; gap: var(--space-4); margin-top: var(--space-8); padding-top: var(--space-5); border-top: 2px solid var(--foreground); }
 .lesson-next-nav__previous { max-width: 45%; font-size: .9rem; }
+.challenge-page { padding-block: var(--space-7) var(--space-6); }
+.challenge-header { max-width: var(--reading-width); padding-bottom: var(--space-6); border-bottom: 1px solid var(--border); }
+.challenge-header h1 { max-width: 22ch; margin-bottom: .8rem; }
+.challenge-header__meta { display: flex; flex-wrap: wrap; gap: .65rem 1.25rem; margin-top: var(--space-5); color: var(--muted); font-family: var(--font-mono); font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; }
+.challenge-layout { max-width: var(--reading-width); padding-top: var(--space-7); }
+.challenge-criteria { margin-top: var(--space-8); padding: var(--space-5); border-top: 2px solid var(--accent); border-bottom: 1px solid #b9dfd1; background: var(--accent-soft); }
+.challenge-criteria h2 { margin-bottom: .6rem; font-size: 1.35rem; }
+.challenge-criteria ul { margin: 0 0 1rem; padding-left: 1.25rem; }
+.challenge-criteria .quiet-note { margin-bottom: 0; }
 
 @media (max-width: 64rem) {
     .lesson-workspace { display: block; max-width: var(--reading-width); margin-inline: 0; }

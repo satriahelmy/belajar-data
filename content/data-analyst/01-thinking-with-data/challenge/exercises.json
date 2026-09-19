@@ -1,0 +1,86 @@
+{
+    "schema_version": 1,
+    "challenge_key": "module-01-nusamart-sales-drop",
+    "dataset_refs": ["nusamart/v1"],
+    "exercises": [
+        {
+            "id": "challenge-01-grain",
+            "type": "multiple_choice",
+            "prompt": "Satu row pada data transaksi ini mewakili apa?",
+            "options": [
+                "One row per order-item transaction",
+                "One row per customer",
+                "One row per month"
+            ],
+            "correct_option": 0
+        },
+        {
+            "id": "challenge-01-metric",
+            "type": "multiple_choice",
+            "prompt": "Untuk memeriksa klaim sales turun, metric awal yang dipakai adalah…",
+            "options": [
+                "Revenue",
+                "Region",
+                "Order_id yang dijumlahkan"
+            ],
+            "correct_option": 0
+        },
+        {
+            "id": "challenge-01-comparison",
+            "type": "multiple_choice",
+            "prompt": "Comparison awal yang paling tepat untuk data latihan ini adalah…",
+            "options": [
+                "Revenue September dibandingkan revenue Agustus pada data yang sama",
+                "Revenue September dibandingkan warna chart yang dipilih",
+                "Revenue September dibandingkan dugaan penyebab penurunan"
+            ],
+            "correct_option": 0
+        },
+        {
+            "id": "challenge-01-secondary-metric",
+            "type": "multiple_choice",
+            "prompt": "Apa yang bisa ditambahkan untuk membaca perubahan di balik revenue 450 menjadi 600?",
+            "options": [
+                "Average order value: revenue dibagi distinct orders, yang berubah dari 150 menjadi 120",
+                "Menjumlahkan order_id untuk mendapatkan ukuran order",
+                "Menghapus jumlah order karena revenue sudah cukup",
+                "Menyimpulkan penyebab dari region yang berubah"
+            ],
+            "correct_option": 0
+        },
+        {
+            "id": "challenge-01-dimension",
+            "type": "multiple_choice",
+            "prompt": "Dimension mana yang masuk akal untuk memecah perubahan revenue?",
+            "options": [
+                "Region dan channel",
+                "Revenue dan quantity sebagai nama kelompok",
+                "Order_id sebagai penyebab"
+            ],
+            "correct_option": 0
+        },
+        {
+            "id": "challenge-01-evidence",
+            "type": "multiple_choice",
+            "prompt": "Kesimpulan mana yang paling bisa dipertanggungjawabkan dari data ini?",
+            "options": [
+                "Klaim sales turun belum didukung data ini; September lebih tinggi daripada Agustus dan penyebab perubahan belum diketahui.",
+                "Pelanggan pasti kehilangan minat karena total berubah.",
+                "South pasti menjadi penyebab karena baru muncul di September."
+            ],
+            "correct_option": 0
+        },
+        {
+            "id": "challenge-01-finding",
+            "type": "text_self_assessment",
+            "prompt": "Tulis finding 1–2 kalimat untuk stakeholder berdasarkan data ini.",
+            "reference_answer": "Pada data latihan NusaMart ini, revenue September sebesar 600 lebih tinggi daripada Agustus sebesar 450, sehingga klaim sales turun belum didukung oleh comparison tersebut. Perubahan antar-region terlihat, tetapi penyebabnya belum dapat ditentukan dari data transaksi ini saja.",
+            "checklist": [
+                "Menyebutkan revenue dan dua periode yang dibandingkan.",
+                "Menyatakan bahwa kesimpulan berlaku pada data yang tersedia.",
+                "Tidak mengubah dugaan penyebab menjadi fakta.",
+                "Menyebutkan apa yang masih belum diketahui."
+            ]
+        }
+    ]
+}

@@ -30,10 +30,14 @@
                         <p class="module-challenge__meta">Module challenge · setelah topic sequence</p>
                         <h2 id="challenge-title">{{ $module['challenge']['title'] }}</h2>
                         <p>{{ $module['challenge']['description'] }}</p>
-                        <p class="quiet-note">Challenge akan tersedia setelah practice dan assessment foundation selesai.</p>
+                        <p class="quiet-note">~{{ $module['challenge']['estimated_minutes'] ?? 20 }} menit · Kerjakan setelah topic sequence, lalu cocokkan finding-mu dengan reference approach.</p>
                     </div>
                     @if ($module['topics'] !== [])
-                        <a class="button button--primary" href="{{ route('learning.lesson', ['pathKey' => 'data-analyst', 'moduleKey' => $module['key'], 'topicKey' => $module['topics'][0]['key']]) }}">Mulai belajar <span aria-hidden="true">→</span></a>
+                        @if (($module['challenge']['status'] ?? null) === 'published')
+                            <a class="button button--primary" href="{{ route('learning.challenge', ['pathKey' => 'data-analyst', 'moduleKey' => $module['key']]) }}">Buka challenge <span aria-hidden="true">→</span></a>
+                        @else
+                            <a class="button button--primary" href="{{ route('learning.lesson', ['pathKey' => 'data-analyst', 'moduleKey' => $module['key'], 'topicKey' => $module['topics'][0]['key']]) }}">Mulai belajar <span aria-hidden="true">→</span></a>
+                        @endif
                     @endif
                 </section>
                 @if ($nextModule)<section class="module-next"><div><p class="eyebrow">Module berikutnya</p><h2>{{ str_pad((string) $nextModule['number'], 2, '0', STR_PAD_LEFT) }} — {{ $nextModule['title'] }}</h2><p>{{ $nextModule['purpose'] }}</p></div><a class="text-link" href="{{ route('learning.index') }}#module-{{ $nextModule['key'] }}">Lihat posisinya di path <span aria-hidden="true">→</span></a></section>@endif

@@ -1,0 +1,29 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "thinking-data-01",
+            "type": "multiple_choice",
+            "prompt": "Tabel NusaMart memiliki satu row per order-item. Kalau ingin menghitung jumlah order, mana yang paling aman?",
+            "options": [
+                "Menghitung order_id yang distinct karena satu order dapat muncul di beberapa row",
+                "Menghitung semua row karena setiap row adalah satu order",
+                "Menjumlahkan semua order_id",
+                "Mengabaikan grain dan hanya memakai field revenue"
+            ],
+            "correct_option": 0
+        },
+        {
+            "id": "thinking-data-02",
+            "type": "text_self_assessment",
+            "prompt": "Tulis satu kalimat: “Satu row mewakili …”. Lalu jelaskan mengapa jumlah row tidak sama dengan jumlah order.",
+            "reference_answer": "Satu row mewakili satu item produk dalam sebuah order pada tabel order-item. Karena satu order dapat memiliki beberapa item, order_id O-1001 muncul dua kali sehingga tiga row hanya mewakili dua order unik.",
+            "checklist": [
+                "Menyebutkan bahwa satu row adalah satu order-item atau item produk.",
+                "Menyebutkan bahwa satu order dapat memiliki beberapa row.",
+                "Membedakan tiga row dari dua order unik.",
+                "Mengaitkan jawaban dengan order_id yang berulang."
+            ]
+        }
+    ]
+}
