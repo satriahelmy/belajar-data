@@ -1,6 +1,6 @@
 @extends('layouts.public', ['active' => 'learn'])
 
-@section('title', $challengeTitle.' — BelajarData')
+@section('title', $challengeTitle.' | BelajarData')
 
 @section('content')
     <div class="challenge-page site-container">

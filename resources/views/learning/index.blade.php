@@ -1,6 +1,6 @@
 @extends('layouts.public', ['active' => 'learn'])
 
-@section('title', 'Learn — BelajarData')
+@section('title', 'Learn | BelajarData')
 
 @section('content')
     <div class="page-shell site-container">

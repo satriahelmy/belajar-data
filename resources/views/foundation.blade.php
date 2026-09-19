@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $application }} — foundation</title>
+    <title>{{ $application }}: foundation</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>

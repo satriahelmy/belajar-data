@@ -1,6 +1,6 @@
 @extends('layouts.public', ['active' => 'learn'])
 
-@section('title', $lessonTitle.' — BelajarData')
+@section('title', $lessonTitle.' | BelajarData')
 
 @section('content')
     <div class="lesson-page site-container">

@@ -1,6 +1,6 @@
 @extends('layouts.public', ['active' => 'learn'])
 
-@section('title', $module['title'].' — BelajarData')
+@section('title', $module['title'].' | BelajarData')
 
 @section('content')
     <div class="page-shell site-container module-page">
@@ -40,7 +40,7 @@
                         @endif
                     @endif
                 </section>
-                @if ($nextModule)<section class="module-next"><div><p class="eyebrow">Module berikutnya</p><h2>{{ str_pad((string) $nextModule['number'], 2, '0', STR_PAD_LEFT) }} — {{ $nextModule['title'] }}</h2><p>{{ $nextModule['purpose'] }}</p></div><a class="text-link" href="{{ route('learning.index') }}#module-{{ $nextModule['key'] }}">Lihat posisinya di path <span aria-hidden="true">→</span></a></section>@endif
+                @if ($nextModule)<section class="module-next"><div><p class="eyebrow">Module berikutnya</p><h2>{{ str_pad((string) $nextModule['number'], 2, '0', STR_PAD_LEFT) }}: {{ $nextModule['title'] }}</h2><p>{{ $nextModule['purpose'] }}</p></div><a class="text-link" href="{{ route('learning.index') }}#module-{{ $nextModule['key'] }}">Lihat posisinya di path <span aria-hidden="true">→</span></a></section>@endif
             </div>
         </div>
     </div>

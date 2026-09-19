@@ -15,7 +15,7 @@ Metric menjawab “berapa”. Dimension membantu kita melihat “di mana, kapan,
 
 Jangan menyebut semua angka sebagai metric. Jika ingin tahu jangkauan transaksi, hitung jumlah order unik. Jika ingin tahu nilai penjualan, hitung revenue. Dua pertanyaan ini dapat memakai tabel yang sama tetapi memberi cerita yang berbeda.
 
-`product_id` adalah identifier, bukan ukuran “produk terbaik”. Untuk membandingkan produk, kita masih perlu memilih metric—revenue, quantity, atau margin—serta periode dan arti “terbaik”.
+`product_id` adalah identifier, bukan ukuran “produk terbaik”. Untuk membandingkan produk, kita masih perlu memilih metric, misalnya revenue, quantity, atau margin, serta periode dan arti “terbaik”.
 
 Dimension juga bukan penyebab. `region` bisa menunjukkan bagian mana yang berubah; ia belum menjelaskan mengapa perubahan itu terjadi.
 

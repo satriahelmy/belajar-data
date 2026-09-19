@@ -1,6 +1,6 @@
 @extends('layouts.public', ['active' => 'skills'])
 
-@section('title', 'Explore Skills — BelajarData')
+@section('title', 'Explore Skills | BelajarData')
 
 @section('content')
     <div class="page-shell site-container"><header class="page-intro page-intro--compact"><p class="eyebrow">Explore Skills</p><h1>Masuk dari skill yang sedang kamu butuhkan.</h1><p class="lede">Explore Skills adalah indeks ke content canonical di Data Analyst Path, bukan curriculum kedua.</p></header><div class="skills-list">

@@ -45,7 +45,7 @@
             "exercise_file": "01-analyst-role/exercises.json",
             "further_reading": [
                 {
-                    "title": "Tableau — Structure Data for Analysis",
+                    "title": "Tableau: Structure Data for Analysis",
                     "url": "https://help.tableau.com/current/pro/desktop/en-gb/data_structure_for_analysis.htm",
                     "reason": "Contoh bagaimana pertanyaan analitis bergantung pada struktur data dan arti satu row."
                 }
@@ -68,7 +68,7 @@
             "exercise_file": "03-data-tables/exercises.json",
             "further_reading": [
                 {
-                    "title": "IBM — What Is Exploratory Data Analysis?",
+                    "title": "IBM: What Is Exploratory Data Analysis?",
                     "url": "https://www.ibm.com/think/topics/exploratory-data-analysis",
                     "reason": "Pengantar bagaimana inspeksi awal membantu memahami isi dan pola dataset sebelum analisis lanjutan."
                 }
@@ -83,7 +83,7 @@
             "exercise_file": "04-metrics-dimensions/exercises.json",
             "further_reading": [
                 {
-                    "title": "Tableau — Structure Data for Analysis",
+                    "title": "Tableau: Structure Data for Analysis",
                     "url": "https://help.tableau.com/current/pro/desktop/en-gb/data_structure_for_analysis.htm",
                     "reason": "Menjelaskan hubungan antara metric, dimension, grain, dan aggregation dalam analisis."
                 }
@@ -98,7 +98,7 @@
             "exercise_file": "05-granularity/exercises.json",
             "further_reading": [
                 {
-                    "title": "Tableau — Relationships: Asking Questions Across Multiple Related Tables",
+                    "title": "Tableau: Relationships: Asking Questions Across Multiple Related Tables",
                     "url": "https://www.tableau.com/blog/relationships-asking-questions-across-multiple-related-tables",
                     "reason": "Menunjukkan mengapa level detail dan relationship memengaruhi pertanyaan yang bisa dijawab."
                 }
@@ -121,12 +121,12 @@
             "exercise_file": "07-data-to-insight/exercises.json",
             "further_reading": [
                 {
-                    "title": "IBM — What Is Exploratory Data Analysis?",
+                    "title": "IBM: What Is Exploratory Data Analysis?",
                     "url": "https://www.ibm.com/think/topics/exploratory-data-analysis",
                     "reason": "Mengingat kembali peran eksplorasi untuk menemukan pola, memeriksa asumsi, dan membatasi kesimpulan."
                 },
                 {
-                    "title": "Tableau — What Is Data Analytics?",
+                    "title": "Tableau: What Is Data Analytics?",
                     "url": "https://www.tableau.com/analytics/what-is-data-analytics",
                     "reason": "Membedakan pertanyaan deskriptif tentang apa yang terjadi dari interpretasi dan tindakan berikutnya."
                 }

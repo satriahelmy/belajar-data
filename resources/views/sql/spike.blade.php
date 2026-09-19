@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gate A — Browser SQL spike</title>
+    <title>Gate A: Browser SQL spike</title>
     @vite(['resources/css/app.css', 'resources/css/sql-spike.css', 'resources/js/spike/sql/sql.js'])
 </head>
 <body>

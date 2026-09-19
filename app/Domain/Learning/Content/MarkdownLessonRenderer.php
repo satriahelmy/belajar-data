@@ -162,7 +162,7 @@ class MarkdownLessonRenderer
             .'data-learning-component="practice" '
             .'data-practice-id="'.e($id).'" '
             .'data-config="'.$config.'">'
-            .'<p><strong>Practice</strong> — '.e($publicConfig['prompt']).'</p>'
+            .'<p><strong>Practice:</strong> '.e($publicConfig['prompt']).'</p>'
             .'<div data-role="practice-mount"></div>'
             .'</section>';
     }

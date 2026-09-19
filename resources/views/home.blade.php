@@ -1,6 +1,6 @@
 @extends('layouts.public', ['active' => null])
 
-@section('title', 'Belajar data, tanpa bingung mulai dari mana — BelajarData')
+@section('title', 'Belajar data, tanpa bingung mulai dari mana | BelajarData')
 
 @section('content')
     <div class="home-page">

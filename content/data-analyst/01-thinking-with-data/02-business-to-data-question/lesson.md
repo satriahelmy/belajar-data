@@ -28,7 +28,7 @@ Untuk pertanyaan pertama, rantainya bisa ditulis seperti ini:
 | Dimension/context | Region atau kategori, bila perubahan perlu diurai |
 | Required data | `order_date`, `revenue`, `region`, `category`, `order_id` |
 
-Kalau yang ingin dihitung adalah customer aktif, `order_id` saja tidak cukup. Kita perlu customer identifier dan definisi “aktif”—misalnya pernah membeli dalam 30 hari terakhir.
+Kalau yang ingin dihitung adalah customer aktif, `order_id` saja tidak cukup. Kita perlu customer identifier dan definisi “aktif”, misalnya pernah membeli dalam 30 hari terakhir.
 
 Satu detail yang berubah bisa mengubah keputusan. Karena itu, jangan melompat dari kalimat stakeholder langsung ke kolom yang kebetulan tersedia.
 
@@ -41,7 +41,7 @@ Satu detail yang berubah bisa mengubah keputusan. Karena itu, jangan melompat da
 | “Berapa customer aktif?” | Definisi aktif, periode, dan customer identifier |
 | “Produk apa yang harus kita tambah?” | Tujuan keputusan dan evidence demand |
 
-“Pada September 2025, region mana yang memiliki revenue tertinggi dan bagaimana perubahannya dibanding Agustus?” sudah lebih siap dihitung. Ia belum menjawab penyebab—dan memang belum mengklaim itu.
+“Pada September 2025, region mana yang memiliki revenue tertinggi dan bagaimana perubahannya dibanding Agustus?” sudah lebih siap dihitung. Ia belum menjawab penyebab, dan memang belum mengklaim itu.
 
 ## Coba rapikan pertanyaannya
 
