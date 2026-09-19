@@ -126,7 +126,7 @@ function mountSelfAssessment(element, mountPoint, config) {
     complete.textContent = 'Tandai latihan selesai';
     complete.addEventListener('click', () => {
         element.dataset.completed = 'true';
-        complete.textContent = 'Latihan selesai di sesi ini';
+        complete.textContent = 'Latihan selesai.';
     });
 
     submit.addEventListener('click', () => {

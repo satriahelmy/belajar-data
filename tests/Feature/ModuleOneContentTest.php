@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
-use App\Domain\Learning\CurriculumRepository;
 use App\Domain\Learning\Content\ContentRepository;
 use App\Domain\Learning\Content\MarkdownLessonRenderer;
+use App\Domain\Learning\CurriculumRepository;
 use Tests\TestCase;
 
 class ModuleOneContentTest extends TestCase
@@ -66,6 +66,50 @@ class ModuleOneContentTest extends TestCase
         }
 
         $this->assertContains('text_self_assessment', $exerciseTypes);
+    }
+
+    public function test_module_one_output_has_no_implementation_copy_and_navigation_uses_real_headings(): void
+    {
+        $module = app(CurriculumRepository::class)->module('01-thinking-with-data');
+        $renderer = app(MarkdownLessonRenderer::class);
+        $bannedCopy = [
+            'progressive enhancement',
+            'latihan siap dikerjakan di browser',
+            'jawaban tidak disimpan ke server',
+            'component registered',
+            'server-rendered',
+            'server rendered',
+            'persistence',
+            'renderer',
+        ];
+
+        foreach ($module['topics'] as $topic) {
+            $response = $this->get('/learn/data-analyst/01-thinking-with-data/'.$topic['key']);
+            $html = $response->getContent();
+            $visibleText = strtolower((string) preg_replace('/\s+/', ' ', strip_tags($html)));
+            $rendered = $renderer->render('01-thinking-with-data/'.$topic['key']);
+
+            $response->assertOk()->assertSee('<strong>Practice:</strong>', false);
+
+            foreach ($bannedCopy as $phrase) {
+                $this->assertStringNotContainsString($phrase, $visibleText, $topic['key'].' exposes implementation copy.');
+            }
+
+            foreach ($rendered->headings as $heading) {
+                $this->assertSame(
+                    2,
+                    substr_count($html, 'href="#'.$heading['slug'].'"'),
+                    $topic['key'].' section navigation must match real headings.',
+                );
+            }
+        }
+
+        $challenge = $this->get('/learn/data-analyst/01-thinking-with-data/challenge');
+        $challengeText = strtolower((string) preg_replace('/\s+/', ' ', strip_tags($challenge->getContent())));
+
+        foreach ($bannedCopy as $phrase) {
+            $this->assertStringNotContainsString($phrase, $challengeText, 'Challenge exposes implementation copy.');
+        }
     }
 
     public function test_module_one_challenge_evidence_matches_the_canonical_fixture(): void

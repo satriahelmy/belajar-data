@@ -28,7 +28,7 @@ Bandingkan revenue Agustus dan September dari data yang sama.
 | September 2025 | 600 | 5 |
 
 :::callout type="note"
-Angka ini diringkas dari `datasets/nusamart/v1/transactions.json`. Di data latihan ini, September lebih tinggi daripada Agustus. Jadi, klaim awal “sales turun” belum didukung oleh comparison tersebut.
+Angka ini diringkas dari data transaksi latihan. Di data latihan ini, September lebih tinggi daripada Agustus. Jadi, klaim awal “sales turun” belum didukung oleh comparison tersebut.
 :::
 
 :::practice type="multiple_choice" id="challenge-01-comparison"

@@ -28,6 +28,11 @@ final class LessonController extends Controller
             abort(404);
         }
 
+        $contentKey = $pathKey.'/'.$lessonKey;
+        $progressState = auth()->user()?->topicProgress()
+            ->where('content_key', $contentKey)
+            ->value('status');
+
         return view('learning.lesson', [
             'lesson' => $lesson,
             'pathKey' => $pathKey,
@@ -36,6 +41,8 @@ final class LessonController extends Controller
             'topic' => $topic,
             'navigation' => $navigation,
             'lessonTitle' => $topic['title'] ?? $lesson->headings[0]['text'] ?? $lessonKey,
+            'progressKey' => $contentKey,
+            'progressState' => $progressState,
         ]);
     }
 }

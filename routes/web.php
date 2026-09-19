@@ -1,17 +1,32 @@
 <?php
 
-use App\Http\Controllers\FoundationController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChallengeController;
+use App\Http\Controllers\FoundationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LearnController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ModuleController;
+use App\Http\Controllers\ProgressController;
 use App\Http\Controllers\ProjectsController;
-use App\Http\Controllers\SqlSpikeController;
 use App\Http\Controllers\SkillsController;
+use App\Http\Controllers\SqlSpikeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.store');
+    Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+    Route::post('/register', [AuthController::class, 'register'])->name('register.store');
+});
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
+Route::middleware('auth')->prefix('progress')->group(function () {
+    Route::get('/topics', [ProgressController::class, 'index'])->name('progress.topics');
+    Route::post('/topics/start', [ProgressController::class, 'start'])->name('progress.topics.start');
+    Route::post('/topics/complete', [ProgressController::class, 'complete'])->name('progress.topics.complete');
+    Route::post('/merge-guest', [ProgressController::class, 'mergeGuest'])->name('progress.merge-guest');
+});
 Route::get('/learn', LearnController::class)->name('learning.index');
 Route::get('/learn/{moduleKey}', ModuleController::class)
     ->where('moduleKey', '[a-z0-9][a-z0-9-]*')

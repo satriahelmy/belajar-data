@@ -1,6 +1,7 @@
 import './bootstrap';
 
 import { mountRegisteredComponents } from './components/registry';
+import { mountTopicProgress } from './learner/progress';
 
 const setupMobileNavigation = () => {
     const toggle = document.querySelector('[data-nav-toggle]');
@@ -16,14 +17,17 @@ const setupMobileNavigation = () => {
     });
 };
 
-const mount = () => mountRegisteredComponents(document);
+const mount = async () => {
+    await mountRegisteredComponents(document);
+    await mountTopicProgress(document);
+};
 
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         setupMobileNavigation();
-        mount();
+        void mount();
     }, { once: true });
 } else {
     setupMobileNavigation();
-    mount();
+    void mount();
 }
