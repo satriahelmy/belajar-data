@@ -1,107 +1,152 @@
 # BelajarData
 
-BelajarData is a greenfield, repository-first Laravel learning platform for Data Analysts. The application is server-rendered with progressive JavaScript enhancement and is designed for conventional PHP/MySQL shared hosting.
+BelajarData adalah platform belajar Data Analyst berbasis Laravel. Aplikasi ini menggunakan pendekatan repository-first: materi pembelajaran, konfigurasi latihan, dan dataset disimpan sebagai file yang dapat ditinjau dan divalidasi sebelum deployment.
 
-## M0A local setup
+Aplikasi dirancang sebagai Laravel modular monolith yang server-rendered, dengan progressive JavaScript enhancement untuk komponen interaktif. Bentuk deployment-nya tetap konvensional dan ramah shared hosting: PHP, MySQL, dan aset frontend hasil build.
 
-The local foundation uses:
+## Status proyek
+
+- M0A: fondasi teknis selesai.
+- M0B: technical spikes Gate A sampai E selesai dan keputusan teknis telah dicatat.
+- M0C: fondasi produk selesai.
+- M1A: public learning experience dan visual direction V2 selesai.
+- Module 01: konten produksi dan final editorial QA selesai.
+- M1B: learner-state foundation sedang berjalan.
+
+Yang sudah tersedia pada increment M1B saat ini:
+
+- registrasi, login, dan logout;
+- status topic `started` dan `completed`;
+- progress guest melalui `localStorage`;
+- penyimpanan progress learner terautentikasi di MySQL;
+- merge progress guest ke akun setelah login atau registrasi;
+- operasi progress yang idempotent dan tidak menurunkan status `completed`.
+
+Bookmarks, halaman recent/resume/progress untuk learner, dan bagian learner-state berikutnya belum dikerjakan.
+
+## Teknologi dan versi lokal
+
+Versi yang digunakan saat ini:
 
 - PHP 8.2.12
-- Laravel 12.69.2 on the Laravel 12 application skeleton
-- MySQL 8.0.45 through PDO
-- Node.js 24.11.1 and npm 11.6.2
-- Vite 6.4.3 for compiled frontend assets
+- Laravel 12.69.2
+- Composer 2.9.2
+- MySQL 8.0.45 melalui PDO
+- Node.js 24.11.1
+- npm 11.6.2
+- Vite 6.4.3
 
-Create `.env` from `.env.example`, then set the local database credentials for `belajar_data_v2`. Keep passwords in `.env` only; never commit them.
+## Menjalankan secara lokal
+
+Pastikan PHP, Composer, Node.js/npm, dan MySQL tersedia. Database development yang digunakan adalah `belajar_data_v2`.
+
+1. Salin konfigurasi environment:
+
+   ```powershell
+   Copy-Item .env.example .env
+   ```
+
+2. Atur koneksi database di `.env`. Password lokal hanya boleh berada di `.env` dan tidak boleh di-commit:
+
+   ```dotenv
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=belajar_data_v2
+   DB_USERNAME=root
+   DB_PASSWORD=<password-lokal>
+   ```
+
+3. Install dependency dan siapkan aplikasi:
+
+   ```powershell
+   composer install
+   npm install
+   php artisan key:generate
+   php artisan migrate
+   npm run build
+   ```
+
+4. Jalankan server development:
+
+   ```powershell
+   php artisan serve
+   ```
+
+   Buka `http://127.0.0.1:8000`.
+
+Untuk development frontend dengan Vite, gunakan terminal terpisah:
 
 ```powershell
-composer install
-npm install
-npm run build
-php artisan test
+npm run dev
 ```
 
-The public homepage is `/`. The public learning routes are `/learn`, `/learn/{module}`, `/learn/{path}/{module}/{topic}`, `/skills`, and `/projects`. The foundation smoke route remains available at `/__foundation` for technical verification.
+## Verifikasi
 
-## Repository conventions
+Perintah utama untuk memeriksa aplikasi:
+
+```powershell
+php artisan test
+node --test tests/Frontend/*.test.js
+php artisan content:validate
+npm run build
+git diff --check
+```
+
+`content:validate` memeriksa kontrak konten repository, referensi practice, struktur lesson, dan dataset yang digunakan oleh materi. Jalankan validasi ini sebelum deployment atau setelah mengubah konten.
+
+## Rute utama
+
+- `/` : homepage.
+- `/learn` : learning path.
+- `/learn/{module}` : ringkasan module.
+- `/learn/{path}/{module}/{topic}` : lesson server-rendered.
+- `/skills` : skills overview.
+- `/projects` : projects overview.
+- `/login` dan `/register` : akses akun learner.
+- `/__foundation` : smoke route fondasi teknis.
+- `/__spike/*` : route teknis sementara untuk technical spikes.
+
+Endpoint progress account berada di bawah `/progress/*` dan hanya dapat diakses oleh learner yang sudah login.
+
+## Struktur repository
 
 ```text
-app/Domain/{Learning,Learner,Projects,Datasets}/  modular monolith boundaries
-content/                                           repository-first lessons/config
-datasets/                                          versioned learning data
-resources/views/                                   server-rendered Blade views
-resources/js/                                      progressive enhancements
-resources/css/                                     compiled application styles
-tests/                                             feature and unit tests
+app/Domain/Learning/       konten, lesson, dan learning contracts
+app/Domain/Learner/        progress dan state learner
+app/Domain/Projects/       batas domain projects
+app/Domain/Datasets/       manifest dan akses dataset
+app/Http/                  controller dan request pipeline
+app/Models/                model persistence Laravel
+content/                   Markdown lesson dan konfigurasi latihan
+datasets/                  dataset pembelajaran berversi
+database/                  migrations dan database support
+resources/views/           server-rendered Blade views
+resources/js/              progressive enhancements dan interactive components
+resources/css/             stylesheet aplikasi
+tests/Feature/             test HTTP, content, database, dan domain
+tests/Frontend/            test JavaScript ringan
+docs/                      PRD, design, architecture, dan content guide
+task.md                    implementation plan dan status milestone
 ```
 
-M0C establishes the canonical content/dataset contracts, safe lesson rendering, component registry, and pre-deployment validation. M1A adds the public learning journey and representative Module 01 reading experience. Authentication, learner state, playgrounds, and the full design system belong to later milestones.
+## Prinsip implementasi
 
----
+- Konten kurikulum tetap version-controlled dan bukan CMS.
+- Halaman biasa dirender oleh Laravel; JavaScript hanya meningkatkan pengalaman yang membutuhkan interaksi.
+- Progress learner disimpan di MySQL setelah autentikasi, sedangkan guest state bersifat ringan di browser.
+- Tidak ada Redis, queue, microservice, server-side Python, atau SPA sebagai prasyarat deployment.
+- SQL, spreadsheet, Python, visualisasi, dan komponen Markdown mengikuti keputusan technical spike masing-masing.
+- Prerequisite adalah rekomendasi belajar, bukan access lock.
 
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Dokumentasi
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Dokumen sumber dan keputusan teknis utama berada di:
 
-## About Laravel
+- [`docs/PRD.md`](docs/PRD.md)
+- [`docs/design.md`](docs/design.md)
+- [`docs/architecture.md`](docs/architecture.md)
+- [`docs/content-guide.md`](docs/content-guide.md)
+- [`task.md`](task.md)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+README ini mendokumentasikan kondisi implementasi saat ini. Rencana milestone yang lebih rinci dan pekerjaan yang belum selesai tetap dicatat di `task.md`.
