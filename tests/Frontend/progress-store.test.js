@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { createGuestProgressStore } from '../../resources/js/learner/progress-store.js';
+import {
+    createAuthenticatedProgressStore,
+    createGuestProgressStore,
+} from '../../resources/js/learner/progress-store.js';
 
 function createStorage() {
     const values = new Map();
@@ -45,4 +48,25 @@ test('guest progress can be cleared after a successful merge', () => {
     assert.equal(store.snapshot().topics.length, 1);
     store.clear();
     assert.equal(store.snapshot().topics.length, 0);
+});
+
+test('authenticated progress store sends the guest snapshot to the merge endpoint', async () => {
+    const calls = [];
+    const client = {
+        async post(path, payload) {
+            calls.push({ path, payload });
+
+            return { data: { topics: { 'data-analyst/01-thinking-with-data/01-analyst-role': { status: 'completed' } } } };
+        },
+    };
+    const store = createAuthenticatedProgressStore(client);
+    const snapshot = {
+        topics: [{ content_key: 'data-analyst/01-thinking-with-data/01-analyst-role', status: 'completed' }],
+        recent: ['data-analyst/01-thinking-with-data/01-analyst-role'],
+    };
+
+    const topics = await store.mergeGuest(snapshot);
+
+    assert.deepEqual(calls, [{ path: '/progress/merge-guest', payload: snapshot }]);
+    assert.equal(topics['data-analyst/01-thinking-with-data/01-analyst-role'].status, 'completed');
 });

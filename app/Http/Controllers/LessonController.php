@@ -32,6 +32,10 @@ final class LessonController extends Controller
         $progressState = auth()->user()?->topicProgress()
             ->where('content_key', $contentKey)
             ->value('status');
+        $bookmarked = auth()->user()?->bookmarks()
+            ->where('content_type', 'topic')
+            ->where('content_key', $contentKey)
+            ->exists() ?? false;
 
         return view('learning.lesson', [
             'lesson' => $lesson,
@@ -43,6 +47,7 @@ final class LessonController extends Controller
             'lessonTitle' => $topic['title'] ?? $lesson->headings[0]['text'] ?? $lessonKey,
             'progressKey' => $contentKey,
             'progressState' => $progressState,
+            'bookmarked' => $bookmarked,
         ]);
     }
 }

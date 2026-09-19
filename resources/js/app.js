@@ -1,6 +1,7 @@
 import './bootstrap';
 
 import { mountRegisteredComponents } from './components/registry';
+import { mountBookmarks } from './learner/bookmarks';
 import { mountTopicProgress } from './learner/progress';
 
 const setupMobileNavigation = () => {
@@ -20,6 +21,7 @@ const setupMobileNavigation = () => {
 const mount = async () => {
     await mountRegisteredComponents(document);
     await mountTopicProgress(document);
+    mountBookmarks(document);
 };
 
 if (document.readyState === 'loading') {

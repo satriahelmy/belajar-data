@@ -9,6 +9,7 @@
             <a class="{{ $active === 'skills' ? 'is-active' : '' }}" href="{{ route('skills.index') }}" @if ($active === 'skills') aria-current="page" @endif>Explore Skills</a>
             <a class="{{ $active === 'projects' ? 'is-active' : '' }}" href="{{ route('projects.index') }}" @if ($active === 'projects') aria-current="page" @endif>Projects</a>
             @auth
+                <a class="{{ $active === 'progress' ? 'is-active' : '' }}" href="{{ route('progress.index') }}" @if ($active === 'progress') aria-current="page" @endif>Progress</a>
                 <span class="site-account">{{ auth()->user()->name }}</span>
                 <form method="POST" action="{{ route('logout') }}">@csrf<button class="site-navigation__logout" type="submit">Keluar</button></form>
             @else

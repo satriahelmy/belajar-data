@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\ChallengeController;
 use App\Http\Controllers\FoundationController;
 use App\Http\Controllers\HomeController;
@@ -22,10 +23,15 @@ Route::middleware('guest')->group(function () {
 });
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 Route::middleware('auth')->prefix('progress')->group(function () {
+    Route::get('/', [ProgressController::class, 'page'])->name('progress.index');
     Route::get('/topics', [ProgressController::class, 'index'])->name('progress.topics');
     Route::post('/topics/start', [ProgressController::class, 'start'])->name('progress.topics.start');
     Route::post('/topics/complete', [ProgressController::class, 'complete'])->name('progress.topics.complete');
     Route::post('/merge-guest', [ProgressController::class, 'mergeGuest'])->name('progress.merge-guest');
+});
+Route::middleware('auth')->prefix('bookmarks')->group(function () {
+    Route::get('/', [BookmarkController::class, 'index'])->name('bookmarks.index');
+    Route::post('/toggle', [BookmarkController::class, 'toggle'])->name('bookmarks.toggle');
 });
 Route::get('/learn', LearnController::class)->name('learning.index');
 Route::get('/learn/{moduleKey}', ModuleController::class)

@@ -17,11 +17,6 @@ function renderProgress(element, status) {
 
 export async function mountTopicProgress(root = document) {
     const elements = [...root.querySelectorAll('[data-topic-progress]')];
-
-    if (elements.length === 0) {
-        return;
-    }
-
     const guestStore = createGuestProgressStore();
     const authenticated = document.body?.dataset.authenticated === 'true';
     const accountStore = authenticated ? createAuthenticatedProgressStore() : null;
@@ -40,6 +35,10 @@ export async function mountTopicProgress(root = document) {
         } catch {
             accountTopics = {};
         }
+    }
+
+    if (elements.length === 0) {
+        return;
     }
 
     for (const element of elements) {

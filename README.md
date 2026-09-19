@@ -11,7 +11,7 @@ Aplikasi dirancang sebagai Laravel modular monolith yang server-rendered, dengan
 - M0C: fondasi produk selesai.
 - M1A: public learning experience dan visual direction V2 selesai.
 - Module 01: konten produksi dan final editorial QA selesai.
-- M1B: learner-state foundation sedang berjalan.
+- M1B: learner-state foundation selesai untuk scope saat ini.
 
 Yang sudah tersedia pada increment M1B saat ini:
 
@@ -20,9 +20,11 @@ Yang sudah tersedia pada increment M1B saat ini:
 - progress guest melalui `localStorage`;
 - penyimpanan progress learner terautentikasi di MySQL;
 - merge progress guest ke akun setelah login atau registrasi;
-- operasi progress yang idempotent dan tidak menurunkan status `completed`.
+- operasi progress yang idempotent dan tidak menurunkan status `completed`;
+- bookmark topic dengan stable content key;
+- halaman Progress untuk recent, resume, ringkasan status, dan bookmark.
 
-Bookmarks, halaman recent/resume/progress untuk learner, dan bagian learner-state berikutnya belum dikerjakan.
+Password reset/email verification dan assessment attempts belum termasuk increment ini.
 
 ## Teknologi dan versi lokal
 
@@ -104,10 +106,11 @@ git diff --check
 - `/skills` : skills overview.
 - `/projects` : projects overview.
 - `/login` dan `/register` : akses akun learner.
+- `/progress` : recent learning, resume, ringkasan progress, dan bookmark untuk learner yang login.
 - `/__foundation` : smoke route fondasi teknis.
 - `/__spike/*` : route teknis sementara untuk technical spikes.
 
-Endpoint progress account berada di bawah `/progress/*` dan hanya dapat diakses oleh learner yang sudah login.
+Endpoint progress account berada di bawah `/progress/*`, sedangkan bookmark berada di bawah `/bookmarks/*`. Keduanya hanya dapat diakses oleh learner yang sudah login.
 
 ## Struktur repository
 

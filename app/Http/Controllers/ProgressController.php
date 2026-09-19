@@ -8,9 +8,59 @@ use App\Domain\Learning\CurriculumRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use Illuminate\View\View;
 
 final class ProgressController extends Controller
 {
+    public function page(Request $request, CurriculumRepository $curriculum): View
+    {
+        $topics = $this->topicIndex($curriculum);
+        $recentTopics = $request->user()
+            ->topicProgress()
+            ->orderByDesc('last_activity_at')
+            ->get()
+            ->map(function ($progress) use ($topics): ?array {
+                $topic = $topics[$progress->content_key] ?? null;
+
+                if (! $topic) {
+                    return null;
+                }
+
+                return [...$progress->toProgressArray(), ...$topic];
+            })
+            ->filter()
+            ->values();
+        $bookmarks = $request->user()
+            ->bookmarks()
+            ->where('content_type', 'topic')
+            ->orderByDesc('created_at')
+            ->get()
+            ->map(function ($bookmark) use ($topics): ?array {
+                $topic = $topics[$bookmark->content_key] ?? null;
+
+                if (! $topic) {
+                    return null;
+                }
+
+                return [
+                    'content_type' => $bookmark->content_type,
+                    'content_key' => $bookmark->content_key,
+                    'created_at' => $bookmark->created_at?->toISOString(),
+                    ...$topic,
+                ];
+            })
+            ->filter()
+            ->values();
+
+        return view('learning.progress', [
+            'recentTopics' => $recentTopics,
+            'bookmarks' => $bookmarks,
+            'completedCount' => $recentTopics->where('status', 'completed')->count(),
+            'startedCount' => $recentTopics->where('status', 'started')->count(),
+            'publishedTopicCount' => count($topics),
+        ]);
+    }
+
     public function index(Request $request): JsonResponse
     {
         $topics = $request->user()
@@ -92,5 +142,36 @@ final class ProgressController extends Controller
                 'content_key' => 'Topic tidak tersedia untuk disimpan.',
             ]);
         }
+    }
+
+    /**
+     * @return array<string, array{title: string, module_title: string, module_key: string, topic_key: string, url: string}>
+     */
+    private function topicIndex(CurriculumRepository $curriculum): array
+    {
+        $topics = [];
+
+        foreach ($curriculum->modules() as $module) {
+            if (! $module['published']) {
+                continue;
+            }
+
+            foreach ($module['topics'] as $topic) {
+                $contentKey = 'data-analyst/'.$module['key'].'/'.$topic['key'];
+                $topics[$contentKey] = [
+                    'title' => $topic['title'],
+                    'module_title' => $module['title'],
+                    'module_key' => $module['key'],
+                    'topic_key' => $topic['key'],
+                    'url' => route('learning.lesson', [
+                        'pathKey' => 'data-analyst',
+                        'moduleKey' => $module['key'],
+                        'topicKey' => $topic['key'],
+                    ]),
+                ];
+            }
+        }
+
+        return $topics;
     }
 }

@@ -1,6 +1,6 @@
 # BelajarData V1 — Implementation Plan
 
-Status: M0A, technical spikes A–E, M0C, M1A, and Module 01 content production are implemented. M1B/M1C learner-state implementation is in progress; bookmarks and broader learner surfaces remain.
+Status: M0A, technical spikes A–E, M0C, M1A, Module 01 content production, and the current M1B learner-state scope are implemented. M2 assessment core and later milestones remain.
 
 This plan is derived from the current source documents in `docs/`, using the requested hierarchy:
 
@@ -679,7 +679,7 @@ Produce Module 01 — *Thinking with Data* as the first production-quality conte
 - Practice answers and challenge completion are session-only browser behavior until the approved learner-state/assessment milestones are implemented.
 - The NusaMart v1 fixture remains a small representative fixture; it is used to teach evidence boundaries, not to claim production-scale coverage.
 
-### M1B — Learner State Foundation — IN PROGRESS
+### M1B — Learner State Foundation — COMPLETE
 
 #### Objective
 
@@ -693,23 +693,27 @@ Add the first persistence slice without changing the public-learning access mode
 - [x] Added guest localStorage progress with recent-topic ordering and a browser-side authenticated store.
 - [x] Added guest-to-account merge that validates published topics, never downgrades completed progress, and clears guest state only after a successful merge.
 - [x] Added a minimal lesson progress control and server-rendered login/register entry points.
-- [x] Added backend and frontend tests for authentication, authorization, idempotency, recent state, merge behavior, and invalid content keys.
+- [x] Added authenticated topic bookmarks with constrained `topic` content type, stable-key validation, uniqueness, and toggle behavior.
+- [x] Added a server-rendered learner Progress page with recent/resume topics, completion summary, bookmark list, and empty states.
+- [x] Ensured guest progress merge runs on authenticated pages after login or registration, not only on lesson pages.
+- [x] Added backend and frontend tests for authentication, authorization, idempotency, recent state, merge behavior, bookmarks, and invalid content keys.
 
 #### Verification results
 
-- `php artisan migrate:status` — progress migration ran on the local `belajar_data_v2` database.
-- `php artisan test` — passed; 38 tests and 302 assertions.
+- `php artisan migrate:status` — progress and bookmark migrations ran on the local `belajar_data_v2` database.
+- `php artisan test` — passed; 43 tests and 327 assertions.
 - `node --test tests/Frontend/*.test.js` — passed; 8 tests.
+- `php artisan content:validate` — passed for the seven Module 01 lessons, challenge, and `nusamart/v1`.
 - `npm run build` — passed.
-- Browser smoke check — topic start/completion feedback and server-rendered login page passed.
+- `composer validate --strict` — passed.
+- `git diff --check` — passed.
+- HTTP smoke coverage — authenticated login/register merge, bookmark toggle, and server-rendered Progress page passed.
 
 #### Remaining M1B/M1C work
 
-- [ ] Add bookmarks for topics/lessons and optionally Further Reading resources.
-- [ ] Add a learner-facing recent/resume/progress surface beyond the lesson control.
-- [ ] Add account merge edge-case coverage across browser login/register flows.
+- M1B scope is complete. Password reset/email verification and the assessment/attempt system remain outside this increment and must be scheduled explicitly if required by the launch plan.
 
-### M1 — Learning Core (remaining M1B/M1C scope)
+### M1 — Learning Core
 
 #### Objective
 
@@ -729,9 +733,9 @@ Deliver the core reading/navigation experience: homepage, five-phase Learn map, 
 - [x] M1A implemented lesson navigation with current position, actual on-page headings in a minimal right-side section navigator, mobile disclosure, previous/next, and one dominant action; completion state remains future learner state.
 - [x] M1A implemented Explore Skills as an index into canonical topics/tags, not a duplicated curriculum.
 - [x] Implement the `ProgressStore` abstraction with guest localStorage and authenticated server-backed implementations.
-- [x] Implement idempotent topic start/completion and recent ordering; learner-facing resume surfaces remain.
+- [x] Implement idempotent topic start/completion, recent ordering, and the learner-facing resume/progress surface.
 - [x] Implement guest-to-account merge: stable-key matching, completion wins, no downgrade, and guest deletion only after successful merge.
-- [ ] Implement authenticated bookmarks for topics/lessons and optionally Further Reading resources with constrained content types.
+- [x] Implement authenticated topic bookmarks with constrained content types and stable-key validation. Further Reading bookmarks remain optional future scope.
 - [x] Implemented representative empty states and recovery-oriented roadmap messaging.
 - [x] Implemented responsive reading layout: left-aligned desktop lesson workspace with a 720–780px reading column and minimal right-side section navigator; tablet/mobile disclosure collapses the rail and keeps the reading column aligned to the container; controlled table/code overflow remains in place. Complex tool recommendations remain future runtime work.
 - [x] Applied public accessibility foundations: labels, focus states, keyboard navigation, semantic headings, current-page semantics, readable tables/code, and reduced-motion handling.
@@ -752,7 +756,7 @@ Deliver the core reading/navigation experience: homepage, five-phase Learn map, 
 - [x] Guest localStorage persistence and recent-state tests.
 - [x] Authenticated progress idempotency and authorization tests.
 - [x] Guest-to-account merge tests for new, completed, in-progress, and conflicting states.
-- [ ] Bookmark uniqueness, authorization, and removal tests.
+- [x] Bookmark uniqueness, authorization, invalid-key handling, and removal tests.
 - [x] M1A responsive/accessibility smoke tests for the public P0 pages.
 
 #### Risks/notes

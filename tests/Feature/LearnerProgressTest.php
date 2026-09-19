@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class LearnerProgressTest extends TestCase
@@ -49,7 +50,7 @@ class LearnerProgressTest extends TestCase
         $this->actingAs($user)->postJson('/progress/topics/complete', ['content_key' => $completedKey])
             ->assertOk();
 
-        $this->actingAs($user)->postJson('/progress/merge-guest', [
+        $this->postJson('/progress/merge-guest', [
             'topics' => [
                 [
                     'content_key' => 'data-analyst/01-thinking-with-data/01-analyst-role',
@@ -78,6 +79,117 @@ class LearnerProgressTest extends TestCase
         $this->actingAs($user)->postJson('/progress/topics/start', [
             'content_key' => 'data-analyst/01-thinking-with-data/not-a-topic',
         ])->assertStatus(422);
+    }
+
+    public function test_authenticated_learner_can_toggle_a_published_topic_bookmark(): void
+    {
+        $user = User::factory()->create();
+        $payload = [
+            'content_type' => 'topic',
+            'content_key' => 'data-analyst/01-thinking-with-data/01-analyst-role',
+        ];
+
+        $this->actingAs($user)->postJson('/bookmarks/toggle', $payload)
+            ->assertOk()
+            ->assertJsonPath('bookmarked', true);
+        $this->assertDatabaseHas('bookmarks', [
+            'user_id' => $user->id,
+            ...$payload,
+        ]);
+
+        $this->actingAs($user)->postJson('/bookmarks/toggle', $payload)
+            ->assertOk()
+            ->assertJsonPath('bookmarked', false);
+        $this->assertDatabaseMissing('bookmarks', [
+            'user_id' => $user->id,
+            ...$payload,
+        ]);
+    }
+
+    public function test_bookmark_rejects_unknown_topic_and_other_content_types(): void
+    {
+        $user = User::factory()->create();
+
+        $this->actingAs($user)->postJson('/bookmarks/toggle', [
+            'content_type' => 'javascript',
+            'content_key' => 'data-analyst/01-thinking-with-data/01-analyst-role',
+        ])->assertStatus(422);
+
+        $this->actingAs($user)->postJson('/bookmarks/toggle', [
+            'content_type' => 'topic',
+            'content_key' => 'data-analyst/01-thinking-with-data/not-a-topic',
+        ])->assertStatus(422);
+    }
+
+    public function test_progress_page_exposes_recent_topics_and_bookmarks(): void
+    {
+        $user = User::factory()->create();
+        $contentKey = 'data-analyst/01-thinking-with-data/01-analyst-role';
+
+        $this->actingAs($user)->postJson('/progress/topics/start', ['content_key' => $contentKey])
+            ->assertOk();
+        $this->actingAs($user)->postJson('/bookmarks/toggle', [
+            'content_type' => 'topic',
+            'content_key' => $contentKey,
+        ])->assertOk();
+
+        $this->actingAs($user)->get('/progress')
+            ->assertOk()
+            ->assertSee('Terakhir dipelajari')
+            ->assertSee('What Does a Data Analyst Actually Do?')
+            ->assertSee('Bookmark')
+            ->assertSee('Hapus');
+    }
+
+    public function test_existing_account_can_login_and_merge_guest_progress(): void
+    {
+        $user = User::factory()->create([
+            'email' => 'merge-login@example.test',
+            'password' => Hash::make('password123'),
+        ]);
+        $contentKey = 'data-analyst/01-thinking-with-data/01-analyst-role';
+
+        $this->post('/login', [
+            'email' => 'merge-login@example.test',
+            'password' => 'password123',
+        ])->assertRedirect('/learn');
+
+        $this->actingAs($user)->postJson('/progress/merge-guest', [
+            'topics' => [
+                ['content_key' => $contentKey, 'status' => 'completed'],
+            ],
+        ])->assertOk()
+            ->assertJsonPath('topics.'.$contentKey.'.status', 'completed');
+
+        $this->assertDatabaseHas('user_topic_progress', [
+            'user_id' => $user->id,
+            'content_key' => $contentKey,
+            'status' => 'completed',
+        ]);
+    }
+
+    public function test_new_account_can_register_and_merge_guest_progress(): void
+    {
+        $contentKey = 'data-analyst/01-thinking-with-data/02-business-to-data-question';
+
+        $this->post('/register', [
+            'name' => 'New Learner',
+            'email' => 'merge-register@example.test',
+            'password' => 'password123',
+            'password_confirmation' => 'password123',
+        ])->assertRedirect('/learn');
+
+        $this->postJson('/progress/merge-guest', [
+            'topics' => [
+                ['content_key' => $contentKey, 'status' => 'started'],
+            ],
+        ])->assertOk()
+            ->assertJsonPath('topics.'.$contentKey.'.status', 'started');
+
+        $this->assertDatabaseHas('user_topic_progress', [
+            'content_key' => $contentKey,
+            'status' => 'started',
+        ]);
     }
 
     public function test_learner_can_register_and_log_out(): void
