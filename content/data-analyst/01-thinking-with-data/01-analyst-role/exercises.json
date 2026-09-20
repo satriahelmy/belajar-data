@@ -11,7 +11,13 @@
                 "Menulis program sebelum mengetahui field yang tersedia",
                 "Mengumpulkan semua data tanpa menentukan pertanyaan"
             ],
-            "correct_option": 0
+            "correct_option": 0,
+            "hints": [
+                "Tentukan dulu apa yang dimaksud dengan “turun”.",
+                "Cari pilihan yang menyebut metric dan comparison sebelum memilih tool."
+            ],
+            "incorrect_feedback": "Keluhan “turun” perlu diubah menjadi metric dan comparison yang jelas sebelum memilih tool.",
+            "success_feedback": "Tepat. Pertanyaan dan comparison perlu jelas sebelum tool dipilih."
         },
         {
             "id": "thinking-analyst-02",

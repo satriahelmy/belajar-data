@@ -8,12 +8,13 @@ use Tests\TestCase;
 
 class ComponentRegistryTest extends TestCase
 {
-    public function test_practice_is_registered_and_heavy_components_are_only_planned(): void
+    public function test_practice_sql_and_spreadsheet_are_registered_while_other_heavy_components_are_only_planned(): void
     {
         $registry = app(ComponentRegistry::class);
 
-        $this->assertSame(['practice'], $registry->registered());
-        $this->assertContains('sql', $registry->planned());
+        $this->assertSame(['practice', 'sql-playground', 'spreadsheet-playground'], $registry->registered());
+        $this->assertNotContains('sql', $registry->planned());
+        $this->assertNotContains('spreadsheet', $registry->planned());
         $this->assertContains('visualization', $registry->planned());
     }
 

@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import initSqlJs from 'sql.js';
-import { SQL_SPIKE_QUERY_CASES } from '../../resources/js/spike/sql/query-cases.js';
+import { SQL_SPIKE_LIMITS, SQL_SPIKE_QUERY_CASES } from '../../resources/js/spike/sql/query-cases.js';
 import { validateSqlResult } from '../../resources/js/spike/sql/result-validator.js';
 
 const fixtureRoot = path.resolve('datasets/nusamart/v1/sql');
@@ -21,6 +21,17 @@ function quoteIdentifier(value) {
 }
 
 test('sql.js executes the representative Module 03 query suite', async () => {
+    assert.equal(SQL_SPIKE_LIMITS.maxRows, 100);
+    assert.equal(SQL_SPIKE_LIMITS.timeoutMs, 2000);
+    assert.deepEqual(
+        SQL_SPIKE_QUERY_CASES.map((queryCase) => queryCase.id),
+        [
+            'select-columns', 'where', 'order-limit', 'count', 'count-distinct',
+            'sum', 'avg', 'group-by', 'multi-table-join', 'case', 'cte', 'date',
+            'window', 'lag', 'join-multiplication',
+        ],
+    );
+
     const SQL = await initSqlJs({
         locateFile: (file) => pathToFileURL(path.join('node_modules/sql.js/dist', file)).href,
     });

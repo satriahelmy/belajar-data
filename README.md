@@ -12,6 +12,9 @@ Aplikasi dirancang sebagai Laravel modular monolith yang server-rendered, dengan
 - M1A: public learning experience dan visual direction V2 selesai.
 - Module 01: konten produksi dan final editorial QA selesai.
 - M1B: learner-state foundation selesai untuk scope saat ini.
+- M2: assessment core selesai untuk scope V1; practice shell, validator, dan attempt persistence dasar tersedia.
+- M3: SQL Playground selesai untuk representative Module 03 slice; runtime browser-only, fixture NusaMart, result validation, dan challenge dasar tersedia.
+- M4: Spreadsheet Playground selesai untuk representative Module 02 slice; evaluator formula terbatas, filter/sort, configured summary, result validation, dan challenge dasar tersedia.
 
 Yang sudah tersedia pada increment M1B saat ini:
 
@@ -24,7 +27,30 @@ Yang sudah tersedia pada increment M1B saat ini:
 - bookmark topic dengan stable content key;
 - halaman Progress untuk recent, resume, ringkasan status, dan bookmark.
 
-Password reset/email verification dan assessment attempts belum termasuk increment ini.
+Password reset/email verification belum termasuk increment ini.
+
+Yang sudah tersedia pada increment M2 saat ini:
+
+- shared Practice Shell untuk lima kontrak latihan;
+- validator deterministic untuk categorical, numeric, table result, dan guided self-assessment;
+- progressive hint dan feedback yang dapat dikonfigurasi;
+- attempt loading, retry, reset, bounded payload, dan completion persistence untuk learner login;
+- agregasi progress challenge dari exercise yang terdaftar.
+- frontend interaction/accessibility contract tests dan browser smoke QA.
+
+Yang sudah tersedia pada increment M3 saat ini:
+
+- SQL Playground berbasis `sql.js` 1.14.2 di Web Worker, dimuat lazy hanya pada lesson/challenge SQL;
+- schema browser fixture NusaMart versi `v1`, editor query, Run, Cek hasil, Reset runtime, output cap 100 baris, dan error yang mempertahankan query;
+- validasi hasil berbasis kolom dan baris dengan dukungan ordering, numeric tolerance, dan attempt persistence;
+- representative Module 03 topic dan challenge untuk grain, agregasi, JOIN, serta diagnosis JOIN multiplication.
+
+Yang sudah tersedia pada increment M4 saat ini:
+
+- Spreadsheet Playground browser-only dengan native HTML table dan evaluator formula yang dibatasi allowlist, tanpa dependency spreadsheet baru;
+- fixture NusaMart versi `v1` dengan tabel Transactions dan Products, schema browser, filter/sort terbatas, formula, lookup exact, dan ringkasan kategori terkonfigurasi;
+- validasi output berbasis target cell atau tabel, error `#N/A`, `#DUPLICATE!`, `#REF!`, dan `#DIV/0!`, reset deterministik, serta attempt persistence melalui kontrak M2;
+- representative Module 02 topic dan challenge untuk inspeksi dataset, metric, conditional logic, lookup, summary, comparison, missing key, dan finding.
 
 ## Teknologi dan versi lokal
 
@@ -107,6 +133,11 @@ git diff --check
 - `/projects` : projects overview.
 - `/login` dan `/register` : akses akun learner.
 - `/progress` : recent learning, resume, ringkasan progress, dan bookmark untuk learner yang login.
+- `/attempts/*` : endpoint internal terproteksi untuk memuat, memeriksa, dan mereset attempt latihan learner.
+- `/learn/data-analyst/02-spreadsheet-for-analysis/01-spreadsheet-foundations` : representative Spreadsheet lesson dengan evaluator browser-only.
+- `/learn/data-analyst/02-spreadsheet-for-analysis/challenge` : representative Spreadsheet challenge NusaMart.
+- `/learn/data-analyst/03-sql-for-data-analysis/01-query-foundations` : representative SQL lesson dengan SQL Playground browser-only.
+- `/learn/data-analyst/03-sql-for-data-analysis/challenge` : representative SQL challenge NusaMart.
 - `/__foundation` : smoke route fondasi teknis.
 - `/__spike/*` : route teknis sementara untuk technical spikes.
 

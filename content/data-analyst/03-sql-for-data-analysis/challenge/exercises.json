@@ -1,0 +1,85 @@
+{
+    "schema_version": 1,
+    "challenge_key": "module-03-nusamart-analysis",
+    "dataset_refs": ["nusamart/v1"],
+    "exercises": [
+        {
+            "id": "challenge-03-grain",
+            "type": "result_based",
+            "prompt": "Hitung jumlah row pada order_items sebagai pemeriksaan grain product line.",
+            "incorrect_feedback": "Gunakan COUNT(*) pada order_items. Yang dihitung adalah product line, bukan distinct order.",
+            "success_feedback": "Benar. Jumlah row product line adalah pemeriksaan awal terhadap grain tabel.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["item_rows"],
+                "expected_rows": [[9]],
+                "row_order": "ordered",
+                "numeric_tolerance": 0
+            },
+            "interactive": {
+                "type": "sql_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "starter_query": "SELECT COUNT(*) AS item_rows\nFROM order_items;"
+            }
+        },
+        {
+            "id": "challenge-03-aggregation",
+            "type": "result_based",
+            "prompt": "Tampilkan revenue per bulan dari orders dan order_items.",
+            "incorrect_feedback": "Pastikan order_items dihubungkan ke orders melalui order_id, lalu kelompokkan revenue berdasarkan bulan order_date.",
+            "success_feedback": "Benar. Output sudah memiliki satu baris per bulan dan revenue dihitung dari line item.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["month", "revenue"],
+                "expected_rows": [["2025-08", 675], ["2025-09", 650]],
+                "row_order": "ordered",
+                "numeric_tolerance": 0
+            },
+            "interactive": {
+                "type": "sql_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "starter_query": "SELECT substr(o.order_date, 1, 7) AS month,\n       SUM(oi.quantity * oi.unit_price) AS revenue\nFROM orders o\nJOIN order_items oi ON oi.order_id = o.order_id\nGROUP BY month\nORDER BY month;"
+            }
+        },
+        {
+            "id": "challenge-03-join",
+            "type": "result_based",
+            "prompt": "Tampilkan revenue per category dengan menghubungkan order_items ke products.",
+            "incorrect_feedback": "Nilai revenue berasal dari order_items dan category berasal dari products. Periksa key product_id dan grouping-nya.",
+            "success_feedback": "Tepat. Kamu mengambil dimension dari products tanpa mengubah grain line item secara tidak sengaja.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["category", "revenue"],
+                "expected_rows": [["Accessories", 175], ["Electronics", 550], ["Furniture", 600]],
+                "row_order": "ordered"
+            },
+            "interactive": {
+                "type": "sql_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "starter_query": "SELECT p.category,\n       SUM(oi.quantity * oi.unit_price) AS revenue\nFROM order_items oi\nJOIN products p ON p.product_id = oi.product_id\nGROUP BY p.category\nORDER BY p.category;"
+            }
+        },
+        {
+            "id": "challenge-03-diagnostic",
+            "type": "result_based",
+            "prompt": "Hitung total shipping_cost yang benar pada grain order, tanpa menggandakannya karena JOIN.",
+            "incorrect_feedback": "shipping_cost sudah berada pada grain order. Hitung dari orders agar setiap order hanya masuk sekali.",
+            "success_feedback": "Benar. Total order-level dihitung sebelum ada JOIN yang dapat memperbanyak row.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["total_shipping"],
+                "expected_rows": [[79]],
+                "row_order": "ordered"
+            },
+            "interactive": {
+                "type": "sql_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "starter_query": "SELECT SUM(shipping_cost) AS total_shipping\nFROM orders;"
+            }
+        }
+    ]
+}

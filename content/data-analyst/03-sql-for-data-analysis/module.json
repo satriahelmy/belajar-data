@@ -5,13 +5,36 @@
     "title": "SQL for Data Analysis",
     "number": 3,
     "order": 3,
-    "status": "roadmap",
+    "status": "published",
     "purpose": "Jawab pertanyaan analitis pada data relasional dengan query yang dapat divalidasi.",
     "outcome": "Mampu memilih tabel, grain, filter, agregasi, grouping, dan join yang tepat.",
     "estimated_minutes": 180,
     "recommended_knowledge": ["Thinking with Data", "Spreadsheet for Analysis"],
     "skill_tags": ["sql"],
-    "challenge": {"key": "module-03-nusamart-analysis", "title": "NusaMart Sales Investigation", "description": "Susun analisis SQL untuk menjelaskan perubahan performa.", "status": "roadmap"},
-    "topic_keys": [],
-    "topics": {}
+    "challenge": {
+        "key": "module-03-nusamart-analysis",
+        "title": "NusaMart Sales Investigation",
+        "description": "Susun analisis SQL untuk menjelaskan perubahan performa tanpa kehilangan grain dan batas evidence.",
+        "status": "published",
+        "estimated_minutes": 25,
+        "content_file": "challenge/challenge.md",
+        "exercise_file": "challenge/exercises.json",
+        "dataset_refs": ["nusamart/v1"],
+        "completion_criteria": [
+            "Memilih tabel dengan grain yang sesuai untuk setiap pertanyaan.",
+            "Menghasilkan agregasi dan join yang dapat diperiksa dari output query.",
+            "Menjelaskan mengapa query yang salah dapat menggandakan angka order-level."
+        ]
+    },
+    "topic_keys": ["01-query-foundations"],
+    "topics": {
+        "01-query-foundations": {
+            "title": "Start with the Table",
+            "order": 1,
+            "estimated_minutes": 18,
+            "skill_tags": ["sql", "data-literacy"],
+            "lesson_file": "01-query-foundations/lesson.md",
+            "exercise_file": "01-query-foundations/exercises.json"
+        }
+    }
 }

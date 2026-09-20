@@ -1,0 +1,100 @@
+{
+    "schema_version": 1,
+    "challenge_key": "module-02-monthly-sales-performance",
+    "dataset_refs": ["nusamart/v1"],
+    "exercises": [
+        {
+            "id": "sheet-summary-01",
+            "type": "result_based",
+            "prompt": "Buat ringkasan revenue, quantity, dan jumlah order per kategori.",
+            "incorrect_feedback": "Gunakan ringkasan kategori yang tersedia dan pastikan revenue serta quantity berasal dari Transactions.",
+            "success_feedback": "Tepat. Ringkasan menunjukkan kontribusi kategori tanpa membuka spreadsheet yang tidak terbatas.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["category", "revenue", "quantity", "order_count"],
+                "expected_rows": [
+                    ["Electronics", 560, 5, 4],
+                    ["Grocery", 190, 7, 2],
+                    ["Home", 300, 3, 2]
+                ],
+                "row_order": "ordered"
+            },
+            "interactive": {
+                "type": "spreadsheet_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "mode": "summary",
+                "summary_dimension": "category",
+                "summary_measures": ["revenue", "quantity", "order_count"],
+                "desktop_note": "Layar desktop disarankan agar ringkasan dan definisi kolom dapat dibaca berdampingan."
+            }
+        },
+        {
+            "id": "sheet-comparison-01",
+            "type": "result_based",
+            "prompt": "Hitung revenue West, revenue East, dan selisih West dikurangi East.",
+            "incorrect_feedback": "Periksa filter region pada SUMIFS dan pastikan selisih memakai West dikurangi East.",
+            "success_feedback": "Benar. Kamu membuat perbandingan yang dapat diperiksa dan tidak menyebut selisih sebagai penyebab.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["B2", "B3", "B4"],
+                "expected_rows": [[710, 240, 470]],
+                "row_order": "ordered"
+            },
+            "interactive": {
+                "type": "spreadsheet_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "mode": "formula",
+                "starter_cells": {
+                    "B2": "=SUMIFS(Transactions!H2:H9,Transactions!C2:C9,\"West\")",
+                    "B3": "=SUMIFS(Transactions!H2:H9,Transactions!C2:C9,\"East\")",
+                    "B4": "=B2-B3"
+                },
+                "editable_cells": ["B2", "B3", "B4"],
+                "cell_labels": {
+                    "B2": "West revenue",
+                    "B3": "East revenue",
+                    "B4": "Difference"
+                }
+            }
+        },
+        {
+            "id": "sheet-missing-key-01",
+            "type": "result_based",
+            "prompt": "Cari kategori untuk product_id P-9999 dan biarkan hasil missing key terlihat.",
+            "incorrect_feedback": "P-9999 tidak ada pada Products. Periksa apakah formula menghasilkan #N/A, bukan angka nol.",
+            "success_feedback": "Benar. Error missing key tetap terlihat sehingga data yang belum ada tidak disamarkan.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["B2"],
+                "expected_rows": [["#N/A"]],
+                "row_order": "ordered"
+            },
+            "interactive": {
+                "type": "spreadsheet_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "mode": "formula",
+                "starter_cells": {
+                    "B2": "=VLOOKUP(\"P-9999\",Products!A2:C5,2,FALSE)"
+                },
+                "editable_cells": ["B2"],
+                "cell_labels": {
+                    "B2": "Category for P-9999"
+                }
+            }
+        },
+        {
+            "id": "sheet-finding-01",
+            "type": "text_self_assessment",
+            "prompt": "Tulis finding tentang perbandingan revenue West dan East. Sertakan angka, konteks, dan batas kesimpulan.",
+            "reference_answer": "Revenue West adalah 710 dan revenue East adalah 240, sehingga West lebih tinggi 470. Data ini menunjukkan perbedaan hasil pada transaksi yang tersedia, tetapi belum menjelaskan penyebabnya.",
+            "checklist": [
+                "Menyebutkan revenue West sebesar 710.",
+                "Menyebutkan revenue East sebesar 240 dan selisih 470.",
+                "Tidak menyatakan perbedaan revenue sebagai bukti sebab-akibat."
+            ]
+        }
+    ]
+}

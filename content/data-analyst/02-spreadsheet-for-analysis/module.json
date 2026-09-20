@@ -5,13 +5,36 @@
     "title": "Spreadsheet for Analysis",
     "number": 2,
     "order": 2,
-    "status": "roadmap",
+    "status": "published",
     "purpose": "Gunakan spreadsheet untuk memahami, menghitung, dan meringkas data bisnis.",
     "outcome": "Mampu membangun analisis spreadsheet sederhana yang dapat dijelaskan.",
     "estimated_minutes": 120,
     "recommended_knowledge": ["Thinking with Data"],
     "skill_tags": ["spreadsheet"],
-    "challenge": {"key": "module-02-monthly-sales-performance", "title": "NusaMart Monthly Sales Performance", "description": "Bandingkan performa penjualan dan cari area yang berkontribusi terhadap perubahan.", "status": "roadmap"},
-    "topic_keys": [],
-    "topics": {}
+    "challenge": {
+        "key": "module-02-monthly-sales-performance",
+        "title": "NusaMart Monthly Sales Performance",
+        "description": "Bandingkan performa penjualan dan cari area yang berkontribusi terhadap perubahan dengan spreadsheet yang dapat dijelaskan.",
+        "status": "published",
+        "estimated_minutes": 25,
+        "content_file": "challenge/challenge.md",
+        "exercise_file": "challenge/exercises.json",
+        "dataset_refs": ["nusamart/v1"],
+        "completion_criteria": [
+            "Memeriksa grain dan memilih filter atau sort yang sesuai.",
+            "Menggunakan rumus, lookup, dan ringkasan terkonfigurasi untuk menjawab pertanyaan.",
+            "Menulis finding yang membedakan hasil perhitungan dari dugaan penyebab."
+        ]
+    },
+    "topic_keys": ["01-spreadsheet-foundations"],
+    "topics": {
+        "01-spreadsheet-foundations": {
+            "title": "Start with the Table",
+            "order": 1,
+            "estimated_minutes": 20,
+            "skill_tags": ["spreadsheet", "data-literacy"],
+            "lesson_file": "01-spreadsheet-foundations/lesson.md",
+            "exercise_file": "01-spreadsheet-foundations/exercises.json"
+        }
+    }
 }

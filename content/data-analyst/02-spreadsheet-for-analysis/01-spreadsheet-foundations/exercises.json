@@ -1,0 +1,95 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "sheet-inspection-01",
+            "type": "result_based",
+            "prompt": "Tampilkan order di region West, lalu urutkan dari revenue terbesar ke terkecil.",
+            "incorrect_feedback": "Periksa kembali filter region dan urutan revenue. Tabel ini membantu kamu melihat row transaksi sebelum membuat rumus.",
+            "success_feedback": "Benar. Kamu memeriksa row transaksi dan memilih urutan yang sesuai dengan pertanyaan.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["order_id", "region", "channel", "revenue"],
+                "expected_rows": [
+                    ["O-1001", "West", "Online", 240],
+                    ["O-1006", "West", "Online", 180],
+                    ["O-1008", "West", "Store", 120],
+                    ["O-1003", "West", "Online", 90],
+                    ["O-1004", "West", "Store", 80]
+                ],
+                "row_order": "ordered",
+                "required_columns": ["order_id", "region", "channel", "revenue"]
+            },
+            "interactive": {
+                "type": "spreadsheet_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "mode": "table",
+                "starter_filter": "West",
+                "starter_sort": "revenue_desc",
+                "view_columns": ["order_id", "region", "channel", "revenue"],
+                "desktop_note": "Layar desktop disarankan agar data dan kontrol tabel terlihat berdampingan."
+            }
+        },
+        {
+            "id": "sheet-metrics-01",
+            "type": "result_based",
+            "prompt": "Hitung total revenue, average revenue, dan periksa apakah totalnya melewati batas 1000.",
+            "incorrect_feedback": "Pastikan B2 menjumlahkan revenue, B3 menghitung average revenue, dan B4 memakai batas 1000.",
+            "success_feedback": "Tepat. Kamu membedakan total, nilai tipikal, dan keputusan berbasis batas yang eksplisit.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["B2", "B3", "B4"],
+                "expected_rows": [[1050, 131.25, "Above threshold"]],
+                "row_order": "ordered",
+                "numeric_tolerance": 0
+            },
+            "interactive": {
+                "type": "spreadsheet_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "mode": "formula",
+                "starter_cells": {
+                    "B2": "=SUM(Transactions!H2:H9)",
+                    "B3": "=AVERAGE(Transactions!H2:H9)",
+                    "B4": "=IF(B2>1000,\"Above threshold\",\"Check total\")"
+                },
+                "editable_cells": ["B2", "B3", "B4"],
+                "cell_labels": {
+                    "B2": "Total revenue",
+                    "B3": "Average revenue",
+                    "B4": "Threshold check"
+                },
+                "desktop_note": "Layar desktop disarankan agar formula dan hasil dapat dibandingkan dengan nyaman."
+            }
+        },
+        {
+            "id": "sheet-lookup-01",
+            "type": "result_based",
+            "prompt": "Temukan kategori P-1001 dan hitung total revenue untuk product tersebut.",
+            "incorrect_feedback": "Gunakan lookup ke Products untuk kategori dan SUMIF ke Transactions untuk total revenue product.",
+            "success_feedback": "Benar. Kamu menghubungkan konteks product dengan fakta transaksi tanpa mencampur keduanya.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["B2", "B3"],
+                "expected_rows": [["Electronics", 480]],
+                "row_order": "ordered"
+            },
+            "interactive": {
+                "type": "spreadsheet_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "mode": "formula",
+                "starter_cells": {
+                    "B2": "=VLOOKUP(\"P-1001\",Products!A2:C5,2,FALSE)",
+                    "B3": "=SUMIF(Transactions!E2:E9,\"P-1001\",Transactions!H2:H9)"
+                },
+                "editable_cells": ["B2", "B3"],
+                "cell_labels": {
+                    "B2": "Category for P-1001",
+                    "B3": "Revenue for P-1001"
+                }
+            }
+        }
+    ]
+}

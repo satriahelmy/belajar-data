@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttemptController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\ChallengeController;
@@ -32,6 +33,11 @@ Route::middleware('auth')->prefix('progress')->group(function () {
 Route::middleware('auth')->prefix('bookmarks')->group(function () {
     Route::get('/', [BookmarkController::class, 'index'])->name('bookmarks.index');
     Route::post('/toggle', [BookmarkController::class, 'toggle'])->name('bookmarks.toggle');
+});
+Route::middleware('auth')->prefix('attempts')->group(function () {
+    Route::get('/', [AttemptController::class, 'show'])->name('attempts.show');
+    Route::post('/check', [AttemptController::class, 'check'])->name('attempts.check');
+    Route::delete('/', [AttemptController::class, 'reset'])->name('attempts.reset');
 });
 Route::get('/learn', LearnController::class)->name('learning.index');
 Route::get('/learn/{moduleKey}', ModuleController::class)

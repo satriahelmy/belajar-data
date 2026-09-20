@@ -5,10 +5,10 @@ namespace App\Domain\Learning\Content;
 final class ComponentRegistry
 {
     /** @var list<string> */
-    private const REGISTERED = ['practice'];
+    private const REGISTERED = ['practice', 'sql-playground', 'spreadsheet-playground'];
 
     /** @var list<string> */
-    private const PLANNED = ['sql', 'spreadsheet', 'python', 'visualization'];
+    private const PLANNED = ['python', 'visualization'];
 
     public function assertRegistered(string $type): void
     {

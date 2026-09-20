@@ -1,5 +1,7 @@
 const factories = {
     practice: () => import('./practice.js'),
+    'sql-playground': () => import('./sql-playground.js'),
+    'spreadsheet-playground': () => import('./spreadsheet-playground.js'),
 };
 
 export const registeredComponentTypes = Object.freeze(Object.keys(factories));

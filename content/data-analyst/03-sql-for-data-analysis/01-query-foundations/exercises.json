@@ -1,0 +1,31 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "sql-foundation-01",
+            "type": "result_based",
+            "prompt": "Tampilkan order_id dan customer_id untuk order dengan channel Online, lalu urutkan berdasarkan order_id.",
+            "incorrect_feedback": "Hasil belum tepat. Pastikan kamu memakai tabel orders, filter channel Online, dan menampilkan dua kolom yang diminta.",
+            "success_feedback": "Tepat. Kamu memilih grain order dan menyaring channel sebelum membaca output.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["order_id", "customer_id"],
+                "expected_rows": [
+                    ["ORD001", "C001"],
+                    ["ORD003", "C001"],
+                    ["ORD004", "C003"],
+                    ["ORD006", "C002"]
+                ],
+                "row_order": "ordered",
+                "required_columns": ["order_id", "customer_id"]
+            },
+            "interactive": {
+                "type": "sql_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "starter_query": "SELECT order_id, customer_id\nFROM orders\nWHERE channel = 'Online'\nORDER BY order_id;",
+                "desktop_note": "Layar desktop disarankan agar schema dan query dapat terlihat berdampingan."
+            }
+        }
+    ]
+}

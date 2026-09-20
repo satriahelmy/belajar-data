@@ -271,10 +271,12 @@ async function mountSqlSpike(root) {
     });
 }
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => mountSqlSpike(document.querySelector('[data-sql-spike]')), { once: true });
-} else {
-    mountSqlSpike(document.querySelector('[data-sql-spike]'));
+if (document.querySelector('[data-sql-spike]')) {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => mountSqlSpike(document.querySelector('[data-sql-spike]')), { once: true });
+    } else {
+        void mountSqlSpike(document.querySelector('[data-sql-spike]'));
+    }
 }
 
-export { SqlWorkerRunner };
+export { SqlWorkerRunner, mountSqlSpike };

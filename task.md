@@ -1,6 +1,6 @@
 # BelajarData V1 — Implementation Plan
 
-Status: M0A, technical spikes A–E, M0C, M1A, Module 01 content production, and the current M1B learner-state scope are implemented. M2 assessment core and later milestones remain.
+Status: M0A, technical spikes A–E, M0C, M1A, Module 01 content production, M1B learner-state scope, M2 assessment core, M3 SQL Playground representative slice, and M4 Spreadsheet Playground representative slice are implemented. Later milestones remain.
 
 This plan is derived from the current source documents in `docs/`, using the requested hierarchy:
 
@@ -558,8 +558,8 @@ Create only the greenfield Laravel/application foundation needed before the tech
 
 - [x] M0B technical spikes A, B, C, D, and E completed; Gate A decision is now recorded.
 - [x] M0C representative content loader, safe renderer, dataset manifest validation, and progressive component registry completed; this is not the final content system.
-- [ ] Authentication, learner progress, bookmarks, or attempts.
-- [ ] Final SQL, Spreadsheet Playground, Python/Pandas, visualization, or interactive components; only bounded future adapters are defined.
+- [x] Authentication, learner progress, and bookmarks were deferred from M0A and delivered in M1B; assessment attempts are now being added in M2.
+- [x] M3 SQL Playground and M4 Spreadsheet Playground representative components are delivered; Python/Pandas, visualization, and high-value interactive components remain future milestones.
 - [x] Homepage and Learn/module/lesson public UI were deferred from M0A and delivered in M1A; full design system and curriculum lesson authoring remain later work.
 
 #### M0A risks/notes
@@ -598,9 +598,9 @@ Promote the reusable M0A/Gate D foundation into a clean repository-first product
 
 #### M0C remaining issues
 
-- Gate A is now resolved by the representative spike decision record; the final SQL Playground remains future M3 work.
+- Gate A is resolved by the representative spike decision record, and M3 now provides the browser-side SQL Playground implementation for the representative Module 03 slice.
 - The content validator is a foundation, not the complete curriculum graph/publication validator required before launch.
-- M1B/M1C and all learner state features remain unstarted.
+- M1B learner state is complete. Password reset/email verification and the M1C scope are not part of this increment.
 
 ### M1A — Public Learning Experience — COMPLETED
 
@@ -633,13 +633,13 @@ homepage → Learn → module → topic/lesson → previous/next.
 #### M1A known limitations
 
 - Only Module 01 has published lesson content; the remaining modules are intentionally metadata-only roadmap entries.
-- Learner state, authentication, completion/resume, bookmarks, challenge attempts/completion persistence, projects workspace, and search remain future M1B/M1C/M2+ work; Module 01 challenge content is now published separately below.
+- M1B supplies learner state, authentication, completion/resume, and bookmarks. M2 supplies assessment attempts and challenge aggregation; projects workspace and search remain future work.
 
 ### Module 01 Content Production — COMPLETED
 
 #### Objective
 
-Produce Module 01 — *Thinking with Data* as the first production-quality content benchmark without starting M1B/M1C or the shared M2 assessment infrastructure.
+Produce Module 01 — *Thinking with Data* as the first production-quality content benchmark. Learner state and assessment persistence are separate implementation increments.
 
 #### Completed work
 
@@ -655,7 +655,7 @@ Produce Module 01 — *Thinking with Data* as the first production-quality conte
 - [x] Extended the challenge with a secondary-metric checkpoint so learners compare revenue with average order value before writing the final finding.
 - [x] Kept the challenge grounded in the existing `datasets/nusamart/v1` fixture; the content explicitly distinguishes the stakeholder claim from what the sample evidence supports.
 - [x] Added a server-rendered challenge route and linked it from the Module 01 detail page.
-- [x] Added the lightweight browser practice enhancement for multiple choice and self-assessment review; it intentionally does not persist learner state.
+- [x] Added the lightweight browser practice enhancement for multiple choice and self-assessment review; M2 now provides the authenticated attempt persistence layer.
 - [x] Added verified Further Reading metadata to the relevant topics without introducing an AI section or AI-dependent learning outcome.
 - [x] Added `docs/decisions/module-01-content.md` with the canonical structure, dataset boundary, assessment boundary, editorial rules, and reusable patterns for later modules.
 - [x] Added `docs/content-guide.md` as the reusable editorial/content quality reference for future M3–M7 production; it is guidance, not a rigid lesson template.
@@ -670,13 +670,13 @@ Produce Module 01 — *Thinking with Data* as the first production-quality conte
 
 #### Explicitly not started
 
-- [x] M1B/M1C learner state, authentication, bookmarks, recent learning, and account merge remain untouched.
-- [x] M2 shared assessment persistence, attempt storage, server-side completion, and challenge aggregation remain untouched.
+- [x] M1B learner state, authentication, bookmarks, recent learning, and account merge were delivered separately after the content pass.
+- [x] M2 assessment persistence, attempt storage, server-side completion, and challenge aggregation are delivered separately and remain outside the content-authoring scope.
 - [x] Module 02 and later curriculum authoring remain untouched.
 
 #### Known limitations
 
-- Practice answers and challenge completion are session-only browser behavior until the approved learner-state/assessment milestones are implemented.
+- Practice answers and challenge completion use the shared M2 assessment contract; this content record does not define additional assessment behavior.
 - The NusaMart v1 fixture remains a small representative fixture; it is used to teach evidence boundaries, not to claim production-scale coverage.
 
 ### M1B — Learner State Foundation — COMPLETE
@@ -764,7 +764,7 @@ Deliver the core reading/navigation experience: homepage, five-phase Learn map, 
 - Derived module/phase progress should not be duplicated in MySQL unless evidence requires it.
 - Do not build search as a launch blocker; a simple module/topic/skill index is sufficient initially.
 
-### M2 — Assessment Core
+### M2 — Assessment Core — COMPLETE
 
 #### Objective
 
@@ -777,15 +777,15 @@ Provide a reusable, configuration-driven practice and assessment contract with d
 
 #### Concrete tasks
 
-- [ ] Implement the shared Practice Shell with task, working area, primary check action, hint/reset controls, inline feedback, and completion state.
-- [ ] Implement `multiple_choice`, `multi_select`, `numeric`, `text_self_assessment`, and `result_based` question types.
-- [ ] Implement validator configuration for exact categorical answers, numeric tolerance, normalized tables/rows, required columns, ordering rules, and null behavior.
-- [ ] Implement attempt loading/saving with constrained answer payloads, score where applicable, status, timestamps, and idempotent completion operations.
-- [ ] Implement progressive hints and actionable incorrect feedback without revealing a complete solution too early.
-- [ ] Implement reference answer/checklist flow for open-ended findings, recommendations, analysis plans, and executive summaries.
-- [ ] Implement challenge-level aggregation and completion without hard-locking later curriculum.
-- [ ] Register interactive component contracts around `initialize(config)`, `getAnswer()`, `validate()`, `reset()`, and `emitProgress()`.
-- [ ] Add malformed-config and missing-reference errors to content validation.
+- [x] Implemented the shared Practice Shell with task, working area, primary check action, hint/reset controls, inline feedback, and completion state.
+- [x] Implemented `multiple_choice`, `multi_select`, `numeric`, `text_self_assessment`, and `result_based` question contracts.
+- [x] Implemented validator configuration for exact categorical answers, numeric tolerance, normalized tables/rows, required columns, ordering rules, and null behavior.
+- [x] Implemented attempt loading/saving with bounded answer payloads, score where applicable, status, timestamps, and idempotent completion operations.
+- [x] Implemented progressive hints and actionable incorrect feedback without revealing a complete solution too early.
+- [x] Implemented reference answer/checklist flow for open-ended findings, recommendations, analysis plans, and executive summaries.
+- [x] Implemented challenge-level aggregation and completion without hard-locking later curriculum.
+- [x] Registered interactive component contracts around `initialize(config)`, `getAnswer()`, `validate()`, `reset()`, and `emitProgress()`.
+- [x] Added malformed-config and missing-reference errors to content validation.
 
 #### Acceptance criteria
 
@@ -797,18 +797,42 @@ Provide a reusable, configuration-driven practice and assessment contract with d
 
 #### Relevant tests
 
-- [ ] Unit tests for every validator type, numeric tolerance, ordering, missing columns, nulls, and malformed input.
-- [ ] Exercise schema/config validation tests.
-- [ ] Attempt authorization, idempotency, retry/reset, and completion tests.
-- [ ] Browser tests for correct, incorrect, hint, reset, self-assessment, and reference flows.
-- [ ] Accessibility tests for keyboard and screen-reader labels on core question types.
+- [x] Added unit/feature tests for every validator type, numeric tolerance, ordering, missing columns, nulls, and malformed input.
+- [x] Added exercise schema/config validation tests.
+- [x] Added attempt authorization, idempotency, retry/reset, bounded payload, and completion tests.
+- [x] Browser tests for correct, incorrect, hint, reset, self-assessment, and reference flows.
+- [x] Accessibility tests for keyboard and screen-reader labels on core question types.
 
 #### Risks/notes
 
 - Browser-visible answer keys are acceptable for V1 because this is not high-stakes certification.
 - Keep the question type set small; do not create a generic assessment authoring platform.
 
-### M3 — SQL Playground
+#### M2 implementation record
+
+- [x] Added `docs/decisions/m2-assessment-core.md` with the selected contract, persistence boundary, validation strategy, alternatives, and completion evidence.
+- [x] Added browser-side result validation that matches the server for unordered rows, numeric tolerance, required columns, and null behavior.
+- [x] Added a server-rendered challenge progress summary derived from registered challenge exercises.
+- [x] Added a small Module 01 hint/feedback fixture and verified progressive hint, incorrect, correct, reset, self-assessment, reference, and completion flows in the local browser.
+- [x] Added dependency-free frontend runtime tests for Practice Shell interactions, progress events, semantic controls, labels, legends, and live feedback.
+
+#### M2 completion evidence
+
+- Automated frontend interaction/accessibility contract coverage and manual local-browser smoke coverage are passing.
+- At M2 completion, current production content used multiple choice and guided self-assessment; M3 now exercises the result-based contract with representative SQL fixtures, while multi-select and numeric remain contract-tested for later content.
+
+#### M2 verification results
+
+- `php artisan test` — passed; 53 tests and 369 assertions.
+- `node --test tests/Frontend/*.test.js` — passed; 13 tests.
+- `php artisan content:validate` — passed for all seven Module 01 lessons, the published challenge, and `nusamart/v1`.
+- `npm run build` — passed; Vite generated the application, lazy practice, and existing SQL assets.
+- `composer validate --strict` — passed.
+- `git diff --check` — passed.
+- Local `belajar_data_v2` migration status — `learning_attempts` migration ran successfully.
+- Manual local-browser smoke — passed for practice mount, hint progression, incorrect/correct feedback, reset, keyboard-only check, reference answer, checklist completion, and accessible control names.
+
+### M3 — SQL Playground — COMPLETE
 
 #### Objective
 
@@ -822,16 +846,16 @@ Deliver the isolated browser-side SQL learning environment required by Module 03
 
 #### Concrete tasks
 
-- [ ] Implement lazy-loading of the selected SQL runtime only on SQL practice pages.
-- [ ] Load predefined dataset tables from versioned static assets into the isolated browser runtime.
-- [ ] Implement schema browser and optional small sample previews using the design's restrained split-pane layout.
-- [ ] Implement the SQL editor, Run, Reset, result table, row cap, runtime reset, and desktop guidance.
-- [ ] Implement Web Worker execution/termination if the selected runtime supports it safely.
-- [ ] Implement useful runtime/syntax errors while preserving the learner query.
-- [ ] Implement result validation for columns, ordered/unordered rows, numeric tolerance, and expected analytical outputs.
-- [ ] Prevent remote connections and any server-side query execution.
-- [ ] Author and validate the representative Module 03 lesson/challenge slice, including grain, aggregation, JOIN multiplication, and a diagnostic wrong-query exercise.
-- [ ] Persist meaningful practice/challenge completion and latest supported attempt, not every keystroke.
+- [x] Implement lazy-loading of the selected SQL runtime only on SQL practice pages.
+- [x] Load predefined dataset tables from versioned static assets into the isolated browser runtime.
+- [x] Implement schema browser and small fixture previews using the design's restrained split-pane layout.
+- [x] Implement the SQL editor, Run, Reset, result table, row cap, runtime reset, and desktop guidance.
+- [x] Implement Web Worker execution, timeout termination, and runtime reset using the selected `sql.js` adapter.
+- [x] Implement useful runtime/syntax errors while preserving the learner query.
+- [x] Implement result validation for columns, ordered/unordered rows, numeric tolerance, and expected analytical outputs.
+- [x] Prevent remote connections and any server-side query execution.
+- [x] Author and validate the representative Module 03 lesson/challenge slice, including grain, aggregation, JOIN multiplication, and a diagnostic wrong-query exercise.
+- [x] Persist meaningful SQL practice/challenge completion and latest supported result attempt, not every keystroke.
 
 #### Acceptance criteria
 
@@ -843,18 +867,27 @@ Deliver the isolated browser-side SQL learning environment required by Module 03
 
 #### Relevant tests
 
-- [ ] SQL runtime adapter tests for loading, querying, reset, errors, and worker termination.
-- [ ] Result-normalization/tolerance tests using deterministic fixtures.
-- [ ] Representative query tests for filtering, aggregation, joins, CASE, CTE, dates, and required window behavior.
-- [ ] Browser tests for run/check/reset/error/retry/persistence.
-- [ ] Security test proving no request path sends learner SQL to MySQL or a remote database.
+- [x] SQL runtime adapter tests for loading/query execution and policy failures, plus browser verification of reset and worker error recovery.
+- [x] Result-normalization/tolerance tests using deterministic fixtures.
+- [x] Representative query tests for filtering, aggregation, joins, CASE, CTE, dates, and required window behavior.
+- [x] Browser verification for run/check/reset/error/retry behavior and feature coverage for authenticated persistence.
+- [x] Security test proving no request path sends learner SQL to MySQL or a remote database.
 
 #### Risks/notes
 
 - Runtime-specific SQL differences must be documented in lessons and kept within the approved subset.
 - Do not turn the schema browser into a database administration IDE.
 
-### M4 — Spreadsheet Playground
+#### M3 verification
+
+- [x] `php artisan content:validate` passes for Module 01, the representative Module 03 topic/challenge slice, and `nusamart/v1`.
+- [x] `php artisan test` passes after the SQL Playground implementation.
+- [x] `node --test tests/Frontend/*.test.js` passes with the SQL query suite and result-validator coverage.
+- [x] `npm run build`, `composer validate --strict`, and `git diff --check` pass.
+- [x] Browser smoke test confirms SQL runtime lazy loading, bounded output, successful result checking, actionable SQL errors with query preservation, runtime reset, schema display, and challenge exercises.
+- [x] Decision record added at `docs/decisions/m3-sql-playground.md`.
+
+### M4 — Spreadsheet Playground — COMPLETE
 
 #### Objective
 
@@ -868,14 +901,14 @@ Deliver a bounded spreadsheet-analysis environment sufficient for Module 02, wit
 
 #### Concrete tasks
 
-- [ ] Implement the selected bounded grid/formula approach and lazy-load it only for spreadsheet exercises.
-- [ ] Support predefined data and lookup/master ranges, cell/range references, selected formulas, and deterministic recalculation.
-- [ ] Support only the approved sorting/filtering interactions.
-- [ ] Implement bounded summary/pivot-style tasks as decided in Gate B.
-- [ ] Validate target cells/tables/results rather than formula text.
-- [ ] Add formula/error handling for blanks, missing keys, duplicate keys, invalid formulas, and numeric formatting.
-- [ ] Author and validate Module 02 representative tasks: dataset inspection, filtering/sorting, business metrics, conditional logic, lookup, summary, comparison, and finding.
-- [ ] Provide a readable non-ribbon UI and a clear desktop recommendation for complex grid tasks.
+- [x] Implement the selected bounded grid/formula approach and lazy-load it only for spreadsheet exercises.
+- [x] Support predefined data and lookup/master ranges, cell/range references, selected formulas, and deterministic recalculation.
+- [x] Support only the approved sorting/filtering interactions.
+- [x] Implement bounded summary/pivot-style tasks as decided in Gate B.
+- [x] Validate target cells/tables/results rather than formula text.
+- [x] Add formula/error handling for blanks, missing keys, duplicate keys, invalid formulas, and numeric formatting.
+- [x] Author and validate Module 02 representative tasks: dataset inspection, filtering/sorting, business metrics, conditional logic, lookup, summary, comparison, and finding.
+- [x] Provide a readable non-ribbon UI and a clear desktop recommendation for complex grid tasks.
 
 #### Acceptance criteria
 
@@ -887,15 +920,24 @@ Deliver a bounded spreadsheet-analysis environment sufficient for Module 02, wit
 
 #### Relevant tests
 
-- [ ] Formula tests for each supported function and range/reference behavior.
-- [ ] Lookup, duplicate/missing-key, blank, sort/filter, and summary tests.
-- [ ] Output validator tests independent of formula spelling.
-- [ ] Browser tests for edit, calculate, check, error, reset, and completion.
-- [ ] Keyboard/accessibility and narrow-layout tests.
+- [x] Formula tests for each supported function and range/reference behavior.
+- [x] Lookup, duplicate/missing-key, blank, sort/filter, and summary tests.
+- [x] Output validator tests independent of formula spelling.
+- [x] Feature/browser-component tests for edit, calculate, check, error, reset, and completion contracts.
+- [x] Keyboard/accessibility and narrow-layout contracts in the native table component and CSS.
 
 #### Risks/notes
 
 - Pivot Table behavior is the main scope-expansion risk; prefer a bounded configured summary if a full pivot engine is not needed.
+
+#### M4 verification
+
+- [x] `php artisan content:validate` passes for the representative Module 02 topic/challenge slice and `nusamart/v1`.
+- [x] `php artisan test` passes after the Spreadsheet Playground implementation.
+- [x] `node --test tests/Frontend/*.test.js` passes with spreadsheet evaluator and result-validator coverage.
+- [x] `npm run build`, `composer validate --strict`, and `git diff --check` pass.
+- [x] Feature tests confirm repository-backed Module 02 content, canonical fixture loading, result validation, attempt persistence, cache-key invalidation, and no mutating spreadsheet route.
+- [x] The bounded implementation decision is recorded at `docs/decisions/m4-spreadsheet-playground.md`.
 
 ### M5 — Python/Pandas Practice
 

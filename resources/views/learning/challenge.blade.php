@@ -11,9 +11,12 @@
             <p class="lede">{{ $challenge['description'] }}</p>
             <div class="challenge-header__meta">
                 <span>~{{ $challenge['estimated_minutes'] }} menit</span>
-                <span>Tanpa tool khusus</span>
+                <span>Latihan terarah</span>
                 <span>Evidence-first</span>
             </div>
+            @auth
+                <div class="challenge-progress" aria-live="polite"><p class="eyebrow">Progress challenge</p><strong>{{ $assessment['completed'] }} / {{ $assessment['total'] }} latihan selesai</strong>@if ($assessment['is_complete'])<p class="quiet-note">Semua latihan challenge selesai. Kamu tetap dapat mengulangnya.</p>@endif</div>
+            @endauth
         </header>
         <div class="challenge-layout">
             <article class="lesson-reading">

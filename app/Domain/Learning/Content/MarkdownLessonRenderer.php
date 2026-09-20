@@ -2,6 +2,8 @@
 
 namespace App\Domain\Learning\Content;
 
+use App\Domain\Datasets\SpreadsheetDatasetFixture;
+use App\Domain\Datasets\SqlDatasetFixture;
 use Illuminate\Support\Facades\Cache;
 use League\CommonMark\GithubFlavoredMarkdownConverter;
 use DOMDocument;
@@ -15,6 +17,8 @@ class MarkdownLessonRenderer
         private readonly ContentRepository $repository,
         private readonly DirectiveParser $directives,
         private readonly ComponentRegistry $components,
+        private readonly SqlDatasetFixture $sqlFixture,
+        private readonly SpreadsheetDatasetFixture $spreadsheetFixture,
     ) {
     }
 
@@ -32,6 +36,14 @@ class MarkdownLessonRenderer
     private function renderCached(LessonSource $source, string $pathKey): RenderedLesson
     {
         $cacheKey = "content:lesson:{$pathKey}:{$source->key}:{$source->sourceHash}";
+
+        if (str_contains($source->markdown, ':::sql-playground')) {
+            $cacheKey .= ':sql-'.$this->sqlFixture->sourceHash();
+        }
+
+        if (str_contains($source->markdown, ':::spreadsheet-playground')) {
+            $cacheKey .= ':spreadsheet-'.$this->spreadsheetFixture->sourceHash();
+        }
 
         $ttlDays = max(1, (int) config('belajardata.content_cache_ttl_days', 1));
         $payload = Cache::remember($cacheKey, now()->addDays($ttlDays), function () use ($source): array {
@@ -93,6 +105,8 @@ class MarkdownLessonRenderer
         return match ($name) {
             'callout' => $this->renderCallout($attributes, $body),
             'practice' => $this->renderPractice($attributes, $body, $source),
+            'sql-playground' => $this->renderSqlPlayground($attributes, $body, $source),
+            'spreadsheet-playground' => $this->renderSpreadsheetPlayground($attributes, $body, $source),
             default => throw new ContentValidationException("Unknown directive [{$name}] in [{$source->key}]."),
         };
     }
@@ -145,11 +159,17 @@ class MarkdownLessonRenderer
         $publicConfig = [
             'id' => $id,
             'type' => $type,
+            'exercise_key' => ($source->metadata['path_key'] ?? 'data-analyst').'/'.$source->key.'/'.$id,
             'prompt' => $exercise['prompt'] ?? '',
             'options' => $exercise['options'] ?? [],
             'correct_option' => $exercise['correct_option'] ?? null,
+            'correct_options' => $exercise['correct_options'] ?? [],
             'reference_answer' => $exercise['reference_answer'] ?? null,
             'checklist' => $exercise['checklist'] ?? [],
+            'hints' => $exercise['hints'] ?? [],
+            'incorrect_feedback' => $exercise['incorrect_feedback'] ?? null,
+            'success_feedback' => $exercise['success_feedback'] ?? null,
+            'validator' => $exercise['validator'] ?? null,
         ];
 
         $config = htmlspecialchars(
@@ -164,6 +184,141 @@ class MarkdownLessonRenderer
             .'data-config="'.$config.'">'
             .'<p><strong>Practice:</strong> '.e($publicConfig['prompt']).'</p>'
             .'<div data-role="practice-mount"></div>'
+            .'</section>';
+    }
+
+    private function renderSqlPlayground(array $attributes, string $body, LessonSource $source): string
+    {
+        $this->components->assertRegistered('sql-playground');
+        $this->assertOnlyAttributes($attributes, ['id'], 'sql-playground');
+
+        if ($body !== '') {
+            throw new ContentValidationException('SQL playground directives must not contain a body.');
+        }
+
+        $id = $attributes['id'] ?? '';
+
+        if (! preg_match('/^[a-z0-9][a-z0-9-]*$/', $id)) {
+            throw new ContentValidationException('SQL playground directives require a safe id attribute.');
+        }
+
+        $exercise = $source->exercises[$id] ?? null;
+
+        if (! is_array($exercise) || ($exercise['type'] ?? null) !== 'result_based') {
+            throw new ContentValidationException("SQL playground [{$id}] is not registered as a result-based exercise in [{$source->key}].");
+        }
+
+        $interactive = $exercise['interactive'] ?? null;
+
+        if (! is_array($interactive) || ($interactive['type'] ?? null) !== 'sql_playground') {
+            throw new ContentValidationException("SQL playground [{$id}] is missing its interactive configuration.");
+        }
+
+        $fixture = $this->sqlFixture->payload();
+
+        if (($interactive['dataset_key'] ?? null) !== $fixture['dataset_key']
+            || ($interactive['dataset_version'] ?? null) !== $fixture['version']) {
+            throw new ContentValidationException("SQL playground [{$id}] references an unavailable dataset.");
+        }
+
+        $publicConfig = [
+            'id' => $id,
+            'type' => 'sql_playground',
+            'exercise_key' => ($source->metadata['path_key'] ?? 'data-analyst').'/'.$source->key.'/'.$id,
+            'prompt' => $exercise['prompt'],
+            'starter_query' => $interactive['starter_query'],
+            'desktop_note' => $interactive['desktop_note'] ?? 'Untuk latihan SQL, layar desktop memberi ruang yang lebih nyaman untuk schema dan query.',
+            'validator' => $exercise['validator'],
+            'incorrect_feedback' => $exercise['incorrect_feedback'] ?? null,
+            'success_feedback' => $exercise['success_feedback'] ?? null,
+            'fixture' => $fixture,
+            'limits' => [
+                'max_rows' => 100,
+                'max_query_characters' => 10000,
+                'timeout_ms' => 2000,
+            ],
+        ];
+
+        $config = htmlspecialchars(
+            json_encode($publicConfig, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES),
+            ENT_QUOTES | ENT_SUBSTITUTE,
+            'UTF-8',
+        );
+
+        return '<section class="learning-block learning-block--sql" '
+            .'data-learning-component="sql-playground" '
+            .'data-sql-exercise-id="'.e($id).'" '
+            .'data-config="'.$config.'">'
+            .'<p><strong>SQL Playground:</strong> '.e($publicConfig['prompt']).'</p>'
+            .'<div data-role="sql-playground-mount"></div>'
+            .'</section>';
+    }
+
+    private function renderSpreadsheetPlayground(array $attributes, string $body, LessonSource $source): string
+    {
+        $this->components->assertRegistered('spreadsheet-playground');
+        $this->assertOnlyAttributes($attributes, ['id'], 'spreadsheet-playground');
+
+        if ($body !== '') {
+            throw new ContentValidationException('Spreadsheet playground directives must not contain a body.');
+        }
+
+        $id = $attributes['id'] ?? '';
+
+        if (! preg_match('/^[a-z0-9][a-z0-9-]*$/', $id)) {
+            throw new ContentValidationException('Spreadsheet playground directives require a safe id attribute.');
+        }
+
+        $exercise = $source->exercises[$id] ?? null;
+        $interactive = is_array($exercise) ? ($exercise['interactive'] ?? null) : null;
+
+        if (! is_array($exercise)
+            || ($exercise['type'] ?? null) !== 'result_based'
+            || ! is_array($interactive)
+            || ($interactive['type'] ?? null) !== 'spreadsheet_playground') {
+            throw new ContentValidationException("Spreadsheet playground [{$id}] is not registered with a result-based interactive config in [{$source->key}].");
+        }
+
+        $fixture = $this->spreadsheetFixture->payload();
+
+        if (($interactive['dataset_key'] ?? null) !== $fixture['dataset_key']
+            || ($interactive['dataset_version'] ?? null) !== $fixture['version']) {
+            throw new ContentValidationException("Spreadsheet playground [{$id}] references an unavailable dataset.");
+        }
+
+        $publicConfig = [
+            'id' => $id,
+            'type' => 'spreadsheet_playground',
+            'exercise_key' => ($source->metadata['path_key'] ?? 'data-analyst').'/'.$source->key.'/'.$id,
+            'prompt' => $exercise['prompt'],
+            'mode' => $interactive['mode'],
+            'starter_cells' => $interactive['starter_cells'] ?? [],
+            'editable_cells' => $interactive['editable_cells'] ?? array_keys($interactive['starter_cells'] ?? []),
+            'cell_labels' => $interactive['cell_labels'] ?? [],
+            'starter_filter' => $interactive['starter_filter'] ?? 'all',
+            'starter_sort' => $interactive['starter_sort'] ?? 'order_id_asc',
+            'view_columns' => $interactive['view_columns'] ?? array_keys($fixture['tables']['transactions']['columns']),
+            'summary_dimension' => $interactive['summary_dimension'] ?? null,
+            'summary_measures' => $interactive['summary_measures'] ?? [],
+            'desktop_note' => $interactive['desktop_note'] ?? 'Untuk latihan spreadsheet, layar desktop memberi ruang yang lebih nyaman untuk data dan rumus.',
+            'validator' => $exercise['validator'],
+            'incorrect_feedback' => $exercise['incorrect_feedback'] ?? null,
+            'success_feedback' => $exercise['success_feedback'] ?? null,
+            'fixture' => $fixture,
+        ];
+
+        $config = htmlspecialchars(
+            json_encode($publicConfig, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES),
+            ENT_QUOTES | ENT_SUBSTITUTE,
+            'UTF-8',
+        );
+
+        return '<section class="learning-block learning-block--spreadsheet" '
+            .'data-learning-component="spreadsheet-playground" '
+            .'data-spreadsheet-exercise-id="'.e($id).'" '
+            .'data-config="'.$config.'">'
+            .'<p><strong>Spreadsheet Practice:</strong> '.e($publicConfig['prompt']).'</p>'
+            .'<div data-role="spreadsheet-playground-mount"></div>'
             .'</section>';
     }
 

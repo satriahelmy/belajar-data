@@ -62,7 +62,7 @@ class PublicLearningExperienceTest extends TestCase
 
     public function test_unpublished_module_and_unknown_topic_are_not_publicly_available(): void
     {
-        $this->get('/learn/02-spreadsheet-for-analysis')->assertNotFound();
+        $this->get('/learn/04-python-pandas-for-analysis')->assertNotFound();
         $this->get('/learn/data-analyst/01-thinking-with-data/not-a-topic')->assertNotFound();
     }
 

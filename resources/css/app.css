@@ -313,6 +313,70 @@ code, pre { font-family: var(--font-mono); }
 .learning-block--practice { border-top: 2px solid var(--accent); border-bottom: 1px solid var(--border-strong); }
 .learning-block--practice p:first-child { font-size: 1.02rem; }
 .learning-block--practice p:first-child strong { color: var(--accent-dark); letter-spacing: .03em; }
+.learning-block--sql { margin: var(--space-8) 0; padding: var(--space-5); border-top: 2px solid var(--foreground); border-bottom: 1px solid var(--border-strong); background: var(--surface); }
+.learning-block--sql > p:first-child { margin-bottom: var(--space-4); font-size: 1.02rem; }
+.learning-block--sql > p:first-child strong { color: var(--accent-dark); letter-spacing: .03em; }
+.sql-playground__guidance { margin: 0 0 var(--space-4); color: var(--muted); font-size: .88rem; }
+.sql-playground__workspace { display: grid; grid-template-columns: minmax(13rem, .72fr) minmax(0, 1.28fr); gap: var(--space-4); align-items: start; }
+.sql-playground__schema, .sql-playground__editor-panel { min-width: 0; border: 1px solid var(--border); background: var(--background); }
+.sql-playground__schema { padding: 1rem; }
+.sql-playground__label { display: block; margin-bottom: .45rem; color: var(--muted); font-family: var(--font-mono); font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.sql-playground__schema-note { margin: 0 0 1rem; color: var(--muted); font-size: .82rem; line-height: 1.45; }
+.sql-playground__table { border-top: 1px solid var(--border); }
+.sql-playground__table:last-child { border-bottom: 1px solid var(--border); }
+.sql-playground__table summary { cursor: pointer; padding: .7rem 0; color: var(--foreground); font-family: var(--font-mono); font-size: .78rem; font-weight: 700; }
+.sql-playground__columns { margin: 0 0 .65rem; padding: 0; list-style: none; color: var(--muted); font-family: var(--font-mono); font-size: .74rem; line-height: 1.65; }
+.sql-playground__sample { margin: 0 0 .7rem; color: var(--faint); font-size: .75rem; }
+.sql-playground__editor-panel { padding: 1rem; }
+.sql-playground__editor { display: block; width: 100%; min-height: 12rem; padding: .8rem; border: 1px solid var(--border-strong); border-radius: .2rem; color: var(--code-foreground); background: var(--code-background); font: .84rem/1.6 var(--font-mono); resize: vertical; }
+.sql-playground__editor:focus { border-color: var(--accent); outline: 3px solid #f59e0b; outline-offset: 1px; }
+.sql-playground__actions { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: .8rem; }
+.sql-playground__actions .button { min-height: 2.3rem; padding: .45rem .75rem; font-size: .82rem; }
+.sql-playground__status { min-height: 1.4rem; margin: .85rem 0 .35rem; color: var(--muted); font-size: .84rem; }
+.sql-playground__error { max-width: 100%; overflow-x: auto; margin: 0 0 .8rem; padding: .7rem .8rem; border-left: 3px solid var(--warning); color: #7c2d12; background: var(--warning-soft); font: .8rem/1.5 var(--font-mono); white-space: pre-wrap; }
+.sql-playground__result { max-width: 100%; overflow-x: auto; min-height: 4rem; padding-top: .35rem; color: var(--muted); font-size: .85rem; }
+.sql-playground__result table { width: 100%; min-width: 28rem; margin: 0; border-collapse: collapse; background: var(--surface); }
+.sql-playground__result th, .sql-playground__result td { padding: .5rem .6rem; border: 1px solid var(--border); text-align: left; white-space: nowrap; }
+.sql-playground__result th { border-top: 2px solid var(--foreground); color: var(--foreground); background: #e7eeed; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .04em; text-transform: uppercase; }
+.sql-playground__metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .6rem; margin: 1rem 0 0; padding-top: .8rem; border-top: 1px solid var(--border); }
+.sql-playground__metrics div { min-width: 0; }
+.sql-playground__metrics dt { color: var(--muted); font-family: var(--font-mono); font-size: .62rem; letter-spacing: .04em; text-transform: uppercase; }
+.sql-playground__metrics dd { margin: .2rem 0 0; color: var(--foreground); font-size: .78rem; font-weight: 700; }
+.sql-playground__editor-panel .practice-feedback { min-height: 1.4rem; margin: .8rem 0 0; }
+.learning-block--spreadsheet { margin: var(--space-8) 0; padding: var(--space-5); border-top: 2px solid var(--foreground); border-bottom: 1px solid var(--border-strong); background: var(--surface); }
+.learning-block--spreadsheet > p:first-child { margin-bottom: var(--space-4); font-size: 1.02rem; }
+.learning-block--spreadsheet > p:first-child strong { color: var(--accent-dark); letter-spacing: .03em; }
+.spreadsheet-playground__guidance { margin: 0 0 var(--space-4); color: var(--muted); font-size: .88rem; }
+.spreadsheet-playground__workspace { display: grid; grid-template-columns: minmax(14rem, .7fr) minmax(0, 1.3fr); gap: var(--space-4); align-items: start; }
+.spreadsheet-playground__dataset, .spreadsheet-playground__work { min-width: 0; border: 1px solid var(--border); background: var(--background); }
+.spreadsheet-playground__dataset { padding: 1rem; }
+.spreadsheet-playground__label { display: block; margin-bottom: .45rem; color: var(--muted); font-family: var(--font-mono); font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.spreadsheet-playground__dataset-note { margin: 0 0 1rem; color: var(--muted); font-size: .82rem; line-height: 1.45; }
+.spreadsheet-playground__sheet { border-top: 1px solid var(--border); }
+.spreadsheet-playground__sheet:last-of-type { border-bottom: 1px solid var(--border); }
+.spreadsheet-playground__sheet summary { cursor: pointer; padding: .7rem 0; color: var(--foreground); font-family: var(--font-mono); font-size: .78rem; font-weight: 700; }
+.spreadsheet-playground__columns { margin: 0 0 .7rem; padding: 0; list-style: none; color: var(--muted); font-family: var(--font-mono); font-size: .74rem; line-height: 1.65; }
+.spreadsheet-playground__work { padding: 1rem; }
+.spreadsheet-playground__formula-table, .spreadsheet-playground__result table { width: 100%; min-width: 34rem; border-collapse: collapse; background: var(--surface); }
+.spreadsheet-playground__formula-table th, .spreadsheet-playground__formula-table td, .spreadsheet-playground__result th, .spreadsheet-playground__result td { padding: .52rem .6rem; border: 1px solid var(--border); text-align: left; vertical-align: middle; }
+.spreadsheet-playground__formula-table th, .spreadsheet-playground__result th { border-top: 2px solid var(--foreground); color: var(--foreground); background: #e7eeed; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .04em; text-transform: uppercase; }
+.spreadsheet-playground__input { width: 100%; min-width: 15rem; padding: .5rem .6rem; border: 1px solid var(--border-strong); color: var(--code-foreground); background: var(--code-background); font: .8rem/1.4 var(--font-mono); }
+.spreadsheet-playground__input:focus { border-color: var(--accent); outline: 3px solid #f59e0b; outline-offset: 1px; }
+.spreadsheet-playground__filters { display: flex; flex-wrap: wrap; gap: .7rem; margin-bottom: .8rem; }
+.spreadsheet-playground__filter { display: grid; gap: .3rem; color: var(--muted); font-family: var(--font-mono); font-size: .68rem; letter-spacing: .05em; text-transform: uppercase; }
+.spreadsheet-playground__filter select { min-height: 2.35rem; padding: .4rem .55rem; border: 1px solid var(--border-strong); color: var(--foreground); background: var(--surface); font: .84rem var(--font-sans); text-transform: none; }
+.spreadsheet-playground__summary-note { margin: 0 0 1rem; color: var(--muted); font-size: .86rem; }
+.spreadsheet-playground__actions { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: .85rem; }
+.spreadsheet-playground__actions .button { min-height: 2.3rem; padding: .45rem .75rem; font-size: .82rem; }
+.spreadsheet-playground__status { min-height: 1.4rem; margin: .85rem 0 .35rem; color: var(--muted); font-size: .84rem; }
+.spreadsheet-playground__error { max-width: 100%; overflow-x: auto; margin: 0 0 .8rem; padding: .7rem .8rem; border-left: 3px solid var(--warning); color: #7c2d12; background: var(--warning-soft); font: .8rem/1.5 var(--font-mono); white-space: pre-wrap; }
+.spreadsheet-playground__result { max-width: 100%; overflow-x: auto; min-height: 4rem; margin-top: 1rem; color: var(--muted); font-size: .85rem; }
+.spreadsheet-playground__result td { white-space: nowrap; }
+.spreadsheet-playground__metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .6rem; margin: 1rem 0 0; padding-top: .8rem; border-top: 1px solid var(--border); }
+.spreadsheet-playground__metrics div { min-width: 0; }
+.spreadsheet-playground__metrics dt { color: var(--muted); font-family: var(--font-mono); font-size: .62rem; letter-spacing: .04em; text-transform: uppercase; }
+.spreadsheet-playground__metrics dd { margin: .2rem 0 0; color: var(--foreground); font-size: .78rem; font-weight: 700; }
+.spreadsheet-playground__work .practice-feedback { min-height: 1.4rem; margin: .8rem 0 0; }
 .practice-options { display: grid; gap: .55rem; margin: 1rem 0; padding: 0; border: 0; }
 .practice-options legend, .practice-writing-label { margin-bottom: .5rem; color: var(--muted); font-size: .88rem; font-weight: 700; }
 .practice-option { display: flex; align-items: flex-start; gap: .6rem; padding: .6rem .7rem; border: 1px solid var(--border); background: var(--surface); cursor: pointer; font-size: .92rem; }
@@ -340,6 +404,10 @@ code, pre { font-family: var(--font-mono); }
 .challenge-header { max-width: var(--reading-width); padding-bottom: var(--space-6); border-bottom: 1px solid var(--border); }
 .challenge-header h1 { max-width: 22ch; margin-bottom: .8rem; }
 .challenge-header__meta { display: flex; flex-wrap: wrap; gap: .65rem 1.25rem; margin-top: var(--space-5); color: var(--muted); font-family: var(--font-mono); font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; }
+.challenge-progress { max-width: 22rem; margin-top: var(--space-5); padding-top: var(--space-4); border-top: 1px solid var(--border); }
+.challenge-progress .eyebrow { margin-bottom: .35rem; }
+.challenge-progress strong { font-family: var(--font-display); font-size: 1.2rem; }
+.challenge-progress .quiet-note { margin: .35rem 0 0; }
 .challenge-layout { max-width: var(--reading-width); padding-top: var(--space-7); }
 .challenge-criteria { margin-top: var(--space-8); padding: var(--space-5); border-top: 2px solid var(--accent); border-bottom: 1px solid #b9dfd1; background: var(--accent-soft); }
 .challenge-criteria h2 { margin-bottom: .6rem; font-size: 1.35rem; }
@@ -351,6 +419,8 @@ code, pre { font-family: var(--font-mono); }
     .lesson-sidebar { display: none; }
     .lesson-mobile-nav { display: block; }
     .module-layout { gap: 2rem; }
+    .sql-playground__workspace { grid-template-columns: 1fr; }
+    .spreadsheet-playground__workspace { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 48rem) {

@@ -324,65 +324,7 @@ class ContentRepository
      */
     private function normalizeExercises(mixed $decoded, string $lessonKey): array
     {
-        if (! is_array($decoded)
-            || ($decoded['schema_version'] ?? null) !== 1
-            || ! isset($decoded['exercises'])
-            || ! is_array($decoded['exercises'])
-        ) {
-            throw new ContentValidationException("Exercise config for [{$lessonKey}] must contain an exercises array.");
-        }
-
-        $exercises = [];
-
-        foreach ($decoded['exercises'] as $exercise) {
-            if (! is_array($exercise)
-                || ! is_string($exercise['id'] ?? null)
-                || ! is_string($exercise['type'] ?? null)
-                || ! is_string($exercise['prompt'] ?? null)
-            ) {
-                throw new ContentValidationException("Every exercise in [{$lessonKey}] needs a string id and type.");
-            }
-
-            if (trim($exercise['prompt']) === '') {
-                throw new ContentValidationException("Invalid exercise configuration for [{$lessonKey}].");
-            }
-
-            if ($exercise['type'] === 'multiple_choice') {
-                if (! is_array($exercise['options'] ?? null)
-                    || $exercise['options'] === []
-                    || count(array_filter($exercise['options'], 'is_string')) !== count($exercise['options'])
-                    || ! isset($exercise['correct_option'])
-                    || ! is_int($exercise['correct_option'])
-                    || $exercise['correct_option'] < 0
-                    || $exercise['correct_option'] >= count($exercise['options'])) {
-                    throw new ContentValidationException("Invalid multiple-choice exercise configuration for [{$lessonKey}].");
-                }
-            } elseif ($exercise['type'] === 'text_self_assessment') {
-                if (! is_string($exercise['reference_answer'] ?? null)
-                    || trim($exercise['reference_answer']) === ''
-                    || ! is_array($exercise['checklist'] ?? null)
-                    || $exercise['checklist'] === []
-                    || count(array_filter($exercise['checklist'], 'is_string')) !== count($exercise['checklist'])) {
-                    throw new ContentValidationException("Invalid self-assessment exercise configuration for [{$lessonKey}].");
-                }
-            } else {
-                throw new ContentValidationException("Unsupported exercise type [{$exercise['type']}] for [{$lessonKey}].");
-            }
-
-            $id = $exercise['id'];
-
-            if (! preg_match('/^[a-z0-9][a-z0-9-]*$/', $id)) {
-                throw new ContentValidationException("Exercise id [{$id}] in [{$lessonKey}] is invalid.");
-            }
-
-            if (isset($exercises[$id])) {
-                throw new ContentValidationException("Duplicate exercise id [{$id}] in [{$lessonKey}].");
-            }
-
-            $exercises[$id] = $exercise;
-        }
-
-        return $exercises;
+        return (new ExerciseConfigValidator)->normalize($decoded, $lessonKey);
     }
 
     /** @return array{0: string, 1: string} */
@@ -435,8 +377,7 @@ class ContentRepository
     }
 
     /**
-     * @param mixed $phases
-     * @param list<mixed> $moduleKeys
+     * @param  list<mixed>  $moduleKeys
      */
     private function validatePhases(mixed $phases, array $moduleKeys, string $pathKey): void
     {
@@ -483,8 +424,7 @@ class ContentRepository
     }
 
     /**
-     * @param mixed $skills
-     * @param list<mixed> $moduleKeys
+     * @param  list<mixed>  $moduleKeys
      */
     private function validateSkills(mixed $skills, array $moduleKeys, string $pathKey): void
     {

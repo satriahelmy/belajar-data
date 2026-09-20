@@ -23,6 +23,8 @@ class ContentContractTest extends TestCase
                 '01-thinking-with-data/05-granularity',
                 '01-thinking-with-data/06-aggregation-comparison',
                 '01-thinking-with-data/07-data-to-insight',
+                '02-spreadsheet-for-analysis/01-spreadsheet-foundations',
+                '03-sql-for-data-analysis/01-query-foundations',
             ],
             $repository->validate(),
         );
@@ -35,6 +37,18 @@ class ContentContractTest extends TestCase
         $this->assertSame('01-thinking-with-data/challenge', $challenge->key);
         $this->assertCount(7, $challenge->exercises);
         $this->assertSame('text_self_assessment', $challenge->exercises['challenge-01-finding']['type']);
+    }
+
+    public function test_spreadsheet_module_challenge_loads_as_repository_content(): void
+    {
+        $repository = app(ContentRepository::class);
+        $lesson = $repository->lesson('02-spreadsheet-for-analysis/01-spreadsheet-foundations');
+        $challenge = $repository->challenge('02-spreadsheet-for-analysis');
+
+        $this->assertCount(3, $lesson->exercises);
+        $this->assertSame('spreadsheet_playground', $lesson->exercises['sheet-metrics-01']['interactive']['type']);
+        $this->assertCount(4, $challenge->exercises);
+        $this->assertSame('text_self_assessment', $challenge->exercises['sheet-finding-01']['type']);
     }
 
     public function test_invalid_lesson_key_is_rejected_before_file_access(): void

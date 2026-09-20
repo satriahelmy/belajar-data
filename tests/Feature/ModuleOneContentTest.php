@@ -41,6 +41,16 @@ class ModuleOneContentTest extends TestCase
         }
     }
 
+    public function test_practice_shell_exposes_a_progressive_mount_contract_for_current_content(): void
+    {
+        $response = $this->get('/learn/data-analyst/01-thinking-with-data/01-analyst-role');
+
+        $response->assertOk()
+            ->assertSee('data-learning-component="practice"', false)
+            ->assertSee('data-role="practice-mount"', false)
+            ->assertSee('<strong>Practice:</strong>', false);
+    }
+
     public function test_module_one_lessons_have_a_real_learning_progression_and_real_section_navigation(): void
     {
         $module = app(CurriculumRepository::class)->module('01-thinking-with-data');

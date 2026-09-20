@@ -57,4 +57,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Bookmark::class);
     }
+
+    public function attempts(): HasMany
+    {
+        return $this->hasMany(LearningAttempt::class);
+    }
 }
