@@ -1,0 +1,37 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "visual-question-01",
+            "type": "result_based",
+            "prompt": "Tampilkan perbandingan revenue antar-category. Gunakan bentuk visual dan pengaturan yang membuat kontribusi terbesar mudah diperiksa tanpa menyembunyikan kategori lain.",
+            "incorrect_feedback": "Pilihan belum selaras dengan pertanyaan. Periksa kembali metric revenue, dimensi category, urutan descending, dan skala honest.",
+            "success_feedback": "Tepat. Kamu memilih visual berdasarkan pertanyaan, lalu menjaga urutan dan skala agar perbandingan tetap dapat diperiksa.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["chart", "metric", "dimension", "sort", "highlight", "scale_mode"],
+                "expected_rows": [["bar", "revenue", "category", "descending", "top", "honest"]],
+                "row_order": "ordered",
+                "required_columns": ["chart", "metric", "dimension"]
+            },
+            "interactive": {
+                "type": "visualization_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "allowed_metrics": ["revenue", "quantity", "orders", "average_order_value"],
+                "allowed_dimensions": ["month", "category", "region", "channel"],
+                "allowed_charts": ["bar", "line", "scatter", "histogram", "composition", "distribution"],
+                "allowed_sorts": ["descending", "ascending", "chronological"],
+                "allowed_highlights": ["none", "top", "West", "Electronics"],
+                "allowed_scale_modes": ["honest", "truncated"],
+                "starter_metric": "revenue",
+                "starter_dimension": "category",
+                "starter_chart": "bar",
+                "starter_sort": "descending",
+                "starter_highlight": "top",
+                "starter_scale_mode": "honest",
+                "desktop_note": "Layar desktop memberi ruang yang lebih nyaman untuk membaca visual dan tabel."
+            }
+        }
+    ]
+}

@@ -72,9 +72,23 @@ final class ExerciseValidator
     {
         $text = $answer['text'] ?? '';
         $checklist = $answer['checklist'] ?? [];
+        $fields = $answer['fields'] ?? null;
 
         if (! is_string($text) || trim($text) === '') {
             return $this->incomplete([], 'Tulis jawabanmu terlebih dahulu.');
+        }
+
+        if ($fields !== null
+            && (! is_array($fields)
+                || count($fields) > 5
+                || count(array_filter($fields, static fn (mixed $value, mixed $key): bool => is_string($key) && preg_match('/^[a-z][a-z_]*$/', $key) && is_string($value) && mb_strlen($value) <= 2000, ARRAY_FILTER_USE_BOTH)) !== count($fields))) {
+            return $this->incomplete([], 'Lengkapi field komunikasi sebelum mengecek jawaban.');
+        }
+
+        if (is_array($fields)
+            && (count($fields) === 0
+                || count(array_filter($fields, static fn (mixed $value): bool => trim((string) $value) !== '')) !== count($fields))) {
+            return $this->incomplete([], 'Lengkapi field komunikasi sebelum mengecek jawaban.');
         }
 
         $normalized = [
@@ -84,6 +98,13 @@ final class ExerciseValidator
                 : [],
             'complete' => ($answer['complete'] ?? false) === true,
         ];
+
+        if (is_array($fields)) {
+            $normalized['fields'] = array_map(static fn (mixed $value): string => mb_substr(trim((string) $value), 0, 2000), $fields);
+        }
+
+        $fieldsComplete = ! is_array($fields) || count($fields) > 0 && count(array_filter($fields, static fn (mixed $value): bool => trim((string) $value) !== '')) === count($fields);
+        $normalized['complete'] = $normalized['complete'] && $fieldsComplete;
         $completed = $normalized['complete'] && count($exercise['checklist']) === count($normalized['checklist']) && ! in_array(false, $normalized['checklist'], true);
 
         return new ExerciseValidationResult(

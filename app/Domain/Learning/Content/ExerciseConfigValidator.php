@@ -146,6 +146,41 @@ final class ExerciseConfigValidator
                 'cell_labels', 'starter_filter', 'starter_sort', 'view_columns', 'summary_dimension',
                 'summary_measures', 'desktop_note',
             ];
+        } elseif ($type === 'python_practice') {
+            $this->assertPythonInteractiveConfig($interactive, $lessonKey);
+            $allowed = [
+                'type', 'dataset_key', 'dataset_version', 'mode', 'starter_code', 'required_operations',
+                'output_metrics', 'notebook_url', 'desktop_note',
+            ];
+        } elseif ($type === 'visualization_playground') {
+            $this->assertVisualizationInteractiveConfig($interactive, $lessonKey);
+            $allowed = [
+                'type', 'dataset_key', 'dataset_version', 'allowed_metrics', 'allowed_dimensions',
+                'allowed_charts', 'allowed_sorts', 'allowed_highlights', 'allowed_scale_modes',
+                'starter_metric', 'starter_dimension', 'starter_chart', 'starter_sort',
+                'starter_highlight', 'starter_scale_mode', 'desktop_note',
+            ];
+        } elseif ($type === 'join_row_multiplication') {
+            $this->assertJoinInteractiveConfig($interactive, $lessonKey);
+            $allowed = ['type', 'dataset_key', 'dataset_version', 'allowed_scenarios', 'starter_scenario', 'desktop_note'];
+        } elseif ($type === 'sampling_uncertainty') {
+            $this->assertSamplingInteractiveConfig($interactive, $lessonKey);
+            $allowed = [
+                'type', 'dataset_key', 'dataset_version', 'allowed_metrics', 'allowed_sample_sizes',
+                'allowed_repeats', 'allowed_seeds', 'starter_metric', 'starter_sample_size',
+                'starter_repeats', 'starter_seed', 'desktop_note',
+            ];
+        } elseif ($type === 'metric_tree_builder') {
+            $this->assertMetricTreeInteractiveConfig($interactive, $lessonKey);
+            $allowed = [
+                'type', 'dataset_key', 'dataset_version', 'tree_key', 'allowed_parent_options',
+                'starter_parents', 'desktop_note',
+            ];
+        } elseif ($type === 'communication_builder') {
+            $this->assertCommunicationInteractiveConfig($interactive, $lessonKey);
+            $allowed = [
+                'type', 'dataset_key', 'dataset_version', 'field_order', 'field_labels', 'desktop_note',
+            ];
         } else {
             throw new ContentValidationException("Unsupported interactive type [{$type}] for [{$lessonKey}].");
         }
@@ -216,6 +251,183 @@ final class ExerciseConfigValidator
                 || count(array_filter($interactive['summary_measures'], static fn (mixed $measure): bool => in_array($measure, ['revenue', 'quantity', 'order_count'], true))) !== count($interactive['summary_measures'])) {
                 throw new ContentValidationException("Invalid summary configuration in [{$lessonKey}].");
             }
+        }
+    }
+
+    /** @param array<string, mixed> $interactive */
+    private function assertPythonInteractiveConfig(array $interactive, string $lessonKey): void
+    {
+        if (! in_array($interactive['mode'] ?? null, ['inspect', 'filter_sort', 'transform', 'aggregate', 'merge', 'compare'], true)
+            || ! is_string($interactive['starter_code'] ?? null)
+            || trim($interactive['starter_code']) === ''
+            || mb_strlen($interactive['starter_code']) > 8000
+            || ! is_array($interactive['required_operations'] ?? null)
+            || $interactive['required_operations'] === []
+            || count($interactive['required_operations']) > 8
+            || ! is_string($interactive['notebook_url'] ?? null)
+            || $interactive['notebook_url'] !== '/downloads/nusamart-module-04-fallback.ipynb') {
+            throw new ContentValidationException("Invalid Python practice configuration for [{$lessonKey}].");
+        }
+
+        foreach ($interactive['required_operations'] as $operation) {
+            if (! is_string($operation)
+                || ! preg_match('/^[a-z0-9_.-]+$/i', $operation)
+                || mb_strlen($operation) > 80) {
+                throw new ContentValidationException("Invalid required Python operation in [{$lessonKey}].");
+            }
+        }
+
+        if (isset($interactive['output_metrics'])) {
+            if (! is_array($interactive['output_metrics']) || count($interactive['output_metrics']) > 8) {
+                throw new ContentValidationException("Invalid Python output metrics in [{$lessonKey}].");
+            }
+
+            foreach ($interactive['output_metrics'] as $label => $value) {
+                if (! is_string($label) || trim($label) === '' || (! is_string($value) && ! is_int($value) && ! is_float($value) && ! is_bool($value))) {
+                    throw new ContentValidationException("Invalid Python output metric in [{$lessonKey}].");
+                }
+            }
+        }
+    }
+
+    /** @param array<string, mixed> $interactive */
+    private function assertVisualizationInteractiveConfig(array $interactive, string $lessonKey): void
+    {
+        $allowedValues = [
+            'allowed_metrics' => ['revenue', 'quantity', 'orders', 'average_order_value'],
+            'allowed_dimensions' => ['month', 'category', 'region', 'channel'],
+            'allowed_charts' => ['bar', 'line', 'scatter', 'histogram', 'composition', 'distribution'],
+            'allowed_sorts' => ['descending', 'ascending', 'chronological'],
+            'allowed_highlights' => ['none', 'top', 'West', 'Electronics'],
+            'allowed_scale_modes' => ['honest', 'truncated'],
+        ];
+
+        foreach ($allowedValues as $field => $supported) {
+            $values = $interactive[$field] ?? null;
+
+            if (! is_array($values)
+                || $values === []
+                || count($values) > 8
+                || count(array_unique($values)) !== count($values)
+                || count(array_filter($values, static fn (mixed $value): bool => is_string($value) && in_array($value, $supported, true))) !== count($values)) {
+                throw new ContentValidationException("Invalid {$field} in [{$lessonKey}].");
+            }
+        }
+
+        $starters = [
+            'starter_metric' => 'allowed_metrics',
+            'starter_dimension' => 'allowed_dimensions',
+            'starter_chart' => 'allowed_charts',
+            'starter_sort' => 'allowed_sorts',
+            'starter_highlight' => 'allowed_highlights',
+            'starter_scale_mode' => 'allowed_scale_modes',
+        ];
+
+        foreach ($starters as $starter => $allowed) {
+            if (! is_string($interactive[$starter] ?? null)
+                || ! in_array($interactive[$starter], $interactive[$allowed], true)) {
+                throw new ContentValidationException("Invalid {$starter} in [{$lessonKey}].");
+            }
+        }
+    }
+
+    /** @param array<string, mixed> $interactive */
+    private function assertJoinInteractiveConfig(array $interactive, string $lessonKey): void
+    {
+        $supported = ['order-to-items', 'items-to-products', 'wrong-key'];
+        $scenarios = $interactive['allowed_scenarios'] ?? null;
+
+        if (! is_array($scenarios)
+            || $scenarios === []
+            || count($scenarios) > count($supported)
+            || count(array_unique($scenarios)) !== count($scenarios)
+            || count(array_filter($scenarios, static fn (mixed $scenario): bool => is_string($scenario) && in_array($scenario, $supported, true))) !== count($scenarios)
+            || ! is_string($interactive['starter_scenario'] ?? null)
+            || ! in_array($interactive['starter_scenario'], $scenarios, true)) {
+            throw new ContentValidationException("Invalid JOIN scenario configuration in [{$lessonKey}].");
+        }
+    }
+
+    /** @param array<string, mixed> $interactive */
+    private function assertSamplingInteractiveConfig(array $interactive, string $lessonKey): void
+    {
+        $metrics = $interactive['allowed_metrics'] ?? null;
+        $sampleSizes = $interactive['allowed_sample_sizes'] ?? null;
+        $repeats = $interactive['allowed_repeats'] ?? null;
+        $seeds = $interactive['allowed_seeds'] ?? null;
+
+        if (! is_array($metrics)
+            || $metrics === []
+            || count(array_filter($metrics, static fn (mixed $metric): bool => is_string($metric) && in_array($metric, ['revenue', 'quantity'], true))) !== count($metrics)
+            || ! is_array($sampleSizes)
+            || $sampleSizes === []
+            || count(array_filter($sampleSizes, static fn (mixed $size): bool => is_int($size) && $size >= 2 && $size <= 20)) !== count($sampleSizes)
+            || ! is_array($repeats)
+            || $repeats === []
+            || count(array_filter($repeats, static fn (mixed $repeat): bool => is_int($repeat) && $repeat >= 2 && $repeat <= 20)) !== count($repeats)
+            || ! is_array($seeds)
+            || $seeds === []
+            || count(array_filter($seeds, static fn (mixed $seed): bool => is_int($seed) && $seed >= 0 && $seed <= 9999)) !== count($seeds)) {
+            throw new ContentValidationException("Invalid sampling configuration in [{$lessonKey}].");
+        }
+
+        $starters = [
+            'starter_metric' => $metrics,
+            'starter_sample_size' => $sampleSizes,
+            'starter_repeats' => $repeats,
+            'starter_seed' => $seeds,
+        ];
+
+        foreach ($starters as $starter => $allowed) {
+            if (! in_array($interactive[$starter] ?? null, $allowed, true)) {
+                throw new ContentValidationException("Invalid {$starter} in [{$lessonKey}].");
+            }
+        }
+    }
+
+    /** @param array<string, mixed> $interactive */
+    private function assertMetricTreeInteractiveConfig(array $interactive, string $lessonKey): void
+    {
+        if (! is_string($interactive['tree_key'] ?? null)
+            || ! preg_match('/^[a-z0-9][a-z0-9-]*$/', $interactive['tree_key'])) {
+            throw new ContentValidationException("Invalid metric tree key in [{$lessonKey}].");
+        }
+
+        $options = $interactive['allowed_parent_options'] ?? null;
+        $starters = $interactive['starter_parents'] ?? null;
+
+        if (! is_array($options) || $options === [] || ! is_array($starters)
+            || array_keys($options) !== array_keys($starters)) {
+            throw new ContentValidationException("Invalid metric tree parent configuration in [{$lessonKey}].");
+        }
+
+        foreach ($options as $nodeId => $parents) {
+            if (! is_string($nodeId)
+                || ! preg_match('/^[a-z0-9][a-z0-9-]*$/', $nodeId)
+                || ! is_array($parents)
+                || $parents === []
+                || count($parents) > 4
+                || count(array_unique($parents)) !== count($parents)
+                || count(array_filter($parents, static fn (mixed $parent): bool => is_string($parent) && preg_match('/^[a-z0-9][a-z0-9-]*$/', $parent))) !== count($parents)
+                || ! is_string($starters[$nodeId] ?? null)
+                || ! in_array($starters[$nodeId], $parents, true)) {
+                throw new ContentValidationException("Invalid metric tree parent option in [{$lessonKey}].");
+            }
+        }
+    }
+
+    /** @param array<string, mixed> $interactive */
+    private function assertCommunicationInteractiveConfig(array $interactive, string $lessonKey): void
+    {
+        $expected = ['headline', 'evidence', 'known', 'unknown', 'next_step'];
+        $order = $interactive['field_order'] ?? null;
+        $labels = $interactive['field_labels'] ?? null;
+
+        if ($order !== $expected
+            || ! is_array($labels)
+            || array_keys($labels) !== $expected
+            || count(array_filter($labels, static fn (mixed $label): bool => is_string($label) && trim($label) !== '')) !== count($labels)) {
+            throw new ContentValidationException("Invalid communication builder fields in [{$lessonKey}].");
         }
     }
 

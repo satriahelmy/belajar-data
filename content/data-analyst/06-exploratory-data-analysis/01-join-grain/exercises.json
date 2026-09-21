@@ -1,0 +1,27 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "join-grain-01",
+            "type": "result_based",
+            "prompt": "Pilih skenario yang memperlihatkan risiko row multiplication saat orders digabung dengan order_items. Periksa grain dan row count hasilnya.",
+            "incorrect_feedback": "Periksa kembali relationship. Satu orders dapat memiliki beberapa order_items, sehingga JOIN pada order_id menghasilkan row lebih banyak daripada orders.",
+            "success_feedback": "Tepat. Kamu melihat bahwa JOIN one-to-many mengubah grain hasil menjadi order-item dan dapat menggandakan metric order-level.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["scenario", "join_key", "left_rows", "right_rows", "result_rows"],
+                "expected_rows": [["order-to-items", "order_id", 6, 9, 9]],
+                "row_order": "ordered",
+                "required_columns": ["scenario", "join_key", "result_rows"]
+            },
+            "interactive": {
+                "type": "join_row_multiplication",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "allowed_scenarios": ["order-to-items", "items-to-products", "wrong-key"],
+                "starter_scenario": "order-to-items",
+                "desktop_note": "Layar desktop memberi ruang yang lebih nyaman untuk membaca dua tabel dan hasil JOIN."
+            }
+        }
+    ]
+}

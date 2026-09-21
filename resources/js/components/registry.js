@@ -2,6 +2,12 @@ const factories = {
     practice: () => import('./practice.js'),
     'sql-playground': () => import('./sql-playground.js'),
     'spreadsheet-playground': () => import('./spreadsheet-playground.js'),
+    'python-practice': () => import('./python-practice.js'),
+    'visualization-playground': () => import('./visualization-playground.js'),
+    'join-grain-playground': () => import('./join-grain-playground.js'),
+    'sampling-uncertainty-playground': () => import('./sampling-uncertainty-playground.js'),
+    'metric-tree-builder': () => import('./metric-tree-builder.js'),
+    'communication-builder': () => import('./communication-builder.js'),
 };
 
 export const registeredComponentTypes = Object.freeze(Object.keys(factories));

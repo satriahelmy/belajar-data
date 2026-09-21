@@ -5,13 +5,36 @@
     "title": "Statistics for Analysts",
     "number": 7,
     "order": 7,
-    "status": "roadmap",
+    "status": "published",
     "purpose": "Menggunakan statistik dasar untuk membandingkan, mengukur ketidakpastian, dan membatasi klaim.",
     "outcome": "Mampu memilih ringkasan statistik dan menjelaskan apa yang belum dapat diketahui dari data.",
-    "estimated_minutes": 180,
+    "estimated_minutes": 24,
     "recommended_knowledge": ["Exploratory Data Analysis"],
     "skill_tags": ["statistics"],
-    "challenge": {"key": "module-07-evidence-and-uncertainty", "title": "Evidence & Uncertainty", "description": "Nilai kekuatan evidence dan batas interpretasi secara proporsional.", "status": "roadmap"},
-    "topic_keys": [],
-    "topics": {}
+    "challenge": {
+        "key": "module-07-evidence-and-uncertainty",
+        "title": "Evidence & Uncertainty",
+        "description": "Nilai kekuatan evidence dan batas interpretasi secara proporsional.",
+        "status": "published",
+        "estimated_minutes": 12,
+        "content_file": "challenge/challenge.md",
+        "exercise_file": "challenge/exercises.json",
+        "dataset_refs": ["nusamart/v1"],
+        "completion_criteria": [
+            "Membedakan population mean dari sample mean.",
+            "Membandingkan beberapa sample untuk melihat sampling variability.",
+            "Menjelaskan mengapa satu sample tidak cukup untuk membuat klaim yang terlalu pasti."
+        ]
+    },
+    "topic_keys": ["01-sampling-uncertainty"],
+    "topics": {
+        "01-sampling-uncertainty": {
+            "title": "Sampling Changes the Estimate",
+            "order": 1,
+            "estimated_minutes": 12,
+            "skill_tags": ["statistics", "data-literacy"],
+            "lesson_file": "01-sampling-uncertainty/lesson.md",
+            "exercise_file": "01-sampling-uncertainty/exercises.json"
+        }
+    }
 }

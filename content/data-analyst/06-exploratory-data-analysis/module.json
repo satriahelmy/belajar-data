@@ -5,13 +5,36 @@
     "title": "Exploratory Data Analysis",
     "number": 6,
     "order": 6,
-    "status": "roadmap",
+    "status": "published",
     "purpose": "Mengeksplorasi pola, perubahan, dan anomali untuk mempersempit investigasi.",
     "outcome": "Mampu membuat pertanyaan lanjutan tanpa mengubah eksplorasi menjadi tebakan sebab-akibat.",
-    "estimated_minutes": 180,
+    "estimated_minutes": 24,
     "recommended_knowledge": ["Data Cleaning", "Python & Pandas for Analysis"],
     "skill_tags": ["eda"],
-    "challenge": {"key": "module-06-nusamart-eda", "title": "NusaMart EDA", "description": "Gunakan eksplorasi terarah untuk menemukan area yang perlu diselidiki.", "status": "roadmap"},
-    "topic_keys": [],
-    "topics": {}
+    "challenge": {
+        "key": "module-06-nusamart-eda",
+        "title": "NusaMart EDA",
+        "description": "Periksa grain dan dampak JOIN sebelum mempersempit investigasi.",
+        "status": "published",
+        "estimated_minutes": 12,
+        "content_file": "challenge/challenge.md",
+        "exercise_file": "challenge/exercises.json",
+        "dataset_refs": ["nusamart/v1"],
+        "completion_criteria": [
+            "Membandingkan grain tabel sebelum JOIN.",
+            "Memeriksa row count sebelum menjumlahkan metric.",
+            "Menjelaskan kapan hasil JOIN dapat menggandakan unit analisis."
+        ]
+    },
+    "topic_keys": ["01-join-grain"],
+    "topics": {
+        "01-join-grain": {
+            "title": "A JOIN Can Change the Grain",
+            "order": 1,
+            "estimated_minutes": 12,
+            "skill_tags": ["eda", "sql", "data-literacy"],
+            "lesson_file": "01-join-grain/lesson.md",
+            "exercise_file": "01-join-grain/exercises.json"
+        }
+    }
 }

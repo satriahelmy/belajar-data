@@ -5,13 +5,36 @@
     "title": "Metrics & Dashboards",
     "number": 9,
     "order": 9,
-    "status": "roadmap",
+    "status": "published",
     "purpose": "Mendefinisikan metrik dan menyusun monitoring yang membantu keputusan.",
     "outcome": "Mampu membedakan metric, target, dimension, dan konteks dalam dashboard.",
-    "estimated_minutes": 150,
+    "estimated_minutes": 24,
     "recommended_knowledge": ["Data Visualization"],
     "skill_tags": ["metrics-dashboards"],
-    "challenge": {"key": "module-09-metric-system", "title": "Build a Metric System", "description": "Susun metrik yang jelas untuk memantau pertanyaan bisnis.", "status": "roadmap"},
-    "topic_keys": [],
-    "topics": {}
+    "challenge": {
+        "key": "module-09-metric-system",
+        "title": "Build a Metric System",
+        "description": "Susun hubungan metric yang dapat menjelaskan perubahan revenue.",
+        "status": "published",
+        "estimated_minutes": 12,
+        "content_file": "challenge/challenge.md",
+        "exercise_file": "challenge/exercises.json",
+        "dataset_refs": ["nusamart/v1"],
+        "completion_criteria": [
+            "Memulai dari metric utama yang terkait dengan keputusan.",
+            "Memilih driver yang menjelaskan perubahan metric.",
+            "Membedakan hubungan metric dari klaim sebab-akibat."
+        ]
+    },
+    "topic_keys": ["01-metric-tree"],
+    "topics": {
+        "01-metric-tree": {
+            "title": "Build a Metric Tree",
+            "order": 1,
+            "estimated_minutes": 12,
+            "skill_tags": ["metrics-dashboards", "data-literacy"],
+            "lesson_file": "01-metric-tree/lesson.md",
+            "exercise_file": "01-metric-tree/exercises.json"
+        }
+    }
 }

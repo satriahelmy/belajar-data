@@ -1,0 +1,32 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "communication-builder-01",
+            "type": "text_self_assessment",
+            "prompt": "Tulis finding NusaMart dalam lima bagian: headline, evidence, known, unknown, dan next step.",
+            "reference_answer": "Headline: Revenue NusaMart naik dari 450 pada Agustus menjadi 600 pada September. Evidence: perbandingan revenue menunjukkan 450 pada Agustus dan 600 pada September. Known: data ini mendukung adanya perbedaan revenue antara dua periode. Unknown: data ini belum membuktikan campaign atau faktor tertentu sebagai penyebabnya. Next step: bandingkan orders dan average order value menurut periode atau segmentasi yang relevan sebelum mengambil keputusan.",
+            "checklist": [
+                "Headline menyebutkan perubahan utama dengan metric dan periode yang jelas.",
+                "Evidence menyertakan angka atau comparison yang dapat diperiksa.",
+                "Known hanya menyatakan hal yang didukung oleh data.",
+                "Unknown membatasi klaim sebab-akibat atau informasi yang belum tersedia.",
+                "Next step terhubung dengan unknown dan dapat diperiksa."
+            ],
+            "interactive": {
+                "type": "communication_builder",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "field_order": ["headline", "evidence", "known", "unknown", "next_step"],
+                "field_labels": {
+                    "headline": "Headline",
+                    "evidence": "Evidence",
+                    "known": "Known",
+                    "unknown": "Unknown",
+                    "next_step": "Next step"
+                },
+                "desktop_note": "Layar desktop memberi ruang yang lebih nyaman untuk menyusun dan meninjau finding."
+            }
+        }
+    ]
+}

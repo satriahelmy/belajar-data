@@ -1,0 +1,116 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "python-inspect-01",
+            "type": "result_based",
+            "prompt": "Muat transactions.csv, tampilkan tiga baris pertama, dan periksa shape dataset.",
+            "incorrect_feedback": "Pastikan alurnya memuat CSV lalu memeriksa head dan shape sebelum transformasi.",
+            "success_feedback": "Benar. Kamu memulai dari struktur data, bukan langsung membuat kesimpulan dari satu angka.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["order_id", "order_date", "region", "channel", "product_id", "quantity", "unit_price"],
+                "expected_rows": [
+                    ["O-1001", "2025-08-03", "West", "Online", "P-1001", 2, 120],
+                    ["O-1002", "2025-08-08", "East", "Store", "P-2001", 1, 120],
+                    ["O-1003", "2025-08-17", "West", "Online", "P-3001", 3, 30]
+                ],
+                "row_order": "ordered"
+            },
+            "interactive": {
+                "type": "python_practice",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "mode": "inspect",
+                "starter_code": "import pandas as pd\n\ntransactions = pd.read_csv(\"transactions.csv\")\nprint(transactions.head(3))\nprint(transactions.shape)",
+                "required_operations": ["read_csv", "head", "shape"],
+                "output_metrics": {"Shape": "8 rows × 7 columns", "View": "head(3)"},
+                "notebook_url": "/downloads/nusamart-module-04-fallback.ipynb",
+                "desktop_note": "Untuk kode dan tabel hasil, layar desktop disarankan."
+            }
+        },
+        {
+            "id": "python-filter-sort-01",
+            "type": "result_based",
+            "prompt": "Buat revenue, pilih transaksi September, lalu tampilkan dari revenue terbesar ke terkecil.",
+            "incorrect_feedback": "Periksa pembuatan revenue, filter periode 2025-09, dan sort_values dengan urutan menurun.",
+            "success_feedback": "Tepat. Kamu memilih periode dan ukuran sebelum membandingkan transaksi.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["order_id", "order_date", "region", "revenue"],
+                "expected_rows": [
+                    ["O-1006", "2025-09-11", "West", 180],
+                    ["O-1005", "2025-09-06", "East", 120],
+                    ["O-1008", "2025-09-21", "West", 120],
+                    ["O-1007", "2025-09-15", "South", 100],
+                    ["O-1004", "2025-09-02", "West", 80]
+                ],
+                "row_order": "ordered"
+            },
+            "interactive": {
+                "type": "python_practice",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "mode": "filter_sort",
+                "starter_code": "import pandas as pd\n\ntransactions = pd.read_csv(\"transactions.csv\")\ntransactions[\"revenue\"] = transactions[\"quantity\"] * transactions[\"unit_price\"]\nseptember = transactions[transactions[\"order_date\"].str.startswith(\"2025-09\")]\nprint(september.sort_values(\"revenue\", ascending=False)[[\"order_id\", \"order_date\", \"region\", \"revenue\"]])",
+                "required_operations": ["read_csv", "revenue", "2025-09", "sort_values"],
+                "output_metrics": {"Period": "2025-09", "Rows shown": 5, "Sort": "revenue descending"},
+                "notebook_url": "/downloads/nusamart-module-04-fallback.ipynb"
+            }
+        },
+        {
+            "id": "python-transform-01",
+            "type": "result_based",
+            "prompt": "Tambahkan revenue dan month, lalu tampilkan tiga baris pertama hasil transformasi.",
+            "incorrect_feedback": "Pastikan revenue dihitung dari quantity dan unit_price, lalu order_date diproses menjadi month.",
+            "success_feedback": "Benar. Kolom turunan membuat definisi ukuran dan periode menjadi terlihat dalam data.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["order_id", "revenue", "month"],
+                "expected_rows": [
+                    ["O-1001", 240, "2025-08"],
+                    ["O-1002", 120, "2025-08"],
+                    ["O-1003", 90, "2025-08"]
+                ],
+                "row_order": "ordered"
+            },
+            "interactive": {
+                "type": "python_practice",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "mode": "transform",
+                "starter_code": "import pandas as pd\n\ntransactions = pd.read_csv(\"transactions.csv\")\ntransactions[\"revenue\"] = transactions[\"quantity\"] * transactions[\"unit_price\"]\ntransactions[\"order_date\"] = pd.to_datetime(transactions[\"order_date\"])\ntransactions[\"month\"] = transactions[\"order_date\"].dt.to_period(\"M\").astype(str)\nprint(transactions[[\"order_id\", \"revenue\", \"month\"]].head(3))",
+                "required_operations": ["read_csv", "quantity", "unit_price", "revenue", "to_datetime", "month"],
+                "output_metrics": {"Derived columns": "revenue, month", "View": "head(3)"},
+                "notebook_url": "/downloads/nusamart-module-04-fallback.ipynb"
+            }
+        },
+        {
+            "id": "python-merge-aggregate-01",
+            "type": "result_based",
+            "prompt": "Merge transaksi dengan Products, lalu ringkas total revenue per category.",
+            "incorrect_feedback": "Hubungkan kedua tabel melalui product_id sebelum memakai groupby category dan sum revenue.",
+            "success_feedback": "Tepat. Kamu memisahkan fakta transaksi dari konteks product sebelum membuat ringkasan.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["category", "revenue"],
+                "expected_rows": [
+                    ["Electronics", 560],
+                    ["Grocery", 190],
+                    ["Home", 300]
+                ],
+                "row_order": "ordered"
+            },
+            "interactive": {
+                "type": "python_practice",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "mode": "merge",
+                "starter_code": "import pandas as pd\n\ntransactions = pd.read_csv(\"transactions.csv\")\nproducts = pd.read_csv(\"products.csv\")\ntransactions[\"revenue\"] = transactions[\"quantity\"] * transactions[\"unit_price\"]\nsales = transactions.merge(products, on=\"product_id\", how=\"left\")\nsummary = sales.groupby(\"category\", as_index=False)[\"revenue\"].sum().sort_values(\"category\")\nprint(summary)",
+                "required_operations": ["read_csv", "merge", "groupby", "category", "sum"],
+                "output_metrics": {"Dimension": "category", "Measure": "revenue", "Rows shown": 3},
+                "notebook_url": "/downloads/nusamart-module-04-fallback.ipynb"
+            }
+        }
+    ]
+}

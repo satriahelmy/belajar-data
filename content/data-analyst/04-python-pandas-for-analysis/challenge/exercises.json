@@ -1,0 +1,46 @@
+{
+    "schema_version": 1,
+    "challenge_key": "module-04-nusamart-analysis",
+    "dataset_refs": ["nusamart/v1"],
+    "exercises": [
+        {
+            "id": "python-september-01",
+            "type": "result_based",
+            "prompt": "Hitung revenue September dan ringkas revenue per category dari yang terbesar.",
+            "incorrect_feedback": "Periksa parse tanggal, filter 2025-09, merge category, dan urutan revenue descending.",
+            "success_feedback": "Benar. Kamu menghasilkan perbandingan periode dan kontribusi kategori dari alur yang dapat diulang.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["category", "revenue"],
+                "expected_rows": [
+                    ["Electronics", 320],
+                    ["Home", 180],
+                    ["Grocery", 100]
+                ],
+                "row_order": "ordered"
+            },
+            "interactive": {
+                "type": "python_practice",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "mode": "compare",
+                "starter_code": "import pandas as pd\n\ntransactions = pd.read_csv(\"transactions.csv\")\nproducts = pd.read_csv(\"products.csv\")\ntransactions[\"revenue\"] = transactions[\"quantity\"] * transactions[\"unit_price\"]\ntransactions[\"order_date\"] = pd.to_datetime(transactions[\"order_date\"])\ntransactions[\"month\"] = transactions[\"order_date\"].dt.to_period(\"M\").astype(str)\nsales = transactions.merge(products, on=\"product_id\", how=\"left\")\nseptember = sales[sales[\"month\"] == \"2025-09\"]\nsummary = september.groupby(\"category\", as_index=False)[\"revenue\"].sum().sort_values(\"revenue\", ascending=False)\nprint(summary)",
+                "required_operations": ["read_csv", "to_datetime", "2025-09", "merge", "groupby", "sum", "sort_values"],
+                "output_metrics": {"Period": "2025-09", "Total revenue": 600, "Top category": "Electronics"},
+                "notebook_url": "/downloads/nusamart-module-04-fallback.ipynb",
+                "desktop_note": "Untuk kode dan tabel hasil, layar desktop disarankan."
+            }
+        },
+        {
+            "id": "python-finding-01",
+            "type": "text_self_assessment",
+            "prompt": "Tulis finding tentang performa September dan kontribusi kategori. Sertakan angka dan batas kesimpulan.",
+            "reference_answer": "Revenue September adalah 600. Electronics menyumbang revenue terbesar sebesar 320, disusul Home 180 dan Grocery 100. Data ini menunjukkan perbedaan kontribusi pada transaksi yang tersedia, tetapi belum menjelaskan penyebabnya.",
+            "checklist": [
+                "Menyebutkan total revenue September sebesar 600.",
+                "Menyebutkan Electronics sebagai kategori terbesar dengan revenue 320.",
+                "Menjelaskan bahwa hasil ini belum membuktikan penyebab perubahan."
+            ]
+        }
+    ]
+}

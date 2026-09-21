@@ -1,6 +1,6 @@
 # BelajarData V1 — Implementation Plan
 
-Status: M0A, technical spikes A–E, M0C, M1A, Module 01 content production, M1B learner-state scope, M2 assessment core, M3 SQL Playground representative slice, and M4 Spreadsheet Playground representative slice are implemented. Later milestones remain.
+Status: M0A, technical spikes A–E, M0C, M1A, Module 01 content production, M1B learner-state scope, M2 assessment core, M3 SQL Playground representative slice, M4 Spreadsheet Playground representative slice, M5 Python/Pandas representative slice, and M6A/M6B/M6C/M6D/M6E representative interactive slices are implemented. Later milestones remain.
 
 This plan is derived from the current source documents in `docs/`, using the requested hierarchy:
 
@@ -559,7 +559,7 @@ Create only the greenfield Laravel/application foundation needed before the tech
 - [x] M0B technical spikes A, B, C, D, and E completed; Gate A decision is now recorded.
 - [x] M0C representative content loader, safe renderer, dataset manifest validation, and progressive component registry completed; this is not the final content system.
 - [x] Authentication, learner progress, and bookmarks were deferred from M0A and delivered in M1B; assessment attempts are now being added in M2.
-- [x] M3 SQL Playground and M4 Spreadsheet Playground representative components are delivered; Python/Pandas, visualization, and high-value interactive components remain future milestones.
+- [x] M3 SQL Playground, M4 Spreadsheet Playground, M5 bounded Python/Pandas, M6A Visualization Playground, M6B JOIN Row Multiplication, M6C Sampling & Uncertainty, M6D Metric Tree Builder, and M6E Communication Builder representative components are delivered; future work is broader curriculum coverage, not another required M6 interactive type.
 - [x] Homepage and Learn/module/lesson public UI were deferred from M0A and delivered in M1A; full design system and curriculum lesson authoring remain later work.
 
 #### M0A risks/notes
@@ -584,7 +584,7 @@ Promote the reusable M0A/Gate D foundation into a clean repository-first product
 - [x] Added minimal editorial design tokens/primitives for reading content, tables, code, callouts, focus, and progressive blocks.
 - [x] Added boundary logging for content, dataset, and component failures without logging secrets or unnecessary learner answers.
 - [x] Removed disposable Gate B/C/E spike routes, controllers, views, fixtures, spike JavaScript, and spike-only tests; retained decision records and the documented static notebook fallback.
-- [x] Kept future SQL, bounded spreadsheet, bounded Python/Pandas, and visualization adapters lazy and unregistered; no runtime library was selected or loaded by M0C.
+- [x] Kept future SQL, bounded spreadsheet, bounded Python/Pandas, and visualization adapters lazy and unregistered during M0C; later milestones registered only the adapters approved by their evidence records.
 - [x] Added focused feature and frontend tests for boot, MySQL connectivity, stable keys, content safety, directive resolution, malformed references, dataset contracts, component registration, rendering, and lazy boundaries.
 
 #### M0C verification results
@@ -939,7 +939,7 @@ Deliver a bounded spreadsheet-analysis environment sufficient for Module 02, wit
 - [x] Feature tests confirm repository-backed Module 02 content, canonical fixture loading, result validation, attempt persistence, cache-key invalidation, and no mutating spreadsheet route.
 - [x] The bounded implementation decision is recorded at `docs/decisions/m4-spreadsheet-playground.md`.
 
-### M5 — Python/Pandas Practice
+### M5 — Python/Pandas Practice — COMPLETE
 
 #### Objective
 
@@ -953,34 +953,43 @@ Provide the approved Module 04 Python/Pandas experience, or the documented bound
 
 #### Concrete tasks
 
-- [ ] If the optional browser experiment is retained, lazy-load the Python runtime only for Python exercises and isolate execution in a Web Worker where practical.
-- [ ] If the optional browser experiment is retained, implement predefined dataset loading, code editor, Run, output/dataframe rendering, reset, bounded output, and error feedback.
-- [ ] Support only the tested Python/Pandas subset: import, load, inspect, select, filter, sort, calculated columns, groupby, merge, dates, and dataframe output.
-- [ ] Implement the selected bounded code/output exercises, expected-output checks, explanations, and downloadable notebooks without pretending to provide an open notebook runtime.
-- [ ] Author and validate Module 04 tasks from load/inspect through filter/transform/aggregate/compare/interpret.
+- [x] Kept the optional Pyodide browser experiment out of the required V1 path; the selected implementation is the bounded fallback recorded in Gate C.
+- [x] Implemented predefined dataset loading, starter-code editor, Run, output/dataframe rendering, reset, bounded output, and error feedback for the bounded fallback.
+- [x] Supported the tested representative operation contract: load, inspect, select/filter, sort, calculated columns, groupby, merge, dates, and dataframe output.
+- [x] Implemented the selected bounded code/output exercises, expected-output checks, explanations, and downloadable notebooks without presenting an open notebook runtime.
+- [x] Authored and validated the representative Module 04 topic and challenge from load/inspect through filter/transform/aggregate/compare/interpret.
 - [ ] Connect later Cleaning/EDA/Statistics tasks to the approved Python or fallback capability.
-- [ ] Provide reset/recovery behavior and preserve work on runtime errors.
+- [x] Provided reset/recovery behavior and preserved the edited source when a bounded validation error occurs.
 
 #### Acceptance criteria
 
-- Module 04 can be completed using the approved experience on the supported device baseline.
-- No arbitrary learner Python is sent to or executed by Laravel.
-- Resource limits, error behavior, output caps, and desktop guidance are visible and tested.
-- The fallback is explicitly reflected in lesson expectations and does not silently reduce required learning outcomes.
-- Ordinary lesson pages do not load Pyodide or equivalent runtime.
+- [x] The representative Module 04 topic and challenge can be completed using the approved fallback experience on the tested desktop browser.
+- [x] No arbitrary learner Python is sent to or executed by Laravel.
+- [x] Resource limits, error behavior, output caps, and desktop guidance are visible and tested.
+- [x] The fallback is explicitly reflected in lesson expectations and does not silently reduce the representative learning outcomes.
+- [x] Ordinary lesson pages do not load Pyodide or equivalent runtime.
 
 #### Relevant tests
 
-- [ ] Runtime adapter tests for CSV, Pandas operations, output, errors, reset, and resource caps, or equivalent fallback tests.
-- [ ] Browser tests for edit/run/error/fix/rerun and completion.
+- [x] Equivalent bounded fallback tests cover canonical CSV fixture loading, required operation checks, deterministic output, errors, reset, output caps, and resource limits.
+- [x] Browser smoke covers edit/run/error/fix/rerun and completion for the lesson and challenge.
 - [ ] Device/performance checks for initial load and memory.
-- [ ] Security test proving no server-side execution path.
+- [x] Feature tests prove there is no server-side Python execution path and learner source is not persisted by the attempt endpoint.
 
 #### Risks/notes
 
 - Do not add a Python execution service to preserve the ideal UX. A reliable bounded fallback is preferable to new infrastructure.
 
-### M6 — Visualization & High-Value Interactives
+#### M5 verification
+
+- [x] `php artisan content:validate` passes for the representative Module 04 lesson, challenge, and `nusamart/v1` fixture.
+- [x] `php artisan test --filter='Python|ContentContract|PublicLearningExperience|ComponentRegistry'` passes for the focused M5 contract suite.
+- [x] `node --test tests/Frontend/python-practice.test.js tests/Frontend/component-registry.test.js` passes for the bounded browser component and registration boundary.
+- [x] Browser smoke proves lesson/challenge render, output, correct feedback, incomplete-step feedback, reset, and notebook link availability.
+- [x] The M5 decision is recorded at `docs/decisions/m5-python-pandas.md`; Gate C evidence remains at `docs/decisions/gate-c-python-pandas.md`.
+- [ ] Device and low-memory performance coverage for a future optional Pyodide experiment remains intentionally open.
+
+### M6 — Visualization & High-Value Interactives — COMPLETE
 
 #### Objective
 
@@ -994,15 +1003,15 @@ Deliver bounded visualization and the five high-value interactive learning objec
 
 #### Concrete tasks
 
-- [ ] Implement the config-driven Visualization Playground with finite metric, dimension, chart, sorting, and highlighting controls.
-- [ ] Implement required chart types and adjacent text/table explanations.
-- [ ] Implement JOIN Row Multiplication using predefined tables, join key inspection, row counts, and grain warnings.
-- [ ] Implement Sampling & Uncertainty with deterministic seeds where assessment reproducibility matters, bounded sample controls, and repeated-estimate views.
-- [ ] Implement Metric Tree Builder using predefined nodes and limited valid relationships; do not build arbitrary node editing.
-- [ ] Implement Communication Builder fields for headline, evidence, known, unknown, and next step, followed by reference/checklist review.
-- [ ] Integrate visualization and interactives into the relevant module lessons/challenges.
-- [ ] Provide non-interactive explanatory content for concepts that should remain understandable without JavaScript.
-- [ ] Ensure controls, feedback, keyboard states, and reduced-motion behavior meet accessibility requirements.
+- [x] Implemented the config-driven Visualization Playground with finite metric, dimension, chart, sorting, highlighting, and scale controls.
+- [x] Implemented the required bounded chart representations and adjacent text/table explanations for the representative slice.
+- [x] Implemented JOIN Row Multiplication using predefined tables, join key inspection, row counts, preview rows, and grain warnings.
+- [x] Implement Sampling & Uncertainty with deterministic seeds where assessment reproducibility matters, bounded sample controls, and repeated-estimate views.
+- [x] Implement Metric Tree Builder using predefined nodes and limited valid relationships; do not build arbitrary node editing.
+- [x] Implement Communication Builder fields for headline, evidence, known, unknown, and next step, followed by reference/checklist review.
+- [x] Integrated the representative Visualization Playground, JOIN, Sampling & Uncertainty, Metric Tree Builder, and Communication Builder into the relevant lessons and challenges.
+- [x] Provided server-rendered table and explanatory content so the concept remains understandable without JavaScript.
+- [x] Added native controls, deterministic feedback, keyboard-reachable states, responsive layout, and disabled chart animation.
 
 #### Acceptance criteria
 
@@ -1014,16 +1023,28 @@ Deliver bounded visualization and the five high-value interactive learning objec
 
 #### Relevant tests
 
-- [ ] Chart configuration, data mapping, resize, cleanup, fallback table, and accessibility tests.
-- [ ] JOIN row/grain transformation fixture tests.
-- [ ] Deterministic sampling/uncertainty tests.
-- [ ] Metric tree valid/invalid relationship tests.
-- [ ] Communication Builder persistence, review, and checklist tests.
-- [ ] Browser tests for reset, feedback, and completion across each interactive.
+- [x] Added bounded view/selection tests, fixture/cache tests, fallback-table feature coverage, and browser smoke coverage for the representative Visualization Playground; the component also implements resize cleanup.
+- [x] JOIN row/grain transformation fixture tests.
+- [x] Deterministic sampling/uncertainty tests.
+- [x] Metric tree valid/invalid relationship tests.
+- [x] Communication Builder persistence, review, incomplete-field, and checklist tests.
+- [x] Browser smoke coverage for reset, feedback, and completion across the five representative M6 interactives.
 
 #### Risks/notes
 
 - The strongest scope-control rule is to teach a concept with a bounded interaction, not to rebuild Tableau, Excel, a notebook, or a generic diagram tool.
+
+#### M6 verification
+
+- [x] `php artisan content:validate` passes for the representative Module 08 lesson, challenge, and `nusamart/v1` fixture.
+- [x] Focused Laravel tests pass for visualization rendering, deterministic choice persistence, canonical fixture joins, cache invalidation, and registry boundaries.
+- [x] Frontend tests pass for bounded visualization views and selection answers.
+- [x] Browser smoke proves lazy enhancement, chart selection, fallback table visibility, reset, challenge completion, and feedback.
+- [x] Chart.js 4.5.1 is recorded as the selected dependency from Gate E; no ECharts or Observable Plot package was installed.
+- [x] M6B verification: JOIN Row Multiplication lesson/challenge, deterministic row-count validation, fixture/cache boundary, and browser smoke are complete.
+- [x] M6C verification: Sampling & Uncertainty lesson/challenge, deterministic fixture and browser tests, bounded result validation, cache boundary, and browser smoke are complete.
+- [x] M6D verification: Metric Tree Builder lesson/challenge, bounded relationship validation, cycle-safe preview tests, cache boundary, and browser smoke are complete.
+- [x] M6E verification: Communication Builder lesson/challenge, five-field bounded answer contract, reference/checklist review, incomplete-field validation, persistence, cache boundary, and browser smoke are complete.
 
 ### M7 — Tableau Learning
 

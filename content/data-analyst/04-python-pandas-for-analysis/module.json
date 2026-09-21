@@ -5,13 +5,36 @@
     "title": "Python & Pandas for Analysis",
     "number": 4,
     "order": 4,
-    "status": "roadmap",
+    "status": "published",
     "purpose": "Gunakan Python dan Pandas untuk melakukan transformasi serta analisis data yang berulang.",
     "outcome": "Mampu membaca data, memfilter, mengelompokkan, menggabungkan, dan memeriksa hasilnya.",
     "estimated_minutes": 180,
     "recommended_knowledge": ["Thinking with Data"],
     "skill_tags": ["python-pandas"],
-    "challenge": {"key": "module-04-nusamart-analysis", "title": "NusaMart Analysis Notebook", "description": "Bangun alur analisis yang dapat diulang dengan dataset yang disediakan.", "status": "roadmap"},
-    "topic_keys": [],
-    "topics": {}
+    "challenge": {
+        "key": "module-04-nusamart-analysis",
+        "title": "NusaMart Analysis Notebook",
+        "description": "Bangun alur analisis yang dapat diulang dengan dataset yang disediakan.",
+        "status": "published",
+        "estimated_minutes": 25,
+        "content_file": "challenge/challenge.md",
+        "exercise_file": "challenge/exercises.json",
+        "dataset_refs": ["nusamart/v1"],
+        "completion_criteria": [
+            "Memeriksa struktur data sebelum melakukan transformasi.",
+            "Menghasilkan perbandingan periode atau kategori dari langkah analisis yang dapat diulang.",
+            "Menjelaskan finding dan batas evidence tanpa mengubah perbedaan menjadi dugaan sebab-akibat."
+        ]
+    },
+    "topic_keys": ["01-python-foundations"],
+    "topics": {
+        "01-python-foundations": {
+            "title": "From DataFrame to Finding",
+            "order": 1,
+            "estimated_minutes": 25,
+            "skill_tags": ["python-pandas", "data-literacy"],
+            "lesson_file": "01-python-foundations/lesson.md",
+            "exercise_file": "01-python-foundations/exercises.json"
+        }
+    }
 }

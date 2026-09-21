@@ -1,0 +1,44 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "sampling-uncertainty-challenge-01",
+            "type": "result_based",
+            "prompt": "Gunakan revenue, sample size 3, 5 pengulangan, dan seed 42 untuk membandingkan beberapa sample mean.",
+            "incorrect_feedback": "Pengaturan belum sesuai dengan skenario challenge. Pilih revenue, sample size 3, 5 pengulangan, dan seed 42.",
+            "success_feedback": "Tepat. Kamu membandingkan beberapa estimasi dari metric dan sample yang sama sebelum membuat kesimpulan.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["metric", "sample_size", "repeats", "seed"],
+                "expected_rows": [["revenue", 3, 5, 42]],
+                "row_order": "ordered",
+                "required_columns": ["metric", "sample_size", "repeats", "seed"]
+            },
+            "interactive": {
+                "type": "sampling_uncertainty",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "allowed_metrics": ["revenue", "quantity"],
+                "allowed_sample_sizes": [3, 5, 8],
+                "allowed_repeats": [3, 5, 10],
+                "allowed_seeds": [7, 42],
+                "starter_metric": "revenue",
+                "starter_sample_size": 3,
+                "starter_repeats": 5,
+                "starter_seed": 7,
+                "desktop_note": "Layar desktop memberi ruang yang lebih nyaman untuk membandingkan beberapa sample mean."
+            }
+        },
+        {
+            "id": "sampling-uncertainty-reflection-01",
+            "type": "text_self_assessment",
+            "prompt": "Jelaskan mengapa sample mean dapat berbeda antar pengulangan, apa peran population mean sebagai pembanding, dan batas kesimpulan dari data ini.",
+            "reference_answer": "Sample mean dapat berbeda karena setiap sample berisi baris yang berbeda. Population mean menjadi pembanding untuk melihat variasi estimasi, tetapi hasil ini belum membuktikan penyebab atau menjamin bahwa satu sample mewakili semua kondisi.",
+            "checklist": [
+                "Menjelaskan bahwa sample berbeda dapat menghasilkan sample mean berbeda.",
+                "Menggunakan population mean sebagai pembanding, bukan sebagai bukti sebab-akibat.",
+                "Menyebutkan batas kesimpulan pada data NusaMart yang tersedia."
+            ]
+        }
+    ]
+}

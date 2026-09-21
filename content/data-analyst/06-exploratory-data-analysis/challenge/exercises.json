@@ -1,0 +1,38 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "join-diagnosis-01",
+            "type": "result_based",
+            "prompt": "Gunakan skenario orders ke order_items untuk menunjukkan row multiplication. Pastikan join key dan jumlah row hasil dapat diperiksa.",
+            "incorrect_feedback": "Gunakan order-to-items dengan join key order_id. Fokusnya adalah melihat perubahan grain dari order ke order-item.",
+            "success_feedback": "Benar. Row count dan grain memperlihatkan mengapa metric order-level harus dihitung dengan hati-hati setelah JOIN.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["scenario", "join_key", "left_rows", "right_rows", "result_rows"],
+                "expected_rows": [["order-to-items", "order_id", 6, 9, 9]],
+                "row_order": "ordered",
+                "required_columns": ["scenario", "join_key", "result_rows"]
+            },
+            "interactive": {
+                "type": "join_row_multiplication",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "allowed_scenarios": ["order-to-items", "items-to-products", "wrong-key"],
+                "starter_scenario": "wrong-key",
+                "desktop_note": "Layar desktop memberi ruang yang lebih nyaman untuk membaca dua tabel dan hasil JOIN."
+            }
+        },
+        {
+            "id": "join-finding-01",
+            "type": "text_self_assessment",
+            "prompt": "Jelaskan mengapa JOIN orders ke order_items menghasilkan row lebih banyak dan mengapa shipping_cost tidak boleh langsung dijumlahkan pada grain tersebut.",
+            "reference_answer": "orders memiliki satu row per order, sedangkan order_items memiliki satu row per product line. Satu order dapat bertemu beberapa item sehingga hasil JOIN menjadi grain order-item dan order_id berulang. Karena shipping_cost berada pada grain order, menjumlahkannya setelah JOIN dapat menggandakan nilainya.",
+            "checklist": [
+                "Menyebutkan grain orders dan order_items.",
+                "Menjelaskan relationship one-to-many dan row multiplication.",
+                "Menghubungkan grain dengan risiko menjumlahkan shipping_cost."
+            ]
+        }
+    ]
+}

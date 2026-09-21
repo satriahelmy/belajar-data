@@ -8,14 +8,18 @@ use Tests\TestCase;
 
 class ComponentRegistryTest extends TestCase
 {
-    public function test_practice_sql_and_spreadsheet_are_registered_while_other_heavy_components_are_only_planned(): void
+    public function test_production_learning_components_are_registered(): void
     {
         $registry = app(ComponentRegistry::class);
 
-        $this->assertSame(['practice', 'sql-playground', 'spreadsheet-playground'], $registry->registered());
+        $this->assertSame(['practice', 'sql-playground', 'spreadsheet-playground', 'python-practice', 'visualization-playground', 'join-grain-playground', 'sampling-uncertainty-playground', 'metric-tree-builder', 'communication-builder'], $registry->registered());
         $this->assertNotContains('sql', $registry->planned());
         $this->assertNotContains('spreadsheet', $registry->planned());
-        $this->assertContains('visualization', $registry->planned());
+        $this->assertNotContains('python', $registry->planned());
+        $this->assertNotContains('visualization', $registry->planned());
+        $this->assertNotContains('sampling-uncertainty', $registry->planned());
+        $this->assertNotContains('metric-tree', $registry->planned());
+        $this->assertNotContains('communication', $registry->planned());
     }
 
     public function test_unknown_component_cannot_be_resolved(): void

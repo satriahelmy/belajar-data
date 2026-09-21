@@ -5,13 +5,36 @@
     "title": "Communicating Insights",
     "number": 12,
     "order": 12,
-    "status": "roadmap",
+    "status": "published",
     "purpose": "Menyampaikan hasil analisis secara jelas, akurat, dan relevan untuk pengambil keputusan.",
     "outcome": "Mampu memimpin dengan takeaway, memilih evidence, dan mengomunikasikan ketidakpastian.",
-    "estimated_minutes": 150,
+    "estimated_minutes": 24,
     "recommended_knowledge": ["Business Analysis", "Data Visualization"],
     "skill_tags": ["communication"],
-    "challenge": {"key": "module-12-nusamart-growth-story", "title": "Present the NusaMart Growth Story", "description": "Ubah temuan menjadi pesan yang dapat dipahami dan ditindaklanjuti.", "status": "roadmap"},
-    "topic_keys": [],
-    "topics": {}
+    "challenge": {
+        "key": "module-12-nusamart-growth-story",
+        "title": "Present the NusaMart Growth Story",
+        "description": "Ubah temuan menjadi pesan yang dapat dipahami dan ditindaklanjuti.",
+        "status": "published",
+        "estimated_minutes": 12,
+        "content_file": "challenge/challenge.md",
+        "exercise_file": "challenge/exercises.json",
+        "dataset_refs": ["nusamart/v1"],
+        "completion_criteria": [
+            "Memimpin dengan headline yang jelas.",
+            "Memisahkan evidence, hal yang diketahui, dan hal yang belum diketahui.",
+            "Mengusulkan next step yang sesuai dengan batas evidence."
+        ]
+    },
+    "topic_keys": ["01-communication-builder"],
+    "topics": {
+        "01-communication-builder": {
+            "title": "Write an Evidence-Led Finding",
+            "order": 1,
+            "estimated_minutes": 12,
+            "skill_tags": ["communication", "data-literacy"],
+            "lesson_file": "01-communication-builder/lesson.md",
+            "exercise_file": "01-communication-builder/exercises.json"
+        }
+    }
 }

@@ -1,0 +1,43 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "metric-tree-01",
+            "type": "result_based",
+            "prompt": "Susun tree Revenue. Hubungkan Orders dan Average order value ke Revenue, lalu hubungkan Units per order dan Average price per unit ke Average order value.",
+            "incorrect_feedback": "Susunan belum tepat. Mulai dari Revenue, lalu periksa driver langsung dan driver Average order value.",
+            "success_feedback": "Tepat. Tree ini memecah Revenue menjadi driver yang dapat diperiksa tanpa mengubah hubungan metric menjadi klaim sebab-akibat.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["node_id", "parent_id"],
+                "expected_rows": [
+                    ["orders", "revenue"],
+                    ["average-order-value", "revenue"],
+                    ["units-per-order", "average-order-value"],
+                    ["average-price-per-unit", "average-order-value"]
+                ],
+                "row_order": "ordered",
+                "required_columns": ["node_id", "parent_id"]
+            },
+            "interactive": {
+                "type": "metric_tree_builder",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "tree_key": "revenue-tree",
+                "allowed_parent_options": {
+                    "orders": ["revenue"],
+                    "average-order-value": ["revenue"],
+                    "units-per-order": ["average-order-value", "orders"],
+                    "average-price-per-unit": ["average-order-value", "units-per-order"]
+                },
+                "starter_parents": {
+                    "orders": "revenue",
+                    "average-order-value": "revenue",
+                    "units-per-order": "average-order-value",
+                    "average-price-per-unit": "average-order-value"
+                },
+                "desktop_note": "Layar desktop memberi ruang yang lebih nyaman untuk membaca hubungan antar-metric."
+            }
+        }
+    ]
+}

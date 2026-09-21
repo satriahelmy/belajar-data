@@ -1,0 +1,54 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "metric-tree-challenge-01",
+            "type": "result_based",
+            "prompt": "Susun tree Revenue dengan Orders dan Average order value sebagai driver langsung, lalu turunkan dua driver Average order value.",
+            "incorrect_feedback": "Periksa kembali root Revenue dan hubungan dua tingkat driver pada tree.",
+            "success_feedback": "Tepat. Kamu menyusun jalur pemeriksaan dari Revenue ke driver tanpa membuat hubungan sebab-akibat yang belum didukung evidence.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["node_id", "parent_id"],
+                "expected_rows": [
+                    ["orders", "revenue"],
+                    ["average-order-value", "revenue"],
+                    ["units-per-order", "average-order-value"],
+                    ["average-price-per-unit", "average-order-value"]
+                ],
+                "row_order": "ordered",
+                "required_columns": ["node_id", "parent_id"]
+            },
+            "interactive": {
+                "type": "metric_tree_builder",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "tree_key": "revenue-tree",
+                "allowed_parent_options": {
+                    "orders": ["revenue"],
+                    "average-order-value": ["revenue"],
+                    "units-per-order": ["average-order-value", "orders"],
+                    "average-price-per-unit": ["average-order-value", "units-per-order"]
+                },
+                "starter_parents": {
+                    "orders": "revenue",
+                    "average-order-value": "revenue",
+                    "units-per-order": "orders",
+                    "average-price-per-unit": "units-per-order"
+                },
+                "desktop_note": "Layar desktop memberi ruang yang lebih nyaman untuk membaca hubungan antar-metric."
+            }
+        },
+        {
+            "id": "metric-tree-reflection-01",
+            "type": "text_self_assessment",
+            "prompt": "Jelaskan bagaimana metric tree membantu menentukan pemeriksaan berikutnya dan mengapa tree belum cukup untuk membuktikan penyebab.",
+            "reference_answer": "Metric tree memecah Revenue menjadi Orders dan Average order value, lalu menurunkan driver Average order value. Tree membantu menentukan bagian yang perlu dibandingkan, tetapi belum membuktikan penyebab karena hubungan tersebut masih perlu diuji dengan periode, dimensi, dan evidence yang tepat.",
+            "checklist": [
+                "Menyebutkan jalur dari Revenue ke driver langsung dan driver turunan.",
+                "Menjelaskan bahwa tree membantu menentukan pemeriksaan berikutnya.",
+                "Membedakan struktur metric dari bukti sebab-akibat."
+            ]
+        }
+    ]
+}

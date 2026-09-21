@@ -1,0 +1,48 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "visual-composition-01",
+            "type": "result_based",
+            "prompt": "Tampilkan perubahan komposisi revenue dari month ke month. Gunakan composition agar total periode dan bagian category dapat dibaca bersama.",
+            "incorrect_feedback": "Pilihan belum sesuai dengan pertanyaan perubahan komposisi. Gunakan revenue, dimensi month, chart composition, dan urutan chronological.",
+            "success_feedback": "Tepat. Visual ini menunjukkan total periode sekaligus bagian category yang membentuknya.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["chart", "metric", "dimension", "sort", "highlight", "scale_mode"],
+                "expected_rows": [["composition", "revenue", "month", "chronological", "none", "honest"]],
+                "row_order": "ordered",
+                "required_columns": ["chart", "metric", "dimension"]
+            },
+            "interactive": {
+                "type": "visualization_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "allowed_metrics": ["revenue", "quantity", "orders", "average_order_value"],
+                "allowed_dimensions": ["month", "category", "region", "channel"],
+                "allowed_charts": ["bar", "line", "scatter", "histogram", "composition", "distribution"],
+                "allowed_sorts": ["descending", "ascending", "chronological"],
+                "allowed_highlights": ["none", "top", "West", "Electronics"],
+                "allowed_scale_modes": ["honest", "truncated"],
+                "starter_metric": "revenue",
+                "starter_dimension": "month",
+                "starter_chart": "bar",
+                "starter_sort": "chronological",
+                "starter_highlight": "none",
+                "starter_scale_mode": "honest",
+                "desktop_note": "Layar desktop memberi ruang yang lebih nyaman untuk membaca visual dan tabel."
+            }
+        },
+        {
+            "id": "visual-finding-01",
+            "type": "text_self_assessment",
+            "prompt": "Tulis finding tentang perubahan revenue Agustus dan September. Sertakan angka, komposisi category jika relevan, dan batas evidence.",
+            "reference_answer": "Revenue naik dari 450 pada Agustus menjadi 600 pada September. September lebih tinggi, tetapi data ini hanya menunjukkan perbedaan revenue dan komposisi category pada dua periode; data ini belum cukup untuk menyatakan penyebabnya.",
+            "checklist": [
+                "Menyebutkan dua periode yang dibandingkan.",
+                "Menyertakan angka revenue atau perubahan yang terlihat.",
+                "Membedakan pola yang terlihat dari dugaan penyebab."
+            ]
+        }
+    ]
+}

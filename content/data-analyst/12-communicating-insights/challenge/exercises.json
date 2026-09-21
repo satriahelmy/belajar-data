@@ -1,0 +1,32 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "communication-builder-challenge-01",
+            "type": "text_self_assessment",
+            "prompt": "Susun pesan untuk stakeholder dengan field headline, evidence, known, unknown, dan next step.",
+            "reference_answer": "Headline: Revenue NusaMart naik dari 450 pada Agustus menjadi 600 pada September. Evidence: revenue meningkat 150 atau sekitar 33,3% dari Agustus ke September. Known: data menunjukkan perbedaan revenue dan komposisi pada dua periode tersebut. Unknown: data ini belum cukup untuk menyatakan penyebab kenaikan. Next step: periksa orders dan average order value menurut periode dan segmentasi sebelum memilih tindakan.",
+            "checklist": [
+                "Headline memimpin dengan finding yang jelas.",
+                "Evidence menyertakan comparison dan angka yang dapat diperiksa.",
+                "Known dan unknown tidak tercampur.",
+                "Tidak ada klaim sebab-akibat tanpa evidence tambahan.",
+                "Next step menjawab informasi yang masih unknown."
+            ],
+            "interactive": {
+                "type": "communication_builder",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "field_order": ["headline", "evidence", "known", "unknown", "next_step"],
+                "field_labels": {
+                    "headline": "Headline",
+                    "evidence": "Evidence",
+                    "known": "Known",
+                    "unknown": "Unknown",
+                    "next_step": "Next step"
+                },
+                "desktop_note": "Layar desktop memberi ruang yang lebih nyaman untuk menyusun dan meninjau finding."
+            }
+        }
+    ]
+}

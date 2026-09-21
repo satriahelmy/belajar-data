@@ -5,13 +5,36 @@
     "title": "Data Visualization",
     "number": 8,
     "order": 8,
-    "status": "roadmap",
+    "status": "published",
     "purpose": "Memilih dan menyusun visual yang membantu orang memahami evidence.",
     "outcome": "Mampu memetakan pertanyaan ke visual yang sesuai dan mengenali visual yang menyesatkan.",
-    "estimated_minutes": 150,
+    "estimated_minutes": 24,
     "recommended_knowledge": ["Exploratory Data Analysis", "Statistics for Analysts"],
     "skill_tags": ["visualization"],
-    "challenge": {"key": "module-08-visual-explanation", "title": "Visual Explanation", "description": "Buat visual yang menjawab pertanyaan analitis, bukan sekadar terlihat menarik.", "status": "roadmap"},
-    "topic_keys": [],
-    "topics": {}
+    "challenge": {
+        "key": "module-08-visual-explanation",
+        "title": "Visual Explanation",
+        "description": "Pilih bentuk visual yang menjawab pertanyaan analitis, lalu jelaskan batas evidence-nya.",
+        "status": "published",
+        "estimated_minutes": 12,
+        "content_file": "challenge/challenge.md",
+        "exercise_file": "challenge/exercises.json",
+        "dataset_refs": ["nusamart/v1"],
+        "completion_criteria": [
+            "Memilih bentuk visual berdasarkan pertanyaan, metric, dimensi, dan urutan yang jelas.",
+            "Membaca tabel angka di balik visual sebelum menyusun kesimpulan.",
+            "Menjelaskan batas evidence tanpa mengubah pola menjadi dugaan sebab-akibat."
+        ]
+    },
+    "topic_keys": ["01-choosing-a-visual"],
+    "topics": {
+        "01-choosing-a-visual": {
+            "title": "Choose the Question Before the Chart",
+            "order": 1,
+            "estimated_minutes": 12,
+            "skill_tags": ["visualization", "data-literacy"],
+            "lesson_file": "01-choosing-a-visual/lesson.md",
+            "exercise_file": "01-choosing-a-visual/exercises.json"
+        }
+    }
 }

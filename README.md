@@ -15,6 +15,8 @@ Aplikasi dirancang sebagai Laravel modular monolith yang server-rendered, dengan
 - M2: assessment core selesai untuk scope V1; practice shell, validator, dan attempt persistence dasar tersedia.
 - M3: SQL Playground selesai untuk representative Module 03 slice; runtime browser-only, fixture NusaMart, result validation, dan challenge dasar tersedia.
 - M4: Spreadsheet Playground selesai untuk representative Module 02 slice; evaluator formula terbatas, filter/sort, configured summary, result validation, dan challenge dasar tersedia.
+- M5: Python/Pandas Practice selesai untuk representative Module 04 slice; bounded code/output fallback, deterministic checks, fixture NusaMart, dan downloadable notebook tersedia tanpa runtime Python atau service server-side.
+- M6A/M6B/M6C/M6D/M6E: Visualization Playground, JOIN Row Multiplication, Sampling & Uncertainty, Metric Tree Builder, dan Communication Builder representative slices tersedia; interactive dimuat lazy dengan konfigurasi bounded, fallback server-rendered, deterministic validation, grain warnings, reproducible sample estimates, predefined metric relationships, serta reference/checklist self-assessment tanpa AI grading.
 
 Yang sudah tersedia pada increment M1B saat ini:
 
@@ -51,6 +53,14 @@ Yang sudah tersedia pada increment M4 saat ini:
 - fixture NusaMart versi `v1` dengan tabel Transactions dan Products, schema browser, filter/sort terbatas, formula, lookup exact, dan ringkasan kategori terkonfigurasi;
 - validasi output berbasis target cell atau tabel, error `#N/A`, `#DUPLICATE!`, `#REF!`, dan `#DIV/0!`, reset deterministik, serta attempt persistence melalui kontrak M2;
 - representative Module 02 topic dan challenge untuk inspeksi dataset, metric, conditional logic, lookup, summary, comparison, missing key, dan finding.
+
+Yang sudah tersedia pada increment M5 saat ini:
+
+- bounded browser practice untuk inspect, filter/sort, transform, merge, aggregate, dan comparison pada fixture CSV NusaMart;
+- code editor dengan starter code, output tabel dan metrik terkonfigurasi, error untuk langkah yang belum lengkap, reset, hint, serta validasi hasil melalui kontrak M2;
+- representative Module 04 topic dan challenge dengan alur dari inspeksi dataset sampai finding September;
+- downloadable notebook fallback untuk eksplorasi Python yang lebih terbuka;
+- tidak ada learner Python yang dikirim atau dieksekusi oleh Laravel, dan ordinary lesson tidak memuat Pyodide.
 
 ## Teknologi dan versi lokal
 
@@ -138,6 +148,19 @@ git diff --check
 - `/learn/data-analyst/02-spreadsheet-for-analysis/challenge` : representative Spreadsheet challenge NusaMart.
 - `/learn/data-analyst/03-sql-for-data-analysis/01-query-foundations` : representative SQL lesson dengan SQL Playground browser-only.
 - `/learn/data-analyst/03-sql-for-data-analysis/challenge` : representative SQL challenge NusaMart.
+- `/learn/data-analyst/04-python-pandas-for-analysis/01-python-foundations` : representative bounded Python/Pandas lesson NusaMart.
+- `/learn/data-analyst/04-python-pandas-for-analysis/challenge` : representative bounded Python/Pandas challenge NusaMart.
+- `/downloads/nusamart-module-04-fallback.ipynb` : downloadable notebook fallback untuk Module 04.
+- `/learn/data-analyst/08-data-visualization/01-choosing-a-visual` : representative bounded Visualization Playground lesson.
+- `/learn/data-analyst/08-data-visualization/challenge` : representative visualization challenge dengan composition dan guided finding.
+- `/learn/data-analyst/06-exploratory-data-analysis/01-join-grain` : representative JOIN Row Multiplication lesson dengan predefined NusaMart tables.
+- `/learn/data-analyst/06-exploratory-data-analysis/challenge` : representative JOIN grain challenge.
+- `/learn/data-analyst/07-statistics-for-analysts/01-sampling-uncertainty` : representative bounded Sampling & Uncertainty lesson dengan repeated sample means.
+- `/learn/data-analyst/07-statistics-for-analysts/challenge` : representative sampling challenge dengan bounded state dan guided reflection.
+- `/learn/data-analyst/09-metrics-dashboards/01-metric-tree` : representative bounded Metric Tree Builder lesson dengan predefined Revenue relationships.
+- `/learn/data-analyst/09-metrics-dashboards/challenge` : representative metric tree challenge dengan bounded relationship validation dan guided reflection.
+- `/learn/data-analyst/12-communicating-insights/01-communication-builder` : representative bounded Communication Builder lesson dengan lima field komunikasi dan reference/checklist review.
+- `/learn/data-analyst/12-communicating-insights/challenge` : representative Communication Builder challenge untuk menyusun finding NusaMart.
 - `/__foundation` : smoke route fondasi teknis.
 - `/__spike/*` : route teknis sementara untuk technical spikes.
 
