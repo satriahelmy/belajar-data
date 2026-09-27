@@ -1,0 +1,38 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "sql-join-01",
+            "type": "result_based",
+            "prompt": "Hitung jumlah order per customer segment dengan menghubungkan orders dan customers.",
+            "incorrect_feedback": "Gunakan customer_id sebagai key dan COUNT DISTINCT order_id.",
+            "success_feedback": "Tepat. Kamu membawa segment dari customers tanpa menghitung order yang sama berulang.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["segment", "orders"],
+                "expected_rows": [
+                    ["Business", 3],
+                    ["Consumer", 3]
+                ],
+                "row_order": "unordered"
+            },
+            "interactive": {
+                "type": "sql_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "starter_query": "SELECT c.segment, COUNT(DISTINCT o.order_id) AS orders FROM orders o JOIN customers c ON c.customer_id = o.customer_id GROUP BY c.segment;"
+            }
+        },
+        {
+            "id": "sql-join-02",
+            "type": "text_self_assessment",
+            "prompt": "Jelaskan mengapa shipping_cost dapat terduplikasi jika orders langsung JOIN ke order_items.",
+            "reference_answer": "Orders memiliki satu row per order, sedangkan order_items memiliki beberapa row per order. Setelah one-to-many JOIN, shipping_cost muncul pada setiap product line sehingga SUM shipping_cost menjadi inflated. Hitung metric order-level sebelum JOIN atau agregasikan kembali ke order.",
+            "checklist": [
+                "Menyebutkan grain orders dan order_items.",
+                "Menjelaskan row multiplication.",
+                "Menyebutkan cara menjaga metric order-level."
+            ]
+        }
+    ]
+}

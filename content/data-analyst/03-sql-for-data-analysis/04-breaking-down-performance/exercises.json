@@ -1,0 +1,42 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "sql-grouping-01",
+            "type": "result_based",
+            "prompt": "Tampilkan revenue per category dari order_items dan products.",
+            "incorrect_feedback": "Gunakan product_id untuk JOIN dan GROUP BY category.",
+            "success_feedback": "Tepat. Output memiliki satu row per category.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["category", "revenue"],
+                "expected_rows": [
+                    ["Accessories", 175],
+                    ["Electronics", 550],
+                    ["Furniture", 600]
+                ],
+                "row_order": "ordered"
+            },
+            "interactive": {
+                "type": "sql_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "starter_query": "SELECT p.category, SUM(oi.quantity * oi.unit_price) AS revenue FROM order_items oi JOIN products p ON p.product_id = oi.product_id GROUP BY p.category ORDER BY p.category;"
+            }
+        },
+        {
+            "id": "sql-grouping-02",
+            "type": "multiple_choice",
+            "prompt": "Apa yang perlu ditulis sebelum memilih GROUP BY?",
+            "options": [
+                "Arti satu row output dan dimension yang menjawab pertanyaan.",
+                "Nama dashboard final.",
+                "Semua field pada schema.",
+                "Urutan warna chart."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "GROUP BY harus mengikuti unit output dan pertanyaan analitis.",
+            "success_feedback": "Benar. Grouping bukan daftar field secara otomatis."
+        }
+    ]
+}

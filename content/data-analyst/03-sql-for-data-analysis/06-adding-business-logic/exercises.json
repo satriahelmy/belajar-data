@@ -1,0 +1,45 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "sql-case-01",
+            "type": "result_based",
+            "prompt": "Kelompokkan order menjadi High Value jika total revenue per order minimal 300, selain itu Standard.",
+            "incorrect_feedback": "Agregasikan revenue per order lalu gunakan CASE WHEN dengan threshold 300.",
+            "success_feedback": "Tepat. Kamu memisahkan perhitungan order revenue dari rule kategorinya.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["order_id", "order_band"],
+                "expected_rows": [
+                    ["ORD001", "Standard"],
+                    ["ORD002", "High Value"],
+                    ["ORD003", "Standard"],
+                    ["ORD004", "High Value"],
+                    ["ORD005", "Standard"],
+                    ["ORD006", "Standard"]
+                ],
+                "row_order": "ordered"
+            },
+            "interactive": {
+                "type": "sql_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "starter_query": "SELECT order_id, CASE WHEN SUM(quantity * unit_price) >= 300 THEN 'High Value' ELSE 'Standard' END AS order_band FROM order_items GROUP BY order_id ORDER BY order_id;"
+            }
+        },
+        {
+            "id": "sql-case-02",
+            "type": "multiple_choice",
+            "prompt": "Apa yang harus disebutkan ketika analyst memilih threshold High Value sendiri?",
+            "options": [
+                "Tidak perlu disebutkan karena CASE selalu objektif.",
+                "Sumber threshold dan alasan penggunaannya.",
+                "Hanya warna kategori.",
+                "Nama tool yang menjalankan query."
+            ],
+            "correct_option": 1,
+            "incorrect_feedback": "Threshold adalah bagian dari business logic dan perlu context.",
+            "success_feedback": "Benar. Rule perlu dapat dijelaskan dan ditinjau."
+        }
+    ]
+}

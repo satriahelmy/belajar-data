@@ -1,0 +1,42 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "sql-time-01",
+            "type": "result_based",
+            "prompt": "Tampilkan order September beserta month hasil ekstraksi dari order_date.",
+            "incorrect_feedback": "Gunakan substr order_date untuk month dan filter tanggal mulai 2025-09-01.",
+            "success_feedback": "Tepat. Kamu membuat periode yang eksplisit dan dapat diperiksa.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["order_id", "month"],
+                "expected_rows": [
+                    ["ORD004", "2025-09"],
+                    ["ORD005", "2025-09"],
+                    ["ORD006", "2025-09"]
+                ],
+                "row_order": "ordered"
+            },
+            "interactive": {
+                "type": "sql_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "starter_query": "SELECT order_id, substr(order_date, 1, 7) AS month FROM orders WHERE order_date >= '2025-09-01' ORDER BY order_date;"
+            }
+        },
+        {
+            "id": "sql-time-02",
+            "type": "multiple_choice",
+            "prompt": "Mengapa row periode pertama dapat memiliki previous_revenue NULL ketika memakai LAG?",
+            "options": [
+                "Karena query selalu gagal pada bulan pertama.",
+                "Karena tidak ada baseline sebelumnya pada data yang ditampilkan.",
+                "Karena revenue pertama otomatis nol.",
+                "Karena ORDER BY tidak diperlukan."
+            ],
+            "correct_option": 1,
+            "incorrect_feedback": "LAG membutuhkan row sebelumnya sesuai urutan yang ditentukan.",
+            "success_feedback": "Benar. NULL dapat berarti baseline memang belum tersedia."
+        }
+    ]
+}

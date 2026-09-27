@@ -26,7 +26,16 @@
             "Menjelaskan mengapa query yang salah dapat menggandakan angka order-level."
         ]
     },
-    "topic_keys": ["01-query-foundations"],
+    "topic_keys": [
+        "01-query-foundations",
+        "02-filtering-with-where",
+        "03-summarizing-with-aggregations",
+        "04-breaking-down-performance",
+        "05-combining-data-with-joins",
+        "06-adding-business-logic",
+        "07-analyzing-changes-over-time",
+        "08-structuring-an-analysis"
+    ],
     "topics": {
         "01-query-foundations": {
             "title": "Start with the Table",
@@ -35,6 +44,62 @@
             "skill_tags": ["sql", "data-literacy"],
             "lesson_file": "01-query-foundations/lesson.md",
             "exercise_file": "01-query-foundations/exercises.json"
+        },
+        "02-filtering-with-where": {
+            "title": "Answer Questions with Filters",
+            "order": 2,
+            "estimated_minutes": 14,
+            "skill_tags": ["sql", "data-literacy"],
+            "lesson_file": "02-filtering-with-where/lesson.md",
+            "exercise_file": "02-filtering-with-where/exercises.json"
+        },
+        "03-summarizing-with-aggregations": {
+            "title": "Summarize with Aggregations",
+            "order": 3,
+            "estimated_minutes": 16,
+            "skill_tags": ["sql", "metrics"],
+            "lesson_file": "03-summarizing-with-aggregations/lesson.md",
+            "exercise_file": "03-summarizing-with-aggregations/exercises.json"
+        },
+        "04-breaking-down-performance": {
+            "title": "Break Down Performance",
+            "order": 4,
+            "estimated_minutes": 16,
+            "skill_tags": ["sql", "analytical-thinking"],
+            "lesson_file": "04-breaking-down-performance/lesson.md",
+            "exercise_file": "04-breaking-down-performance/exercises.json"
+        },
+        "05-combining-data-with-joins": {
+            "title": "Combine Data with JOINs",
+            "order": 5,
+            "estimated_minutes": 18,
+            "skill_tags": ["sql", "data-literacy"],
+            "lesson_file": "05-combining-data-with-joins/lesson.md",
+            "exercise_file": "05-combining-data-with-joins/exercises.json"
+        },
+        "06-adding-business-logic": {
+            "title": "Add Business Logic",
+            "order": 6,
+            "estimated_minutes": 14,
+            "skill_tags": ["sql", "analytical-thinking"],
+            "lesson_file": "06-adding-business-logic/lesson.md",
+            "exercise_file": "06-adding-business-logic/exercises.json"
+        },
+        "07-analyzing-changes-over-time": {
+            "title": "Analyze Changes Over Time",
+            "order": 7,
+            "estimated_minutes": 18,
+            "skill_tags": ["sql", "metrics"],
+            "lesson_file": "07-analyzing-changes-over-time/lesson.md",
+            "exercise_file": "07-analyzing-changes-over-time/exercises.json"
+        },
+        "08-structuring-an-analysis": {
+            "title": "Structure an Analysis",
+            "order": 8,
+            "estimated_minutes": 18,
+            "skill_tags": ["sql", "analytical-thinking"],
+            "lesson_file": "08-structuring-an-analysis/lesson.md",
+            "exercise_file": "08-structuring-an-analysis/exercises.json"
         }
     }
 }

@@ -1,0 +1,39 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "sql-cte-01",
+            "type": "result_based",
+            "prompt": "Gunakan CTE untuk menghasilkan revenue dan perubahan dari bulan sebelumnya.",
+            "incorrect_feedback": "Buat monthly summary lalu gunakan LAG berdasarkan month.",
+            "success_feedback": "Tepat. Query terbagi menjadi tahap yang dapat diperiksa.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["month", "revenue", "previous_revenue", "change"],
+                "expected_rows": [
+                    ["2025-08", 675, null, null],
+                    ["2025-09", 650, 675, -25]
+                ],
+                "row_order": "ordered",
+                "null_behavior": "empty_as_null"
+            },
+            "interactive": {
+                "type": "sql_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "starter_query": "WITH monthly AS (SELECT substr(o.order_date, 1, 7) AS month, SUM(oi.quantity * oi.unit_price) AS revenue FROM orders o JOIN order_items oi ON oi.order_id = o.order_id GROUP BY month) SELECT month, revenue, LAG(revenue) OVER (ORDER BY month) AS previous_revenue, revenue - LAG(revenue) OVER (ORDER BY month) AS change FROM monthly ORDER BY month;"
+            }
+        },
+        {
+            "id": "sql-cte-02",
+            "type": "text_self_assessment",
+            "prompt": "Jelaskan apa yang dapat dan belum dapat disimpulkan dari monthly comparison NusaMart.",
+            "reference_answer": "Revenue September 650 lebih rendah 25 dari Agustus 675. Query menunjukkan perubahan pada periode yang tersedia, tetapi belum membuktikan penyebabnya. Investigasi lanjutan perlu melihat driver dan batas data.",
+            "checklist": [
+                "Menyebutkan revenue Agustus dan September.",
+                "Menyebutkan perubahan 25.",
+                "Membatasi klaim sebab-akibat."
+            ]
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "sql-aggregation-01",
+            "type": "result_based",
+            "prompt": "Hitung jumlah order unik dan total revenue pada order_items.",
+            "incorrect_feedback": "Gunakan COUNT DISTINCT order_id untuk order unik dan SUM quantity dikali unit_price untuk revenue.",
+            "success_feedback": "Tepat. Kamu membedakan row count dari order count.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["order_count", "revenue"],
+                "expected_rows": [[6, 1325]],
+                "row_order": "ordered"
+            },
+            "interactive": {
+                "type": "sql_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "starter_query": "SELECT COUNT(DISTINCT order_id) AS order_count, SUM(quantity * unit_price) AS revenue FROM order_items;"
+            }
+        },
+        {
+            "id": "sql-aggregation-02",
+            "type": "multiple_choice",
+            "prompt": "Metric mana yang tepat untuk pertanyaan jumlah order pada tabel order_items?",
+            "options": [
+                "COUNT(*) tanpa memeriksa grain.",
+                "COUNT(DISTINCT order_id).",
+                "SUM(unit_price).",
+                "AVG(quantity)."
+            ],
+            "correct_option": 1,
+            "incorrect_feedback": "Gunakan identifier unik ketika pertanyaannya jumlah order.",
+            "success_feedback": "Benar. Aggregation mengikuti unit analisis."
+        }
+    ]
+}

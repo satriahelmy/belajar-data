@@ -1,0 +1,42 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "sql-filter-01",
+            "type": "result_based",
+            "prompt": "Tampilkan order Online pada September, termasuk order_id dan order_date, urutkan berdasarkan tanggal.",
+            "incorrect_feedback": "Gunakan orders, channel Online, tanggal mulai 2025-09-01, dan ORDER BY order_date.",
+            "success_feedback": "Tepat. Kamu membuat subset periode dan channel yang dapat diperiksa.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["order_id", "order_date"],
+                "expected_rows": [
+                    ["ORD004", "2025-09-03"],
+                    ["ORD006", "2025-09-20"]
+                ],
+                "row_order": "ordered",
+                "required_columns": ["order_id", "order_date"]
+            },
+            "interactive": {
+                "type": "sql_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "starter_query": "SELECT order_id, order_date FROM orders WHERE channel = 'Online' AND order_date >= '2025-09-01' ORDER BY order_date;"
+            }
+        },
+        {
+            "id": "sql-filter-02",
+            "type": "multiple_choice",
+            "prompt": "Mengapa query filter perlu menyebutkan periode dan channel secara eksplisit?",
+            "options": [
+                "Agar semua row otomatis menjadi unik.",
+                "Agar scope evidence sesuai dengan pertanyaan yang ingin dijawab.",
+                "Agar SQL tidak membutuhkan SELECT.",
+                "Agar hasil filter membuktikan penyebab perubahan."
+            ],
+            "correct_option": 1,
+            "incorrect_feedback": "WHERE menetapkan scope evidence, bukan causal explanation.",
+            "success_feedback": "Benar. Scope yang eksplisit membuat hasil dapat diperiksa."
+        }
+    ]
+}

@@ -32,6 +32,25 @@ class SqlPlaygroundTest extends TestCase
             ->assertSee('Latihan terarah');
     }
 
+    public function test_module_three_content_sequence_and_guided_finding_render(): void
+    {
+        foreach ([
+            ['02-filtering-with-where', 'Answer Questions with Filters', 'sql-filter-01'],
+            ['08-structuring-an-analysis', 'Structure an Analysis', 'sql-cte-01'],
+        ] as [$topic, $title, $exercise]) {
+            $this->get("/learn/data-analyst/03-sql-for-data-analysis/{$topic}")
+                ->assertOk()
+                ->assertSee($title)
+                ->assertSee('data-learning-component="sql-playground"', false)
+                ->assertSee($exercise);
+        }
+
+        $this->get('/learn/data-analyst/03-sql-for-data-analysis/challenge')
+            ->assertOk()
+            ->assertSee('challenge-03-finding')
+            ->assertSee('Tulis finding');
+    }
+
     public function test_authenticated_sql_result_is_validated_and_persisted_as_an_attempt(): void
     {
         $user = User::factory()->create();

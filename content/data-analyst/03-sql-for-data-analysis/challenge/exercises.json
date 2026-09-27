@@ -78,8 +78,19 @@
                 "type": "sql_playground",
                 "dataset_key": "nusamart",
                 "dataset_version": "v1",
-                "starter_query": "SELECT SUM(shipping_cost) AS total_shipping\nFROM orders;"
+                "starter_query": "SELECT SUM(shipping_cost) AS total_shipping FROM orders;"
             }
+        },
+        {
+            "id": "challenge-03-finding",
+            "type": "text_self_assessment",
+            "prompt": "Tulis finding singkat dari revenue per bulan dan diagnosis JOIN. Sebutkan angka, grain, dan batas evidence.",
+            "reference_answer": "Revenue Agustus adalah 675 dan September 650, sehingga September lebih rendah 25. Revenue dihitung dari order_items yang dihubungkan ke orders pada order_id, sedangkan shipping_cost tetap dihitung pada grain order. Data menunjukkan perubahan periode, tetapi belum membuktikan penyebabnya.",
+            "checklist": [
+                "Menyebutkan revenue Agustus dan September serta perubahan 25.",
+                "Menjelaskan grain order_items dan orders pada query.",
+                "Tidak menyatakan perubahan sebagai bukti sebab-akibat."
+            ]
         }
     ]
 }

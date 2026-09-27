@@ -32,4 +32,9 @@ Biaya kirim berada pada grain order. Query yang langsung JOIN ke `order_items` a
 :::sql-playground id="challenge-03-diagnostic"
 :::
 
-Finding yang baik menyebutkan output, grain yang digunakan, dan batas evidence. Angka yang benar belum otomatis menjelaskan penyebab perubahan.
+## Tulis finding
+
+Gunakan output query untuk menulis finding yang menyebutkan revenue per bulan, grain yang digunakan, dan batas evidence. Angka yang benar belum otomatis menjelaskan penyebab perubahan.
+
+:::practice type="text_self_assessment" id="challenge-03-finding"
+:::
