@@ -40,6 +40,13 @@ class ContentContractTest extends TestCase
                 '03-sql-for-data-analysis/07-analyzing-changes-over-time',
                 '03-sql-for-data-analysis/08-structuring-an-analysis',
                 '04-python-pandas-for-analysis/01-python-foundations',
+                '04-python-pandas-for-analysis/02-loading-dataframes',
+                '04-python-pandas-for-analysis/03-selecting-and-filtering',
+                '04-python-pandas-for-analysis/04-creating-transformations',
+                '04-python-pandas-for-analysis/05-grouping-and-aggregating',
+                '04-python-pandas-for-analysis/06-combining-with-merge',
+                '04-python-pandas-for-analysis/07-working-with-dates',
+                '04-python-pandas-for-analysis/08-building-pandas-analysis',
                 '05-data-cleaning/01-what-makes-data-dirty',
                 '05-data-cleaning/02-missing-values',
                 '05-data-cleaning/03-duplicate-data',
@@ -110,6 +117,7 @@ class ContentContractTest extends TestCase
         $lesson = $repository->lesson('04-python-pandas-for-analysis/01-python-foundations');
         $challenge = $repository->challenge('04-python-pandas-for-analysis');
 
+        $this->assertCount(8, $repository->module('04-python-pandas-for-analysis')['topic_keys']);
         $this->assertCount(4, $lesson->exercises);
         $this->assertSame('python_practice', $lesson->exercises['python-merge-aggregate-01']['interactive']['type']);
         $this->assertCount(2, $challenge->exercises);

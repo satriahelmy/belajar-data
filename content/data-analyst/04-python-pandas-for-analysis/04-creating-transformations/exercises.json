@@ -1,0 +1,32 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "python-transform-04",
+            "type": "result_based",
+            "prompt": "Tambahkan revenue dan month, lalu tampilkan tiga baris pertama hasil transformasi.",
+            "incorrect_feedback": "Pastikan revenue dihitung dari quantity dan unit_price, lalu order_date diproses menjadi month.",
+            "success_feedback": "Benar. Kolom turunan membuat definisi ukuran dan periode menjadi terlihat dalam data.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["order_id", "revenue", "month"],
+                "expected_rows": [
+                    ["O-1001", 240, "2025-08"],
+                    ["O-1002", 120, "2025-08"],
+                    ["O-1003", 90, "2025-08"]
+                ],
+                "row_order": "ordered"
+            },
+            "interactive": {
+                "type": "python_practice",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "mode": "transform",
+                "starter_code": "import pandas as pd\n\ntransactions = pd.read_csv(\"transactions.csv\")\ntransactions[\"revenue\"] = transactions[\"quantity\"] * transactions[\"unit_price\"]\ntransactions[\"order_date\"] = pd.to_datetime(transactions[\"order_date\"])\ntransactions[\"month\"] = transactions[\"order_date\"].dt.to_period(\"M\").astype(str)\nprint(transactions[[\"order_id\", \"revenue\", \"month\"]].head(3))",
+                "required_operations": ["read_csv", "quantity", "unit_price", "revenue", "to_datetime", "month"],
+                "output_metrics": {"Derived columns": "revenue, month", "View": "head(3)"},
+                "notebook_url": "/downloads/nusamart-module-04-fallback.ipynb"
+            }
+        }
+    ]
+}

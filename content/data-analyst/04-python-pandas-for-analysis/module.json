@@ -26,7 +26,16 @@
             "Menjelaskan finding dan batas evidence tanpa mengubah perbedaan menjadi dugaan sebab-akibat."
         ]
     },
-    "topic_keys": ["01-python-foundations"],
+    "topic_keys": [
+        "01-python-foundations",
+        "02-loading-dataframes",
+        "03-selecting-and-filtering",
+        "04-creating-transformations",
+        "05-grouping-and-aggregating",
+        "06-combining-with-merge",
+        "07-working-with-dates",
+        "08-building-pandas-analysis"
+    ],
     "topics": {
         "01-python-foundations": {
             "title": "From DataFrame to Finding",
@@ -35,6 +44,62 @@
             "skill_tags": ["python-pandas", "data-literacy"],
             "lesson_file": "01-python-foundations/lesson.md",
             "exercise_file": "01-python-foundations/exercises.json"
+        },
+        "02-loading-dataframes": {
+            "title": "Loading & Understanding DataFrames",
+            "order": 2,
+            "estimated_minutes": 16,
+            "skill_tags": ["python-pandas", "data-literacy"],
+            "lesson_file": "02-loading-dataframes/lesson.md",
+            "exercise_file": "02-loading-dataframes/exercises.json"
+        },
+        "03-selecting-and-filtering": {
+            "title": "Selecting & Filtering Data",
+            "order": 3,
+            "estimated_minutes": 16,
+            "skill_tags": ["python-pandas", "data-literacy"],
+            "lesson_file": "03-selecting-and-filtering/lesson.md",
+            "exercise_file": "03-selecting-and-filtering/exercises.json"
+        },
+        "04-creating-transformations": {
+            "title": "Creating & Transforming Columns",
+            "order": 4,
+            "estimated_minutes": 16,
+            "skill_tags": ["python-pandas", "data-literacy"],
+            "lesson_file": "04-creating-transformations/lesson.md",
+            "exercise_file": "04-creating-transformations/exercises.json"
+        },
+        "05-grouping-and-aggregating": {
+            "title": "Summarizing with GroupBy",
+            "order": 5,
+            "estimated_minutes": 16,
+            "skill_tags": ["python-pandas", "data-literacy"],
+            "lesson_file": "05-grouping-and-aggregating/lesson.md",
+            "exercise_file": "05-grouping-and-aggregating/exercises.json"
+        },
+        "06-combining-with-merge": {
+            "title": "Combining Data with Merge",
+            "order": 6,
+            "estimated_minutes": 16,
+            "skill_tags": ["python-pandas", "data-literacy"],
+            "lesson_file": "06-combining-with-merge/lesson.md",
+            "exercise_file": "06-combining-with-merge/exercises.json"
+        },
+        "07-working-with-dates": {
+            "title": "Working with Dates",
+            "order": 7,
+            "estimated_minutes": 14,
+            "skill_tags": ["python-pandas", "data-literacy"],
+            "lesson_file": "07-working-with-dates/lesson.md",
+            "exercise_file": "07-working-with-dates/exercises.json"
+        },
+        "08-building-pandas-analysis": {
+            "title": "Building a Simple Pandas Analysis",
+            "order": 8,
+            "estimated_minutes": 18,
+            "skill_tags": ["python-pandas", "data-literacy"],
+            "lesson_file": "08-building-pandas-analysis/lesson.md",
+            "exercise_file": "08-building-pandas-analysis/exercises.json"
         }
     }
 }

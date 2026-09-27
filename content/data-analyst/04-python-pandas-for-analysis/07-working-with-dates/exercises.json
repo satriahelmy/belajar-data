@@ -1,0 +1,31 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "python-dates-07",
+            "type": "result_based",
+            "prompt": "Parse order_date, buat month, lalu ringkas revenue per month.",
+            "incorrect_feedback": "Gunakan to_datetime sebelum membuat month, hitung revenue, lalu groupby month dan sum.",
+            "success_feedback": "Tepat. Kamu memakai periode yang konsisten sebelum membandingkan hasil antarbulan.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["month", "revenue"],
+                "expected_rows": [
+                    ["2025-08", 450],
+                    ["2025-09", 600]
+                ],
+                "row_order": "ordered"
+            },
+            "interactive": {
+                "type": "python_practice",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "mode": "transform",
+                "starter_code": "import pandas as pd\n\ntransactions = pd.read_csv(\"transactions.csv\")\ntransactions[\"revenue\"] = transactions[\"quantity\"] * transactions[\"unit_price\"]\ntransactions[\"order_date\"] = pd.to_datetime(transactions[\"order_date\"])\ntransactions[\"month\"] = transactions[\"order_date\"].dt.to_period(\"M\").astype(str)\nsummary = transactions.groupby(\"month\", as_index=False)[\"revenue\"].sum()\nprint(summary)",
+                "required_operations": ["read_csv", "to_datetime", "month", "revenue", "groupby", "sum"],
+                "output_metrics": {"Period field": "month", "Periods shown": 2, "Measure": "revenue"},
+                "notebook_url": "/downloads/nusamart-module-04-fallback.ipynb"
+            }
+        }
+    ]
+}

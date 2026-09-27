@@ -1,0 +1,32 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "python-load-02",
+            "type": "result_based",
+            "prompt": "Muat transactions.csv, tampilkan tiga baris pertama, dan periksa shape dataset.",
+            "incorrect_feedback": "Mulai dengan read_csv, head(3), dan shape. Pastikan kamu memeriksa struktur sebelum menghitung.",
+            "success_feedback": "Benar. Kamu sudah memeriksa isi contoh dan ukuran dataset sebelum melakukan transformasi.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["order_id", "order_date", "region", "channel", "product_id", "quantity", "unit_price"],
+                "expected_rows": [
+                    ["O-1001", "2025-08-03", "West", "Online", "P-1001", 2, 120],
+                    ["O-1002", "2025-08-08", "East", "Store", "P-2001", 1, 120],
+                    ["O-1003", "2025-08-17", "West", "Online", "P-3001", 3, 30]
+                ],
+                "row_order": "ordered"
+            },
+            "interactive": {
+                "type": "python_practice",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "mode": "inspect",
+                "starter_code": "import pandas as pd\n\ntransactions = pd.read_csv(\"transactions.csv\")\nprint(transactions.head(3))\nprint(transactions.shape)",
+                "required_operations": ["read_csv", "head", "shape"],
+                "output_metrics": {"Shape": "8 rows × 7 columns", "View": "head(3)"},
+                "notebook_url": "/downloads/nusamart-module-04-fallback.ipynb"
+            }
+        }
+    ]
+}

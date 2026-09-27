@@ -1,0 +1,32 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "python-groupby-05",
+            "type": "result_based",
+            "prompt": "Buat revenue, gabungkan category dari Products, lalu ringkas total revenue per category.",
+            "incorrect_feedback": "Hubungkan tabel melalui product_id, lalu gunakan groupby category dan sum untuk revenue.",
+            "success_feedback": "Tepat. Kamu menyatakan dimension dan measure sebelum membuat ringkasan.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["category", "revenue"],
+                "expected_rows": [
+                    ["Electronics", 560],
+                    ["Grocery", 190],
+                    ["Home", 300]
+                ],
+                "row_order": "ordered"
+            },
+            "interactive": {
+                "type": "python_practice",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "mode": "aggregate",
+                "starter_code": "import pandas as pd\n\ntransactions = pd.read_csv(\"transactions.csv\")\nproducts = pd.read_csv(\"products.csv\")\ntransactions[\"revenue\"] = transactions[\"quantity\"] * transactions[\"unit_price\"]\nsales = transactions.merge(products, on=\"product_id\", how=\"left\")\nsummary = sales.groupby(\"category\", as_index=False)[\"revenue\"].sum().sort_values(\"revenue\", ascending=False)\nprint(summary)",
+                "required_operations": ["read_csv", "merge", "groupby", "category", "sum"],
+                "output_metrics": {"Dimension": "category", "Measure": "revenue", "Rows shown": 3},
+                "notebook_url": "/downloads/nusamart-module-04-fallback.ipynb"
+            }
+        }
+    ]
+}

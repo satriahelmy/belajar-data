@@ -31,6 +31,24 @@ class PythonPracticeTest extends TestCase
             ->assertDontSee('Pyodide');
     }
 
+    public function test_module_four_content_sequence_renders_registered_practices(): void
+    {
+        foreach ([
+            ['02-loading-dataframes', 'Loading & Understanding DataFrames', 'python-load-02'],
+            ['08-building-pandas-analysis', 'Building a Simple Pandas Analysis', 'python-analysis-08'],
+        ] as [$topic, $title, $exercise]) {
+            $this->get("/learn/data-analyst/04-python-pandas-for-analysis/{$topic}")
+                ->assertOk()
+                ->assertSee($title)
+                ->assertSee('data-learning-component="python-practice"', false)
+                ->assertSee($exercise);
+        }
+
+        $this->get('/learn/data-analyst/04-python-pandas-for-analysis/challenge')
+            ->assertOk()
+            ->assertSee('python-finding-01');
+    }
+
     public function test_authenticated_python_output_is_validated_and_persisted_without_sending_code(): void
     {
         $user = User::factory()->create();
