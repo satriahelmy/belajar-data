@@ -1,6 +1,6 @@
 # BelajarData V1 — Implementation Plan
 
-Status: M0A, technical spikes A–E, M0C, M1A, Module 01 content production, M1B learner-state scope, M2 assessment core, M3 SQL Playground representative slice, M4 Spreadsheet Playground representative slice, M5 Python/Pandas representative slice, M6A/M6B/M6C/M6D/M6E representative interactive slices, and the first M9 content-completion wave for Modules 05 and 11 are implemented. M7 representative Tableau learning and M8 representative Projects implementation are available; final manual walkthroughs remain open. M9 launch hardening remains in progress.
+Status: M0A, technical spikes A–E, M0C, M1A, Module 01 content production, M1B learner-state scope, M2 assessment core, M3 SQL Playground representative slice, M4 Spreadsheet Playground representative slice, M5 Python/Pandas representative slice, M6A/M6B/M6C/M6D/M6E representative interactive slices, and the first M9 content-completion wave for Modules 02, 05, and 11 are implemented. M7 representative Tableau learning and M8 representative Projects implementation are available; final manual walkthroughs remain open. M9 launch hardening remains in progress.
 
 This plan is derived from the current source documents in `docs/`, using the requested hierarchy:
 
@@ -1174,6 +1174,7 @@ Make the complete V1 learning journey reliable, safe, accessible, measurable, pe
 
 - [x] Published Module 05 — Data Cleaning with eight curriculum-aligned topics, registered practices, and a module challenge.
 - [x] Published Module 11 — Business Analysis with eight curriculum-aligned topics, registered practices, and a module challenge.
+- [x] Expanded Module 02 — Spreadsheet for Analysis to eight curriculum-aligned topics and added the month-comparison practice to its challenge.
 - [x] Added repository contract coverage for the new published modules and their challenge exercise configurations.
 - [x] Passed the current full backend suite: 108 tests and 666 assertions.
 - [x] Passed `php artisan content:validate` for lessons, challenges, datasets, and projects.

@@ -1,0 +1,49 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "sheet-filter-sort-01",
+            "type": "result_based",
+            "prompt": "Tampilkan transaksi di region West dan urutkan dari revenue terbesar ke terkecil.",
+            "incorrect_feedback": "Pilih region West dan urutan revenue descending.",
+            "success_feedback": "Benar. Kamu membuat subset dan urutan yang sesuai dengan pertanyaan.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["order_id", "order_date", "region", "channel", "revenue"],
+                "expected_rows": [
+                    ["O-1001", "2025-08-03", "West", "Online", 240],
+                    ["O-1006", "2025-09-11", "West", "Online", 180],
+                    ["O-1008", "2025-09-21", "West", "Store", 120],
+                    ["O-1003", "2025-08-17", "West", "Online", 90],
+                    ["O-1004", "2025-09-02", "West", "Store", 80]
+                ],
+                "row_order": "ordered",
+                "required_columns": ["order_id", "region", "revenue"]
+            },
+            "interactive": {
+                "type": "spreadsheet_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "mode": "table",
+                "starter_filter": "West",
+                "starter_sort": "revenue_desc",
+                "view_columns": ["order_id", "order_date", "region", "channel", "revenue"],
+                "desktop_note": "Layar desktop disarankan agar data dan kontrol tabel terlihat berdampingan."
+            }
+        },
+        {
+            "id": "sheet-filter-sort-02",
+            "type": "multiple_choice",
+            "prompt": "Mengapa analyst perlu memeriksa row yang tampil setelah filter diterapkan?",
+            "options": [
+                "Agar semua row selalu terlihat.",
+                "Agar tahu subset dan periode yang benar-benar menjadi dasar pembacaan.",
+                "Agar filter dapat menggantikan validasi metric.",
+                "Agar region dengan revenue kecil bisa dihapus."
+            ],
+            "correct_option": 1,
+            "incorrect_feedback": "Filter harus dibaca sebagai subset yang memiliki scope tertentu.",
+            "success_feedback": "Tepat. Scope filter menentukan evidence yang sedang kamu lihat."
+        }
+    ]
+}

@@ -8,7 +8,7 @@
     "status": "published",
     "purpose": "Gunakan spreadsheet untuk memahami, menghitung, dan meringkas data bisnis.",
     "outcome": "Mampu membangun analisis spreadsheet sederhana yang dapat dijelaskan.",
-    "estimated_minutes": 120,
+    "estimated_minutes": 150,
     "recommended_knowledge": ["Thinking with Data"],
     "skill_tags": ["spreadsheet"],
     "challenge": {
@@ -26,7 +26,16 @@
             "Menulis finding yang membedakan hasil perhitungan dari dugaan penyebab."
         ]
     },
-    "topic_keys": ["01-spreadsheet-foundations"],
+    "topic_keys": [
+        "01-spreadsheet-foundations",
+        "02-filtering-and-sorting",
+        "03-calculating-business-metrics",
+        "04-adding-analysis-logic",
+        "05-connecting-with-lookups",
+        "06-summarizing-with-pivots",
+        "07-comparing-performance",
+        "08-building-a-simple-analysis"
+    ],
     "topics": {
         "01-spreadsheet-foundations": {
             "title": "Start with the Table",
@@ -35,6 +44,62 @@
             "skill_tags": ["spreadsheet", "data-literacy"],
             "lesson_file": "01-spreadsheet-foundations/lesson.md",
             "exercise_file": "01-spreadsheet-foundations/exercises.json"
+        },
+        "02-filtering-and-sorting": {
+            "title": "Filter and Sort for the Question",
+            "order": 2,
+            "estimated_minutes": 14,
+            "skill_tags": ["spreadsheet", "data-literacy"],
+            "lesson_file": "02-filtering-and-sorting/lesson.md",
+            "exercise_file": "02-filtering-and-sorting/exercises.json"
+        },
+        "03-calculating-business-metrics": {
+            "title": "Calculate Business Metrics",
+            "order": 3,
+            "estimated_minutes": 16,
+            "skill_tags": ["spreadsheet", "metrics"],
+            "lesson_file": "03-calculating-business-metrics/lesson.md",
+            "exercise_file": "03-calculating-business-metrics/exercises.json"
+        },
+        "04-adding-analysis-logic": {
+            "title": "Add Logic to the Analysis",
+            "order": 4,
+            "estimated_minutes": 14,
+            "skill_tags": ["spreadsheet", "analytical-thinking"],
+            "lesson_file": "04-adding-analysis-logic/lesson.md",
+            "exercise_file": "04-adding-analysis-logic/exercises.json"
+        },
+        "05-connecting-with-lookups": {
+            "title": "Connect Information with Lookups",
+            "order": 5,
+            "estimated_minutes": 14,
+            "skill_tags": ["spreadsheet", "data-literacy"],
+            "lesson_file": "05-connecting-with-lookups/lesson.md",
+            "exercise_file": "05-connecting-with-lookups/exercises.json"
+        },
+        "06-summarizing-with-pivots": {
+            "title": "Summarize with Pivot Thinking",
+            "order": 6,
+            "estimated_minutes": 14,
+            "skill_tags": ["spreadsheet", "metrics"],
+            "lesson_file": "06-summarizing-with-pivots/lesson.md",
+            "exercise_file": "06-summarizing-with-pivots/exercises.json"
+        },
+        "07-comparing-performance": {
+            "title": "Compare Performance",
+            "order": 7,
+            "estimated_minutes": 16,
+            "skill_tags": ["spreadsheet", "analytical-thinking"],
+            "lesson_file": "07-comparing-performance/lesson.md",
+            "exercise_file": "07-comparing-performance/exercises.json"
+        },
+        "08-building-a-simple-analysis": {
+            "title": "Build a Simple Analysis",
+            "order": 8,
+            "estimated_minutes": 17,
+            "skill_tags": ["spreadsheet", "analytical-thinking"],
+            "lesson_file": "08-building-a-simple-analysis/lesson.md",
+            "exercise_file": "08-building-a-simple-analysis/exercises.json"
         }
     }
 }

@@ -1,0 +1,42 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "sheet-analysis-summary-01",
+            "type": "result_based",
+            "prompt": "Buat summary kategori sebagai salah satu evidence untuk analisis performa penjualan.",
+            "incorrect_feedback": "Gunakan category sebagai dimension dan revenue, quantity, serta order_count sebagai measures.",
+            "success_feedback": "Tepat. Summary menjadi evidence yang dapat ditelusuri ke data transaksi.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["category", "revenue", "quantity", "order_count"],
+                "expected_rows": [
+                    ["Electronics", 560, 5, 4],
+                    ["Grocery", 190, 7, 2],
+                    ["Home", 300, 3, 2]
+                ],
+                "row_order": "ordered"
+            },
+            "interactive": {
+                "type": "spreadsheet_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "mode": "summary",
+                "summary_dimension": "category",
+                "summary_measures": ["revenue", "quantity", "order_count"]
+            }
+        },
+        {
+            "id": "sheet-analysis-02",
+            "type": "text_self_assessment",
+            "prompt": "Tulis finding singkat yang menggabungkan metric, comparison, breakdown, dan batas evidence.",
+            "reference_answer": "Revenue September adalah 600 dan Agustus adalah 450, sehingga September lebih tinggi 150 atau 33,3%. Breakdown category menunjukkan Electronics sebagai contributor terbesar pada total yang tersedia. Data ini menunjukkan perbedaan periode dan kontribusi kategori, tetapi belum membuktikan penyebab perubahan.",
+            "checklist": [
+                "Menyebutkan metric dan dua periode.",
+                "Menyebutkan comparison atau perubahan.",
+                "Menghubungkan breakdown dengan finding.",
+                "Menyatakan batas causal evidence."
+            ]
+        }
+    ]
+}

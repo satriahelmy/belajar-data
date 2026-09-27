@@ -2,6 +2,13 @@ Stakeholder NusaMart ingin mengetahui apa yang membentuk performa penjualan. Gun
 
 Tantangan ini tidak meminta dashboard atau kesimpulan sebab-akibat. Tunjukkan angka yang kamu hitung, lalu jelaskan batas evidence-nya.
 
+## Bandingkan periode
+
+Periksa transaksi September dan bandingkan dengan baseline Agustus. Gunakan filter bulan dan jangan menyamakan perbedaan periode dengan penyebab.
+
+:::spreadsheet-playground id="sheet-month-filter-01"
+:::
+
 ## Ringkas menurut kategori
 
 Gunakan `Products` untuk kategori dan `Transactions` untuk revenue, quantity, serta jumlah order. Pastikan setiap baris ringkasan mewakili satu kategori.

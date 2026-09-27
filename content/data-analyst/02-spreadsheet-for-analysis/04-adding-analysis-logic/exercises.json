@@ -1,0 +1,47 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "sheet-logic-01",
+            "type": "result_based",
+            "prompt": "Hitung revenue West dan beri label Review West jika totalnya melewati 600.",
+            "incorrect_feedback": "Gunakan SUMIFS pada region West dan IF dengan threshold 600.",
+            "success_feedback": "Tepat. Kamu memisahkan hasil perhitungan dari rule keputusan.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["B2", "B3"],
+                "expected_rows": [[710, "Review West"]],
+                "row_order": "ordered"
+            },
+            "interactive": {
+                "type": "spreadsheet_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "mode": "formula",
+                "starter_cells": {
+                    "B2": "=SUMIFS(Transactions!H2:H9,Transactions!C2:C9,\"West\")",
+                    "B3": "=IF(B2>600,\"Review West\",\"Stable\")"
+                },
+                "editable_cells": ["B2", "B3"],
+                "cell_labels": {
+                    "B2": "West revenue",
+                    "B3": "Business rule"
+                }
+            }
+        },
+        {
+            "id": "sheet-logic-02",
+            "type": "multiple_choice",
+            "prompt": "Apa yang perlu ditulis sebelum membuat SUMIFS untuk revenue Electronics di West?",
+            "options": [
+                "Warna cell output.",
+                "Metric, region, category, dan periode yang menjadi criteria.",
+                "Semua formula yang pernah dibuat.",
+                "Nama chart yang akan dipakai."
+            ],
+            "correct_option": 1,
+            "incorrect_feedback": "Criteria formula harus berasal dari pertanyaan dan definisi field.",
+            "success_feedback": "Benar. Business logic mendahului formula."
+        }
+    ]
+}

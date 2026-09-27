@@ -24,6 +24,13 @@ class ContentContractTest extends TestCase
                 '01-thinking-with-data/06-aggregation-comparison',
                 '01-thinking-with-data/07-data-to-insight',
                 '02-spreadsheet-for-analysis/01-spreadsheet-foundations',
+                '02-spreadsheet-for-analysis/02-filtering-and-sorting',
+                '02-spreadsheet-for-analysis/03-calculating-business-metrics',
+                '02-spreadsheet-for-analysis/04-adding-analysis-logic',
+                '02-spreadsheet-for-analysis/05-connecting-with-lookups',
+                '02-spreadsheet-for-analysis/06-summarizing-with-pivots',
+                '02-spreadsheet-for-analysis/07-comparing-performance',
+                '02-spreadsheet-for-analysis/08-building-a-simple-analysis',
                 '03-sql-for-data-analysis/01-query-foundations',
                 '04-python-pandas-for-analysis/01-python-foundations',
                 '05-data-cleaning/01-what-makes-data-dirty',
@@ -86,7 +93,7 @@ class ContentContractTest extends TestCase
 
         $this->assertCount(3, $lesson->exercises);
         $this->assertSame('spreadsheet_playground', $lesson->exercises['sheet-metrics-01']['interactive']['type']);
-        $this->assertCount(4, $challenge->exercises);
+        $this->assertCount(5, $challenge->exercises);
         $this->assertSame('text_self_assessment', $challenge->exercises['sheet-finding-01']['type']);
     }
 

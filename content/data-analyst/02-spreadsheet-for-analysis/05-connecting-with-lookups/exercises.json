@@ -1,0 +1,47 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "sheet-lookup-topic-01",
+            "type": "result_based",
+            "prompt": "Temukan kategori P-1001 dan hitung total revenue product tersebut.",
+            "incorrect_feedback": "Gunakan lookup ke Products dan SUMIF ke Transactions.",
+            "success_feedback": "Benar. Kamu menghubungkan context product dengan fakta transaksi.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["B2", "B3"],
+                "expected_rows": [["Electronics", 480]],
+                "row_order": "ordered"
+            },
+            "interactive": {
+                "type": "spreadsheet_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "mode": "formula",
+                "starter_cells": {
+                    "B2": "=VLOOKUP(\"P-1001\",Products!A2:C5,2,FALSE)",
+                    "B3": "=SUMIF(Transactions!E2:E9,\"P-1001\",Transactions!H2:H9)"
+                },
+                "editable_cells": ["B2", "B3"],
+                "cell_labels": {
+                    "B2": "Category for P-1001",
+                    "B3": "Revenue for P-1001"
+                }
+            }
+        },
+        {
+            "id": "sheet-lookup-topic-02",
+            "type": "multiple_choice",
+            "prompt": "Apa arti #N/A ketika lookup product_id P-9999 gagal?",
+            "options": [
+                "Product memiliki revenue nol.",
+                "Product tidak ditemukan pada tabel lookup.",
+                "Semua revenue harus dihapus.",
+                "Formula SUMIF selalu rusak."
+            ],
+            "correct_option": 1,
+            "incorrect_feedback": "Bedakan key yang tidak ditemukan dari nilai revenue nol.",
+            "success_feedback": "Tepat. Missing key perlu tetap terlihat."
+        }
+    ]
+}

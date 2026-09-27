@@ -1,0 +1,50 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "sheet-business-metrics-01",
+            "type": "result_based",
+            "prompt": "Hitung total revenue, average revenue, dan periksa apakah total melewati batas 1000.",
+            "incorrect_feedback": "Gunakan SUM untuk total, AVERAGE untuk nilai tipikal, dan IF dengan batas 1000.",
+            "success_feedback": "Tepat. Kamu membedakan total, average, dan keputusan berbasis threshold.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["B2", "B3", "B4"],
+                "expected_rows": [[1050, 131.25, "Above threshold"]],
+                "row_order": "ordered"
+            },
+            "interactive": {
+                "type": "spreadsheet_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "mode": "formula",
+                "starter_cells": {
+                    "B2": "=SUM(Transactions!H2:H9)",
+                    "B3": "=AVERAGE(Transactions!H2:H9)",
+                    "B4": "=IF(B2>1000,\"Above threshold\",\"Check total\")"
+                },
+                "editable_cells": ["B2", "B3", "B4"],
+                "cell_labels": {
+                    "B2": "Total revenue",
+                    "B3": "Average revenue",
+                    "B4": "Threshold check"
+                },
+                "desktop_note": "Layar desktop disarankan agar formula dan hasil dapat dibandingkan."
+            }
+        },
+        {
+            "id": "sheet-business-metrics-02",
+            "type": "multiple_choice",
+            "prompt": "Jika satu order memiliki tiga order-item, apa risiko menghitung COUNT(row) sebagai jumlah order?",
+            "options": [
+                "Jumlah order dapat terhitung lebih besar dari order unik.",
+                "Revenue otomatis menjadi nol.",
+                "COUNT selalu menghitung customer unik.",
+                "Tidak ada risiko pada grain apa pun."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Periksa apa yang direpresentasikan satu row dan gunakan identifier unik bila pertanyaannya order.",
+            "success_feedback": "Benar. Grain menentukan arti COUNT."
+        }
+    ]
+}
