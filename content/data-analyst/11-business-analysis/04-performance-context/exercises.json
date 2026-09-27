@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "context-01",
+            "type": "multiple_choice",
+            "prompt": "Apa interpretation yang paling tepat untuk Revenue Q3 Rp2.4B, QoQ -12%, YoY +8%?",
+            "options": [
+                "Revenue pasti buruk dalam semua context.",
+                "Revenue turun dibanding Q2 tetapi naik dibanding periode yang sama tahun lalu.",
+                "Revenue naik karena QoQ negatif.",
+                "Tidak ada comparison yang bisa dipakai."
+            ],
+            "correct_option": 1,
+            "incorrect_feedback": "Satu angka dapat memiliki interpretation berbeda tergantung baseline.",
+            "success_feedback": "Benar. QoQ dan YoY menjawab comparison yang berbeda."
+        },
+        {
+            "id": "context-02",
+            "type": "text_self_assessment",
+            "prompt": "Pilih dua comparison untuk pertanyaan revenue melambat dan jelaskan alasan masing-masing.",
+            "reference_answer": "Gunakan previous quarter untuk melihat perubahan terbaru dan same period last year untuk memeriksa seasonality. Tambahkan target jika keputusan perlu membahas gap terhadap rencana.",
+            "checklist": [
+                "Comparison sesuai dengan pertanyaan.",
+                "Alasan pemilihan disebutkan.",
+                "Tidak menyamakan semua baseline."
+            ]
+        }
+    ]
+}

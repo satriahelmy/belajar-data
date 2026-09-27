@@ -62,4 +62,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(LearningAttempt::class);
     }
+
+    public function projectProgress(): HasMany
+    {
+        return $this->hasMany(UserProjectProgress::class);
+    }
 }

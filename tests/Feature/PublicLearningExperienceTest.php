@@ -60,10 +60,31 @@ class PublicLearningExperienceTest extends TestCase
             ->assertSee('Urutan path adalah rekomendasi, bukan prerequisite lock');
     }
 
-    public function test_unpublished_module_and_unknown_topic_are_not_publicly_available(): void
+    public function test_unknown_topic_is_not_publicly_available_and_new_modules_are_open(): void
     {
-        $this->get('/learn/05-data-cleaning')->assertNotFound();
+        $this->get('/learn/05-data-cleaning')
+            ->assertOk()
+            ->assertSee('Data Cleaning')
+            ->assertSee('Fix the NusaMart Dataset');
         $this->get('/learn/data-analyst/01-thinking-with-data/not-a-topic')->assertNotFound();
+    }
+
+    public function test_m9_published_content_topics_and_challenges_render_publicly(): void
+    {
+        foreach ([
+            ['05-data-cleaning', '01-what-makes-data-dirty', 'What Makes Data Dirty?', 'Fix the NusaMart Dataset'],
+            ['11-business-analysis', '01-understanding-business-problem', 'Understand the Business Problem', 'NusaMart Growth Investigation'],
+        ] as [$module, $topic, $title, $challenge]) {
+            $this->get("/learn/data-analyst/{$module}/{$topic}")
+                ->assertOk()
+                ->assertSee($title)
+                ->assertSee('Practice:');
+
+            $this->get("/learn/data-analyst/{$module}/challenge")
+                ->assertOk()
+                ->assertSee($challenge)
+                ->assertSee('Kriteria selesai');
+        }
     }
 
     public function test_lesson_has_canonical_context_navigation_and_further_reading(): void
@@ -112,12 +133,15 @@ class PublicLearningExperienceTest extends TestCase
             ->assertSee('bukan curriculum kedua');
     }
 
-    public function test_projects_is_a_public_future_destination_without_a_workspace(): void
+    public function test_projects_is_a_public_project_library(): void
     {
         $this->get('/projects')
             ->assertOk()
             ->assertSee('Projects')
             ->assertSee('NusaMart Revenue Slowdown')
-            ->assertSee('workspace belum dibuka');
+            ->assertSee('Customer Retention Analysis')
+            ->assertSee('Delivery Performance Investigation')
+            ->assertSee('Roadmap')
+            ->assertDontSee('workspace belum dibuka');
     }
 }

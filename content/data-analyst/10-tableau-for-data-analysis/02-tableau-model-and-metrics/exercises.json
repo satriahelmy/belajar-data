@@ -1,0 +1,41 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "tableau-relationship-01",
+            "type": "multiple_choice",
+            "prompt": "Relationship mana yang sesuai untuk transactions.product_id dan products.product_id pada dataset NusaMart?",
+            "options": [
+                "Satu transaksi ke banyak product, karena transactions memiliki lebih banyak baris.",
+                "Banyak transaksi ke satu product, karena satu product dapat muncul pada banyak transaksi.",
+                "Satu transaksi ke satu product selalu, tanpa perlu memeriksa grain.",
+                "Banyak transaksi ke banyak product tanpa key yang perlu diperiksa."
+            ],
+            "correct_option": 1,
+            "hints": [
+                "Bandingkan arti satu baris pada kedua tabel.",
+                "Satu product dapat digunakan oleh beberapa transaksi."
+            ],
+            "incorrect_feedback": "Periksa kembali grain: transactions memiliki banyak baris transaksi, sedangkan products memiliki satu baris per product.",
+            "success_feedback": "Benar. Relationship banyak transaksi ke satu product menjaga konteks product tanpa mengubah grain transaksi secara sembarangan."
+        },
+        {
+            "id": "tableau-calculated-field-01",
+            "type": "multiple_choice",
+            "prompt": "Calculated field mana yang paling tepat untuk membentuk revenue per baris pada fixture transaksi?",
+            "options": [
+                "[quantity] + [unit_price]",
+                "COUNT([order_id])",
+                "[quantity] * [unit_price]",
+                "SUM([quantity]) / COUNT([product_id])"
+            ],
+            "correct_option": 2,
+            "hints": [
+                "Revenue per baris memakai jumlah unit dan harga per unit.",
+                "Aggregation dilakukan setelah nilai baris tersedia."
+            ],
+            "incorrect_feedback": "Revenue pada baris transaksi berasal dari quantity dikali unit_price. Agregasi dapat dilakukan setelah definisi barisnya benar.",
+            "success_feedback": "Tepat. Definisi revenue terlihat jelas dan dapat diuji sebelum digunakan untuk perbandingan."
+        }
+    ]
+}

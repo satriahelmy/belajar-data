@@ -13,6 +13,7 @@ use App\Http\Controllers\ProgressController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\SkillsController;
 use App\Http\Controllers\SqlSpikeController;
+use App\Http\Controllers\TableauDatasetController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
@@ -59,7 +60,27 @@ Route::get('/learn/{pathKey}/{moduleKey}/{topicKey}', LessonController::class)
     ])
     ->name('learning.lesson');
 Route::get('/skills', SkillsController::class)->name('skills.index');
-Route::get('/projects', ProjectsController::class)->name('projects.index');
+Route::get('/projects', [ProjectsController::class, 'index'])->name('projects.index');
+Route::get('/projects/{projectKey}/reference', [ProjectsController::class, 'reference'])
+    ->where('projectKey', '[a-z0-9][a-z0-9-]*')
+    ->name('projects.reference');
+Route::post('/projects/{projectKey}/reference/unlock', [ProjectsController::class, 'unlockReference'])
+    ->where('projectKey', '[a-z0-9][a-z0-9-]*')
+    ->name('projects.reference.unlock');
+Route::post('/projects/{projectKey}/start', [ProjectsController::class, 'start'])
+    ->middleware('auth')
+    ->where('projectKey', '[a-z0-9][a-z0-9-]*')
+    ->name('projects.start');
+Route::post('/projects/{projectKey}/{stageKey}/check', [ProjectsController::class, 'check'])
+    ->middleware('auth')
+    ->where(['projectKey' => '[a-z0-9][a-z0-9-]*', 'stageKey' => '[a-z0-9][a-z0-9-]*'])
+    ->name('projects.stage.check');
+Route::get('/projects/{projectKey}/{stageKey}', [ProjectsController::class, 'stage'])
+    ->where(['projectKey' => '[a-z0-9][a-z0-9-]*', 'stageKey' => '[a-z0-9][a-z0-9-]*'])
+    ->name('projects.stage');
+Route::get('/projects/{projectKey}', [ProjectsController::class, 'show'])
+    ->where('projectKey', '[a-z0-9][a-z0-9-]*')
+    ->name('projects.show');
 Route::get('/downloads/nusamart-module-04-fallback.ipynb', function () {
     return response()->download(
         public_path('downloads/nusamart-module-04-fallback.ipynb'),
@@ -67,3 +88,8 @@ Route::get('/downloads/nusamart-module-04-fallback.ipynb', function () {
         ['Content-Type' => 'application/json'],
     );
 })->name('downloads.nusamart-module-04-fallback');
+Route::get('/downloads/tableau/nusamart/v1', [TableauDatasetController::class, 'index'])
+    ->name('downloads.tableau.index');
+Route::get('/downloads/tableau/nusamart/v1/{file}', [TableauDatasetController::class, 'download'])
+    ->where('file', '[a-z]+')
+    ->name('downloads.tableau.file');

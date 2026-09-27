@@ -1,6 +1,6 @@
 # BelajarData V1 — Implementation Plan
 
-Status: M0A, technical spikes A–E, M0C, M1A, Module 01 content production, M1B learner-state scope, M2 assessment core, M3 SQL Playground representative slice, M4 Spreadsheet Playground representative slice, M5 Python/Pandas representative slice, and M6A/M6B/M6C/M6D/M6E representative interactive slices are implemented. Later milestones remain.
+Status: M0A, technical spikes A–E, M0C, M1A, Module 01 content production, M1B learner-state scope, M2 assessment core, M3 SQL Playground representative slice, M4 Spreadsheet Playground representative slice, M5 Python/Pandas representative slice, M6A/M6B/M6C/M6D/M6E representative interactive slices, and the first M9 content-completion wave for Modules 05 and 11 are implemented. M7 representative Tableau learning and M8 representative Projects implementation are available; final manual walkthroughs remain open. M9 launch hardening remains in progress.
 
 This plan is derived from the current source documents in `docs/`, using the requested hierarchy:
 
@@ -1046,7 +1046,7 @@ Deliver bounded visualization and the five high-value interactive learning objec
 - [x] M6D verification: Metric Tree Builder lesson/challenge, bounded relationship validation, cycle-safe preview tests, cache boundary, and browser smoke are complete.
 - [x] M6E verification: Communication Builder lesson/challenge, five-field bounded answer contract, reference/checklist review, incomplete-field validation, persistence, cache boundary, and browser smoke are complete.
 
-### M7 — Tableau Learning
+### M7 — Tableau Learning — IMPLEMENTATION COMPLETE; MANUAL WALKTHROUGH PENDING
 
 #### Objective
 
@@ -1060,13 +1060,13 @@ Deliver the external-tool learning experience for Tableau through safe downloada
 
 #### Concrete tasks
 
-- [ ] Author the Tableau track according to the approved V1 scope: connect/understand data, relationships/grain, calculated fields, dashboard, interactions, and analytical validation.
-- [ ] Provide safe fictional/public datasets and clear download/version instructions.
-- [ ] Implement dataset download metadata and checksum/version display where useful.
-- [ ] Write guided tasks that send the learner to the real Tableau tool and bring them back to BelajarData.
-- [ ] Implement checkpoints for totals, orders, growth, category/region findings, and dashboard checklist items.
-- [ ] Make Tableau Public publishing optional and display the warning never to publish confidential/private/proprietary/company data.
-- [ ] Avoid workbook parsing, Tableau simulation, and automatic dashboard grading.
+- [x] Author the Tableau track according to the approved V1 scope: connect/understand data, relationships/grain, calculated fields, dashboard, interactions, and analytical validation.
+- [x] Provide safe fictional/public datasets and clear download/version instructions.
+- [x] Implement dataset download metadata and checksum/version display where useful.
+- [x] Write guided tasks that send the learner to the real Tableau tool and bring them back to BelajarData.
+- [x] Implement checkpoints for totals, orders, growth, category/region findings, and dashboard checklist items.
+- [x] Make Tableau Public publishing optional and display the warning never to publish confidential/private/proprietary/company data.
+- [x] Avoid workbook parsing, Tableau simulation, and automatic dashboard grading.
 - [ ] Test the tasks against the supported Tableau flow and record known UI/version assumptions.
 
 #### Acceptance criteria
@@ -1078,16 +1078,29 @@ Deliver the external-tool learning experience for Tableau through safe downloada
 
 #### Relevant tests
 
-- [ ] Dataset download/version/link/metadata tests.
-- [ ] Checkpoint validator tests.
+- [x] Dataset download/version/link/metadata tests.
+- [x] Checkpoint validator tests.
 - [ ] Content/link smoke tests and manual walkthrough against the supported Tableau version.
-- [ ] Privacy-warning content review.
+- [x] Privacy-warning content review.
 
 #### Risks/notes
 
 - D-02 is resolved: V1 is Tableau-only. Power BI remains deferred/optional and must not be implemented as a V1 core track.
+- The representative implementation is ready, but the final external-tool walkthrough was not completed in this turn because native Tableau automation was stopped by the user's physical Escape key. Do not treat M7 as release-signed until the supported Tableau Desktop/Public flow is manually verified.
 
-### M8 — Projects
+#### M7 verification so far
+
+- [x] `php artisan test` passes: 102 tests and 601 assertions.
+- [x] `node --test tests/Frontend/*.test.js` passes: 33 tests.
+- [x] `php artisan content:validate` passes for 18 lessons and `nusamart/v1`.
+- [x] `npm run build` passes with Vite 6.4.3.
+- [x] `composer validate --strict` passes.
+- [x] `git diff --check` passes after the final implementation and documentation update.
+- [x] Browser smoke verifies the server-rendered Tableau lesson, practice feedback, versioned download page, four CSV links, file sizes, SHA-256 metadata, and privacy warning.
+- [ ] Tableau Desktop 2025.1 was opened as the candidate local walkthrough version, but it was not signed off because the native walkthrough was stopped before the CSV connector step.
+- [ ] Tableau Desktop manual walkthrough against the supported version, including opening the NusaMart CSV through Tableau's text-file connector.
+
+### M8 — Projects — IMPLEMENTATION COMPLETE; MANUAL QA PENDING
 
 #### Objective
 
@@ -1102,17 +1115,17 @@ Deliver the project workspace and the approved launch set of substantial, less-p
 
 #### Concrete tasks
 
-- [ ] Define project repository/config schema with stable project and stage keys, difficulty, focus, estimated effort, datasets, publication state, and tool guidance.
-- [ ] Implement the canonical six-stage workspace: Brief, Understand, Plan, Investigate, Validate, Communicate, with Reference Approach separate and accessible after an attempt or confirmation.
-- [ ] If the curriculum's “Build Your Evidence” step is retained, represent it as a substep within Investigate/Validate unless the stage decision explicitly changes the canonical model.
-- [ ] Implement project landing page as editorial rows with real briefs, not a generic course-card marketplace.
-- [ ] Implement project workspace with stage navigation, current state, notes/answers where needed, datasets, checkpoints, and reference approach.
-- [ ] Implement independent project start/current-stage/stage-completion/completion persistence.
-- [ ] Keep project access independent from core path unlocks and do not require two completed projects to access curriculum.
-- [ ] Author and QA at least two substantial launch projects end-to-end: NusaMart Revenue Slowdown and Customer Retention Analysis, unless the launch decision selects a different pair.
-- [ ] Prepare Delivery Performance Investigation as the third project according to the approved launch/post-launch decision.
-- [ ] Ensure projects assess analytical outcomes rather than a mandatory software stack.
-- [ ] Add objective checkpoints plus guided self-assessment for plans, findings, limitations, recommendations, and summaries.
+- [x] Define project repository/config schema with stable project and stage keys, difficulty, focus, estimated effort, datasets, publication state, and tool guidance.
+- [x] Implement the canonical six-stage workspace: Brief, Understand, Plan, Investigate, Validate, Communicate, with Reference Approach separate and accessible after an attempt or confirmation.
+- [x] If the curriculum's “Build Your Evidence” step is retained, represent it as a substep within Investigate/Validate unless the stage decision explicitly changes the canonical model.
+- [x] Implement project landing page as editorial rows with real briefs, not a generic course-card marketplace.
+- [x] Implement project workspace with stage navigation, current state, notes/answers where needed, datasets, checkpoints, and reference approach.
+- [x] Implement independent project start/current-stage/stage-completion/completion persistence.
+- [x] Keep project access independent from core path unlocks and do not require two completed projects to access curriculum.
+- [x] Author and automate QA for two substantial launch projects: NusaMart Revenue Slowdown and Customer Retention Analysis.
+- [x] Prepare Delivery Performance Investigation as a roadmap project according to the approved launch/post-launch decision.
+- [x] Ensure projects assess analytical outcomes rather than a mandatory software stack.
+- [x] Add objective checkpoints plus guided self-assessment for plans, findings, limitations, recommendations, and summaries.
 
 #### Acceptance criteria
 
@@ -1124,9 +1137,9 @@ Deliver the project workspace and the approved launch set of substantial, less-p
 
 #### Relevant tests
 
-- [ ] Project/stage publication and stable-key tests.
-- [ ] Project progress idempotency, resume, authorization, and stage-transition tests.
-- [ ] Checkpoint/result/self-assessment tests.
+- [x] Project/stage publication and stable-key tests.
+- [x] Project progress idempotency, resume, authorization, and stage-transition tests.
+- [x] Checkpoint/result/self-assessment tests.
 - [ ] Browser tests for starting, resuming, opening reference, completing, and returning to project list.
 - [ ] End-to-end manual QA of at least two projects using the approved tool combinations.
 
@@ -1134,6 +1147,16 @@ Deliver the project workspace and the approved launch set of substantial, less-p
 
 - Project content quality is a launch dependency, not a later polish item.
 - Do not make project completion a hard prerequisite for the learning path.
+
+#### M8 verification so far
+
+- [x] `php artisan migrate --force` runs `user_project_progress` on the local `belajar_data_v2` database.
+- [x] `php artisan content:validate` passes for 18 lessons, 3 project definitions, and `nusamart/v1`.
+- [x] Focused project/public feature tests pass: 12 tests and 109 assertions.
+- [x] Browser smoke verifies the project library, guest stage page, reference confirmation, and server-rendered stage navigation.
+- [ ] Authenticated browser walkthrough and approved-tool end-to-end QA remain open; these are carried into M9 hardening.
+- [x] `docs/decisions/m8-projects.md` records the repository, stage, progress, and assessment boundaries.
+- [x] Full verification passes: `php artisan test` 106 tests and 644 assertions, frontend tests 33, Vite build, Composer validation, and `git diff --check`.
 
 ### M9 — Launch Hardening
 
@@ -1146,6 +1169,18 @@ Make the complete V1 learning journey reliable, safe, accessible, measurable, pe
 - M0–M8 feature contracts and decisions.
 - Final product decisions in the Open Decisions section.
 - Full content authoring and review for the approved launch scope.
+
+#### Current progress
+
+- [x] Published Module 05 — Data Cleaning with eight curriculum-aligned topics, registered practices, and a module challenge.
+- [x] Published Module 11 — Business Analysis with eight curriculum-aligned topics, registered practices, and a module challenge.
+- [x] Added repository contract coverage for the new published modules and their challenge exercise configurations.
+- [x] Passed the current full backend suite: 108 tests and 666 assertions.
+- [x] Passed `php artisan content:validate` for lessons, challenges, datasets, and projects.
+- [x] Passed the current frontend contract suite: 33 tests; production asset build completed with Vite 6.4.3.
+- [x] Passed `git diff --check` after the content completion wave.
+
+The complete M9 launch gate remains open until Modules 01–12 are fully authored and reviewed, and the browser, accessibility, performance, security, deployment, and manual external-tool checks are complete.
 
 #### Concrete tasks
 
@@ -1179,7 +1214,7 @@ Make the complete V1 learning journey reliable, safe, accessible, measurable, pe
 
 #### Relevant tests
 
-- [ ] Full automated test suite and content validation.
+- [x] Full automated test suite and content validation for the current repository state.
 - [ ] Browser regression suite for critical flows.
 - [ ] Accessibility audit and keyboard-only pass.
 - [ ] Responsive manual QA at mobile/tablet/desktop widths.

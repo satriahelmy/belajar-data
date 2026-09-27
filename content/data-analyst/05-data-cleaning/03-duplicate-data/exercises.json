@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "duplicate-data-01",
+            "type": "multiple_choice",
+            "prompt": "Dataset order-item memiliki dua row dengan order_id sama, tetapi product berbeda. Kesimpulan paling tepat?",
+            "options": [
+                "Pasti duplicate dan harus dihapus.",
+                "Pasti error karena order_id hanya boleh muncul sekali.",
+                "Kemungkinan valid karena grain-nya satu row per product line.",
+                "Semua order-item harus diringkas menjadi satu row."
+            ],
+            "correct_option": 2,
+            "incorrect_feedback": "Tentukan apa yang direpresentasikan satu row.",
+            "success_feedback": "Tepat. Repeated key dapat valid pada grain yang lebih detail."
+        },
+        {
+            "id": "duplicate-data-02",
+            "type": "text_self_assessment",
+            "prompt": "Sebutkan dua pemeriksaan sebelum menghapus potential duplicate transaksi.",
+            "reference_answer": "Periksa grain dan identifier, lalu bandingkan timestamp, source file, status, atau bukti event lain. Kemiripan kolom deskriptif saja belum cukup.",
+            "checklist": [
+                "Menyebutkan grain atau identifier.",
+                "Menyebutkan bukti event atau source.",
+                "Tidak mengandalkan kemiripan nilai saja."
+            ]
+        }
+    ]
+}

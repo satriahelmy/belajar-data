@@ -1,0 +1,44 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "cleaning-challenge-01",
+            "type": "multiple_choice",
+            "prompt": "Prioritas awal yang tepat untuk profil dataset tersebut?",
+            "options": [
+                "Menghapus semua row dengan warning.",
+                "Memeriksa grain, arti missing value, dan bukti duplicate sebelum treatment.",
+                "Mengganti semua nilai tidak biasa dengan median.",
+                "Mengabaikan semua issue."
+            ],
+            "correct_option": 1,
+            "incorrect_feedback": "Profil digunakan untuk menentukan investigasi, bukan penghapusan massal.",
+            "success_feedback": "Tepat. Mulai dari context dan bukti."
+        },
+        {
+            "id": "cleaning-challenge-02",
+            "type": "multiple_choice",
+            "prompt": "Treatment paling defensible untuk temuan challenge?",
+            "options": [
+                "Hapus semua 17 row NULL dan 12 potential duplicate.",
+                "Pertahankan NULL pada cancelled, hapus 7 duplicate terbukti, dan periksa 5 transaksi lain.",
+                "Isi delivery_date dengan tanggal order dan gabungkan semua duplicate.",
+                "Hapus kategori yang tidak konsisten."
+            ],
+            "correct_option": 1,
+            "incorrect_feedback": "Gunakan bukti untuk membedakan kondisi valid dari duplicate terbukti.",
+            "success_feedback": "Benar. Treatment mengikuti arti dan kekuatan evidence."
+        },
+        {
+            "id": "cleaning-challenge-03",
+            "type": "text_self_assessment",
+            "prompt": "Jelaskan keputusan cleaning dan minimal tiga validasi.",
+            "reference_answer": "Pertahankan delivery_date NULL pada cancelled. Hapus hanya 7 duplicate yang terbukti dan periksa 5 transaksi dengan transaction_id berbeda. Validasi row count, unique transaction count, revenue, category distribution, missing counts, dan rentang tanggal sebelum serta sesudah.",
+            "checklist": [
+                "Membedakan missing valid dari duplicate terbukti.",
+                "Menyebutkan minimal tiga validasi.",
+                "Menjaga raw data dan keputusan tetap dapat diaudit."
+            ]
+        }
+    ]
+}

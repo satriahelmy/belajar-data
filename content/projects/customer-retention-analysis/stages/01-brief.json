@@ -1,0 +1,19 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "retention-question",
+            "type": "multiple_choice",
+            "prompt": "Pertanyaan mana yang paling jelas untuk memulai retention analysis?",
+            "options": [
+                "Customer mana yang paling buruk?",
+                "Berapa banyak customer yang membeli lagi pada September di antara customer yang aktif pada Agustus?",
+                "Apakah customer menyukai produk kita?",
+                "Chart apa yang cocok untuk churn?"
+            ],
+            "correct_option": 1,
+            "success_feedback": "Tepat. Pertanyaan itu menetapkan cohort awal, periode kembali, dan denominator.",
+            "incorrect_feedback": "Cari pertanyaan yang menyebut siapa yang menjadi denominator dan periode kembali."
+        }
+    ]
+}

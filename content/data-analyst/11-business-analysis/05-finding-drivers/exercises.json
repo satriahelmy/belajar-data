@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "drivers-01",
+            "type": "multiple_choice",
+            "prompt": "Category mana yang paling layak menjadi cabang investigasi pertama pada tabel contribution?",
+            "options": [
+                "Technology karena nilainya positif.",
+                "Furniture karena penurunannya paling besar.",
+                "Fashion karena namanya paling pendek.",
+                "Others karena selalu perlu diperiksa dulu."
+            ],
+            "correct_option": 1,
+            "incorrect_feedback": "Prioritaskan contributor yang materially menjelaskan perubahan.",
+            "success_feedback": "Tepat. Furniture memiliki kontribusi decline terbesar pada contoh."
+        },
+        {
+            "id": "drivers-02",
+            "type": "text_self_assessment",
+            "prompt": "Jelaskan perbedaan antara contributor terbesar dan penyebab perubahan.",
+            "reference_answer": "Contributor terbesar menunjukkan bagian yang paling banyak menyumbang perubahan pada metric. Ia belum menjelaskan mengapa perubahan terjadi. Penyebab memerlukan evidence tambahan seperti inventory, traffic, atau feedback.",
+            "checklist": [
+                "Membedakan lokasi perubahan dan alasan perubahan.",
+                "Menyebutkan kebutuhan evidence tambahan.",
+                "Menghindari causal claim tanpa dukungan."
+            ]
+        }
+    ]
+}

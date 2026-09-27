@@ -1,0 +1,18 @@
+{
+    "schema_version": 1,
+    "type": "project",
+    "key": "delivery-performance-investigation",
+    "number": 3,
+    "title": "Delivery Performance Investigation",
+    "focus": "Operational investigation",
+    "difficulty": "Intermediate+",
+    "description": "Selidiki apakah keterlambatan delivery benar-benar memburuk dan dimensi operasional mana yang perlu diperiksa lebih lanjut.",
+    "estimated_minutes": 300,
+    "position": 3,
+    "status": "roadmap",
+    "dataset_refs": ["nusamart/v1"],
+    "tool_guidance": ["Project ini akan memakai data operasional dengan scaffolding yang lebih sedikit."],
+    "outcomes": ["mendefinisikan metric delivery", "menemukan konsentrasi masalah", "menjelaskan evidence gap"],
+    "stage_keys": [],
+    "stages": {}
+}

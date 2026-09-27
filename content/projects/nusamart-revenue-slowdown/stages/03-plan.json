@@ -1,0 +1,16 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "analysis-plan",
+            "type": "text_self_assessment",
+            "prompt": "Tulis rencana singkat untuk menguji klaim revenue slowdown.",
+            "reference_answer": "Bandingkan revenue Agustus dan September 2025 pada grain yang benar, lalu breakdown berdasarkan region atau category. Cek jumlah order dan definisi revenue sebelum menyimpulkan.",
+            "checklist": [
+                "Ada comparison period yang jelas.",
+                "Revenue dan grain disebutkan.",
+                "Ada satu breakdown dan langkah validasi."
+            ]
+        }
+    ]
+}

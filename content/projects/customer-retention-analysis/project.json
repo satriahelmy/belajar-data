@@ -1,0 +1,34 @@
+{
+    "schema_version": 1,
+    "type": "project",
+    "key": "customer-retention-analysis",
+    "number": 2,
+    "title": "Customer Retention Analysis",
+    "focus": "Customer behavior over time",
+    "difficulty": "Intermediate",
+    "description": "Sebuah bisnis subscription melihat retention menurun. Ukur masalahnya, cari pola segmentasi yang relevan, dan jangan mengubah association menjadi klaim sebab-akibat.",
+    "estimated_minutes": 300,
+    "position": 2,
+    "status": "published",
+    "dataset_refs": ["nusamart/v1"],
+    "tool_guidance": [
+        "Gunakan Orders dan Customers untuk membentuk definisi customer aktif dan returning.",
+        "Cohort atau period comparison boleh sederhana selama denominator-nya jelas.",
+        "Sampaikan keterbatasan periode pendek sebelum memberi rekomendasi."
+    ],
+    "outcomes": [
+        "menulis definisi retention yang dapat dihitung;",
+        "membandingkan customer aktif dan returning dengan denominator yang benar;",
+        "membedakan pola perilaku dari bukti penyebab churn."
+    ],
+    "stage_keys": ["brief", "understand", "plan", "investigate", "validate", "communicate"],
+    "stages": {
+        "brief": {"key": "brief", "number": 1, "title": "The Brief", "content_file": "stages/01-brief.md", "exercise_file": "stages/01-brief.json", "exercise_id": "retention-question"},
+        "understand": {"key": "understand", "number": 2, "title": "Understand the Data", "content_file": "stages/02-understand.md", "exercise_file": "stages/02-understand.json", "exercise_id": "active-customers"},
+        "plan": {"key": "plan", "number": 3, "title": "Plan Your Analysis", "content_file": "stages/03-plan.md", "exercise_file": "stages/03-plan.json", "exercise_id": "retention-plan"},
+        "investigate": {"key": "investigate", "number": 4, "title": "Investigate", "content_file": "stages/04-investigate.md", "exercise_file": "stages/04-investigate.json", "exercise_id": "returning-customers"},
+        "validate": {"key": "validate", "number": 5, "title": "Validate", "content_file": "stages/05-validate.md", "exercise_file": "stages/05-validate.json", "exercise_id": "retention-evidence"},
+        "communicate": {"key": "communicate", "number": 6, "title": "Communicate", "content_file": "stages/06-communicate.md", "exercise_file": "stages/06-communicate.json", "exercise_id": "retention-finding"}
+    },
+    "reference_file": "reference.md"
+}

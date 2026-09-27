@@ -1,0 +1,34 @@
+{
+    "schema_version": 1,
+    "type": "project",
+    "key": "nusamart-revenue-slowdown",
+    "number": 1,
+    "title": "NusaMart Revenue Slowdown",
+    "focus": "Performance diagnosis",
+    "difficulty": "Intermediate",
+    "description": "NusaMart merasa pertumbuhan revenue melambat. Selidiki apa yang benar-benar terjadi, di mana perubahannya terlihat, dan batas evidence yang tersedia.",
+    "estimated_minutes": 240,
+    "position": 1,
+    "status": "published",
+    "dataset_refs": ["nusamart/v1"],
+    "tool_guidance": [
+        "Gunakan SQL, Pandas, spreadsheet, atau Tableau sesuai workflow yang dapat kamu jelaskan.",
+        "Tetapkan grain dan definisi metric sebelum membandingkan periode.",
+        "Dashboard bukan syarat. Analysis brief dengan evidence yang dapat diperiksa sudah cukup."
+    ],
+    "outcomes": [
+        "menentukan apakah klaim revenue slowdown didukung data;",
+        "memilih perbandingan dan breakdown yang relevan;",
+        "memisahkan evidence, interpretasi, dan pertanyaan lanjutan."
+    ],
+    "stage_keys": ["brief", "understand", "plan", "investigate", "validate", "communicate"],
+    "stages": {
+        "brief": {"key": "brief", "number": 1, "title": "The Brief", "content_file": "stages/01-brief.md", "exercise_file": "stages/01-brief.json", "exercise_id": "brief-question"},
+        "understand": {"key": "understand", "number": 2, "title": "Understand the Data", "content_file": "stages/02-understand.md", "exercise_file": "stages/02-understand.json", "exercise_id": "grain-question"},
+        "plan": {"key": "plan", "number": 3, "title": "Plan Your Analysis", "content_file": "stages/03-plan.md", "exercise_file": "stages/03-plan.json", "exercise_id": "analysis-plan"},
+        "investigate": {"key": "investigate", "number": 4, "title": "Investigate", "content_file": "stages/04-investigate.md", "exercise_file": "stages/04-investigate.json", "exercise_id": "september-revenue"},
+        "validate": {"key": "validate", "number": 5, "title": "Validate", "content_file": "stages/05-validate.md", "exercise_file": "stages/05-validate.json", "exercise_id": "evidence-check"},
+        "communicate": {"key": "communicate", "number": 6, "title": "Communicate", "content_file": "stages/06-communicate.md", "exercise_file": "stages/06-communicate.json", "exercise_id": "finding"}
+    },
+    "reference_file": "reference.md"
+}

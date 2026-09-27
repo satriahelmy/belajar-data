@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "missing-values-01",
+            "type": "multiple_choice",
+            "prompt": "Semua order cancelled memiliki delivery_date NULL. Treatment awal yang paling masuk akal?",
+            "options": [
+                "Isi dengan tanggal order.",
+                "Pertahankan NULL karena tanggal tidak berlaku untuk order cancelled.",
+                "Hapus semua order cancelled.",
+                "Isi dengan median seluruh order."
+            ],
+            "correct_option": 1,
+            "incorrect_feedback": "Periksa arti NULL bersama status bisnisnya.",
+            "success_feedback": "Benar. Missing value harus dibaca bersama context."
+        },
+        {
+            "id": "missing-values-02",
+            "type": "text_self_assessment",
+            "prompt": "Jelaskan kapan product_category kosong dapat dipulihkan dan kapan sebaiknya tetap missing.",
+            "reference_answer": "Pulihkan jika product_id tersedia dan product master tepercaya memiliki category untuk id tersebut. Jika key juga hilang atau master tidak lengkap, pertahankan missing dan catat dampaknya daripada menebak.",
+            "checklist": [
+                "Menyebutkan source pemulihan yang tepercaya.",
+                "Membedakan pemulihan dari tebakan.",
+                "Menjelaskan kapan missing perlu dipertahankan."
+            ]
+        }
+    ]
+}

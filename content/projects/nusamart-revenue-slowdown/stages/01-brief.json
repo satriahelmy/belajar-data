@@ -1,0 +1,19 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "brief-question",
+            "type": "multiple_choice",
+            "prompt": "Pertanyaan awal mana yang paling siap dibawa ke data?",
+            "options": [
+                "Mengapa NusaMart terasa kurang baik akhir-akhir ini?",
+                "Apakah revenue September berbeda dari Agustus, dan di region mana perubahan paling besar terlihat?",
+                "Chart apa yang paling bagus untuk revenue?",
+                "Apakah semua customer tidak puas?"
+            ],
+            "correct_option": 1,
+            "success_feedback": "Tepat. Pertanyaan itu menetapkan comparison dan dimensi tanpa mengklaim penyebab.",
+            "incorrect_feedback": "Pilih pertanyaan yang menetapkan metric, periode, dan konteks tanpa melompat ke penyebab."
+        }
+    ]
+}

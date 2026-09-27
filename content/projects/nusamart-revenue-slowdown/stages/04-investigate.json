@@ -1,0 +1,13 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "september-revenue",
+            "type": "numeric",
+            "prompt": "Berapa total revenue September pada dataset NusaMart v1?",
+            "validator": {"type": "numeric", "expected": 600, "tolerance": 0},
+            "success_feedback": "Benar. Angka total ini mengubah arah investigasi: klaim slowdown belum didukung oleh comparison ini.",
+            "incorrect_feedback": "Jumlahkan revenue pada empat order September dan periksa kembali period filter-mu."
+        }
+    ]
+}

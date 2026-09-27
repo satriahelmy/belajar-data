@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "unknowns-01",
+            "type": "multiple_choice",
+            "prompt": "Evidence menunjukkan West Furniture Orders turun 38%, tetapi tidak ada inventory atau traffic data. Pernyataan yang tepat?",
+            "options": [
+                "Stock-out pasti penyebabnya.",
+                "Customer pasti kehilangan minat.",
+                "Data menunjukkan where the decline happened, tetapi belum menjelaskan why.",
+                "Tidak ada finding yang dapat dibuat."
+            ],
+            "correct_option": 2,
+            "incorrect_feedback": "Pisahkan lokasi perubahan dari causal explanation.",
+            "success_feedback": "Benar. Evidence gap perlu dinyatakan, bukan ditutup dengan dugaan."
+        },
+        {
+            "id": "unknowns-02",
+            "type": "text_self_assessment",
+            "prompt": "Tulis satu hypothesis dan data yang diperlukan untuk mengujinya.",
+            "reference_answer": "Hypothesis: stock availability mungkin membatasi repeat orders Furniture di West. Data needed: inventory level, stock-out history, dan high-demand SKU availability pada periode yang sama.",
+            "checklist": [
+                "Hypothesis ditulis sebagai kemungkinan.",
+                "Data yang dibutuhkan relevan untuk menguji hypothesis.",
+                "Tidak menyebutkan hypothesis sebagai fakta."
+            ]
+        }
+    ]
+}

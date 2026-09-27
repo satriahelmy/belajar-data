@@ -1,0 +1,16 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "retention-plan",
+            "type": "text_self_assessment",
+            "prompt": "Tulis rencana singkat untuk menghitung retention Agustus ke September.",
+            "reference_answer": "Bentuk cohort dari unique customer_id yang aktif pada Agustus, cari customer yang juga memiliki order pada September, lalu bagi jumlah returning customer dengan ukuran cohort Agustus. Setelah itu, breakdown dengan segment dan catat keterbatasan periode.",
+            "checklist": [
+                "Cohort dan periode kembali disebutkan.",
+                "Numerator dan denominator retention jelas.",
+                "Segment digunakan setelah metric utama terbentuk."
+            ]
+        }
+    ]
+}

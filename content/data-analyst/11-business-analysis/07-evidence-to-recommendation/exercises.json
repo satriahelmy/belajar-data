@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "recommendation-01",
+            "type": "multiple_choice",
+            "prompt": "Data menunjukkan Furniture West turun 41% karena orders turun, tetapi tidak ada inventory data. Recommendation paling defensible?",
+            "options": [
+                "Beri diskon 20% segera.",
+                "Hentikan penjualan Furniture.",
+                "Periksa stock availability dan traffic sebelum memilih intervention.",
+                "Simpulkan customer kehilangan minat."
+            ],
+            "correct_option": 2,
+            "incorrect_feedback": "Kekuatan recommendation harus sesuai dengan evidence yang tersedia.",
+            "success_feedback": "Tepat. Next action menguji unknown yang paling penting."
+        },
+        {
+            "id": "recommendation-02",
+            "type": "text_self_assessment",
+            "prompt": "Tulis recommendation dengan format finding, interpretation, dan next action.",
+            "reference_answer": "Finding: Furniture West turun 41% dan orders turun. Interpretation: area tersebut materially menjelaskan decline, tetapi penyebab belum diketahui. Next action: periksa inventory, traffic, dan perubahan exposure sebelum menentukan intervention.",
+            "checklist": [
+                "Finding menyebutkan evidence.",
+                "Interpretation tidak menjadi causal claim.",
+                "Next action terkait dengan unknown."
+            ]
+        }
+    ]
+}

@@ -9,3 +9,5 @@ Each version contains:
 - versioned data files and optional downloadable learning assets.
 
 Dataset keys use lowercase kebab-case and versions use `v1`, `v2`, and so on. Dataset files are trusted repository assets; M0C adds no upload or remote datasource feature.
+
+Untuk workflow Tableau, file CSV yang aman dan fiktif berada di `nusamart/v1/tableau/`. Route download aplikasi membaca file tersebut melalui manifest dan menampilkan versi, ukuran, serta SHA-256 sebelum learner mengunduhnya.

@@ -1,0 +1,23 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "tableau-download-01",
+            "type": "multiple_choice",
+            "prompt": "Langkah awal mana yang paling membantu menjaga hasil Tableau dapat diperiksa?",
+            "options": [
+                "Membuka dashboard kosong lalu memilih warna yang terlihat menarik.",
+                "Mengunduh dataset NusaMart v1, mencatat file yang dipakai, dan memeriksa grain setiap tabel.",
+                "Menggabungkan semua CSV menjadi satu tabel tanpa memeriksa key.",
+                "Mengubah nama kolom agar terdengar lebih singkat sebelum memahami definisinya."
+            ],
+            "correct_option": 1,
+            "hints": [
+                "Pikirkan apa yang perlu diketahui sebelum angka di worksheet dipercaya.",
+                "Versi, file, dan grain memberi konteks pada angka."
+            ],
+            "incorrect_feedback": "Mulai dari dataset, versi, file, dan grain. Tampilan yang rapi tidak dapat memperbaiki definisi data yang belum jelas.",
+            "success_feedback": "Tepat. Workflow Tableau tetap dimulai dari data yang versioned dan definisi satu baris yang dapat diperiksa."
+        }
+    ]
+}

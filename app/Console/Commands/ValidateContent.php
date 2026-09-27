@@ -7,6 +7,7 @@ use App\Domain\Learning\Content\ContentValidationException;
 use App\Domain\Learning\Content\MarkdownLessonRenderer;
 use App\Domain\Datasets\DatasetManifestRepository;
 use App\Domain\Datasets\DatasetValidationException;
+use App\Domain\Projects\ProjectRepository;
 use Illuminate\Console\Command;
 
 class ValidateContent extends Command
@@ -19,6 +20,7 @@ class ValidateContent extends Command
         ContentRepository $repository,
         MarkdownLessonRenderer $renderer,
         DatasetManifestRepository $datasets,
+        ProjectRepository $projects,
     ): int
     {
         try {
@@ -31,6 +33,10 @@ class ValidateContent extends Command
 
             foreach ($datasets->validateAll() as $dataset) {
                 $this->line("Validated dataset {$dataset['dataset_key']}/{$dataset['version']}");
+            }
+
+            foreach ($projects->validate() as $projectKey) {
+                $this->line("Validated project {$projectKey}");
             }
         } catch (ContentValidationException|DatasetValidationException $exception) {
             $this->error($exception->getMessage());

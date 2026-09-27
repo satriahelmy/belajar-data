@@ -26,10 +26,29 @@ class ContentContractTest extends TestCase
                 '02-spreadsheet-for-analysis/01-spreadsheet-foundations',
                 '03-sql-for-data-analysis/01-query-foundations',
                 '04-python-pandas-for-analysis/01-python-foundations',
+                '05-data-cleaning/01-what-makes-data-dirty',
+                '05-data-cleaning/02-missing-values',
+                '05-data-cleaning/03-duplicate-data',
+                '05-data-cleaning/04-invalid-inconsistent-values',
+                '05-data-cleaning/05-data-types-formats',
+                '05-data-cleaning/06-outliers-unusual-values',
+                '05-data-cleaning/07-validating-cleaning',
+                '05-data-cleaning/08-cleaning-workflow',
                 '06-exploratory-data-analysis/01-join-grain',
                 '07-statistics-for-analysts/01-sampling-uncertainty',
                 '08-data-visualization/01-choosing-a-visual',
                 '09-metrics-dashboards/01-metric-tree',
+                '10-tableau-for-data-analysis/01-tableau-workflow',
+                '10-tableau-for-data-analysis/02-tableau-model-and-metrics',
+                '10-tableau-for-data-analysis/03-tableau-dashboard-validation',
+                '11-business-analysis/01-understanding-business-problem',
+                '11-business-analysis/02-analysis-plan',
+                '11-business-analysis/03-break-down-problem',
+                '11-business-analysis/04-performance-context',
+                '11-business-analysis/05-finding-drivers',
+                '11-business-analysis/06-segmentation',
+                '11-business-analysis/07-evidence-to-recommendation',
+                '11-business-analysis/08-knowing-what-you-dont-know',
                 '12-communicating-insights/01-communication-builder',
             ],
             $repository->validate(),
@@ -43,6 +62,20 @@ class ContentContractTest extends TestCase
         $this->assertSame('01-thinking-with-data/challenge', $challenge->key);
         $this->assertCount(7, $challenge->exercises);
         $this->assertSame('text_self_assessment', $challenge->exercises['challenge-01-finding']['type']);
+    }
+
+    public function test_data_cleaning_and_business_analysis_modules_are_published_content(): void
+    {
+        $repository = app(ContentRepository::class);
+
+        foreach (['05-data-cleaning', '11-business-analysis'] as $moduleKey) {
+            $module = $repository->module($moduleKey);
+
+            $this->assertSame('published', $module['status']);
+            $this->assertCount(8, $module['topic_keys']);
+            $this->assertSame('published', $module['challenge']['status']);
+            $this->assertCount(3, $repository->challenge($moduleKey)->exercises);
+        }
     }
 
     public function test_spreadsheet_module_challenge_loads_as_repository_content(): void
@@ -122,6 +155,18 @@ class ContentContractTest extends TestCase
         $this->assertSame('text_self_assessment', $lesson->exercises['communication-builder-01']['type']);
         $this->assertSame('communication_builder', $lesson->exercises['communication-builder-01']['interactive']['type']);
         $this->assertSame('communication_builder', $challenge->exercises['communication-builder-challenge-01']['interactive']['type']);
+    }
+
+    public function test_tableau_module_challenge_loads_as_repository_content(): void
+    {
+        $repository = app(ContentRepository::class);
+        $lesson = $repository->lesson('10-tableau-for-data-analysis/01-tableau-workflow');
+        $challenge = $repository->challenge('10-tableau-for-data-analysis');
+
+        $this->assertSame('multiple_choice', $lesson->exercises['tableau-download-01']['type']);
+        $this->assertSame('numeric', $repository->lesson('10-tableau-for-data-analysis/03-tableau-dashboard-validation')->exercises['tableau-september-revenue-01']['type']);
+        $this->assertSame('text_self_assessment', $challenge->exercises['tableau-challenge-reflection-01']['type']);
+        $this->assertCount(4, $challenge->exercises);
     }
 
     public function test_invalid_lesson_key_is_rejected_before_file_access(): void

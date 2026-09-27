@@ -1,0 +1,16 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "retention-finding",
+            "type": "text_self_assessment",
+            "prompt": "Tulis finding retention untuk stakeholder dalam 3 sampai 5 kalimat.",
+            "reference_answer": "Dari dua customer yang aktif pada Agustus, dua kembali melakukan order pada September, sehingga retention comparison ini 100%. Hasil ini belum dapat digeneralisasi karena cohort kecil dan periode hanya dua bulan. Breakdown segment dapat menjadi arah investigasi berikutnya, tetapi belum membuktikan penyebab churn.",
+            "checklist": [
+                "Cohort, periode, dan numerator disebutkan.",
+                "Rate atau hasil comparison disertai denominator.",
+                "Ada batas evidence dan next investigation."
+            ]
+        }
+    ]
+}

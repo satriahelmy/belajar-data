@@ -9,6 +9,10 @@
         "products": "products.json",
         "python_transactions": "python/transactions.csv",
         "python_products": "python/products.csv",
+        "tableau_transactions": "tableau/transactions.csv",
+        "tableau_products": "tableau/products.csv",
+        "tableau_orders": "tableau/orders.csv",
+        "tableau_customers": "tableau/customers.csv",
         "data_dictionary": "data_dictionary.json"
     },
     "tables": {

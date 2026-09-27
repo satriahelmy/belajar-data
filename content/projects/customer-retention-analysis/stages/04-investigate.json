@@ -1,0 +1,13 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "returning-customers",
+            "type": "numeric",
+            "prompt": "Berapa customer yang aktif pada Agustus dan kembali melakukan order pada September?",
+            "validator": {"type": "numeric", "expected": 2, "tolerance": 0},
+            "success_feedback": "Benar. C001 dan C002 adalah returning customer pada comparison ini.",
+            "incorrect_feedback": "Bentuk dulu cohort Agustus, lalu cari customer_id yang muncul di kedua periode."
+        }
+    ]
+}

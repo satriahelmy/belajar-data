@@ -43,6 +43,19 @@ class MarkdownLessonRenderer
         return $this->renderCached($this->repository->challenge($moduleKey, $pathKey), $pathKey);
     }
 
+    public function renderProject(string $projectKey, string $stageKey, string $markdown, string $sourceHash): RenderedLesson
+    {
+        $source = new LessonSource(
+            "project/{$projectKey}/{$stageKey}",
+            $markdown,
+            [],
+            $sourceHash,
+            ['path_key' => 'projects'],
+        );
+
+        return $this->renderCached($source, 'projects');
+    }
+
     private function renderCached(LessonSource $source, string $pathKey): RenderedLesson
     {
         $cacheKey = "content:lesson:{$pathKey}:{$source->key}:{$source->sourceHash}";

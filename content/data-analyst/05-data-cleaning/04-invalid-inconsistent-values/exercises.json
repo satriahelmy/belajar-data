@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "invalid-values-01",
+            "type": "multiple_choice",
+            "prompt": "Quantity bernilai -5 pada order biasa. Langkah pertama yang tepat?",
+            "options": [
+                "Mengubahnya menjadi 5.",
+                "Menghapus row tanpa pemeriksaan.",
+                "Memeriksa apakah nilai negatif mewakili return, adjustment, atau error input.",
+                "Mengganti semua quantity negatif dengan median."
+            ],
+            "correct_option": 2,
+            "incorrect_feedback": "Nilai negatif perlu dibandingkan dengan aturan bisnis.",
+            "success_feedback": "Benar. Nilai yang tampak invalid perlu diuji terhadap context domain."
+        },
+        {
+            "id": "invalid-values-02",
+            "type": "text_self_assessment",
+            "prompt": "Jelaskan cara menstandarkan variasi nama region tanpa menghilangkan nilai aslinya.",
+            "reference_answer": "Buat mapping eksplisit ke nama standar, simpan kolom raw sebagai audit trail, lalu validasi jumlah row dan distribusi region sebelum dan sesudah mapping. Nilai yang belum yakin tidak dipaksa masuk ke kategori tertentu.",
+            "checklist": [
+                "Menggunakan mapping eksplisit.",
+                "Mempertahankan nilai raw atau audit trail.",
+                "Menyebutkan validasi distribusi atau jumlah row."
+            ]
+        }
+    ]
+}

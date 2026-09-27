@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "outliers-01",
+            "type": "multiple_choice",
+            "prompt": "Satu transaksi Rp120 juta ditemukan ketika mayoritas transaksi di bawah Rp3 juta. Tindakan awal paling defensible?",
+            "options": [
+                "Menghapusnya agar rata-rata terlihat normal.",
+                "Mengganti nilainya dengan Rp3 juta.",
+                "Memeriksa unit, grain, status, dan context bisnis sebelum memilih treatment.",
+                "Menganggapnya bukti fraud."
+            ],
+            "correct_option": 2,
+            "incorrect_feedback": "Jarak dari mayoritas adalah sinyal investigasi, bukan bukti error.",
+            "success_feedback": "Benar. Nilai unusual perlu diverifikasi sebelum dipertahankan atau dikoreksi."
+        },
+        {
+            "id": "outliers-02",
+            "type": "text_self_assessment",
+            "prompt": "Jelaskan cara melaporkan outlier valid tanpa menyamarkan pengaruhnya pada metric utama.",
+            "reference_answer": "Pertahankan transaksi pada raw dan hasil utama, beri flag atau breakdown terpisah untuk corporate order, dan jika perlu laporkan metric dengan dan tanpa segmen tersebut bersama alasannya.",
+            "checklist": [
+                "Tidak menghapus nilai valid dari raw data.",
+                "Menyebutkan flag, breakdown, atau analisis sensitivitas.",
+                "Menjelaskan alasan bisnisnya."
+            ]
+        }
+    ]
+}

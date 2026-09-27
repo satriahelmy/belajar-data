@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "decomposition-01",
+            "type": "multiple_choice",
+            "prompt": "Jika revenue turun 12% dan orders turun 11%, cabang investigasi yang paling layak diprioritaskan?",
+            "options": [
+                "Mencari warna chart baru.",
+                "Menguji orders sebagai contributor utama sebelum memecah AOV terlalu jauh.",
+                "Menganggap semua penurunan disebabkan harga.",
+                "Menghapus periode Q3."
+            ],
+            "correct_option": 1,
+            "incorrect_feedback": "Prioritaskan driver yang paling material dan dapat diperiksa.",
+            "success_feedback": "Tepat. Orders menjelaskan sebagian besar perubahan dan layak diperiksa lebih lanjut."
+        },
+        {
+            "id": "decomposition-02",
+            "type": "text_self_assessment",
+            "prompt": "Buat decomposition dua tingkat untuk revenue yang menurun.",
+            "reference_answer": "Contoh: revenue -> orders dan average order value; orders -> channel atau region; average order value -> quantity per order dan price. Pilih hanya cabang yang terhubung dengan pertanyaan.",
+            "checklist": [
+                "Metric utama memiliki komponen.",
+                "Ada satu tingkat drill-down tambahan.",
+                "Tidak mengubah decomposition menjadi daftar semua field."
+            ]
+        }
+    ]
+}

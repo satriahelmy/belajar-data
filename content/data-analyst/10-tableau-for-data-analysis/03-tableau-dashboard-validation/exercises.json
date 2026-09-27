@@ -1,0 +1,39 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "tableau-dashboard-01",
+            "type": "multi_select",
+            "prompt": "Elemen mana yang membantu dashboard Revenue Slowdown tetap dapat diperiksa? Pilih semua yang tepat.",
+            "options": [
+                "Metric utama Revenue dengan definisi dan periode yang terlihat.",
+                "Perbandingan revenue Agustus dan September.",
+                "Warna dekoratif sebanyak mungkin tanpa pertanyaan analitis.",
+                "View kategori atau region untuk memberi konteks pada perubahan."
+            ],
+            "correct_options": [0, 1, 3],
+            "hints": [
+                "Cari elemen yang membantu audience memahami perubahan dan konteksnya.",
+                "Dashboard yang dapat diperiksa tetap membutuhkan metric, comparison, dan dimension."
+            ],
+            "incorrect_feedback": "Pilih elemen yang menghubungkan metric dengan periode dan konteks. Dekorasi tanpa pertanyaan tidak membantu validasi.",
+            "success_feedback": "Benar. Dashboard yang berguna memberi metric, comparison, dan konteks tanpa menutupi angka."
+        },
+        {
+            "id": "tableau-september-revenue-01",
+            "type": "numeric",
+            "prompt": "Setelah filter order_date ke September 2025, berapa total revenue pada transactions.csv?",
+            "validator": {
+                "type": "numeric",
+                "expected": 600,
+                "tolerance": 0
+            },
+            "hints": [
+                "Jumlahkan revenue untuk O-1004 sampai O-1008.",
+                "Angka yang dicari adalah total, bukan average order value."
+            ],
+            "incorrect_feedback": "Periksa kembali filter September dan SUM(revenue). Pastikan relationship atau filter tidak menggandakan atau menghilangkan transaksi.",
+            "success_feedback": "Tepat. Total September adalah 600 dan dapat dipakai sebagai checkpoint sebelum menyusun finding."
+        }
+    ]
+}

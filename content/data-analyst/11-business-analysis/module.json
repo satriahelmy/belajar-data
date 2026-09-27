@@ -5,13 +5,101 @@
     "title": "Business Analysis",
     "number": 11,
     "order": 11,
-    "status": "roadmap",
+    "status": "published",
     "purpose": "Mengubah masalah bisnis yang ambigu menjadi rencana investigasi dan rekomendasi yang proporsional.",
     "outcome": "Mampu menemukan driver, memisahkan evidence dari hipotesis, dan menyatakan unknowns.",
-    "estimated_minutes": 180,
+    "estimated_minutes": 136,
     "recommended_knowledge": ["Metrics & Dashboards", "Tableau for Data Analysis"],
     "skill_tags": ["business-analysis"],
-    "challenge": {"key": "module-11-nusamart-growth-investigation", "title": "NusaMart Growth Investigation", "description": "Susun investigasi yang menghubungkan evidence dengan keputusan bisnis.", "status": "roadmap"},
-    "topic_keys": [],
-    "topics": {}
+    "challenge": {
+        "key": "module-11-nusamart-growth-investigation",
+        "title": "NusaMart Growth Investigation",
+        "description": "Susun investigasi yang menghubungkan evidence dengan keputusan bisnis tanpa melampaui batas data.",
+        "status": "published",
+        "estimated_minutes": 20,
+        "content_file": "challenge/challenge.md",
+        "exercise_file": "challenge/exercises.json",
+        "dataset_refs": ["nusamart/v1"],
+        "completion_criteria": [
+            "Mengubah problem bisnis menjadi analysis plan yang dapat diperiksa.",
+            "Menemukan driver perubahan dengan comparison dan segmentation yang relevan.",
+            "Menyatakan evidence gap dan next action yang proporsional."
+        ]
+    },
+    "topic_keys": [
+        "01-understanding-business-problem",
+        "02-analysis-plan",
+        "03-break-down-problem",
+        "04-performance-context",
+        "05-finding-drivers",
+        "06-segmentation",
+        "07-evidence-to-recommendation",
+        "08-knowing-what-you-dont-know"
+    ],
+    "topics": {
+        "01-understanding-business-problem": {
+            "title": "Understand the Business Problem",
+            "order": 1,
+            "estimated_minutes": 14,
+            "skill_tags": ["business-analysis", "analytical-thinking"],
+            "lesson_file": "01-understanding-business-problem/lesson.md",
+            "exercise_file": "01-understanding-business-problem/exercises.json"
+        },
+        "02-analysis-plan": {
+            "title": "Turn the Problem into an Analysis Plan",
+            "order": 2,
+            "estimated_minutes": 16,
+            "skill_tags": ["business-analysis", "analytical-thinking"],
+            "lesson_file": "02-analysis-plan/lesson.md",
+            "exercise_file": "02-analysis-plan/exercises.json"
+        },
+        "03-break-down-problem": {
+            "title": "Break Down the Problem",
+            "order": 3,
+            "estimated_minutes": 14,
+            "skill_tags": ["business-analysis", "metrics-dashboards"],
+            "lesson_file": "03-break-down-problem/lesson.md",
+            "exercise_file": "03-break-down-problem/exercises.json"
+        },
+        "04-performance-context": {
+            "title": "Measure Performance Against Context",
+            "order": 4,
+            "estimated_minutes": 14,
+            "skill_tags": ["business-analysis", "metrics"],
+            "lesson_file": "04-performance-context/lesson.md",
+            "exercise_file": "04-performance-context/exercises.json"
+        },
+        "05-finding-drivers": {
+            "title": "Find the Drivers of Change",
+            "order": 5,
+            "estimated_minutes": 16,
+            "skill_tags": ["business-analysis", "analytical-thinking"],
+            "lesson_file": "05-finding-drivers/lesson.md",
+            "exercise_file": "05-finding-drivers/exercises.json"
+        },
+        "06-segmentation": {
+            "title": "Use Segmentation Carefully",
+            "order": 6,
+            "estimated_minutes": 12,
+            "skill_tags": ["business-analysis", "data-literacy"],
+            "lesson_file": "06-segmentation/lesson.md",
+            "exercise_file": "06-segmentation/exercises.json"
+        },
+        "07-evidence-to-recommendation": {
+            "title": "Move from Evidence to Recommendation",
+            "order": 7,
+            "estimated_minutes": 16,
+            "skill_tags": ["business-analysis", "communication"],
+            "lesson_file": "07-evidence-to-recommendation/lesson.md",
+            "exercise_file": "07-evidence-to-recommendation/exercises.json"
+        },
+        "08-knowing-what-you-dont-know": {
+            "title": "Know What You Do Not Know",
+            "order": 8,
+            "estimated_minutes": 14,
+            "skill_tags": ["business-analysis", "analytical-thinking"],
+            "lesson_file": "08-knowing-what-you-dont-know/lesson.md",
+            "exercise_file": "08-knowing-what-you-dont-know/exercises.json"
+        }
+    }
 }

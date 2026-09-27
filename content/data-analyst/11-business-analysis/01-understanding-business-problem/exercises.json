@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "business-problem-01",
+            "type": "multiple_choice",
+            "prompt": "Pertanyaan klarifikasi yang paling penting sebelum menganalisis klaim penjualan jelek adalah apa?",
+            "options": [
+                "Chart apa yang paling menarik?",
+                "Tool apa yang sedang populer?",
+                "Keputusan apa yang akan didukung oleh analisis?",
+                "Berapa banyak row yang tersedia?"
+            ],
+            "correct_option": 2,
+            "incorrect_feedback": "Mulai dari arti masalah dan keputusan, bukan dari tool atau chart.",
+            "success_feedback": "Tepat. Decision context membantu memilih metric dan scope."
+        },
+        {
+            "id": "business-problem-02",
+            "type": "text_self_assessment",
+            "prompt": "Ubah “penjualan kita jelek bulan ini” menjadi objective yang menyebutkan metric dan comparison.",
+            "reference_answer": "Contoh: pahami apakah revenue bulan ini menurun dibandingkan bulan sebelumnya dan kategori atau region mana yang paling berkontribusi pada perubahan tersebut.",
+            "checklist": [
+                "Menyebutkan metric yang jelas.",
+                "Menyebutkan periode dan comparison.",
+                "Menentukan area breakdown yang mungkin relevan."
+            ]
+        }
+    ]
+}

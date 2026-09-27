@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "formats-01",
+            "type": "multiple_choice",
+            "prompt": "Mengapa order_id 00125 sebaiknya diperlakukan sebagai identifier?",
+            "options": [
+                "Semua angka tidak boleh dihitung.",
+                "Leading zero dapat menjadi bagian dari identitas order.",
+                "Identifier selalu lebih besar dari metric.",
+                "order_id pasti berisi tanggal."
+            ],
+            "correct_option": 1,
+            "incorrect_feedback": "Pertimbangkan fungsi field, bukan bentuk tampilannya.",
+            "success_feedback": "Tepat. Identifier mengenali entity, bukan dijumlahkan."
+        },
+        {
+            "id": "formats-02",
+            "type": "text_self_assessment",
+            "prompt": "Apa yang perlu dicek sebelum mengubah 01/02/2026 menjadi tanggal standar?",
+            "reference_answer": "Periksa locale, contoh tanggal lain, periode bisnis, dan source field. Jika context belum cukup membedakan 1 Februari dan 2 Januari, tandai ambiguity dan jangan menebak.",
+            "checklist": [
+                "Menyebutkan locale atau aturan format.",
+                "Menghubungkan pemeriksaan dengan periode atau source.",
+                "Menghindari parsing yang tidak dapat dijelaskan."
+            ]
+        }
+    ]
+}

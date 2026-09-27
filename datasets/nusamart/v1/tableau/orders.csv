@@ -1,0 +1,7 @@
+order_id,customer_id,order_date,channel,shipping_cost
+ORD001,C001,2025-08-05,Online,10
+ORD002,C002,2025-08-10,Store,15
+ORD003,C001,2025-08-20,Online,12
+ORD004,C003,2025-09-03,Online,20
+ORD005,C004,2025-09-12,Store,8
+ORD006,C002,2025-09-20,Online,14

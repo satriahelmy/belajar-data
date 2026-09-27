@@ -1,0 +1,13 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "active-customers",
+            "type": "numeric",
+            "prompt": "Berapa unique customer yang aktif pada September 2025?",
+            "validator": {"type": "numeric", "expected": 3, "tolerance": 0},
+            "success_feedback": "Benar. September memiliki C003, C004, dan C002.",
+            "incorrect_feedback": "Hitung unique customer_id pada tiga order September, bukan jumlah order."
+        }
+    ]
+}

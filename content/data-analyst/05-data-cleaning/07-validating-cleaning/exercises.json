@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "validation-01",
+            "type": "multiple_choice",
+            "prompt": "Setelah cleaning, revenue turun dari Rp842M menjadi Rp691M. Kesimpulan awal yang tepat?",
+            "options": [
+                "Cleaning berhasil karena revenue lebih kecil.",
+                "Semua row yang dihapus pasti duplicate.",
+                "Perubahan material perlu ditelusuri sebelum hasil dipakai.",
+                "Revenue harus dikembalikan ke Rp842M."
+            ],
+            "correct_option": 2,
+            "incorrect_feedback": "Validasi menanyakan mengapa metric berubah.",
+            "success_feedback": "Tepat. Perubahan material adalah titik investigasi."
+        },
+        {
+            "id": "validation-02",
+            "type": "text_self_assessment",
+            "prompt": "Tulis tiga acceptance check untuk cleaning dataset transaksi.",
+            "reference_answer": "Simpan raw sebagai baseline, periksa unique order atau transaction count, dan bandingkan revenue serta distribusi category sebelum dan sesudah. Tambahkan missing count dan rentang tanggal bila relevan.",
+            "checklist": [
+                "Memiliki baseline sebelum cleaning.",
+                "Memeriksa unique entity atau grain.",
+                "Memeriksa metric atau distribusi yang relevan."
+            ]
+        }
+    ]
+}

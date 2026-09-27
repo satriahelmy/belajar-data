@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "workflow-01",
+            "type": "multiple_choice",
+            "prompt": "Urutan kerja mana yang menjaga cleaning tetap dapat diaudit?",
+            "options": [
+                "Clean, hapus raw, lalu lihat hasilnya.",
+                "Profile, decide, clean, dan abaikan validasi.",
+                "Understand, profile, investigate, decide, clean, validate, lalu document.",
+                "Impute semua missing dan hapus semua duplicate."
+            ],
+            "correct_option": 2,
+            "incorrect_feedback": "Workflow perlu dimulai dari context dan diakhiri validasi serta dokumentasi.",
+            "success_feedback": "Benar. Urutan ini menjaga keputusan tetap terhubung dengan evidence."
+        },
+        {
+            "id": "workflow-02",
+            "type": "text_self_assessment",
+            "prompt": "Tulis catatan singkat dengan format issue, evidence, treatment, dan impact.",
+            "reference_answer": "Issue: delivery_date kosong pada order cancelled. Evidence: status cancelled dan tidak ada pengiriman. Treatment: pertahankan NULL dan keluarkan dari metric delivery time. Impact: jumlah order tetap, tetapi delivery metric tidak memasukkan order yang tidak berlaku.",
+            "checklist": [
+                "Issue dan evidence dijelaskan.",
+                "Treatment dapat ditelusuri.",
+                "Impact terhadap metric disebutkan."
+            ]
+        }
+    ]
+}

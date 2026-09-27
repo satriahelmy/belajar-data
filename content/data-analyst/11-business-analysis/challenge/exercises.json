@@ -1,0 +1,44 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "business-challenge-01",
+            "type": "multiple_choice",
+            "prompt": "Jalur investigasi pertama yang paling relevan?",
+            "options": [
+                "Mengabaikan segment karena overall growth masih positif.",
+                "Memeriksa returning customer revenue karena turun ketika new customer revenue tetap kuat.",
+                "Langsung memilih campaign baru.",
+                "Mengganti metric revenue dengan jumlah chart."
+            ],
+            "correct_option": 1,
+            "incorrect_feedback": "Cari perubahan yang materially berbeda antar segment.",
+            "success_feedback": "Tepat. Returning customer revenue adalah signal yang perlu diurai."
+        },
+        {
+            "id": "business-challenge-02",
+            "type": "multiple_choice",
+            "prompt": "Pernyataan mana yang paling sesuai dengan evidence?",
+            "options": [
+                "Campaign pasti gagal.",
+                "Customer returning tidak lagi menyukai NusaMart.",
+                "Pertumbuhan melambat dan penurunan returning customer revenue layak diinvestigasi lebih lanjut.",
+                "Stock-out pasti penyebab utama."
+            ],
+            "correct_option": 2,
+            "incorrect_feedback": "Hindari causal claim tanpa evidence yang mengujinya.",
+            "success_feedback": "Benar. Pernyataan ini menyebut signal tanpa melampaui data."
+        },
+        {
+            "id": "business-challenge-03",
+            "type": "text_self_assessment",
+            "prompt": "Tulis analysis brief singkat untuk investigasi growth NusaMart.",
+            "reference_answer": "Headline: Revenue growth melambat dari +14% menjadi +2%. Known: returning customer revenue turun 11% sementara new customer revenue tetap kuat. Unknown: data ini belum menjelaskan apakah penyebabnya inventory, traffic, marketing exposure, atau feedback. Next data needed: inventory, traffic, dan customer behavior. Next step: drill down returning customer revenue menurut region, category, dan repeat order sebelum memilih intervention.",
+            "checklist": [
+                "Headline dan finding menyebutkan perubahan yang dapat diperiksa.",
+                "Known dan unknown dipisahkan.",
+                "Next data needed dan next step terkait dengan evidence gap."
+            ]
+        }
+    ]
+}

@@ -5,13 +5,101 @@
     "title": "Data Cleaning",
     "number": 5,
     "order": 5,
-    "status": "roadmap",
+    "status": "published",
     "purpose": "Mengenali dan menangani masalah kualitas data sebelum menarik kesimpulan.",
     "outcome": "Mampu menjelaskan keputusan cleaning, risikonya, dan dampaknya pada analisis.",
-    "estimated_minutes": 150,
+    "estimated_minutes": 128,
     "recommended_knowledge": ["SQL for Data Analysis", "Python & Pandas for Analysis"],
     "skill_tags": ["data-cleaning"],
-    "challenge": {"key": "module-05-data-quality-review", "title": "Data Quality Review", "description": "Identifikasi masalah data dan pilih tindakan yang dapat dipertanggungjawabkan.", "status": "roadmap"},
-    "topic_keys": [],
-    "topics": {}
+    "challenge": {
+        "key": "module-05-data-quality-review",
+        "title": "Fix the NusaMart Dataset",
+        "description": "Identifikasi masalah kualitas data, pilih tindakan yang dapat dipertanggungjawabkan, lalu validasi dampaknya.",
+        "status": "published",
+        "estimated_minutes": 20,
+        "content_file": "challenge/challenge.md",
+        "exercise_file": "challenge/exercises.json",
+        "dataset_refs": ["nusamart/v1"],
+        "completion_criteria": [
+            "Membedakan warning kualitas data dari masalah yang benar-benar harus diperbaiki.",
+            "Menjelaskan keputusan treatment dan risikonya.",
+            "Membandingkan hasil sebelum dan sesudah cleaning tanpa menghapus raw data secara diam-diam."
+        ]
+    },
+    "topic_keys": [
+        "01-what-makes-data-dirty",
+        "02-missing-values",
+        "03-duplicate-data",
+        "04-invalid-inconsistent-values",
+        "05-data-types-formats",
+        "06-outliers-unusual-values",
+        "07-validating-cleaning",
+        "08-cleaning-workflow"
+    ],
+    "topics": {
+        "01-what-makes-data-dirty": {
+            "title": "What Makes Data Dirty?",
+            "order": 1,
+            "estimated_minutes": 12,
+            "skill_tags": ["data-cleaning", "data-literacy"],
+            "lesson_file": "01-what-makes-data-dirty/lesson.md",
+            "exercise_file": "01-what-makes-data-dirty/exercises.json"
+        },
+        "02-missing-values": {
+            "title": "Missing Values Need Context",
+            "order": 2,
+            "estimated_minutes": 14,
+            "skill_tags": ["data-cleaning", "data-literacy"],
+            "lesson_file": "02-missing-values/lesson.md",
+            "exercise_file": "02-missing-values/exercises.json"
+        },
+        "03-duplicate-data": {
+            "title": "Duplicate or Repeated?",
+            "order": 3,
+            "estimated_minutes": 14,
+            "skill_tags": ["data-cleaning", "data-literacy"],
+            "lesson_file": "03-duplicate-data/lesson.md",
+            "exercise_file": "03-duplicate-data/exercises.json"
+        },
+        "04-invalid-inconsistent-values": {
+            "title": "Invalid and Inconsistent Values",
+            "order": 4,
+            "estimated_minutes": 14,
+            "skill_tags": ["data-cleaning"],
+            "lesson_file": "04-invalid-inconsistent-values/lesson.md",
+            "exercise_file": "04-invalid-inconsistent-values/exercises.json"
+        },
+        "05-data-types-formats": {
+            "title": "Data Types and Formats Carry Meaning",
+            "order": 5,
+            "estimated_minutes": 12,
+            "skill_tags": ["data-cleaning", "data-literacy"],
+            "lesson_file": "05-data-types-formats/lesson.md",
+            "exercise_file": "05-data-types-formats/exercises.json"
+        },
+        "06-outliers-unusual-values": {
+            "title": "Unusual Does Not Mean Incorrect",
+            "order": 6,
+            "estimated_minutes": 12,
+            "skill_tags": ["data-cleaning", "analytical-thinking"],
+            "lesson_file": "06-outliers-unusual-values/lesson.md",
+            "exercise_file": "06-outliers-unusual-values/exercises.json"
+        },
+        "07-validating-cleaning": {
+            "title": "Validate the Cleaning Result",
+            "order": 7,
+            "estimated_minutes": 14,
+            "skill_tags": ["data-cleaning", "analytical-thinking"],
+            "lesson_file": "07-validating-cleaning/lesson.md",
+            "exercise_file": "07-validating-cleaning/exercises.json"
+        },
+        "08-cleaning-workflow": {
+            "title": "Build a Defensible Cleaning Workflow",
+            "order": 8,
+            "estimated_minutes": 16,
+            "skill_tags": ["data-cleaning", "analytical-thinking"],
+            "lesson_file": "08-cleaning-workflow/lesson.md",
+            "exercise_file": "08-cleaning-workflow/exercises.json"
+        }
+    }
 }

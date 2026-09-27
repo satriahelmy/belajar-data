@@ -1,0 +1,14 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "grain-question",
+            "type": "multiple_choice",
+            "prompt": "Jika satu order berisi tiga produk, berapa baris yang mungkin muncul di transactions?",
+            "options": ["Satu baris selalu", "Tiga baris, satu per order-item", "Tidak ada baris sebelum di-join", "Satu baris per customer"],
+            "correct_option": 1,
+            "success_feedback": "Benar. Grain ini penting agar revenue dan order count tidak tertukar.",
+            "incorrect_feedback": "Perhatikan grain: transactions mencatat order-item, bukan satu baris per order."
+        }
+    ]
+}

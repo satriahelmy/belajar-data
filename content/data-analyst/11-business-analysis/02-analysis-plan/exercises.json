@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "analysis-plan-01",
+            "type": "multiple_choice",
+            "prompt": "Rencana mana yang paling relevan untuk menyelidiki revenue Q3 yang turun?",
+            "options": [
+                "Buat semua chart yang tersedia lalu pilih yang terlihat menarik.",
+                "Bandingkan orders dan average order value, lalu breakdown berdasarkan dimensi yang relevan.",
+                "Mulai dari nama kolom yang paling panjang.",
+                "Hitung hanya total revenue tanpa comparison."
+            ],
+            "correct_option": 1,
+            "incorrect_feedback": "Plan perlu menghubungkan metric utama dengan driver dan breakdown yang relevan.",
+            "success_feedback": "Benar. Orders dan average order value membantu mengurai perubahan revenue."
+        },
+        {
+            "id": "analysis-plan-02",
+            "type": "text_self_assessment",
+            "prompt": "Tulis rantai Question, Metric, Comparison, Dimension, dan Data Needed untuk satu pertanyaan bisnis.",
+            "reference_answer": "Contoh: Question mengapa revenue Q3 turun; Metric revenue dan orders; Comparison Q3 versus Q2; Dimension category dan region; Data Needed order_date, revenue, order_id, category, dan region dengan grain yang dapat diperiksa.",
+            "checklist": [
+                "Rantai berisi lima bagian.",
+                "Metric dan comparison saling sesuai.",
+                "Data yang dibutuhkan terkait dengan pertanyaan."
+            ]
+        }
+    ]
+}

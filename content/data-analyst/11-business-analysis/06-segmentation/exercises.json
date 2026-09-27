@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "segmentation-01",
+            "type": "multiple_choice",
+            "prompt": "Overall revenue naik 2%, new customers naik 18%, dan returning customers turun 16%. Apa langkah yang paling tepat?",
+            "options": [
+                "Simpulkan semua customer puas.",
+                "Abaikan segment karena overall revenue naik.",
+                "Periksa returning customers sebagai area yang tersembunyi oleh aggregate.",
+                "Gabungkan semua segment agar hasil lebih sederhana."
+            ],
+            "correct_option": 2,
+            "incorrect_feedback": "Aggregate dapat menyembunyikan perubahan penting pada segment.",
+            "success_feedback": "Benar. Returning customers adalah signal yang layak diinvestigasi."
+        },
+        {
+            "id": "segmentation-02",
+            "type": "text_self_assessment",
+            "prompt": "Tulis definisi singkat untuk segment Returning customers yang dapat dipakai analyst lain.",
+            "reference_answer": "Contoh: customer yang memiliki setidaknya satu order sebelum periode analisis dan kembali melakukan order pada periode analisis. Definisi harus menyebutkan periode dan field yang dipakai.",
+            "checklist": [
+                "Definisi menyebutkan perilaku atau kriteria.",
+                "Periode analisis dijelaskan.",
+                "Field atau aturan dapat diperiksa."
+            ]
+        }
+    ]
+}

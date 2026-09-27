@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "cleaning-problem-01",
+            "type": "multiple_choice",
+            "prompt": "Manakah keputusan cleaning yang paling defensible?",
+            "options": [
+                "Menghapus semua row yang memiliki NULL.",
+                "Mengubah semua nilai tidak biasa menjadi rata-rata.",
+                "Memeriksa arti NULL dan dampaknya terhadap pertanyaan sebelum memilih treatment.",
+                "Menghapus semua row yang terlihat sama."
+            ],
+            "correct_option": 2,
+            "incorrect_feedback": "Mulai dari arti bisnis dan dampaknya terhadap pertanyaan.",
+            "success_feedback": "Tepat. Cleaning adalah keputusan berbasis konteks."
+        },
+        {
+            "id": "cleaning-problem-02",
+            "type": "text_self_assessment",
+            "prompt": "Pilih satu issue pada tabel dan jelaskan informasi yang perlu diperiksa sebelum memperbaikinya.",
+            "reference_answer": "Dua row A003 perlu diperiksa dengan transaction_id atau source transaksi lain untuk membedakan duplicate sungguhan dari transaksi yang tercatat dua kali. delivery_date NULL pada cancelled dapat valid jika pengiriman memang tidak terjadi.",
+            "checklist": [
+                "Menyebutkan issue yang dipilih.",
+                "Menghubungkan pemeriksaan dengan grain atau arti bisnis.",
+                "Tidak langsung menganggap semua warning harus dihapus."
+            ]
+        }
+    ]
+}

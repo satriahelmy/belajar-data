@@ -5,13 +5,56 @@
     "title": "Tableau for Data Analysis",
     "number": 10,
     "order": 10,
-    "status": "roadmap",
+    "status": "published",
     "purpose": "Menerapkan workflow analisis menggunakan Tableau sebagai tool eksternal.",
     "outcome": "Mampu menghubungkan dataset aman, membangun view, dan memvalidasi hasil analisis.",
-    "estimated_minutes": 180,
+    "estimated_minutes": 66,
     "recommended_knowledge": ["Data Visualization", "Metrics & Dashboards"],
     "skill_tags": ["tableau"],
-    "challenge": {"key": "module-10-nusamart-executive-dashboard", "title": "NusaMart Executive Dashboard", "description": "Bangun dashboard dengan workflow Tableau yang dipandu dan dapat divalidasi.", "status": "roadmap"},
-    "topic_keys": [],
-    "topics": {}
+    "challenge": {
+        "key": "module-10-nusamart-tableau-workflow",
+        "title": "NusaMart Tableau Workflow",
+        "description": "Gunakan Tableau untuk membangun view yang dapat diperiksa, lalu bawa kembali angka dan batas evidence ke BelajarData.",
+        "status": "published",
+        "estimated_minutes": 18,
+        "content_file": "challenge/challenge.md",
+        "exercise_file": "challenge/exercises.json",
+        "dataset_refs": ["nusamart/v1"],
+        "completion_criteria": [
+            "Menggunakan dataset NusaMart versi yang tepat dan memeriksa grain sebelum membuat view.",
+            "Memvalidasi total revenue, periode, dan segmentasi terhadap angka yang dapat diperiksa.",
+            "Menyusun dashboard checklist serta menjaga batas evidence dan privasi publikasi."
+        ]
+    },
+    "topic_keys": [
+        "01-tableau-workflow",
+        "02-tableau-model-and-metrics",
+        "03-tableau-dashboard-validation"
+    ],
+    "topics": {
+        "01-tableau-workflow": {
+            "title": "Start with the Data and the Grain",
+            "order": 1,
+            "estimated_minutes": 16,
+            "skill_tags": ["tableau", "data-literacy"],
+            "lesson_file": "01-tableau-workflow/lesson.md",
+            "exercise_file": "01-tableau-workflow/exercises.json"
+        },
+        "02-tableau-model-and-metrics": {
+            "title": "Build Relationships and Defined Metrics",
+            "order": 2,
+            "estimated_minutes": 16,
+            "skill_tags": ["tableau", "metrics"],
+            "lesson_file": "02-tableau-model-and-metrics/lesson.md",
+            "exercise_file": "02-tableau-model-and-metrics/exercises.json"
+        },
+        "03-tableau-dashboard-validation": {
+            "title": "Validate the View Before the Story",
+            "order": 3,
+            "estimated_minutes": 16,
+            "skill_tags": ["tableau", "communication"],
+            "lesson_file": "03-tableau-dashboard-validation/lesson.md",
+            "exercise_file": "03-tableau-dashboard-validation/exercises.json"
+        }
+    }
 }

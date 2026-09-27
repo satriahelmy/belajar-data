@@ -17,6 +17,9 @@ Aplikasi dirancang sebagai Laravel modular monolith yang server-rendered, dengan
 - M4: Spreadsheet Playground selesai untuk representative Module 02 slice; evaluator formula terbatas, filter/sort, configured summary, result validation, dan challenge dasar tersedia.
 - M5: Python/Pandas Practice selesai untuk representative Module 04 slice; bounded code/output fallback, deterministic checks, fixture NusaMart, dan downloadable notebook tersedia tanpa runtime Python atau service server-side.
 - M6A/M6B/M6C/M6D/M6E: Visualization Playground, JOIN Row Multiplication, Sampling & Uncertainty, Metric Tree Builder, dan Communication Builder representative slices tersedia; interactive dimuat lazy dengan konfigurasi bounded, fallback server-rendered, deterministic validation, grain warnings, reproducible sample estimates, predefined metric relationships, serta reference/checklist self-assessment tanpa AI grading.
+- M7: representative Tableau learning track sudah diimplementasikan dengan dataset NusaMart berversi, metadata download, guided external workflow, deterministic checkpoints, dan privacy guidance. Walkthrough manual di Tableau Desktop untuk release sign-off masih terbuka.
+- M8: representative Projects workspace sudah diimplementasikan untuk NusaMart Revenue Slowdown dan Customer Retention Analysis; enam stage, reference approach, checkpoint, dan independent project progress tersedia. Manual end-to-end QA dua project masih terbuka untuk M9 hardening.
+- M9: gelombang pertama content completion selesai untuk Module 05 — Data Cleaning dan Module 11 — Business Analysis; keduanya sekarang published dengan delapan topic, practice, dan module challenge. Launch hardening penuh masih berjalan.
 
 Yang sudah tersedia pada increment M1B saat ini:
 
@@ -61,6 +64,38 @@ Yang sudah tersedia pada increment M5 saat ini:
 - representative Module 04 topic dan challenge dengan alur dari inspeksi dataset sampai finding September;
 - downloadable notebook fallback untuk eksplorasi Python yang lebih terbuka;
 - tidak ada learner Python yang dikirim atau dieksekusi oleh Laravel, dan ordinary lesson tidak memuat Pyodide.
+
+Yang sudah tersedia pada increment M7 saat ini:
+
+- tiga topic Tableau dan satu challenge untuk workflow Revenue Slowdown;
+- koneksi ke data, pemeriksaan grain dan relationship, calculated field, dashboard validation, dan guided self-assessment;
+- dataset NusaMart Tableau CSV versi `v1` dengan ukuran file dan SHA-256 pada halaman download;
+- workflow kedua berbasis Orders dan Customers untuk arah Customer Retention;
+- peringatan privasi pada konteks Tableau Public, tanpa upload, parser workbook, simulasi Tableau, atau auto-grading dashboard;
+- kontrak konten, link, checkpoint, checksum, dan privacy warning yang telah diuji otomatis.
+
+Verifikasi manual terhadap Tableau Desktop versi yang didukung perlu diselesaikan sebelum M7 dianggap siap untuk release.
+
+Yang sudah tersedia pada increment M8 saat ini:
+
+- project library repository-first dengan dua project published dan satu project roadmap;
+- enam stage canonical: Brief, Understand, Plan, Investigate, Validate, dan Communicate;
+- Build Your Evidence sebagai substep di Investigate dan Validate;
+- Reference Approach terpisah yang terbuka setelah attempt atau konfirmasi learner;
+- checkpoint multiple-choice, numeric, dan guided self-assessment;
+- independent project progress dengan resume stage, idempotent start, dan persisted answers;
+- tool guidance yang menilai analytical outcome, bukan software stack tertentu.
+
+Manual walkthrough end-to-end untuk kedua project tetap diperlukan sebelum M8 dianggap release-signed.
+
+Yang sudah tersedia pada increment M9 saat ini:
+
+- Module 05 dengan alur dari klasifikasi masalah kualitas data, missing values, duplicate, inconsistent values, format, unusual values, validasi, sampai workflow cleaning;
+- Module 11 dengan alur dari klarifikasi business problem, analysis plan, decomposition, comparison, driver analysis, segmentation, recommendation, sampai evidence gap;
+- exercise config dan challenge untuk kedua module memakai validator deterministic atau guided self-assessment yang sudah ada;
+- `content:validate` memuat dan merender seluruh lesson serta challenge baru tanpa package atau runtime baru.
+
+M9 belum release-signed. Authoring dan review seluruh Modules 01–12, browser regression, accessibility, performance, deployment rehearsal, dan manual QA eksternal masih terbuka.
 
 ## Teknologi dan versi lokal
 
@@ -161,6 +196,15 @@ git diff --check
 - `/learn/data-analyst/09-metrics-dashboards/challenge` : representative metric tree challenge dengan bounded relationship validation dan guided reflection.
 - `/learn/data-analyst/12-communicating-insights/01-communication-builder` : representative bounded Communication Builder lesson dengan lima field komunikasi dan reference/checklist review.
 - `/learn/data-analyst/12-communicating-insights/challenge` : representative Communication Builder challenge untuk menyusun finding NusaMart.
+- `/learn/data-analyst/10-tableau-for-data-analysis/01-tableau-workflow` : representative Tableau workflow lesson.
+- `/learn/data-analyst/10-tableau-for-data-analysis/02-tableau-model-and-metrics` : representative Tableau relationship dan calculated-field lesson.
+- `/learn/data-analyst/10-tableau-for-data-analysis/03-tableau-dashboard-validation` : representative Tableau dashboard validation lesson.
+- `/learn/data-analyst/10-tableau-for-data-analysis/challenge` : representative Tableau Revenue Slowdown challenge.
+- `/downloads/tableau/nusamart/v1` : versioned Tableau CSV downloads dengan ukuran file dan SHA-256.
+- `/projects` : project library dengan dua project published dan satu project roadmap.
+- `/projects/{project}` : project brief, stage navigation, progress, dan tool guidance.
+- `/projects/{project}/{stage}` : server-rendered project stage dan checkpoint.
+- `/projects/{project}/reference` : Reference Approach setelah attempt atau konfirmasi.
 - `/__foundation` : smoke route fondasi teknis.
 - `/__spike/*` : route teknis sementara untuk technical spikes.
 

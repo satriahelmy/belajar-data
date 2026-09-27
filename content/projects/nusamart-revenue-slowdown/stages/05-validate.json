@@ -1,0 +1,19 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "evidence-check",
+            "type": "multi_select",
+            "prompt": "Mana yang merupakan praktik validasi yang tepat untuk finding ini?",
+            "options": [
+                "Memastikan unit revenue dan periode comparison sama.",
+                "Mengecek hasil breakdown menjumlah kembali ke total.",
+                "Menyimpulkan campaign pasti menyebabkan perubahan karena waktunya berdekatan.",
+                "Mencatat bahwa dua bulan data belum cukup untuk menyatakan tren jangka panjang."
+            ],
+            "correct_options": [0, 1, 3],
+            "success_feedback": "Tepat. Validasi memperkuat evidence sekaligus menjaga batas kesimpulan.",
+            "incorrect_feedback": "Pilih langkah yang memeriksa angka atau menyatakan batas evidence. Kedekatan waktu saja bukan bukti sebab."
+        }
+    ]
+}

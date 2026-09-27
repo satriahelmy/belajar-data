@@ -1,0 +1,16 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "finding",
+            "type": "text_self_assessment",
+            "prompt": "Tulis finding akhir dalam 3 sampai 5 kalimat untuk stakeholder NusaMart.",
+            "reference_answer": "Revenue NusaMart meningkat dari 450 pada Agustus menjadi 600 pada September 2025, sehingga klaim slowdown tidak didukung oleh comparison ini. Breakdown region atau category dapat menunjukkan lokasi perubahan, tetapi dua bulan data belum cukup untuk menjelaskan penyebab atau tren jangka panjang. Langkah berikutnya adalah memperluas periode dan memeriksa driver yang paling berubah.",
+            "checklist": [
+                "Headline menyebut arah revenue dan angka pembanding.",
+                "Finding membedakan evidence dari penyebab.",
+                "Ada limitation dan next step yang masuk akal."
+            ]
+        }
+    ]
+}

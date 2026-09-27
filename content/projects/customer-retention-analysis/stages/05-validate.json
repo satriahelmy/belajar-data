@@ -1,0 +1,19 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "retention-evidence",
+            "type": "multi_select",
+            "prompt": "Mana yang perlu dilakukan agar finding retention tetap defensible?",
+            "options": [
+                "Tulis denominator retention secara eksplisit.",
+                "Bedakan customer yang tidak terlihat pada periode ini dari bukti churn jangka panjang.",
+                "Nyatakan bahwa segment tertentu menyebabkan churn hanya karena angkanya berbeda.",
+                "Catat ukuran cohort dan keterbatasan periode yang pendek."
+            ],
+            "correct_options": [0, 1, 3],
+            "success_feedback": "Tepat. Retention membutuhkan definisi, denominator, dan batas interpretasi.",
+            "incorrect_feedback": "Pilih langkah yang memperjelas metric dan batas evidence. Perbedaan segment belum membuktikan sebab."
+        }
+    ]
+}

@@ -1,0 +1,71 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "tableau-challenge-total-01",
+            "type": "numeric",
+            "prompt": "Berapa total revenue seluruh transaksi pada NusaMart v1?",
+            "validator": {
+                "type": "numeric",
+                "expected": 1050,
+                "tolerance": 0
+            },
+            "hints": [
+                "Jumlahkan seluruh nilai revenue pada transactions.csv.",
+                "Jangan menerapkan filter month untuk checkpoint ini."
+            ],
+            "incorrect_feedback": "Periksa kembali semua delapan transaksi dan pastikan tidak ada relationship yang menggandakan baris.",
+            "success_feedback": "Benar. Total revenue seluruh transaksi adalah 1050."
+        },
+        {
+            "id": "tableau-challenge-growth-01",
+            "type": "numeric",
+            "prompt": "Revenue naik dari 450 pada Agustus menjadi 600 pada September. Berapa persen kenaikannya? Masukkan satu angka tanpa tanda persen.",
+            "validator": {
+                "type": "numeric",
+                "expected": 33.3,
+                "tolerance": 0.1
+            },
+            "hints": [
+                "Gunakan (September - Agustus) / Agustus × 100.",
+                "Bulatkan ke satu angka desimal."
+            ],
+            "incorrect_feedback": "Gunakan Agustus sebagai denominator. Persentase perubahan bukan selisih absolut 150.",
+            "success_feedback": "Tepat. Revenue meningkat sekitar 33,3 persen, tanpa menyimpulkan penyebabnya."
+        },
+        {
+            "id": "tableau-challenge-dashboard-01",
+            "type": "multi_select",
+            "prompt": "Checklist mana yang layak dipakai untuk memvalidasi dashboard Revenue Slowdown? Pilih semua yang tepat.",
+            "options": [
+                "Total Revenue sama dengan checkpoint yang dapat dihitung dari dataset.",
+                "Filter periode dan definisi metric terlihat oleh audience.",
+                "Screenshot dianggap cukup walaupun angka dan filter tidak dicatat.",
+                "View kategori atau region membantu memeriksa konteks perubahan."
+            ],
+            "correct_options": [0, 1, 3],
+            "hints": [
+                "Checklist harus membantu orang lain mengulang pemeriksaan.",
+                "Angka, definisi, filter, dan konteks lebih penting daripada screenshot saja."
+            ],
+            "incorrect_feedback": "Pilih pemeriksaan yang dapat diulang dan menghubungkan dashboard dengan data sumber.",
+            "success_feedback": "Benar. Dashboard yang dapat dipercaya meninggalkan jejak metric, filter, dan konteks."
+        },
+        {
+            "id": "tableau-challenge-reflection-01",
+            "type": "text_self_assessment",
+            "prompt": "Tuliskan finding singkat untuk stakeholder tentang perubahan revenue NusaMart, lalu jelaskan bagaimana kamu menjaga batas evidence dan privasi publikasi.",
+            "reference_answer": "Revenue NusaMart meningkat dari 450 pada Agustus menjadi 600 pada September, atau sekitar 33,3 persen. Data ini mendukung adanya perbedaan revenue antarperiode, tetapi belum membuktikan penyebab kenaikan. Pemeriksaan berikutnya dapat membandingkan category, region, orders, atau average order value dengan definisi dan periode yang jelas. Dataset NusaMart aman untuk latihan, tetapi data confidential, private, proprietary, atau data perusahaan tidak boleh dipublikasikan ke Tableau Public.",
+            "checklist": [
+                "Finding menyebutkan metric, dua periode, dan angka perubahan.",
+                "Finding membedakan pola yang terlihat dari penyebab yang belum terbukti.",
+                "Next step mengusulkan pemeriksaan yang dapat dilakukan.",
+                "Jawaban menyebutkan batas privasi Tableau Public."
+            ],
+            "hints": [
+                "Mulai dengan angka dan periode, lalu tulis batas evidence.",
+                "Sebutkan pemeriksaan berikutnya yang proporsional, bukan klaim sebab-akibat."
+            ]
+        }
+    ]
+}
