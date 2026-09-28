@@ -8,25 +8,34 @@
     "status": "published",
     "purpose": "Mengeksplorasi pola, perubahan, dan anomali untuk mempersempit investigasi.",
     "outcome": "Mampu membuat pertanyaan lanjutan tanpa mengubah eksplorasi menjadi tebakan sebab-akibat.",
-    "estimated_minutes": 24,
+    "estimated_minutes": 132,
     "recommended_knowledge": ["Data Cleaning", "Python & Pandas for Analysis"],
     "skill_tags": ["eda"],
     "challenge": {
         "key": "module-06-nusamart-eda",
         "title": "NusaMart EDA",
-        "description": "Periksa grain dan dampak JOIN sebelum mempersempit investigasi.",
+        "description": "Persempit perubahan revenue NusaMart dari baseline ke driver dan next evidence.",
         "status": "published",
         "estimated_minutes": 12,
         "content_file": "challenge/challenge.md",
         "exercise_file": "challenge/exercises.json",
         "dataset_refs": ["nusamart/v1"],
         "completion_criteria": [
-            "Membandingkan grain tabel sebelum JOIN.",
-            "Memeriksa row count sebelum menjumlahkan metric.",
-            "Menjelaskan kapan hasil JOIN dapat menggandakan unit analisis."
+            "Menetapkan baseline dan scope comparison.",
+            "Memecah perubahan melalui category, region, atau channel.",
+            "Menjelaskan finding, hypothesis, dan next evidence tanpa causal claim."
         ]
     },
-    "topic_keys": ["01-join-grain"],
+    "topic_keys": [
+        "01-join-grain",
+        "02-question-driven-exploration",
+        "03-profiling-the-dataset",
+        "04-exploring-distributions",
+        "05-comparing-categories",
+        "06-exploring-time",
+        "07-exploring-relationships",
+        "08-drilling-down-to-findings"
+    ],
     "topics": {
         "01-join-grain": {
             "title": "A JOIN Can Change the Grain",
@@ -35,6 +44,62 @@
             "skill_tags": ["eda", "sql", "data-literacy"],
             "lesson_file": "01-join-grain/lesson.md",
             "exercise_file": "01-join-grain/exercises.json"
+        },
+        "02-question-driven-exploration": {
+            "title": "What Are You Looking For?",
+            "order": 2,
+            "estimated_minutes": 14,
+            "skill_tags": ["eda", "analytical-thinking"],
+            "lesson_file": "02-question-driven-exploration/lesson.md",
+            "exercise_file": "02-question-driven-exploration/exercises.json"
+        },
+        "03-profiling-the-dataset": {
+            "title": "Understand the Shape of Your Data",
+            "order": 3,
+            "estimated_minutes": 14,
+            "skill_tags": ["eda", "data-literacy"],
+            "lesson_file": "03-profiling-the-dataset/lesson.md",
+            "exercise_file": "03-profiling-the-dataset/exercises.json"
+        },
+        "04-exploring-distributions": {
+            "title": "Explore Distributions",
+            "order": 4,
+            "estimated_minutes": 16,
+            "skill_tags": ["eda", "statistics"],
+            "lesson_file": "04-exploring-distributions/lesson.md",
+            "exercise_file": "04-exploring-distributions/exercises.json"
+        },
+        "05-comparing-categories": {
+            "title": "Compare Categories & Segments",
+            "order": 5,
+            "estimated_minutes": 16,
+            "skill_tags": ["eda", "metrics"],
+            "lesson_file": "05-comparing-categories/lesson.md",
+            "exercise_file": "05-comparing-categories/exercises.json"
+        },
+        "06-exploring-time": {
+            "title": "Explore Changes Over Time",
+            "order": 6,
+            "estimated_minutes": 16,
+            "skill_tags": ["eda", "metrics"],
+            "lesson_file": "06-exploring-time/lesson.md",
+            "exercise_file": "06-exploring-time/exercises.json"
+        },
+        "07-exploring-relationships": {
+            "title": "Explore Relationships",
+            "order": 7,
+            "estimated_minutes": 16,
+            "skill_tags": ["eda", "analytical-thinking"],
+            "lesson_file": "07-exploring-relationships/lesson.md",
+            "exercise_file": "07-exploring-relationships/exercises.json"
+        },
+        "08-drilling-down-to-findings": {
+            "title": "Drill Down to a Finding",
+            "order": 8,
+            "estimated_minutes": 16,
+            "skill_tags": ["eda", "analytical-thinking"],
+            "lesson_file": "08-drilling-down-to-findings/lesson.md",
+            "exercise_file": "08-drilling-down-to-findings/exercises.json"
         }
     }
 }

@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "eda-category-05",
+            "type": "multiple_choice",
+            "prompt": "Electronics memiliki revenue terbesar. Pemeriksaan berikutnya yang paling membantu menjelaskan perbedaannya adalah...",
+            "options": [
+                "Bandingkan orders dan average order value per category dengan periode yang sama.",
+                "Simpulkan Electronics pasti memiliki pelanggan paling loyal.",
+                "Hapus kategori lain agar ranking terlihat lebih jelas.",
+                "Gunakan order_id sebagai metric tambahan tanpa memeriksa grain."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Decompose revenue menjadi orders dan average order value sebelum menulis penjelasan.",
+            "success_feedback": "Benar. Ranking memberi sinyal, sedangkan decomposition membantu mencari driver yang dapat diperiksa."
+        },
+        {
+            "id": "eda-category-check-05",
+            "type": "text_self_assessment",
+            "prompt": "Tuliskan satu pertanyaan drill-down setelah sebuah kategori memiliki revenue terbesar.",
+            "reference_answer": "Pertanyaan yang baik adalah apakah revenue terbesar itu berasal dari jumlah order yang lebih banyak atau average order value yang lebih tinggi, lalu di segment mana perbedaan tersebut terkonsentrasi.",
+            "checklist": [
+                "Menyebutkan orders atau average order value sebagai driver.",
+                "Mengusulkan dimensi lanjutan seperti region atau channel.",
+                "Tidak mengubah ranking menjadi dugaan penyebab."
+            ]
+        }
+    ]
+}

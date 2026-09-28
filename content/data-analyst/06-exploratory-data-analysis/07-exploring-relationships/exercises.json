@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "eda-relationship-07",
+            "type": "multiple_choice",
+            "prompt": "Scatterplot menunjukkan discount dan quantity bergerak bersama. Pernyataan yang paling bertanggung jawab adalah...",
+            "options": [
+                "Ada relationship yang layak diperiksa, tetapi plot tersebut belum membuktikan discount menyebabkan quantity berubah.",
+                "Discount pasti menyebabkan quantity meningkat.",
+                "Tidak ada informasi yang dapat dipakai dari plot.",
+                "Semua category dan periode pasti mengikuti pola yang sama."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Relationship adalah pola yang terlihat. Causal claim membutuhkan desain dan evidence tambahan.",
+            "success_feedback": "Benar. Kamu memakai relationship untuk memilih investigasi berikutnya tanpa melampaui evidence."
+        },
+        {
+            "id": "eda-relationship-check-07",
+            "type": "text_self_assessment",
+            "prompt": "Sebutkan satu hal yang perlu diperiksa sebelum menyimpulkan relationship dari dua variabel.",
+            "reference_answer": "Periksa grain, segment, periode, dan kemungkinan variabel lain yang ikut berubah. Relationship juga perlu dilihat pada data yang sesuai dengan pertanyaan.",
+            "checklist": [
+                "Menyebutkan grain, segment, atau periode.",
+                "Menyebutkan kemungkinan variabel lain atau confounder.",
+                "Tidak menyebut relationship sebagai sebab-akibat."
+            ]
+        }
+    ]
+}

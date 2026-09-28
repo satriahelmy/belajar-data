@@ -26,13 +26,42 @@
         {
             "id": "join-finding-01",
             "type": "text_self_assessment",
-            "prompt": "Jelaskan mengapa JOIN orders ke order_items menghasilkan row lebih banyak dan mengapa shipping_cost tidak boleh langsung dijumlahkan pada grain tersebut.",
-            "reference_answer": "orders memiliki satu row per order, sedangkan order_items memiliki satu row per product line. Satu order dapat bertemu beberapa item sehingga hasil JOIN menjadi grain order-item dan order_id berulang. Karena shipping_cost berada pada grain order, menjumlahkannya setelah JOIN dapat menggandakan nilainya.",
+            "prompt": "Tulis finding tentang perubahan revenue NusaMart. Sertakan comparison, driver yang terlihat, batas evidence, dan next evidence yang perlu diperiksa. Jika memakai hasil JOIN, jelaskan juga mengapa grain perlu dijaga.",
+            "reference_answer": "Revenue perlu dibandingkan pada periode dan metric yang sama. Jika penurunan terutama terkonsentrasi pada satu category dan region, itu adalah finding pada scope data tersebut. Penyebabnya belum terbukti, sehingga orders, average order value, dan data operasional yang relevan perlu diperiksa berikutnya. Jika tabel digabung, grain hasil JOIN harus diperiksa agar metric order-level tidak terduplikasi.",
             "checklist": [
-                "Menyebutkan grain orders dan order_items.",
-                "Menjelaskan relationship one-to-many dan row multiplication.",
-                "Menghubungkan grain dengan risiko menjumlahkan shipping_cost."
+                "Menyebutkan metric, comparison, dan scope finding.",
+                "Membedakan finding dari dugaan penyebab.",
+                "Menyebutkan next evidence yang proporsional.",
+                "Menyebutkan grain bila menggunakan hasil JOIN."
             ]
+        },
+        {
+            "id": "eda-challenge-path-01",
+            "type": "multiple_choice",
+            "prompt": "Revenue turun 12 persen. Jalur eksplorasi yang paling masuk akal adalah...",
+            "options": [
+                "Periksa category, lanjutkan ke region atau channel, lalu bandingkan orders dan average order value.",
+                "Cari satu transaksi paling kecil dan tetapkan sebagai penyebab.",
+                "Buat semua chart tanpa menetapkan baseline dan scope.",
+                "Pilih segment dengan angka terbesar tanpa memeriksa periode."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "EDA perlu mempersempit pattern secara bertahap dan memakai metric serta periode yang sepadan.",
+            "success_feedback": "Tepat. Jalur ini menghubungkan overall pattern dengan driver yang masih dapat diperiksa."
+        },
+        {
+            "id": "eda-challenge-claim-01",
+            "type": "multiple_choice",
+            "prompt": "Pernyataan mana yang membedakan finding dari hypothesis?",
+            "options": [
+                "Finding menyebutkan pattern pada scope tertentu, sedangkan hypothesis adalah penjelasan yang masih perlu diuji.",
+                "Finding adalah penyebab final, sedangkan hypothesis adalah angka yang sudah terbukti.",
+                "Keduanya sama karena semua pattern otomatis menjelaskan penyebab.",
+                "Hypothesis tidak membutuhkan next evidence jika pattern terlihat jelas."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Finding dan hypothesis memiliki status evidence yang berbeda. Hypothesis tetap membutuhkan pemeriksaan lanjutan.",
+            "success_feedback": "Benar. Kamu menjaga batas antara apa yang terlihat dan apa yang masih harus diuji."
         }
     ]
 }

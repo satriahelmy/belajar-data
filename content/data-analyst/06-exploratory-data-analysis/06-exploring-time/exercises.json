@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "eda-time-06",
+            "type": "multiple_choice",
+            "prompt": "Revenue naik pada akhir bulan selama tiga bulan terakhir. Kesimpulan paling tepat adalah...",
+            "options": [
+                "Ada pola yang layak diperiksa, tetapi tiga periode belum cukup untuk memastikan seasonality.",
+                "Seasonality sudah terbukti dan akan berulang setiap bulan.",
+                "Akhir bulan pasti menyebabkan revenue naik.",
+                "Data sebelum tiga bulan terakhir tidak diperlukan."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Pola waktu adalah sinyal eksplorasi. Durasi dan konteks tambahan diperlukan sebelum klaim seasonality.",
+            "success_feedback": "Tepat. Kamu menjaga perbedaan antara pola yang terlihat dan kesimpulan yang membutuhkan evidence tambahan."
+        },
+        {
+            "id": "eda-time-check-06",
+            "type": "text_self_assessment",
+            "prompt": "Setelah menemukan revenue September lebih tinggi daripada Agustus, tulis satu pertanyaan berikutnya yang dapat mempersempit investigasi.",
+            "reference_answer": "Periksa kategori, region, atau channel mana yang paling berkontribusi pada perubahan revenue dengan definisi periode yang sama.",
+            "checklist": [
+                "Pertanyaan memakai breakdown yang jelas.",
+                "Metric dan periode tetap konsisten.",
+                "Pertanyaan tidak langsung menetapkan penyebab."
+            ]
+        }
+    ]
+}

@@ -56,6 +56,13 @@ class ContentContractTest extends TestCase
                 '05-data-cleaning/07-validating-cleaning',
                 '05-data-cleaning/08-cleaning-workflow',
                 '06-exploratory-data-analysis/01-join-grain',
+                '06-exploratory-data-analysis/02-question-driven-exploration',
+                '06-exploratory-data-analysis/03-profiling-the-dataset',
+                '06-exploratory-data-analysis/04-exploring-distributions',
+                '06-exploratory-data-analysis/05-comparing-categories',
+                '06-exploratory-data-analysis/06-exploring-time',
+                '06-exploratory-data-analysis/07-exploring-relationships',
+                '06-exploratory-data-analysis/08-drilling-down-to-findings',
                 '07-statistics-for-analysts/01-sampling-uncertainty',
                 '08-data-visualization/01-choosing-a-visual',
                 '09-metrics-dashboards/01-metric-tree',
@@ -143,6 +150,7 @@ class ContentContractTest extends TestCase
 
         $this->assertSame('join_row_multiplication', $lesson->exercises['join-grain-01']['interactive']['type']);
         $this->assertSame('join_row_multiplication', $challenge->exercises['join-diagnosis-01']['interactive']['type']);
+        $this->assertCount(4, $challenge->exercises);
         $this->assertSame('text_self_assessment', $challenge->exercises['join-finding-01']['type']);
     }
 

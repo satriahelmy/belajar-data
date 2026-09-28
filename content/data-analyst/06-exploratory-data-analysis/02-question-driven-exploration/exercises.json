@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "eda-question-02",
+            "type": "multiple_choice",
+            "prompt": "Stakeholder berkata, \"Revenue kuartal ini terlihat turun.\" Langkah eksplorasi awal yang paling dapat diperiksa adalah...",
+            "options": [
+                "Tetapkan periode, metric revenue, dan baseline comparison sebelum memecah hasil.",
+                "Buat semua chart yang tersedia lalu pilih chart yang paling menarik.",
+                "Langsung simpulkan bahwa jumlah pelanggan turun.",
+                "Cari satu transaksi terbesar untuk mewakili kuartal."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "EDA perlu dimulai dari scope dan baseline yang jelas sebelum mencari breakdown.",
+            "success_feedback": "Tepat. Baseline membuat pola berikutnya punya scope yang dapat diperiksa."
+        },
+        {
+            "id": "eda-next-question-02",
+            "type": "text_self_assessment",
+            "prompt": "Tuliskan satu pertanyaan lanjutan yang masuk akal setelah revenue September dibandingkan dengan Agustus.",
+            "reference_answer": "Salah satu pertanyaan yang masuk akal adalah kategori atau region mana yang paling berkontribusi pada perubahan revenue, dengan periode dan metric yang sama.",
+            "checklist": [
+                "Pertanyaan memiliki dimensi atau breakdown yang jelas.",
+                "Pertanyaan mempertahankan periode dan metric yang sama.",
+                "Pertanyaan membantu mempersempit investigasi, bukan menebak penyebab."
+            ]
+        }
+    ]
+}

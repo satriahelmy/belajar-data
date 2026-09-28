@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "eda-distribution-04",
+            "type": "multiple_choice",
+            "prompt": "Mean order value jauh lebih tinggi daripada median. Interpretasi awal yang paling hati-hati adalah...",
+            "options": [
+                "Beberapa nilai tinggi mungkin menarik mean ke atas, sehingga bentuk distribusi perlu diperiksa.",
+                "Semua transaksi dengan nilai tinggi pasti salah.",
+                "Median harus dihapus karena mean selalu lebih dapat dipercaya.",
+                "Perbedaan mean dan median membuktikan pelanggan berubah perilaku karena satu penyebab."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Perbedaan mean dan median adalah sinyal untuk memeriksa distribusi dan konteks, bukan bukti error atau sebab.",
+            "success_feedback": "Tepat. Distribusi membantu memilih pemeriksaan lanjutan tanpa menghapus nilai secara otomatis."
+        },
+        {
+            "id": "eda-distribution-check-04",
+            "type": "text_self_assessment",
+            "prompt": "Tulis dua pemeriksaan yang layak dilakukan ketika menemukan satu order dengan nilai jauh lebih tinggi daripada yang lain.",
+            "reference_answer": "Periksa apakah order tersebut valid pada sumber data dan pahami apakah konteks bisnisnya memang berbeda. Bandingkan juga dampaknya pada mean, median, dan ringkasan lain tanpa langsung menghapusnya.",
+            "checklist": [
+                "Menyebutkan validasi sumber atau konteks bisnis.",
+                "Membandingkan dampak pada lebih dari satu ringkasan.",
+                "Tidak menganggap nilai tidak biasa otomatis salah."
+            ]
+        }
+    ]
+}

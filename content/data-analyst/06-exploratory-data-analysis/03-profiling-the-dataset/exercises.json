@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "eda-profile-03",
+            "type": "multiple_choice",
+            "prompt": "Pernyataan mana yang paling tepat tentang pemeriksaan shape dan head dataset?",
+            "options": [
+                "Keduanya membantu memahami cakupan dan contoh isi, tetapi belum cukup untuk menyimpulkan pola bisnis.",
+                "head() membuktikan bahwa tiga row pertama mewakili seluruh dataset.",
+                "shape() otomatis membuktikan tidak ada duplicate.",
+                "Jika jumlah kolom benar, semua metric pasti sudah valid."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Profil awal memberi konteks dan pemeriksaan struktur, bukan bukti lengkap tentang kualitas atau pola.",
+            "success_feedback": "Benar. Profiling membantu memilih langkah eksplorasi berikutnya dengan scope yang tepat."
+        },
+        {
+            "id": "eda-profile-gap-03",
+            "type": "text_self_assessment",
+            "prompt": "Setelah mengetahui jumlah row dan kolom, tulis satu hal yang masih perlu diperiksa sebelum membandingkan revenue.",
+            "reference_answer": "Periksa periode yang tercakup dan grain transaksi, lalu pastikan revenue memiliki definisi yang konsisten sebelum dibandingkan.",
+            "checklist": [
+                "Menyebutkan periode atau grain sebagai scope penting.",
+                "Menghubungkan pemeriksaan dengan definisi revenue.",
+                "Tidak menganggap profiling awal sebagai jawaban final."
+            ]
+        }
+    ]
+}

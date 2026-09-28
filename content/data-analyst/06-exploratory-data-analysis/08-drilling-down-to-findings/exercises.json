@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "eda-drilldown-08",
+            "type": "multiple_choice",
+            "prompt": "Revenue turun 12 persen. Urutan drill-down yang paling masuk akal adalah...",
+            "options": [
+                "Bandingkan category, lanjutkan ke region atau channel, lalu periksa orders dan average order value.",
+                "Cari transaksi paling kecil lalu tetapkan penyebab penurunan.",
+                "Buat semua chart tanpa memilih baseline.",
+                "Pilih segment dengan penurunan terbesar dan langsung tulis sebagai penyebab."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Drill-down perlu mempersempit pattern secara bertahap dan memeriksa driver, bukan memilih penyebab dari satu angka.",
+            "success_feedback": "Tepat. Alur ini menjaga hubungan antara pattern, breakdown, dan evidence."
+        },
+        {
+            "id": "eda-drilldown-check-08",
+            "type": "text_self_assessment",
+            "prompt": "Tulis finding singkat yang membedakan observation, hypothesis, dan next evidence setelah satu category terlihat turun.",
+            "reference_answer": "Observation: revenue category tersebut turun pada periode yang dibandingkan. Hypothesis: perubahan mungkin berkaitan dengan region atau jumlah order tertentu. Next evidence: periksa breakdown region, orders, average order value, dan data operasional yang relevan.",
+            "checklist": [
+                "Observation menyebutkan metric, category, dan comparison.",
+                "Hypothesis ditulis sebagai kemungkinan, bukan fakta.",
+                "Next evidence atau pertanyaan berikutnya disebutkan."
+            ]
+        }
+    ]
+}

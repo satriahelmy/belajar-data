@@ -29,6 +29,25 @@ class JoinGrainPlaygroundTest extends TestCase
             ->assertSee('join-finding-01');
     }
 
+    public function test_module_six_eda_sequence_renders_registered_practices(): void
+    {
+        foreach ([
+            ['02-question-driven-exploration', 'What Are You Looking For?', 'eda-question-02'],
+            ['08-drilling-down-to-findings', 'Drill Down to a Finding', 'eda-drilldown-08'],
+        ] as [$topic, $title, $exercise]) {
+            $this->get("/learn/data-analyst/06-exploratory-data-analysis/{$topic}")
+                ->assertOk()
+                ->assertSee($title)
+                ->assertSee('data-learning-component="practice"', false)
+                ->assertSee($exercise);
+        }
+
+        $this->get('/learn/data-analyst/06-exploratory-data-analysis/challenge')
+            ->assertOk()
+            ->assertSee('eda-challenge-path-01')
+            ->assertSee('eda-challenge-claim-01');
+    }
+
     public function test_join_row_count_is_validated_and_persisted_as_bounded_state(): void
     {
         $user = User::factory()->create();
