@@ -1187,6 +1187,7 @@ Make the complete V1 learning journey reliable, safe, accessible, measurable, pe
 - [x] Passed `php artisan content:validate` for lessons, challenges, datasets, and projects.
 - [x] Passed the current frontend contract suite: 33 tests; production asset build completed with Vite 6.4.3.
 - [x] Passed `git diff --check` after the content completion wave.
+- [x] Added a GitHub Actions quality workflow for content validation, MySQL-backed backend tests, frontend tests, and production asset builds.
 
 The complete M9 launch gate remains open until Modules 01–12 are fully authored and reviewed, and the browser, accessibility, performance, security, deployment, and manual external-tool checks are complete.
 
@@ -1196,7 +1197,7 @@ The complete M9 launch gate remains open until Modules 01–12 are fully authore
 - [ ] Ensure every core topic has narrative content, relevant practice, Further Reading where useful, and its intended module challenge or approved equivalent.
 - [ ] Ensure required datasets, data dictionaries, manifests, validators, and expected fixtures are versioned and internally coherent.
 - [ ] Complete at least two substantial projects and the approved third-project status.
-- [ ] Run `content:validate` in CI/deployment and fail on broken references, duplicate keys, malformed configs, unsafe blocks, or dataset mismatch.
+- [x] Run `content:validate` in CI/deployment and fail on broken references, duplicate keys, malformed configs, unsafe blocks, or dataset mismatch.
 - [ ] Run full backend tests for routing/publication, authentication, progress, guest merge, attempts, bookmarks, projects, and idempotent state updates.
 - [ ] Run critical browser flows: guest learning, account persistence, guest merge, SQL run/check/persist, spreadsheet run/check, Python approved path/fallback, interactives, Tableau checkpoints, and project resume.
 - [ ] Perform responsive/accessibility QA for reading, simple assessments, and representative complex tools.

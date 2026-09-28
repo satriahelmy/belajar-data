@@ -102,6 +102,7 @@ Yang sudah tersedia pada increment M9 saat ini:
 - Module 12 dengan alur dari menyaring analysis menjadi message, audience, finding/insight/recommendation, takeaway, analytical story, writing, sampai memilih format komunikasi;
 - exercise config dan challenge untuk module-module yang diperluas memakai validator deterministic atau guided self-assessment yang sudah ada;
 - `content:validate` memuat dan merender seluruh lesson serta challenge baru tanpa package atau runtime baru.
+- GitHub Actions quality workflow untuk menjalankan content validation, suite backend dengan MySQL, frontend contract tests, dan production asset build.
 
 M9 belum release-signed. Authoring dan review seluruh Modules 01–12, browser regression, accessibility, performance, deployment rehearsal, dan manual QA eksternal masih terbuka.
 
