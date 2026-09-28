@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "metric-definition-01",
+            "type": "multiple_choice",
+            "prompt": "Apa yang perlu ditanyakan sebelum memasukkan Revenue 2,4 miliar ke dashboard?",
+            "options": [
+                "Formula, unit, periode, grain, population, dan aturan inclusion atau exclusion.",
+                "Warna card yang paling cocok dengan brand.",
+                "Apakah angka terlihat cukup besar dibanding metric lain.",
+                "Apakah label revenue sudah cukup tanpa definisi tambahan."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Metric membutuhkan definition yang dapat diulang, bukan hanya nama dan nilai.",
+            "success_feedback": "Tepat. Definition membuat angka dapat dibandingkan dan diaudit."
+        },
+        {
+            "id": "metric-definition-check-01",
+            "type": "text_self_assessment",
+            "prompt": "Tulis definition singkat untuk Revenue NusaMart yang dapat dipakai untuk comparison bulanan.",
+            "reference_answer": "Revenue adalah total quantity dikali unit_price untuk transaksi pada periode yang ditentukan, dengan grain transaksi dan aturan yang jelas tentang refund atau cancelled order.",
+            "checklist": [
+                "Menyebutkan formula atau sumber angka.",
+                "Menyebutkan periode dan grain.",
+                "Menyebutkan inclusion atau exclusion yang relevan."
+            ]
+        }
+    ]
+}

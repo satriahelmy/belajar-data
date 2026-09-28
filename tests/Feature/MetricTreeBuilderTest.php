@@ -29,6 +29,25 @@ class MetricTreeBuilderTest extends TestCase
             ->assertSee('metric-tree-reflection-01');
     }
 
+    public function test_module_nine_metric_sequence_renders_registered_practices(): void
+    {
+        foreach ([
+            ['01-what-is-a-metric', 'What Is a Metric?', 'metric-definition-01'],
+            ['08-metrics-to-dashboard', 'From Metrics to Dashboard', 'dashboard-purpose-08'],
+        ] as [$topic, $title, $exercise]) {
+            $this->get("/learn/data-analyst/09-metrics-dashboards/{$topic}")
+                ->assertOk()
+                ->assertSee($title)
+                ->assertSee('data-learning-component="practice"', false)
+                ->assertSee($exercise);
+        }
+
+        $this->get('/learn/data-analyst/09-metrics-dashboards/challenge')
+            ->assertOk()
+            ->assertSee('metric-dashboard-audience-01')
+            ->assertSee('metric-dashboard-critique-01');
+    }
+
     public function test_metric_tree_relationships_are_validated_and_persisted_as_bounded_state(): void
     {
         $user = User::factory()->create();

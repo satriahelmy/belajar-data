@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "metric-quality-03",
+            "type": "multiple_choice",
+            "prompt": "Mana yang membuat Orders 14.820 lebih berguna untuk monitoring?",
+            "options": [
+                "Periode, comparison, definition, dan konteks perubahan terlihat bersama angka.",
+                "Angka dibuat lebih besar dengan format dekoratif.",
+                "Metric ditampilkan tanpa denominator atau periode agar sederhana.",
+                "Metric diganti setiap minggu supaya dashboard terlihat aktif."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Context dan definition membantu audience membaca apakah perubahan berarti.",
+            "success_feedback": "Tepat. Angka menjadi evidence ketika scope dan comparison dapat diperiksa."
+        },
+        {
+            "id": "metric-quality-check-03",
+            "type": "text_self_assessment",
+            "prompt": "Tulis tiga pertanyaan quality check sebelum sebuah metric masuk dashboard.",
+            "reference_answer": "Tanyakan apakah metric relevan dengan objective, apakah definition dan denominator konsisten, serta apakah comparison dan driver dapat diperiksa.",
+            "checklist": [
+                "Menyebutkan relevansi terhadap objective.",
+                "Menyebutkan definition atau denominator.",
+                "Menyebutkan comparison, driver, atau tindakan."
+            ]
+        }
+    ]
+}

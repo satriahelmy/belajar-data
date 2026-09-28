@@ -79,7 +79,14 @@ class ContentContractTest extends TestCase
                 '08-data-visualization/06-distribution-relationship',
                 '08-data-visualization/07-encoding-and-design',
                 '08-data-visualization/08-avoiding-misleading',
+                '09-metrics-dashboards/01-what-is-a-metric',
+                '09-metrics-dashboards/02-metric-vs-kpi',
+                '09-metrics-dashboards/03-good-metrics',
+                '09-metrics-dashboards/04-vanity-metrics',
+                '09-metrics-dashboards/05-leading-lagging',
+                '09-metrics-dashboards/06-north-star',
                 '09-metrics-dashboards/01-metric-tree',
+                '09-metrics-dashboards/08-metrics-to-dashboard',
                 '10-tableau-for-data-analysis/01-tableau-workflow',
                 '10-tableau-for-data-analysis/02-tableau-model-and-metrics',
                 '10-tableau-for-data-analysis/03-tableau-dashboard-validation',
@@ -187,6 +194,7 @@ class ContentContractTest extends TestCase
         $lesson = $repository->lesson('09-metrics-dashboards/01-metric-tree');
         $challenge = $repository->challenge('09-metrics-dashboards');
 
+        $this->assertCount(8, $repository->module('09-metrics-dashboards')['topic_keys']);
         $this->assertSame('metric_tree_builder', $lesson->exercises['metric-tree-01']['interactive']['type']);
         $this->assertSame('metric_tree_builder', $challenge->exercises['metric-tree-challenge-01']['interactive']['type']);
         $this->assertSame('text_self_assessment', $challenge->exercises['metric-tree-reflection-01']['type']);

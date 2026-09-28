@@ -49,6 +49,34 @@
                 "Menjelaskan bahwa tree membantu menentukan pemeriksaan berikutnya.",
                 "Membedakan struktur metric dari bukti sebab-akibat."
             ]
+        },
+        {
+            "id": "metric-dashboard-audience-01",
+            "type": "multiple_choice",
+            "prompt": "Apa yang sebaiknya ditentukan sebelum memilih metric untuk executive dashboard?",
+            "options": [
+                "Business objective, audience, primary outcome, driver, dan comparison yang dibutuhkan.",
+                "Semua metric yang paling mudah diambil dari database.",
+                "Chart yang sedang populer agar dashboard terlihat modern.",
+                "Satu metric tanpa supporting atau guardrail."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Dashboard dimulai dari objective dan audience, lalu metric dipilih berdasarkan perannya.",
+            "success_feedback": "Tepat. Metric system mengikuti keputusan yang perlu didukung."
+        },
+        {
+            "id": "metric-dashboard-critique-01",
+            "type": "multiple_choice",
+            "prompt": "Sebuah dashboard menampilkan Revenue 2,4 miliar tanpa periode, formula, comparison, atau filter. Kritik paling penting adalah...",
+            "options": [
+                "Angka tidak memiliki definition dan context yang cukup untuk dipercaya atau dibandingkan.",
+                "Dashboard harus memiliki lebih banyak warna.",
+                "Revenue sebaiknya dihapus karena tidak boleh menjadi metric.",
+                "Filter tidak pernah diperlukan dalam dashboard."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Metric tanpa definition dan context dapat terlihat rapi tetapi tidak dapat dipertanggungjawabkan.",
+            "success_feedback": "Benar. Dashboard perlu meninggalkan jejak definition dan comparison."
         }
     ]
 }

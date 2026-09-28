@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "metric-vanity-04",
+            "type": "multiple_choice",
+            "prompt": "Kapan Registered Users paling mungkin menjadi vanity metric?",
+            "options": [
+                "Ketika angkanya naik tetapi tidak membantu objective, diagnosis, atau keputusan yang sedang dipantau.",
+                "Selalu, karena semua user metric tidak berguna.",
+                "Ketika metric memiliki periode dan definition yang jelas.",
+                "Ketika metric dipakai bersama supporting metric yang relevan."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Vanity bersifat contextual. Nilai metric bergantung pada objective dan keputusan.",
+            "success_feedback": "Benar. Metric yang sama dapat berguna atau tidak berguna tergantung konteks."
+        },
+        {
+            "id": "metric-vanity-check-04",
+            "type": "text_self_assessment",
+            "prompt": "Pilih satu metric yang berpotensi menjadi vanity dan jelaskan metric atau context apa yang perlu ditambahkan.",
+            "reference_answer": "Registered users dapat menjadi vanity jika tidak dikaitkan dengan active users atau successful orders. Tambahkan metric behavior dan objective yang menjelaskan apakah user benar-benar memberi value.",
+            "checklist": [
+                "Menyebutkan metric kandidat.",
+                "Menjelaskan mengapa angka tersebut belum cukup.",
+                "Menambahkan supporting metric atau context yang relevan."
+            ]
+        }
+    ]
+}

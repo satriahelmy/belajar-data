@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "dashboard-purpose-08",
+            "type": "multiple_choice",
+            "prompt": "Apa urutan awal yang paling tepat ketika menyusun dashboard executive?",
+            "options": [
+                "Tentukan objective dan audience, pilih outcome serta driver, lalu susun hierarchy dan context.",
+                "Masukkan semua metric yang tersedia agar tidak ada data terlewat.",
+                "Mulai dari warna dan layout sebelum mengetahui keputusan yang didukung.",
+                "Pilih chart terlebih dahulu lalu cari metric yang cocok."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Dashboard dimulai dari purpose dan audience, lalu metric system dan hierarchy.",
+            "success_feedback": "Tepat. Dashboard adalah representasi dari metric system, bukan tempat menyimpan semua angka."
+        },
+        {
+            "id": "dashboard-purpose-check-08",
+            "type": "text_self_assessment",
+            "prompt": "Tulis checklist singkat untuk mengkritik dashboard sebelum dipakai dalam meeting.",
+            "reference_answer": "Periksa apakah objective dan audience jelas, setiap metric punya peran, definition dan comparison terlihat, filter aman, hierarchy membantu, dan angka dapat ditelusuri ke source.",
+            "checklist": [
+                "Menyebutkan objective atau audience.",
+                "Menyebutkan metric role, definition, atau comparison.",
+                "Menyebutkan filter, hierarchy, atau source validation."
+            ]
+        }
+    ]
+}

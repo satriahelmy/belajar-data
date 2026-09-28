@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "metric-leading-05",
+            "type": "multiple_choice",
+            "prompt": "Dalam funnel menuju revenue, metric mana yang paling mungkin menjadi leading signal?",
+            "options": [
+                "Checkout conversion atau add-to-cart rate, jika objective yang dipantau adalah revenue.",
+                "Revenue tahunan, karena selalu terjadi sebelum traffic.",
+                "Metric yang tidak memiliki periode atau denominator.",
+                "Jumlah chart karena menunjukkan aktivitas dashboard."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Leading dan lagging bergantung pada outcome. Cari signal yang muncul lebih awal dan relevan dengan objective.",
+            "success_feedback": "Tepat. Signal awal berguna ketika membantu diagnosis sebelum outcome berubah."
+        },
+        {
+            "id": "metric-leading-check-05",
+            "type": "text_self_assessment",
+            "prompt": "Mengapa dashboard sebaiknya menggabungkan lagging outcome dengan leading signal?",
+            "reference_answer": "Lagging outcome menunjukkan hasil yang sudah terjadi, sedangkan leading signal membantu mempersempit pemeriksaan lebih awal. Keduanya memberi konteks yang berbeda untuk monitoring.",
+            "checklist": [
+                "Menjelaskan fungsi lagging outcome.",
+                "Menjelaskan fungsi leading signal.",
+                "Tidak mengubah hubungan temporal menjadi bukti sebab-akibat."
+            ]
+        }
+    ]
+}

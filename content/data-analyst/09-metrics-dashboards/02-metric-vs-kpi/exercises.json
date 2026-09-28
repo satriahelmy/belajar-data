@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "metric-kpi-02",
+            "type": "multiple_choice",
+            "prompt": "Untuk objective meningkatkan repeat purchase, pilihan KPI yang paling relevan adalah...",
+            "options": [
+                "Repeat purchase rate atau successful repeat orders, dengan supporting metric yang menjelaskan perubahan.",
+                "Jumlah dashboard yang dibuka karena mudah dihitung.",
+                "Social followers karena selalu menunjukkan pertumbuhan.",
+                "Revenue total saja tanpa melihat customer behavior."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "KPI harus terhubung dengan objective dan keputusan, bukan hanya metric yang tersedia.",
+            "success_feedback": "Benar. Metric menjadi KPI karena relevansi terhadap objective."
+        },
+        {
+            "id": "metric-kpi-check-02",
+            "type": "text_self_assessment",
+            "prompt": "Jelaskan mengapa sebuah metric dapat menjadi KPI untuk satu audience tetapi hanya diagnostic metric untuk audience lain.",
+            "reference_answer": "KPI bergantung pada objective dan keputusan audience. Metric yang menjadi outcome utama untuk tim growth dapat menjadi konteks atau diagnostic bagi tim operations.",
+            "checklist": [
+                "Menyebutkan objective.",
+                "Menyebutkan audience atau keputusan.",
+                "Membedakan KPI dari diagnostic metric."
+            ]
+        }
+    ]
+}

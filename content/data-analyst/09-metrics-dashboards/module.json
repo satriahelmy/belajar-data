@@ -8,7 +8,7 @@
     "status": "published",
     "purpose": "Mendefinisikan metrik dan menyusun monitoring yang membantu keputusan.",
     "outcome": "Mampu membedakan metric, target, dimension, dan konteks dalam dashboard.",
-    "estimated_minutes": 24,
+    "estimated_minutes": 138,
     "recommended_knowledge": ["Data Visualization"],
     "skill_tags": ["metrics-dashboards"],
     "challenge": {
@@ -26,15 +26,80 @@
             "Membedakan hubungan metric dari klaim sebab-akibat."
         ]
     },
-    "topic_keys": ["01-metric-tree"],
+    "topic_keys": [
+        "01-what-is-a-metric",
+        "02-metric-vs-kpi",
+        "03-good-metrics",
+        "04-vanity-metrics",
+        "05-leading-lagging",
+        "06-north-star",
+        "01-metric-tree",
+        "08-metrics-to-dashboard"
+    ],
     "topics": {
+        "01-what-is-a-metric": {
+            "title": "What Is a Metric?",
+            "order": 1,
+            "estimated_minutes": 14,
+            "skill_tags": ["metrics-dashboards", "data-literacy"],
+            "lesson_file": "01-what-is-a-metric/lesson.md",
+            "exercise_file": "01-what-is-a-metric/exercises.json"
+        },
+        "02-metric-vs-kpi": {
+            "title": "Metric vs KPI",
+            "order": 2,
+            "estimated_minutes": 14,
+            "skill_tags": ["metrics-dashboards", "analytical-thinking"],
+            "lesson_file": "02-metric-vs-kpi/lesson.md",
+            "exercise_file": "02-metric-vs-kpi/exercises.json"
+        },
+        "03-good-metrics": {
+            "title": "Evaluate a Good Metric",
+            "order": 3,
+            "estimated_minutes": 14,
+            "skill_tags": ["metrics-dashboards", "data-literacy"],
+            "lesson_file": "03-good-metrics/lesson.md",
+            "exercise_file": "03-good-metrics/exercises.json"
+        },
+        "04-vanity-metrics": {
+            "title": "Vanity Metrics Depend on Context",
+            "order": 4,
+            "estimated_minutes": 14,
+            "skill_tags": ["metrics-dashboards", "analytical-thinking"],
+            "lesson_file": "04-vanity-metrics/lesson.md",
+            "exercise_file": "04-vanity-metrics/exercises.json"
+        },
+        "05-leading-lagging": {
+            "title": "Leading and Lagging Metrics",
+            "order": 5,
+            "estimated_minutes": 14,
+            "skill_tags": ["metrics-dashboards", "metrics"],
+            "lesson_file": "05-leading-lagging/lesson.md",
+            "exercise_file": "05-leading-lagging/exercises.json"
+        },
+        "06-north-star": {
+            "title": "Choose a North Star Carefully",
+            "order": 6,
+            "estimated_minutes": 14,
+            "skill_tags": ["metrics-dashboards", "analytical-thinking"],
+            "lesson_file": "06-north-star/lesson.md",
+            "exercise_file": "06-north-star/exercises.json"
+        },
         "01-metric-tree": {
             "title": "Build a Metric Tree",
-            "order": 1,
-            "estimated_minutes": 12,
+            "order": 7,
+            "estimated_minutes": 16,
             "skill_tags": ["metrics-dashboards", "data-literacy"],
             "lesson_file": "01-metric-tree/lesson.md",
             "exercise_file": "01-metric-tree/exercises.json"
+        },
+        "08-metrics-to-dashboard": {
+            "title": "From Metrics to Dashboard",
+            "order": 8,
+            "estimated_minutes": 18,
+            "skill_tags": ["metrics-dashboards", "visualization"],
+            "lesson_file": "08-metrics-to-dashboard/lesson.md",
+            "exercise_file": "08-metrics-to-dashboard/exercises.json"
         }
     }
 }

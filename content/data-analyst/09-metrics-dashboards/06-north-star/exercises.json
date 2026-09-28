@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "metric-north-star-06",
+            "type": "multiple_choice",
+            "prompt": "Apa pertimbangan utama ketika memilih North Star Metric NusaMart?",
+            "options": [
+                "Metric merepresentasikan value customer dan value creation bisnis, dengan supporting serta guardrail metric.",
+                "Metric memiliki angka paling besar sehingga terlihat penting.",
+                "Metric paling mudah diambil walaupun tidak terkait objective.",
+                "Satu metric harus menggantikan semua metric lain."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "North Star harus terhubung dengan value dan tetap membutuhkan supporting serta guardrail metrics.",
+            "success_feedback": "Benar. North Star memusatkan perhatian tanpa menghapus trade-off."
+        },
+        {
+            "id": "metric-north-star-check-06",
+            "type": "text_self_assessment",
+            "prompt": "Jelaskan satu risiko jika revenue dipakai sebagai satu-satunya metric utama tanpa guardrail.",
+            "reference_answer": "Revenue dapat naik sementara refund, margin, kualitas layanan, atau repeat purchase memburuk. Guardrail membantu membuat trade-off dan customer value tetap terlihat.",
+            "checklist": [
+                "Menyebutkan risiko metric tunggal.",
+                "Menyebutkan minimal satu guardrail atau supporting metric.",
+                "Menghubungkan risiko dengan customer atau business value."
+            ]
+        }
+    ]
+}
