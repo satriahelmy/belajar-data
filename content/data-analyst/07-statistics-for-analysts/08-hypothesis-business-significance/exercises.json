@@ -1,0 +1,31 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "stats-ab-08",
+            "type": "multiple_choice",
+            "prompt": "Apa yang perlu diperiksa sebelum menyatakan checkout variant lebih baik dari control?",
+            "options": [
+                "Effect size, uncertainty atau confidence interval, experiment design, dan business impact.",
+                "P-value saja, tanpa melihat besar perbedaan.",
+                "Persentase variant saja, tanpa jumlah visitor.",
+                "Screenshot hasil test tanpa metric dan periode."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "A/B test membutuhkan effect, uncertainty, design, dan konteks keputusan. Satu angka tidak cukup.",
+            "success_feedback": "Tepat. Hasil statistik perlu diterjemahkan secara proporsional ke keputusan bisnis."
+        },
+        {
+            "id": "stats-ab-check-08",
+            "type": "text_self_assessment",
+            "prompt": "Tulis kesimpulan singkat untuk variant yang naik 0,6 percentage point, tetapi traffic variant lebih banyak berasal dari mobile.",
+            "reference_answer": "Variant terlihat memiliki conversion lebih tinggi sebesar 0,6 percentage point, tetapi hasilnya perlu diperiksa dengan uncertainty dan kemungkinan confounding dari komposisi mobile. Belum cukup untuk menyatakan checkout variant menyebabkan peningkatan sebelum design dan segment dibandingkan dengan adil.",
+            "checklist": [
+                "Menyebutkan effect size 0,6 percentage point.",
+                "Menyebutkan uncertainty atau kebutuhan statistical test.",
+                "Menyebutkan perbedaan komposisi mobile sebagai potensi bias.",
+                "Tidak menyatakan causal claim secara pasti."
+            ]
+        }
+    ]
+}

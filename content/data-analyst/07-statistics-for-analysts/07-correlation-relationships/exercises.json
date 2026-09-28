@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "stats-correlation-07",
+            "type": "multiple_choice",
+            "prompt": "Sebuah analisis menghasilkan r = 0,02 antara dua variabel. Pernyataan yang paling hati-hati adalah...",
+            "options": [
+                "Tidak terlihat relationship linear yang jelas, tetapi pola non-linear atau segment tetap perlu dipertimbangkan.",
+                "Kedua variabel tidak memiliki relationship apa pun.",
+                "Salah satu variabel pasti tidak berguna.",
+                "Tidak ada uncertainty karena r dekat nol."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Correlation dekat nol terutama berbicara tentang relationship linear pada scope data tersebut.",
+            "success_feedback": "Benar. Kamu membatasi interpretasi r tanpa menutup kemungkinan pola lain."
+        },
+        {
+            "id": "stats-correlation-check-07",
+            "type": "text_self_assessment",
+            "prompt": "Sebutkan dua pemeriksaan sebelum menjadikan correlation sebagai dasar rekomendasi.",
+            "reference_answer": "Periksa scatterplot, outlier, segment, periode, dan apakah ada alasan causal yang lebih kuat. Correlation perlu dibaca bersama konteks dan uncertainty.",
+            "checklist": [
+                "Menyebutkan outlier atau bentuk scatterplot.",
+                "Menyebutkan segment atau periode.",
+                "Membedakan correlation dari causation."
+            ]
+        }
+    ]
+}

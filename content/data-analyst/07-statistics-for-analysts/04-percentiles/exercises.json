@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "stats-percentile-04",
+            "type": "multiple_choice",
+            "prompt": "Delivery time memiliki P90 sebesar 5,8 hari. Pernyataan yang paling tepat adalah...",
+            "options": [
+                "Sekitar 90 persen observasi berada pada atau di bawah 5,8 hari dalam scope data tersebut.",
+                "Semua customer menerima order dalam 5,8 hari.",
+                "P90 menjelaskan penyebab order yang lebih lambat.",
+                "10 persen order pasti merupakan data yang salah."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Percentile menjelaskan posisi dalam distribution pada scope tertentu, bukan jaminan untuk setiap order atau penyebab.",
+            "success_feedback": "Benar. Kamu membaca P90 sebagai batas distribution dengan scope yang jelas."
+        },
+        {
+            "id": "stats-percentile-check-04",
+            "type": "text_self_assessment",
+            "prompt": "Mengapa median dan P90 dapat dipakai bersama ketika membahas delivery experience?",
+            "reference_answer": "Median menunjukkan pengalaman tengah, sedangkan P90 menunjukkan bagian yang lebih lambat dalam distribution. Bersama-sama keduanya memberi gambaran typical experience dan tail experience.",
+            "checklist": [
+                "Menjelaskan fungsi median.",
+                "Menjelaskan fungsi P90 atau tail.",
+                "Menyebutkan distribution atau scope data."
+            ]
+        }
+    ]
+}

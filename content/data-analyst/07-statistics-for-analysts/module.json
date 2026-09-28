@@ -8,33 +8,98 @@
     "status": "published",
     "purpose": "Menggunakan statistik dasar untuk membandingkan, mengukur ketidakpastian, dan membatasi klaim.",
     "outcome": "Mampu memilih ringkasan statistik dan menjelaskan apa yang belum dapat diketahui dari data.",
-    "estimated_minutes": 24,
+    "estimated_minutes": 132,
     "recommended_knowledge": ["Exploratory Data Analysis"],
     "skill_tags": ["statistics"],
     "challenge": {
         "key": "module-07-evidence-and-uncertainty",
         "title": "Evidence & Uncertainty",
-        "description": "Nilai kekuatan evidence dan batas interpretasi secara proporsional.",
+        "description": "Nilai kekuatan evidence, uncertainty, bias, dan dampak bisnis secara proporsional.",
         "status": "published",
         "estimated_minutes": 12,
         "content_file": "challenge/challenge.md",
         "exercise_file": "challenge/exercises.json",
         "dataset_refs": ["nusamart/v1"],
         "completion_criteria": [
-            "Membedakan population mean dari sample mean.",
-            "Membandingkan beberapa sample untuk melihat sampling variability.",
-            "Menjelaskan mengapa satu sample tidak cukup untuk membuat klaim yang terlalu pasti."
+            "Memilih summary statistic dan membaca variability.",
+            "Membedakan population, sample, sampling variability, dan bias.",
+            "Mengevaluasi hasil experiment dengan effect size, uncertainty, dan business significance."
         ]
     },
-    "topic_keys": ["01-sampling-uncertainty"],
+    "topic_keys": [
+        "01-why-statistics",
+        "02-summary-statistics",
+        "03-variability",
+        "04-percentiles",
+        "05-samples-populations-bias",
+        "01-sampling-uncertainty",
+        "07-correlation-relationships",
+        "08-hypothesis-business-significance"
+    ],
     "topics": {
+        "01-why-statistics": {
+            "title": "Why Analysts Need Statistics",
+            "order": 1,
+            "estimated_minutes": 14,
+            "skill_tags": ["statistics", "analytical-thinking"],
+            "lesson_file": "01-why-statistics/lesson.md",
+            "exercise_file": "01-why-statistics/exercises.json"
+        },
+        "02-summary-statistics": {
+            "title": "Mean, Median & Choosing a Summary",
+            "order": 2,
+            "estimated_minutes": 16,
+            "skill_tags": ["statistics", "data-literacy"],
+            "lesson_file": "02-summary-statistics/lesson.md",
+            "exercise_file": "02-summary-statistics/exercises.json"
+        },
+        "03-variability": {
+            "title": "Understanding Variability",
+            "order": 3,
+            "estimated_minutes": 16,
+            "skill_tags": ["statistics", "data-literacy"],
+            "lesson_file": "03-variability/lesson.md",
+            "exercise_file": "03-variability/exercises.json"
+        },
+        "04-percentiles": {
+            "title": "Percentiles & Distributions",
+            "order": 4,
+            "estimated_minutes": 14,
+            "skill_tags": ["statistics", "eda"],
+            "lesson_file": "04-percentiles/lesson.md",
+            "exercise_file": "04-percentiles/exercises.json"
+        },
+        "05-samples-populations-bias": {
+            "title": "Samples, Populations & Bias",
+            "order": 5,
+            "estimated_minutes": 16,
+            "skill_tags": ["statistics", "analytical-thinking"],
+            "lesson_file": "05-samples-populations-bias/lesson.md",
+            "exercise_file": "05-samples-populations-bias/exercises.json"
+        },
         "01-sampling-uncertainty": {
             "title": "Sampling Changes the Estimate",
-            "order": 1,
-            "estimated_minutes": 12,
+            "order": 6,
+            "estimated_minutes": 16,
             "skill_tags": ["statistics", "data-literacy"],
             "lesson_file": "01-sampling-uncertainty/lesson.md",
             "exercise_file": "01-sampling-uncertainty/exercises.json"
+        },
+        "07-correlation-relationships": {
+            "title": "Correlation & Relationships",
+            "order": 7,
+            "estimated_minutes": 16,
+            "skill_tags": ["statistics", "eda"],
+            "lesson_file": "07-correlation-relationships/lesson.md",
+            "exercise_file": "07-correlation-relationships/exercises.json"
+        },
+        "08-hypothesis-business-significance": {
+            "title": "From A/B Test to Business Decision",
+            "order": 8,
+            "estimated_minutes": 18,
+            "skill_tags": ["statistics", "analytical-thinking"],
+            "lesson_file": "08-hypothesis-business-significance/lesson.md",
+            "exercise_file": "08-hypothesis-business-significance/exercises.json"
         }
     }
 }

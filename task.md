@@ -1,6 +1,6 @@
 # BelajarData V1 — Implementation Plan
 
-Status: M0A, technical spikes A–E, M0C, M1A, Module 01 content production, M1B learner-state scope, M2 assessment core, M3 SQL Playground representative slice, M4 Spreadsheet Playground representative slice, M5 Python/Pandas representative slice, M6A/M6B/M6C/M6D/M6E representative interactive slices, and the initial M9 content-completion wave for Modules 02, 03, 04, 05, 06, and 11 are implemented. M7 representative Tableau learning and M8 representative Projects implementation are available; final manual walkthroughs remain open. M9 launch hardening remains in progress.
+Status: M0A, technical spikes A–E, M0C, M1A, Module 01 content production, M1B learner-state scope, M2 assessment core, M3 SQL Playground representative slice, M4 Spreadsheet Playground representative slice, M5 Python/Pandas representative slice, M6A/M6B/M6C/M6D/M6E representative interactive slices, and the initial M9 content-completion wave for Modules 02, 03, 04, 05, 06, 07, and 11 are implemented. M7 representative Tableau learning and M8 representative Projects implementation are available; final manual walkthroughs remain open. M9 launch hardening remains in progress.
 
 This plan is derived from the current source documents in `docs/`, using the requested hierarchy:
 
@@ -1178,8 +1178,9 @@ Make the complete V1 learning journey reliable, safe, accessible, measurable, pe
 - [x] Expanded Module 03 — SQL for Data Analysis to eight curriculum-aligned topics and added a guided finding to its challenge.
 - [x] Expanded Module 04 — Python & Pandas for Analysis to eight curriculum-aligned topics with bounded practices and retained its notebook fallback and module challenge.
 - [x] Expanded Module 06 — Exploratory Data Analysis to eight curriculum-aligned topics with reasoning practices and a broader investigation challenge.
+- [x] Expanded Module 07 — Statistics for Analysts to eight curriculum-aligned topics with sampling practice and an evidence-and-business-significance challenge.
 - [x] Added repository contract coverage for the new published modules and their challenge exercise configurations.
-- [x] Passed the current full backend suite: 111 tests and 700 assertions.
+- [x] Passed the current full backend suite: 112 tests and 712 assertions.
 - [x] Passed `php artisan content:validate` for lessons, challenges, datasets, and projects.
 - [x] Passed the current frontend contract suite: 33 tests; production asset build completed with Vite 6.4.3.
 - [x] Passed `git diff --check` after the content completion wave.

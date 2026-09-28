@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "stats-summary-02",
+            "type": "multiple_choice",
+            "prompt": "Untuk order value yang sangat miring karena beberapa transaksi besar, summary yang paling membantu membaca typical order adalah...",
+            "options": [
+                "Median, disertai konteks distribution dan jumlah observasi.",
+                "Mean saja karena selalu mewakili typical order.",
+                "Nilai maksimum karena menunjukkan kemampuan pelanggan.",
+                "Mode saja walaupun sebagian besar nilai berbeda."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Distribution miring membuat median sering lebih tahan terhadap nilai ekstrem. Tetap baca bersama konteks.",
+            "success_feedback": "Benar. Pemilihan summary mengikuti bentuk data dan keputusan yang ingin dibuat."
+        },
+        {
+            "id": "stats-summary-check-02",
+            "type": "text_self_assessment",
+            "prompt": "Jelaskan mengapa satu angka mean dapat memberi gambaran yang kurang lengkap untuk order value yang memiliki beberapa transaksi sangat besar.",
+            "reference_answer": "Mean dapat tertarik ke atas oleh transaksi yang sangat besar sehingga tidak selalu menggambarkan order yang typical. Median dan informasi distribution membantu memberi konteks tambahan.",
+            "checklist": [
+                "Menjelaskan pengaruh nilai ekstrem terhadap mean.",
+                "Menyebutkan median atau summary tambahan.",
+                "Menghubungkan summary dengan typical order."
+            ]
+        }
+    ]
+}

@@ -63,7 +63,14 @@ class ContentContractTest extends TestCase
                 '06-exploratory-data-analysis/06-exploring-time',
                 '06-exploratory-data-analysis/07-exploring-relationships',
                 '06-exploratory-data-analysis/08-drilling-down-to-findings',
+                '07-statistics-for-analysts/01-why-statistics',
+                '07-statistics-for-analysts/02-summary-statistics',
+                '07-statistics-for-analysts/03-variability',
+                '07-statistics-for-analysts/04-percentiles',
+                '07-statistics-for-analysts/05-samples-populations-bias',
                 '07-statistics-for-analysts/01-sampling-uncertainty',
+                '07-statistics-for-analysts/07-correlation-relationships',
+                '07-statistics-for-analysts/08-hypothesis-business-significance',
                 '08-data-visualization/01-choosing-a-visual',
                 '09-metrics-dashboards/01-metric-tree',
                 '10-tableau-for-data-analysis/01-tableau-workflow',
@@ -160,6 +167,7 @@ class ContentContractTest extends TestCase
         $lesson = $repository->lesson('07-statistics-for-analysts/01-sampling-uncertainty');
         $challenge = $repository->challenge('07-statistics-for-analysts');
 
+        $this->assertCount(8, $repository->module('07-statistics-for-analysts')['topic_keys']);
         $this->assertSame('sampling_uncertainty', $lesson->exercises['sampling-uncertainty-01']['interactive']['type']);
         $this->assertSame('sampling_uncertainty', $challenge->exercises['sampling-uncertainty-challenge-01']['interactive']['type']);
         $this->assertSame('text_self_assessment', $challenge->exercises['sampling-uncertainty-reflection-01']['type']);

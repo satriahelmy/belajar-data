@@ -29,6 +29,25 @@ class SamplingUncertaintyTest extends TestCase
             ->assertSee('sampling-uncertainty-reflection-01');
     }
 
+    public function test_module_seven_statistics_sequence_renders_registered_practices(): void
+    {
+        foreach ([
+            ['01-why-statistics', 'Why Analysts Need Statistics', 'stats-why-01'],
+            ['08-hypothesis-business-significance', 'From A/B Test to Business Decision', 'stats-ab-08'],
+        ] as [$topic, $title, $exercise]) {
+            $this->get("/learn/data-analyst/07-statistics-for-analysts/{$topic}")
+                ->assertOk()
+                ->assertSee($title)
+                ->assertSee('data-learning-component="practice"', false)
+                ->assertSee($exercise);
+        }
+
+        $this->get('/learn/data-analyst/07-statistics-for-analysts/challenge')
+            ->assertOk()
+            ->assertSee('stats-challenge-effect-01')
+            ->assertSee('stats-challenge-bias-01');
+    }
+
     public function test_sampling_selection_is_validated_and_persisted_as_bounded_state(): void
     {
         $user = User::factory()->create();

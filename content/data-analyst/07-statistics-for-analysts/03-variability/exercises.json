@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "stats-variability-03",
+            "type": "multiple_choice",
+            "prompt": "Region A memiliki nilai yang berkumpul dekat 100, sedangkan Region B memiliki nilai 40 sampai 170. Pemeriksaan yang paling tepat adalah...",
+            "options": [
+                "Bandingkan spread selain average karena konsistensi kedua region berbeda.",
+                "Pilih region dengan nilai maksimum lebih tinggi.",
+                "Abaikan spread karena mean sudah cukup.",
+                "Simpulkan Region B pasti memiliki kualitas data buruk."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Average tidak cukup untuk membaca sebaran. Nilai tidak biasa juga membutuhkan konteks.",
+            "success_feedback": "Tepat. Variability memberi informasi yang tidak terlihat dari center saja."
+        },
+        {
+            "id": "stats-variability-check-03",
+            "type": "text_self_assessment",
+            "prompt": "Tulis satu keputusan eksplorasi yang dapat dibuat setelah menemukan dua kelompok dengan mean serupa tetapi spread berbeda.",
+            "reference_answer": "Periksa segment, periode, atau sumber nilai ekstrem pada kelompok dengan spread lebih besar sebelum membandingkan performance lebih jauh.",
+            "checklist": [
+                "Menyebutkan pemeriksaan lanjutan yang konkret.",
+                "Menghubungkan keputusan dengan spread.",
+                "Tidak langsung menyimpulkan kelompok dengan spread besar lebih buruk."
+            ]
+        }
+    ]
+}

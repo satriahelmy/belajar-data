@@ -32,13 +32,42 @@
         {
             "id": "sampling-uncertainty-reflection-01",
             "type": "text_self_assessment",
-            "prompt": "Jelaskan mengapa sample mean dapat berbeda antar pengulangan, apa peran population mean sebagai pembanding, dan batas kesimpulan dari data ini.",
-            "reference_answer": "Sample mean dapat berbeda karena setiap sample berisi baris yang berbeda. Population mean menjadi pembanding untuk melihat variasi estimasi, tetapi hasil ini belum membuktikan penyebab atau menjamin bahwa satu sample mewakili semua kondisi.",
+            "prompt": "Jelaskan mengapa sample mean dapat berbeda antar pengulangan, lalu tulis batas kesimpulan dari report checkout NusaMart.",
+            "reference_answer": "Sample mean dapat berbeda karena setiap sample berisi baris yang berbeda. Report checkout menunjukkan variant memiliki conversion lebih tinggi, tetapi perbedaan komposisi mobile dan uncertainty perlu diperiksa sebelum menyatakan variant menyebabkan peningkatan atau memiliki business impact yang cukup besar.",
             "checklist": [
                 "Menjelaskan bahwa sample berbeda dapat menghasilkan sample mean berbeda.",
-                "Menggunakan population mean sebagai pembanding, bukan sebagai bukti sebab-akibat.",
-                "Menyebutkan batas kesimpulan pada data NusaMart yang tersedia."
+                "Menyebutkan perbedaan conversion sebagai effect yang terlihat.",
+                "Menyebutkan uncertainty atau potensi bias mobile.",
+                "Menyatakan batas kesimpulan pada data NusaMart yang tersedia."
             ]
+        },
+        {
+            "id": "stats-challenge-effect-01",
+            "type": "multiple_choice",
+            "prompt": "Control memiliki conversion 8,10 persen dan variant 8,55 persen. Pernyataan awal yang paling tepat adalah...",
+            "options": [
+                "Variant lebih tinggi 0,45 percentage point pada report tersebut. Kekuatan evidence dan dampak bisnis masih perlu diperiksa.",
+                "Variant pasti menyebabkan conversion naik karena persentasenya lebih besar.",
+                "Perbedaan tidak ada karena keduanya sama-sama sekitar 8 persen.",
+                "Business impact pasti besar karena effect terlihat positif."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Catat effect size terlebih dahulu, lalu pisahkan pola yang terlihat dari strength dan business impact.",
+            "success_feedback": "Tepat. Kamu menyebutkan effect tanpa melampaui evidence yang tersedia."
+        },
+        {
+            "id": "stats-challenge-bias-01",
+            "type": "multiple_choice",
+            "prompt": "Traffic variant lebih banyak berasal dari mobile. Pemeriksaan yang paling penting adalah...",
+            "options": [
+                "Bandingkan komposisi device dan performa per device sebelum menganggap perbedaan checkout berasal dari variant.",
+                "Abaikan device karena total visitor sudah besar.",
+                "Hapus semua mobile visitor agar kedua group terlihat sama.",
+                "Simpulkan mobile pasti menyebabkan conversion lebih tinggi."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Komposisi device dapat menjadi potensi bias atau confounding yang perlu diperiksa.",
+            "success_feedback": "Benar. Design dan komposisi traffic memengaruhi interpretasi A/B test."
         }
     ]
 }

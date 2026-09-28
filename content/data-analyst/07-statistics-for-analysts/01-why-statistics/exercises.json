@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "stats-why-01",
+            "type": "multiple_choice",
+            "prompt": "Campaign A memiliki conversion 12 persen dari 100 visitor, sedangkan Campaign B 10,5 persen dari 10.000 visitor. Langkah interpretasi yang paling tepat adalah...",
+            "options": [
+                "Catat perbedaan conversion, lalu periksa ukuran sample dan variasi sebelum menyatakan A lebih baik.",
+                "Pilih A karena persentasenya lebih tinggi.",
+                "Pilih B karena jumlah visitor lebih besar.",
+                "Simpulkan bahwa kedua campaign sama karena persentasenya dekat."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Persentase perlu dibaca bersama ukuran sample, variasi, dan konteks keputusan.",
+            "success_feedback": "Tepat. Statistics membantu menilai kekuatan evidence, bukan sekadar membandingkan satu angka."
+        },
+        {
+            "id": "stats-why-check-01",
+            "type": "text_self_assessment",
+            "prompt": "Tulis dua pertanyaan statistik yang perlu dijawab sebelum menjadikan perbedaan metric sebagai dasar keputusan.",
+            "reference_answer": "Tanyakan seberapa besar perbedaannya dan seberapa berubah hasil tersebut pada sample atau periode lain. Pertanyaan tentang bias, uncertainty, dan dampak bisnis juga dapat relevan.",
+            "checklist": [
+                "Menyebutkan besar effect atau perbedaan.",
+                "Menyebutkan variasi atau uncertainty.",
+                "Menghubungkan pertanyaan dengan keputusan, bukan hanya perhitungan."
+            ]
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "stats-bias-05",
+            "type": "multiple_choice",
+            "prompt": "Survey mana yang paling perlu dicurigai memiliki selection bias ketika ingin memahami semua customer?",
+            "options": [
+                "Survey hanya dikirim kepada Premium Members.",
+                "Sample dipilih dari semua customer dengan aturan yang terdokumentasi.",
+                "Survey mencatat customer yang dipilih dan customer yang tidak merespons.",
+                "Population target dan periode pengumpulan dijelaskan."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Periksa siapa yang memiliki kesempatan masuk ke sample. Sample besar tetap dapat tidak representatif.",
+            "success_feedback": "Tepat. Coverage population dan cara pemilihan lebih penting daripada ukuran sample saja."
+        },
+        {
+            "id": "stats-bias-check-05",
+            "type": "text_self_assessment",
+            "prompt": "Sebelum menggeneralisasi hasil survey, tulis tiga hal tentang sample yang perlu diperiksa.",
+            "reference_answer": "Periksa population target, cara memilih responden, dan siapa yang tidak tercakup atau tidak merespons. Periode pengumpulan juga penting jika kondisi berubah.",
+            "checklist": [
+                "Menyebutkan population target.",
+                "Menyebutkan selection atau coverage.",
+                "Menyebutkan non-response atau periode pengumpulan."
+            ]
+        }
+    ]
+}
