@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "communication-format-08",
+            "type": "multiple_choice",
+            "prompt": "CEO bertanya mengapa revenue kemarin turun dan membutuhkan jawaban ringkas untuk meeting. Format awal yang paling sesuai adalah...",
+            "options": [
+                "Short executive message atau brief dengan comparison, driver yang terlihat, dan next evidence.",
+                "Dashboard penuh dengan semua metric tanpa headline.",
+                "Notebook mentah tanpa summary karena semua detail harus terlihat.",
+                "Slide deck panjang sebelum scope pertanyaan ditentukan."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Pilih format berdasarkan kebutuhan keputusan dan tingkat detail audience.",
+            "success_feedback": "Tepat. Format ringkas tetap perlu evidence, context, dan batas klaim."
+        },
+        {
+            "id": "communication-format-check-08",
+            "type": "text_self_assessment",
+            "prompt": "Pilih format untuk simple answer, recurring monitoring, dan detailed investigation. Jelaskan alasan singkatnya.",
+            "reference_answer": "Simple answer cocok untuk message atau email. Recurring monitoring cocok untuk dashboard. Detailed investigation cocok untuk analysis brief atau report karena membutuhkan detail dan traceability.",
+            "checklist": [
+                "Memilih format untuk tiga kebutuhan.",
+                "Menghubungkan format dengan audience atau decision.",
+                "Tidak menganggap satu format cocok untuk semua tujuan."
+            ]
+        }
+    ]
+}

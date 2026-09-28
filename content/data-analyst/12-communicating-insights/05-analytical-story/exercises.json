@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "communication-story-05",
+            "type": "multiple_choice",
+            "prompt": "Urutan analytical story yang paling membantu untuk revenue slowdown adalah...",
+            "options": [
+                "What happened, where, what appears to drive it, what is unknown, lalu next step.",
+                "Mulai dari dugaan penyebab, lalu cari angka yang mendukung.",
+                "Tampilkan semua chart secara acak agar audience memilih sendiri.",
+                "Mulai dari detail satu customer sebelum menjelaskan pattern overall."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Story evidence-led dimulai dari pattern dan menyempit secara logis menuju next step.",
+            "success_feedback": "Tepat. Urutan membantu audience mengikuti reasoning tanpa menutupi unknown."
+        },
+        {
+            "id": "communication-story-check-05",
+            "type": "text_self_assessment",
+            "prompt": "Tulis alur lima langkah untuk menjelaskan revenue slowdown tanpa menyatakan penyebab yang belum terbukti.",
+            "reference_answer": "Sebutkan perubahan revenue, lokasi category atau region yang paling terkait, driver yang terlihat seperti orders, hal yang belum diketahui tentang penyebab, lalu next evidence seperti inventory atau retention signals.",
+            "checklist": [
+                "Memulai dari pattern overall.",
+                "Mempersempit ke segment atau driver.",
+                "Menyebutkan unknown dan next evidence."
+            ]
+        }
+    ]
+}

@@ -8,7 +8,7 @@
     "status": "published",
     "purpose": "Menyampaikan hasil analisis secara jelas, akurat, dan relevan untuk pengambil keputusan.",
     "outcome": "Mampu memimpin dengan takeaway, memilih evidence, dan mengomunikasikan ketidakpastian.",
-    "estimated_minutes": 24,
+    "estimated_minutes": 132,
     "recommended_knowledge": ["Business Analysis", "Data Visualization"],
     "skill_tags": ["communication"],
     "challenge": {
@@ -26,15 +26,80 @@
             "Mengusulkan next step yang sesuai dengan batas evidence."
         ]
     },
-    "topic_keys": ["01-communication-builder"],
+    "topic_keys": [
+        "01-from-analysis-to-message",
+        "02-know-your-audience",
+        "03-finding-insight-recommendation",
+        "04-lead-with-takeaway",
+        "05-analytical-story",
+        "06-writing-with-data",
+        "01-communication-builder",
+        "08-choosing-the-format"
+    ],
     "topics": {
+        "01-from-analysis-to-message": {
+            "title": "From Analysis to Message",
+            "order": 1,
+            "estimated_minutes": 14,
+            "skill_tags": ["communication", "analytical-thinking"],
+            "lesson_file": "01-from-analysis-to-message/lesson.md",
+            "exercise_file": "01-from-analysis-to-message/exercises.json"
+        },
+        "02-know-your-audience": {
+            "title": "Know Your Audience",
+            "order": 2,
+            "estimated_minutes": 14,
+            "skill_tags": ["communication", "data-literacy"],
+            "lesson_file": "02-know-your-audience/lesson.md",
+            "exercise_file": "02-know-your-audience/exercises.json"
+        },
+        "03-finding-insight-recommendation": {
+            "title": "Finding, Insight, or Recommendation?",
+            "order": 3,
+            "estimated_minutes": 14,
+            "skill_tags": ["communication", "analytical-thinking"],
+            "lesson_file": "03-finding-insight-recommendation/lesson.md",
+            "exercise_file": "03-finding-insight-recommendation/exercises.json"
+        },
+        "04-lead-with-takeaway": {
+            "title": "Lead with the Takeaway",
+            "order": 4,
+            "estimated_minutes": 14,
+            "skill_tags": ["communication", "data-literacy"],
+            "lesson_file": "04-lead-with-takeaway/lesson.md",
+            "exercise_file": "04-lead-with-takeaway/exercises.json"
+        },
+        "05-analytical-story": {
+            "title": "Build an Analytical Story",
+            "order": 5,
+            "estimated_minutes": 16,
+            "skill_tags": ["communication", "analytical-thinking"],
+            "lesson_file": "05-analytical-story/lesson.md",
+            "exercise_file": "05-analytical-story/exercises.json"
+        },
+        "06-writing-with-data": {
+            "title": "Write with Data",
+            "order": 6,
+            "estimated_minutes": 14,
+            "skill_tags": ["communication", "data-literacy"],
+            "lesson_file": "06-writing-with-data/lesson.md",
+            "exercise_file": "06-writing-with-data/exercises.json"
+        },
         "01-communication-builder": {
             "title": "Write an Evidence-Led Finding",
-            "order": 1,
-            "estimated_minutes": 12,
+            "order": 7,
+            "estimated_minutes": 16,
             "skill_tags": ["communication", "data-literacy"],
             "lesson_file": "01-communication-builder/lesson.md",
             "exercise_file": "01-communication-builder/exercises.json"
+        },
+        "08-choosing-the-format": {
+            "title": "Choose the Right Format",
+            "order": 8,
+            "estimated_minutes": 14,
+            "skill_tags": ["communication", "analytical-thinking"],
+            "lesson_file": "08-choosing-the-format/lesson.md",
+            "exercise_file": "08-choosing-the-format/exercises.json"
         }
     }
 }

@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "communication-levels-03",
+            "type": "multiple_choice",
+            "prompt": "Mana yang paling tepat disebut recommendation atau next step?",
+            "options": [
+                "Investigasi inventory availability dan repeat-customer behavior di West.",
+                "Furniture revenue turun 28% QoQ.",
+                "Furniture revenue adalah 420 juta.",
+                "Penurunan pasti disebabkan inventory kosong."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Recommendation mengusulkan tindakan yang menjawab unknown. Ia bukan observation atau causal claim.",
+            "success_feedback": "Tepat. Next step mengarahkan pemeriksaan tanpa mengklaim penyebab sudah terbukti."
+        },
+        {
+            "id": "communication-levels-check-03",
+            "type": "text_self_assessment",
+            "prompt": "Bedakan observation, finding, insight, dan recommendation menggunakan contoh revenue NusaMart.",
+            "reference_answer": "Observation menyebutkan angka revenue. Finding menyebutkan revenue turun pada periode tertentu. Insight menunjukkan lokasi atau driver yang paling terkait. Recommendation mengusulkan pemeriksaan atau tindakan berikutnya yang masih proporsional.",
+            "checklist": [
+                "Membedakan empat level komunikasi.",
+                "Menghubungkan tiap level dengan evidence.",
+                "Tidak menjadikan recommendation sebagai causal proof."
+            ]
+        }
+    ]
+}

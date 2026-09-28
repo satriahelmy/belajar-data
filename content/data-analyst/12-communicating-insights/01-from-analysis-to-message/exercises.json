@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "communication-message-01",
+            "type": "multiple_choice",
+            "prompt": "Analisis menghasilkan banyak angka. Langkah pertama untuk menyusun komunikasi adalah...",
+            "options": [
+                "Pilih evidence yang paling relevan dengan business question dan keputusan audience.",
+                "Masukkan semua output agar tidak ada analisis yang terbuang.",
+                "Mulai dengan chart yang paling menarik secara visual.",
+                "Hapus semua detail agar pesan selalu pendek."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Komunikasi perlu menyaring output berdasarkan pertanyaan dan keputusan, bukan sekadar jumlah detail.",
+            "success_feedback": "Tepat. Key message memimpin, supporting evidence mengikuti kebutuhan audience."
+        },
+        {
+            "id": "communication-message-check-01",
+            "type": "text_self_assessment",
+            "prompt": "Tulis key message satu kalimat untuk revenue NusaMart yang naik dari 450 pada Agustus menjadi 600 pada September.",
+            "reference_answer": "Revenue NusaMart naik dari 450 pada Agustus menjadi 600 pada September pada data yang dibandingkan.",
+            "checklist": [
+                "Menyebutkan metric.",
+                "Menyebutkan dua periode atau comparison.",
+                "Tidak menambahkan penyebab yang belum didukung."
+            ]
+        }
+    ]
+}

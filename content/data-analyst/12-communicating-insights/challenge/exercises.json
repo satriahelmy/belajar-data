@@ -27,6 +27,48 @@
                 },
                 "desktop_note": "Layar desktop memberi ruang yang lebih nyaman untuk menyusun dan meninjau finding."
             }
+        },
+        {
+            "id": "communication-challenge-message-01",
+            "type": "multiple_choice",
+            "prompt": "Key message mana yang paling sesuai dengan evidence revenue NusaMart naik dari 450 pada Agustus menjadi 600 pada September?",
+            "options": [
+                "Revenue NusaMart naik dari 450 pada Agustus menjadi 600 pada September; penyebab kenaikan belum terbukti.",
+                "Campaign menyebabkan revenue NusaMart naik.",
+                "Revenue NusaMart sangat baik.",
+                "Semua customer membeli lebih banyak pada September."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Key message perlu memimpin dengan angka dan periode, lalu menjaga batas evidence.",
+            "success_feedback": "Tepat. Pesan menyebutkan pattern tanpa mengarang penyebab."
+        },
+        {
+            "id": "communication-challenge-audience-01",
+            "type": "multiple_choice",
+            "prompt": "Stakeholder meminta jawaban ringkas untuk meeting executive. Pilihan komunikasi yang paling sesuai adalah...",
+            "options": [
+                "Headline singkat, evidence utama, known, unknown, dan next step.",
+                "Seluruh raw table tanpa summary agar stakeholder memilih sendiri.",
+                "Recommendation final tanpa menyebutkan evidence.",
+                "Notebook teknis lengkap tanpa menyesuaikan detail audience."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Executive membutuhkan takeaway dan context yang cukup untuk keputusan, bukan seluruh output mentah.",
+            "success_feedback": "Benar. Struktur ringkas tetap dapat traceable dan jujur."
+        },
+        {
+            "id": "communication-challenge-uncertainty-01",
+            "type": "multiple_choice",
+            "prompt": "Pernyataan mana yang paling sesuai dengan batas evidence?",
+            "options": [
+                "Revenue naik antarperiode pada data yang dibandingkan, tetapi penyebabnya belum dapat ditentukan.",
+                "Revenue naik karena campaign.",
+                "Customer pasti lebih puas pada September.",
+                "Kenaikan revenue membuktikan semua region tumbuh."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Bedakan pattern yang terlihat dari penyebab atau generalisasi yang membutuhkan evidence tambahan.",
+            "success_feedback": "Tepat. Uncertainty ditulis sebagai bagian dari komunikasi, bukan disembunyikan."
         }
     ]
 }

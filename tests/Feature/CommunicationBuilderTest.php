@@ -26,6 +26,25 @@ class CommunicationBuilderTest extends TestCase
             ->assertSee('communication-builder-challenge-01');
     }
 
+    public function test_module_twelve_communication_sequence_renders_registered_practices(): void
+    {
+        foreach ([
+            ['01-from-analysis-to-message', 'From Analysis to Message', 'communication-message-01'],
+            ['08-choosing-the-format', 'Choose the Right Format', 'communication-format-08'],
+        ] as [$topic, $title, $exercise]) {
+            $this->get("/learn/data-analyst/12-communicating-insights/{$topic}")
+                ->assertOk()
+                ->assertSee($title)
+                ->assertSee('data-learning-component="practice"', false)
+                ->assertSee($exercise);
+        }
+
+        $this->get('/learn/data-analyst/12-communicating-insights/challenge')
+            ->assertOk()
+            ->assertSee('communication-challenge-message-01')
+            ->assertSee('communication-challenge-uncertainty-01');
+    }
+
     public function test_communication_fields_and_checklist_are_persisted_without_ai_grading(): void
     {
         $user = User::factory()->create();

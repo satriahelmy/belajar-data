@@ -98,7 +98,14 @@ class ContentContractTest extends TestCase
                 '11-business-analysis/06-segmentation',
                 '11-business-analysis/07-evidence-to-recommendation',
                 '11-business-analysis/08-knowing-what-you-dont-know',
+                '12-communicating-insights/01-from-analysis-to-message',
+                '12-communicating-insights/02-know-your-audience',
+                '12-communicating-insights/03-finding-insight-recommendation',
+                '12-communicating-insights/04-lead-with-takeaway',
+                '12-communicating-insights/05-analytical-story',
+                '12-communicating-insights/06-writing-with-data',
                 '12-communicating-insights/01-communication-builder',
+                '12-communicating-insights/08-choosing-the-format',
             ],
             $repository->validate(),
         );
@@ -209,6 +216,8 @@ class ContentContractTest extends TestCase
         $this->assertSame('text_self_assessment', $lesson->exercises['communication-builder-01']['type']);
         $this->assertSame('communication_builder', $lesson->exercises['communication-builder-01']['interactive']['type']);
         $this->assertSame('communication_builder', $challenge->exercises['communication-builder-challenge-01']['interactive']['type']);
+        $this->assertCount(8, $repository->module('12-communicating-insights')['topic_keys']);
+        $this->assertCount(4, $challenge->exercises);
     }
 
     public function test_tableau_module_challenge_loads_as_repository_content(): void

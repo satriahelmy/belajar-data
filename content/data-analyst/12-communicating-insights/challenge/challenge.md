@@ -1,4 +1,14 @@
-Revenue NusaMart naik dari Agustus ke September. Sampaikan temuan itu kepada stakeholder dengan tetap menjaga batas evidence dan mengusulkan pemeriksaan berikutnya.
+Revenue NusaMart naik dari Agustus ke September, tetapi stakeholder membutuhkan pesan yang jelas untuk mengambil keputusan. Gunakan evidence, audience context, dan batas klaim untuk menyusun growth story.
+
+## Pilih key message
+
+:::practice type="multiple_choice" id="communication-challenge-message-01"
+:::
+
+## Sesuaikan audience dan format
+
+:::practice type="multiple_choice" id="communication-challenge-audience-01"
+:::
 
 ## Susun pesan evidence-led
 
@@ -6,6 +16,11 @@ Revenue NusaMart naik dari Agustus ke September. Sampaikan temuan itu kepada sta
 :::
 
 Isi setiap bagian dengan kalimat yang spesifik. Gunakan angka yang dapat diperiksa dan jangan menulis penyebab yang belum didukung data.
+
+## Review uncertainty
+
+:::practice type="multiple_choice" id="communication-challenge-uncertainty-01"
+:::
 
 ## Review sebelum dikirim
 

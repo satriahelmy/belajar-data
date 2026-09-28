@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "communication-audience-02",
+            "type": "multiple_choice",
+            "prompt": "Evidence menunjukkan returning-customer revenue turun 11 persen. Pesan untuk executive yang paling sesuai adalah...",
+            "options": [
+                "Slower repeat purchases are the main drag on growth, based on the current comparison.",
+                "Returning-customer revenue declined 11% QoQ; Furniture-West has the largest absolute decline.",
+                "Buat tabel seluruh customer agar executive dapat memeriksa semua row.",
+                "Repeat customers pasti pergi karena produk tidak tersedia."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Audience menentukan level detail, tetapi klaim tetap harus sesuai evidence.",
+            "success_feedback": "Benar. Executive message memimpin dengan takeaway dan tetap membatasi klaim."
+        },
+        {
+            "id": "communication-audience-check-02",
+            "type": "text_self_assessment",
+            "prompt": "Bagaimana kamu akan mengubah detail pesan yang sama untuk executive dan analyst tanpa mengubah faktanya?",
+            "reference_answer": "Executive mendapat takeaway singkat tentang perubahan dan implikasinya. Analyst mendapat angka, periode, definition, grain, segment, dan rincian decomposition untuk mengulang pemeriksaan.",
+            "checklist": [
+                "Menyebutkan perbedaan level detail.",
+                "Menyebutkan executive dan analyst.",
+                "Menjaga fakta dan batas evidence tetap sama."
+            ]
+        }
+    ]
+}

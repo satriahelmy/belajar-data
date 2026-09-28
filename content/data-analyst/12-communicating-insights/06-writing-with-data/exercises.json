@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "communication-writing-06",
+            "type": "multiple_choice",
+            "prompt": "Kalimat mana yang paling specific dan contextual?",
+            "options": [
+                "Furniture revenue in West fell 41% QoQ, the largest decline across category-region combinations.",
+                "Revenue declined significantly.",
+                "Based on the analysis that has been conducted, it can be seen that revenue changed.",
+                "The business is doing badly because customers lost interest."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Writing data perlu metric, scope, comparison, dan klaim yang proporsional.",
+            "success_feedback": "Benar. Kalimat memimpin dengan evidence yang dapat diperiksa."
+        },
+        {
+            "id": "communication-writing-check-06",
+            "type": "text_self_assessment",
+            "prompt": "Tulis ulang “Revenue turun signifikan” agar memiliki metric, periode, dan angka yang dapat diperiksa.",
+            "reference_answer": "Revenue turun 12,4 persen QoQ pada data yang dibandingkan.",
+            "checklist": [
+                "Menyebutkan metric.",
+                "Menyebutkan periode atau comparison.",
+                "Menyebutkan angka tanpa overclaim."
+            ]
+        }
+    ]
+}

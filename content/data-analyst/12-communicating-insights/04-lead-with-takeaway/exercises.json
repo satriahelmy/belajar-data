@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "communication-takeaway-04",
+            "type": "multiple_choice",
+            "prompt": "Headline mana yang paling membantu audience memahami pattern tanpa mengklaim penyebab?",
+            "options": [
+                "Revenue growth slowed sharply in Q3.",
+                "Revenue Analysis.",
+                "The campaign caused revenue to slow.",
+                "Interesting Results from the Data."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Headline explanatory menyebutkan pattern. Causal claim tetap membutuhkan evidence tambahan.",
+            "success_feedback": "Benar. Headline memimpin dengan takeaway yang dapat ditelusuri ke data."
+        },
+        {
+            "id": "communication-takeaway-check-04",
+            "type": "text_self_assessment",
+            "prompt": "Ubah judul “Customer Analysis” menjadi headline yang lebih explanatory berdasarkan finding repeat-customer revenue turun 11 persen.",
+            "reference_answer": "Returning-customer revenue declined 11%, slowing overall growth.",
+            "checklist": [
+                "Headline menyebutkan pattern utama.",
+                "Metric atau segment penting tetap terlihat.",
+                "Tidak menambahkan penyebab yang belum terbukti."
+            ]
+        }
+    ]
+}
