@@ -36,13 +36,56 @@
         {
             "id": "visual-finding-01",
             "type": "text_self_assessment",
-            "prompt": "Tulis finding tentang perubahan revenue Agustus dan September. Sertakan angka, komposisi category jika relevan, dan batas evidence.",
-            "reference_answer": "Revenue naik dari 450 pada Agustus menjadi 600 pada September. September lebih tinggi, tetapi data ini hanya menunjukkan perbedaan revenue dan komposisi category pada dua periode; data ini belum cukup untuk menyatakan penyebabnya.",
+            "prompt": "Tulis finding tentang visual story NusaMart. Sertakan angka, metric, periode, driver yang terlihat, dan batas evidence.",
+            "reference_answer": "Visual story perlu menyebutkan perubahan revenue pada periode yang dibandingkan, category atau region yang paling terkait dengan pattern, dan batas bahwa visual menunjukkan pola pada data tersebut, bukan penyebabnya.",
             "checklist": [
-                "Menyebutkan dua periode yang dibandingkan.",
-                "Menyertakan angka revenue atau perubahan yang terlihat.",
+                "Menyebutkan metric dan periode yang dibandingkan.",
+                "Menyertakan angka atau pattern yang terlihat.",
+                "Menyebutkan category atau region jika relevan.",
                 "Membedakan pola yang terlihat dari dugaan penyebab."
             ]
+        },
+        {
+            "id": "visual-challenge-trend-01",
+            "type": "multiple_choice",
+            "prompt": "Untuk menunjukkan perubahan revenue Q3 secara kronologis, pilihan yang paling sesuai adalah...",
+            "options": [
+                "Line chart dengan month sebagai dimension, urutan chronological, dan metric revenue.",
+                "Pie chart dengan order_id sebagai dimension.",
+                "Bar chart yang diurutkan berdasarkan warna tanpa month.",
+                "Scatterplot tanpa menjelaskan dua variable yang dibandingkan."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Trend membutuhkan ordered temporal data, metric yang jelas, dan urutan chronological.",
+            "success_feedback": "Benar. Visual trend mengikuti struktur waktu dan pertanyaan yang ingin dijawab."
+        },
+        {
+            "id": "visual-challenge-misleading-01",
+            "type": "multiple_choice",
+            "prompt": "Sebelum memakai visual untuk keputusan management, pemeriksaan mana yang paling penting?",
+            "options": [
+                "Cocokkan metric, filter, periode, axis, sorting, dan tabel angka dengan pertanyaan.",
+                "Pastikan chart memiliki sebanyak mungkin warna dan label.",
+                "Gunakan axis yang dipotong agar perubahan mudah terlihat.",
+                "Hilangkan kategori kecil agar headline lebih tegas."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Visual audit perlu memastikan representasi tetap proporsional dan scope tidak tersembunyi.",
+            "success_feedback": "Tepat. Visual story harus tetap dapat diaudit dari angka dan konteksnya."
+        },
+        {
+            "id": "visual-challenge-story-01",
+            "type": "multiple_choice",
+            "prompt": "Headline mana yang paling membantu audience memahami isi visual?",
+            "options": [
+                "Revenue declined consistently throughout Q3",
+                "Revenue by Month",
+                "Chart 1",
+                "Interesting Results"
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Headline explanatory menyebutkan pattern utama, bukan hanya nama metric atau jenis chart.",
+            "success_feedback": "Benar. Headline memberi arah baca sebelum audience memeriksa detail visual."
         }
     ]
 }

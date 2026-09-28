@@ -19,7 +19,7 @@ Aplikasi dirancang sebagai Laravel modular monolith yang server-rendered, dengan
 - M6A/M6B/M6C/M6D/M6E: Visualization Playground, JOIN Row Multiplication, Sampling & Uncertainty, Metric Tree Builder, dan Communication Builder representative slices tersedia; interactive dimuat lazy dengan konfigurasi bounded, fallback server-rendered, deterministic validation, grain warnings, reproducible sample estimates, predefined metric relationships, serta reference/checklist self-assessment tanpa AI grading.
 - M7: representative Tableau learning track sudah diimplementasikan dengan dataset NusaMart berversi, metadata download, guided external workflow, deterministic checkpoints, dan privacy guidance. Walkthrough manual di Tableau Desktop untuk release sign-off masih terbuka.
 - M8: representative Projects workspace sudah diimplementasikan untuk NusaMart Revenue Slowdown dan Customer Retention Analysis; enam stage, reference approach, checkpoint, dan independent project progress tersedia. Manual end-to-end QA dua project masih terbuka untuk M9 hardening.
-- M9: gelombang content completion awal selesai untuk Module 02 — Spreadsheet for Analysis, Module 03 — SQL for Data Analysis, Module 04 — Python & Pandas for Analysis, Module 05 — Data Cleaning, Module 06 — Exploratory Data Analysis, Module 07 — Statistics for Analysts, dan Module 11 — Business Analysis; ketujuhnya sekarang memiliki topic sequence, practice, dan module challenge yang lebih lengkap. Launch hardening penuh masih berjalan.
+- M9: gelombang content completion awal selesai untuk Module 02 — Spreadsheet for Analysis, Module 03 — SQL for Data Analysis, Module 04 — Python & Pandas for Analysis, Module 05 — Data Cleaning, Module 06 — Exploratory Data Analysis, Module 07 — Statistics for Analysts, Module 08 — Data Visualization, dan Module 11 — Business Analysis; kedelapannya sekarang memiliki topic sequence, practice, dan module challenge yang lebih lengkap. Launch hardening penuh masih berjalan.
 
 Yang sudah tersedia pada increment M1B saat ini:
 
@@ -97,6 +97,7 @@ Yang sudah tersedia pada increment M9 saat ini:
 - Module 04 dengan alur dari membaca DataFrame, memilih dan memfilter data, membuat kolom turunan, groupby, merge, pengolahan tanggal, sampai analisis Pandas terintegrasi;
 - Module 06 dengan alur dari pertanyaan eksplorasi, profiling dataset, distribusi, kategori, perubahan waktu, relationship, sampai drill-down menuju finding;
 - Module 07 dengan alur dari pemilihan summary, variability, percentile, sample dan bias, sampling uncertainty, correlation, sampai evaluasi A/B test dan business significance;
+- Module 08 dengan alur dari tujuan visual, comparison, trend, composition, distribution, relationship, visual encoding, sampai audit visual yang berpotensi menyesatkan;
 - exercise config dan challenge untuk module-module yang diperluas memakai validator deterministic atau guided self-assessment yang sudah ada;
 - `content:validate` memuat dan merender seluruh lesson serta challenge baru tanpa package atau runtime baru.
 

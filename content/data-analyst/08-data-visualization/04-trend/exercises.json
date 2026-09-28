@@ -1,0 +1,36 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "visual-trend-04",
+            "type": "result_based",
+            "prompt": "Tampilkan perubahan revenue dari month ke month dengan urutan waktu yang benar.",
+            "incorrect_feedback": "Gunakan revenue, month, line, chronological, highlight none, dan skala honest.",
+            "success_feedback": "Benar. Audience dapat mengikuti perubahan waktu karena metric, urutan, dan skala tetap terlihat.",
+            "validator": {
+                "type": "table",
+                "expected_columns": ["chart", "metric", "dimension", "sort", "highlight", "scale_mode"],
+                "expected_rows": [["line", "revenue", "month", "chronological", "none", "honest"]],
+                "row_order": "ordered",
+                "required_columns": ["chart", "metric", "dimension"]
+            },
+            "interactive": {
+                "type": "visualization_playground",
+                "dataset_key": "nusamart",
+                "dataset_version": "v1",
+                "allowed_metrics": ["revenue", "quantity", "orders", "average_order_value"],
+                "allowed_dimensions": ["month", "category", "region", "channel"],
+                "allowed_charts": ["bar", "line", "scatter", "histogram", "composition", "distribution"],
+                "allowed_sorts": ["descending", "ascending", "chronological"],
+                "allowed_highlights": ["none", "top", "West", "Electronics"],
+                "allowed_scale_modes": ["honest", "truncated"],
+                "starter_metric": "revenue",
+                "starter_dimension": "month",
+                "starter_chart": "line",
+                "starter_sort": "chronological",
+                "starter_highlight": "none",
+                "starter_scale_mode": "honest"
+            }
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "visual-shape-06",
+            "type": "multiple_choice",
+            "prompt": "Pasangan visual dan pertanyaan mana yang paling selaras?",
+            "options": [
+                "Histogram untuk membaca distribution delivery time, scatterplot untuk mengeksplorasi discount dan quantity.",
+                "Line chart untuk semua category tanpa urutan waktu.",
+                "Pie chart untuk membaca hubungan dua metric.",
+                "3D chart untuk menggantikan definisi metric."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Pilih visual berdasarkan struktur data dan perbandingan yang perlu dibaca audience.",
+            "success_feedback": "Benar. Distribution dan relationship membutuhkan cara baca yang berbeda."
+        },
+        {
+            "id": "visual-shape-check-06",
+            "type": "text_self_assessment",
+            "prompt": "Mengapa visual relationship tetap perlu disertai batas evidence?",
+            "reference_answer": "Visual dapat menunjukkan pola bersama, tetapi tidak membuktikan satu variabel menyebabkan variabel lain berubah. Segment, outlier, periode, dan konteks lain masih perlu diperiksa.",
+            "checklist": [
+                "Membedakan pola dari causation.",
+                "Menyebutkan minimal satu konteks lanjutan.",
+                "Menghubungkan visual dengan evidence."
+            ]
+        }
+    ]
+}

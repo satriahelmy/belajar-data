@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "visual-honesty-08",
+            "type": "multiple_choice",
+            "prompt": "Sebuah chart menunjukkan kenaikan kecil sebagai lonjakan besar. Pemeriksaan pertama yang paling tepat adalah...",
+            "options": [
+                "Periksa skala axis, baseline, periode, dan angka tabel di balik visual.",
+                "Tambahkan lebih banyak warna agar kenaikan lebih jelas.",
+                "Gunakan 3D agar audience melihat volume perubahan.",
+                "Potong periode sebelum kenaikan supaya pesan lebih fokus."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Audit visual dimulai dari skala, baseline, scope, dan angka sumber.",
+            "success_feedback": "Benar. Representasi yang jujur membuat perbedaan tetap proporsional terhadap evidence."
+        },
+        {
+            "id": "visual-honesty-check-08",
+            "type": "text_self_assessment",
+            "prompt": "Buat checklist singkat untuk memeriksa apakah sebuah visual dapat menyesatkan audience.",
+            "reference_answer": "Periksa axis dan baseline, metric serta denominator, filter dan periode, urutan category, serta apakah warna atau emphasis menghilangkan konteks. Cocokkan visual dengan tabel angka.",
+            "checklist": [
+                "Menyebutkan axis atau baseline.",
+                "Menyebutkan metric, denominator, filter, atau periode.",
+                "Menyebutkan pemeriksaan tabel atau konteks yang hilang."
+            ]
+        }
+    ]
+}

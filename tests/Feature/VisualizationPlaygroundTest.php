@@ -29,6 +29,25 @@ class VisualizationPlaygroundTest extends TestCase
             ->assertSee('visual-finding-01');
     }
 
+    public function test_module_eight_visual_sequence_renders_registered_practices(): void
+    {
+        foreach ([
+            ['03-comparison', 'Choose Visuals for Comparison', 'visual-comparison-03'],
+            ['04-trend', 'Show Changes Over Time', 'visual-trend-04'],
+        ] as [$topic, $title, $exercise]) {
+            $this->get("/learn/data-analyst/08-data-visualization/{$topic}")
+                ->assertOk()
+                ->assertSee($title)
+                ->assertSee('data-learning-component="visualization-playground"', false)
+                ->assertSee($exercise);
+        }
+
+        $this->get('/learn/data-analyst/08-data-visualization/challenge')
+            ->assertOk()
+            ->assertSee('visual-challenge-trend-01')
+            ->assertSee('visual-challenge-story-01');
+    }
+
     public function test_visualization_choice_is_validated_and_persisted_as_bounded_state(): void
     {
         $user = User::factory()->create();

@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "visual-encoding-07",
+            "type": "multiple_choice",
+            "prompt": "Mana keputusan encoding yang paling purposeful untuk menonjolkan category dengan revenue terbesar tanpa menghilangkan konteks?",
+            "options": [
+                "Urutkan bar secara descending, gunakan satu warna utama, dan highlight category terbesar secara terbatas.",
+                "Gunakan warna berbeda untuk setiap row agar semua sama penting.",
+                "Hilangkan category kecil supaya chart terlihat lebih dramatis.",
+                "Gunakan 3D dan shadow untuk membuat bar lebih menonjol."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Encoding harus membantu comparison dan hierarchy, bukan menambah dekorasi atau menghapus konteks.",
+            "success_feedback": "Tepat. Sorting dan emphasis membantu pembacaan tanpa menyembunyikan evidence lain."
+        },
+        {
+            "id": "visual-encoding-check-07",
+            "type": "text_self_assessment",
+            "prompt": "Tulis dua perubahan design yang dapat membuat visual category comparison lebih mudah dibaca.",
+            "reference_answer": "Urutkan category berdasarkan metric yang sedang dibandingkan dan gunakan warna dengan fungsi terbatas. Judul yang menjelaskan metric serta label langsung juga dapat membantu.",
+            "checklist": [
+                "Menyebutkan sorting atau ordering.",
+                "Menyebutkan penggunaan warna, label, atau hierarchy.",
+                "Perubahan membantu pekerjaan baca audience."
+            ]
+        }
+    ]
+}

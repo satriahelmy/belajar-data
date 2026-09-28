@@ -72,6 +72,13 @@ class ContentContractTest extends TestCase
                 '07-statistics-for-analysts/07-correlation-relationships',
                 '07-statistics-for-analysts/08-hypothesis-business-significance',
                 '08-data-visualization/01-choosing-a-visual',
+                '08-data-visualization/02-why-visualize',
+                '08-data-visualization/03-comparison',
+                '08-data-visualization/04-trend',
+                '08-data-visualization/05-composition',
+                '08-data-visualization/06-distribution-relationship',
+                '08-data-visualization/07-encoding-and-design',
+                '08-data-visualization/08-avoiding-misleading',
                 '09-metrics-dashboards/01-metric-tree',
                 '10-tableau-for-data-analysis/01-tableau-workflow',
                 '10-tableau-for-data-analysis/02-tableau-model-and-metrics',
@@ -146,6 +153,7 @@ class ContentContractTest extends TestCase
 
         $this->assertSame('visualization_playground', $lesson->exercises['visual-question-01']['interactive']['type']);
         $this->assertSame('visualization_playground', $challenge->exercises['visual-composition-01']['interactive']['type']);
+        $this->assertCount(5, $challenge->exercises);
         $this->assertSame('text_self_assessment', $challenge->exercises['visual-finding-01']['type']);
     }
 

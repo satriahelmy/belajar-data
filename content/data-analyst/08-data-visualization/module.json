@@ -8,7 +8,7 @@
     "status": "published",
     "purpose": "Memilih dan menyusun visual yang membantu orang memahami evidence.",
     "outcome": "Mampu memetakan pertanyaan ke visual yang sesuai dan mengenali visual yang menyesatkan.",
-    "estimated_minutes": 24,
+    "estimated_minutes": 132,
     "recommended_knowledge": ["Exploratory Data Analysis", "Statistics for Analysts"],
     "skill_tags": ["visualization"],
     "challenge": {
@@ -26,7 +26,16 @@
             "Menjelaskan batas evidence tanpa mengubah pola menjadi dugaan sebab-akibat."
         ]
     },
-    "topic_keys": ["01-choosing-a-visual"],
+    "topic_keys": [
+        "01-choosing-a-visual",
+        "02-why-visualize",
+        "03-comparison",
+        "04-trend",
+        "05-composition",
+        "06-distribution-relationship",
+        "07-encoding-and-design",
+        "08-avoiding-misleading"
+    ],
     "topics": {
         "01-choosing-a-visual": {
             "title": "Choose the Question Before the Chart",
@@ -35,6 +44,62 @@
             "skill_tags": ["visualization", "data-literacy"],
             "lesson_file": "01-choosing-a-visual/lesson.md",
             "exercise_file": "01-choosing-a-visual/exercises.json"
+        },
+        "02-why-visualize": {
+            "title": "Explore, Explain, or Monitor",
+            "order": 2,
+            "estimated_minutes": 14,
+            "skill_tags": ["visualization", "analytical-thinking"],
+            "lesson_file": "02-why-visualize/lesson.md",
+            "exercise_file": "02-why-visualize/exercises.json"
+        },
+        "03-comparison": {
+            "title": "Choose Visuals for Comparison",
+            "order": 3,
+            "estimated_minutes": 14,
+            "skill_tags": ["visualization", "data-literacy"],
+            "lesson_file": "03-comparison/lesson.md",
+            "exercise_file": "03-comparison/exercises.json"
+        },
+        "04-trend": {
+            "title": "Show Changes Over Time",
+            "order": 4,
+            "estimated_minutes": 16,
+            "skill_tags": ["visualization", "metrics"],
+            "lesson_file": "04-trend/lesson.md",
+            "exercise_file": "04-trend/exercises.json"
+        },
+        "05-composition": {
+            "title": "Show Parts of a Whole",
+            "order": 5,
+            "estimated_minutes": 14,
+            "skill_tags": ["visualization", "data-literacy"],
+            "lesson_file": "05-composition/lesson.md",
+            "exercise_file": "05-composition/exercises.json"
+        },
+        "06-distribution-relationship": {
+            "title": "Communicate Distribution and Relationship",
+            "order": 6,
+            "estimated_minutes": 16,
+            "skill_tags": ["visualization", "statistics"],
+            "lesson_file": "06-distribution-relationship/lesson.md",
+            "exercise_file": "06-distribution-relationship/exercises.json"
+        },
+        "07-encoding-and-design": {
+            "title": "Use Encoding with Purpose",
+            "order": 7,
+            "estimated_minutes": 14,
+            "skill_tags": ["visualization", "design"],
+            "lesson_file": "07-encoding-and-design/lesson.md",
+            "exercise_file": "07-encoding-and-design/exercises.json"
+        },
+        "08-avoiding-misleading": {
+            "title": "Avoid Misleading Visuals",
+            "order": 8,
+            "estimated_minutes": 16,
+            "skill_tags": ["visualization", "data-literacy"],
+            "lesson_file": "08-avoiding-misleading/lesson.md",
+            "exercise_file": "08-avoiding-misleading/exercises.json"
         }
     }
 }

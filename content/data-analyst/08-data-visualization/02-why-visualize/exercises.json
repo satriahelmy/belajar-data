@@ -1,0 +1,30 @@
+{
+    "schema_version": 1,
+    "exercises": [
+        {
+            "id": "visual-purpose-02",
+            "type": "multiple_choice",
+            "prompt": "Tim ingin memantau revenue harian dan mendapat sinyal ketika performa menyimpang. Fungsi visual yang paling sesuai adalah...",
+            "options": [
+                "Monitor, dengan metric, periode, dan batas yang terlihat.",
+                "Explain, tanpa perlu definisi metric karena audience sudah tahu.",
+                "Explore saja, walaupun view akan dipakai sebagai alert operasional.",
+                "Dekorasi, karena visual tidak perlu menjawab pertanyaan."
+            ],
+            "correct_option": 0,
+            "incorrect_feedback": "Fungsi visual harus mengikuti cara audience akan menggunakan informasi tersebut.",
+            "success_feedback": "Benar. Monitor membutuhkan konteks dan sinyal yang konsisten untuk ditindaklanjuti."
+        },
+        {
+            "id": "visual-purpose-check-02",
+            "type": "text_self_assessment",
+            "prompt": "Jelaskan satu perbedaan antara visual untuk explore dan visual untuk explain.",
+            "reference_answer": "Visual explore membantu analyst mencari pola dan pertanyaan berikutnya, sedangkan visual explain dipilih untuk menyampaikan finding tertentu kepada audience dengan konteks yang lebih terarah.",
+            "checklist": [
+                "Membedakan tujuan explore dan explain.",
+                "Menyebutkan peran audience atau finding.",
+                "Tidak menganggap satu chart selalu tepat untuk semua konteks."
+            ]
+        }
+    ]
+}
